@@ -22,9 +22,6 @@
         return (*this) / (size() + bias);
     }
 
-	// Vector3 maskXY() { return Vector3(x, y, 0); }
-	// void maskXY_InPlace() { z = 0; }
-
 	// Operations
 	Vector3 Vector3::operator*(double scale) const
     {
@@ -91,9 +88,9 @@
 
     const Vector3 Vector3::Zero = Vector3(0);
 	const Vector3 Vector3::One = Vector3(1);
-	const Vector3 Vector3::MaskX = Vector3(1, 0, 0);
-	const Vector3 Vector3::MaskY = Vector3(0, 1, 0);
-	const Vector3 Vector3::MaskZ = Vector3(0, 0, 1);
-	const Vector3 Vector3::MaskXY = Vector3(1, 1, 0);
-	const Vector3 Vector3::MaskXZ = Vector3(1, 0, 1);
-	const Vector3 Vector3::MaskYZ = Vector3(0, 1, 1);
+	const Vector3 Vector3::VectorMaskX = Vector3(1, 0, 0);
+	const Vector3 Vector3::VectorMaskY = Vector3(0, 1, 0);
+	const Vector3 Vector3::VectorMaskZ = Vector3(0, 0, 1);
+	const Vector3 Vector3::VectorMaskXY = Vector3(1, 1, 0);
+	const Vector3 Vector3::VectorMaskXZ = Vector3(1, 0, 1);
+	const Vector3 Vector3::VectorMaskYZ = Vector3(0, 1, 1);

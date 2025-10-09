@@ -25,7 +25,9 @@ class PicadorJrCore final
 
 	// ...
 
+
 	// Runtime values
+
 	double currentTime;
 
 public:
@@ -47,5 +49,5 @@ public:
 
 	ParticleGrid* getParticleGrid() { return particleGrid; }
 
-	double getTimeDelta() { return timeDelta; }
+	double getTimeDelta() const { return timeDelta; }
 };

@@ -27,7 +27,6 @@ struct Vector3
 	Vector3 operator*(double scale) const;
 
 	Vector3 operator+(const Vector3& rhs) const;
-
 	Vector3 operator-(const Vector3& rhs) const;
 	Vector3 operator*(const Vector3& rhs) const;
 	Vector3 operator/(const Vector3& rhs) const;
@@ -41,12 +40,12 @@ struct Vector3
 	// Static version
 	static const Vector3 Zero;
 	static const Vector3 One;
-	static const Vector3 MaskX;
-	static const Vector3 MaskY;
-	static const Vector3 MaskZ;
-	static const Vector3 MaskXY;
-	static const Vector3 MaskXZ;
-	static const Vector3 MaskYZ;
+	static const Vector3 VectorMaskX;
+	static const Vector3 VectorMaskY;
+	static const Vector3 VectorMaskZ;
+	static const Vector3 VectorMaskXY;
+	static const Vector3 VectorMaskXZ;
+	static const Vector3 VectorMaskYZ;
 };
 
 Vector3 operator*(double scale, const Vector3& vector) { return vector * scale; }

@@ -6,11 +6,9 @@
 
 int main()
 {
-    PicadorJrCore* core = new PicadorJrCore(/* ... */);
+    PicadorJrCore core = PicadorJrCore(/* ... */);
 
-    // ... Inserting additional module (if needed) ...
+    // ... Inserting additional modules (if needed) ...
 
-    core->run();
-
-    delete core;
+    core.run();
 }
