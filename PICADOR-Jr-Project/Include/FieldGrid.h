@@ -16,22 +16,21 @@ struct FieldGridNode
 	FieldGridNode() {}
 };
 
+
 class FieldGrid: public Grid
 {
 	// FieldGrid node array
 	std::vector<FieldGridNode> nodeArray;
 
-
 public:
 	// Constructor
-	FieldGrid(int resolutionX_, int resolutionY_, double deltaX_, double deltaY_, const Vector3& origin_): Grid(resolutionX_, resolutionY_, deltaX_, deltaY_, origin_) {}
+	FieldGrid(size_t resolutionX_, size_t resolutionY_, double deltaX_, double deltaY_, const Vector3& origin_): Grid(resolutionX_, resolutionY_, deltaX_, deltaY_, origin_) {}
 
 	// Interface
 
-	FieldGridNode& getNodeAt(int i, int j);
+	// Returns an editable reference to the specified field node
+	FieldGridNode& getNodeAt(size_t i, size_t j);
 
-	const FieldGridNode& getFieldsAt(double x, double y) const;
-	const FieldGridNode& getFieldsAt(const Vector3& coord) const;
-
-	// TO DO: Add more getters for resolution, delta and edges (maybe)
+	// Returns interpolated values of fields in the given point
+	FieldGridNode getFieldsAt(const Vector3& location) const;
 };
