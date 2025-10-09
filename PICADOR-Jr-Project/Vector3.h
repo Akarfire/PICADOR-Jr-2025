@@ -19,6 +19,8 @@ struct Vector3
 	// Returns normalized vector (direction)
 	Vector3 normalized();
 
+	// Vector3 maskXY() { return Vector3(x, y, 0); }
+	// void maskXY_InPlace() { z = 0; }
 
 	// Operations
 	const Vector3& operator*(double scale);

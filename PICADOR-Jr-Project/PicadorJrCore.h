@@ -1,13 +1,13 @@
 #pragma once
 
-#include "Grid.h"
+#include "FieldGrid.h"
 #include "Particle.h"
 
 class PicadorJrCore
 {
 	// Basic data
 
-	Grid grid;
+	FieldGrid fieldGrid;
 
 	// Cell (based on grid) -> Particle
 	std::vector<std::vector<Particle>> particlesInCells;
@@ -39,7 +39,7 @@ public:
 
 	// Module interface
 
-	Grid& getGrid() { return grid; }
+	FieldGrid& getFieldGrid() { return fieldGrid; }
 
 	std::vector<std::vector<Particle>>& getParticles() { return particlesInCells; }
 };

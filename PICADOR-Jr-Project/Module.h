@@ -5,8 +5,8 @@ class Module
 	class PicadorJrCore* core;
 
 public:
-	Module(PicadorJrCore* inCore) : core(inCore) {}
+	Module(PicadorJrCore* core_)) : core(core_) {}
 
 	// Main function of the module
-	virtual int runModule();
+	virtual short runModule();
 };

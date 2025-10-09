@@ -125,6 +125,14 @@
   <ItemGroup>
     <ClCompile Include="PICADOR-Jr-Project.cpp" />
   </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="FieldGrid.h" />
+    <ClInclude Include="Module.h" />
+    <ClInclude Include="Particle.h" />
+    <ClInclude Include="ParticleGrid.h" />
+    <ClInclude Include="PicadorJrCore.h" />
+    <ClInclude Include="Vector3.h" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
