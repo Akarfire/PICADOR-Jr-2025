@@ -24,7 +24,7 @@ class FieldGrid: public Grid
 
 public:
 	// Constructor
-	FieldGrid(int inResolutionX, int inResolutionY, double inDeltaX, double inDeltaY, double originX, double originY);
+	FieldGrid(int resolutionX_, int resolutionY_, double deltaX_, double deltaY_, const Vector3& origin_): Grid(resolutionX_, resolutionY_, deltaX_, deltaY_, origin_) {}
 
 	// Interface
 

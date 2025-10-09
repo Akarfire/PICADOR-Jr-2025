@@ -9,7 +9,7 @@ class ParticleGrid: public Grid
 
 
 public:
-	ParticleGrid(int inResolutionX, int inResolutionY, double inDeltaX, double inDeltaY, double originX, double originY);
+	ParticleGrid(int resolutionX_, int resolutionY_, double deltaX_, double deltaY_, const Vector3& origin_): Grid(resolutionX_, resolutionY_, deltaX_, deltaY_, origin_) {}
 
 	// Returns a reference to the vector of particles in the specified cell
 	const std::vector<Particle>& getParticlesInCell(int i, int j);
