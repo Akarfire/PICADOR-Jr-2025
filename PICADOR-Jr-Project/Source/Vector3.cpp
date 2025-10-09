@@ -54,6 +54,8 @@
         result.x = x * rhs.x;
         result.y = y * rhs.y;
         result.z = z * rhs.z;
+
+        return result;
     }
 
 	Vector3 Vector3::operator/(const Vector3& rhs) const

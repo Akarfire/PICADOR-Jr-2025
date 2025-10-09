@@ -47,5 +47,3 @@ struct Vector3
 	static const Vector3 VectorMaskXZ;
 	static const Vector3 VectorMaskYZ;
 };
-
-Vector3 operator*(double scale, const Vector3& vector) { return vector * scale; }

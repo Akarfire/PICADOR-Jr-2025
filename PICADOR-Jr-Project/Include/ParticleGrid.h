@@ -8,7 +8,7 @@ class ParticleGrid: public Grid
 	std::vector<std::vector<Particle>> particlesInCells;
 
 	// Converts 2D cell coordinates into a 1D array index
-	size_t recalculateCellIndex(size_t i, size_t j) const;
+	size_t recalculateCellIndex(size_t i, size_t j) const { return 0; }
 
 public:
 	ParticleGrid(size_t resolutionX_, size_t resolutionY_, double deltaX_, double deltaY_, const Vector3& origin_): Grid(resolutionX_, resolutionY_, deltaX_, deltaY_, origin_) {}

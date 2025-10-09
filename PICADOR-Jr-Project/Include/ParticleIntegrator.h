@@ -1,3 +1,5 @@
+#pragma once
+
 #include "Module.h"
 
 class ParticleIntegrator : public Module

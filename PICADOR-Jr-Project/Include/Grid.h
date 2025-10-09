@@ -1,6 +1,7 @@
+#pragma once
+
 #include <vector>
 #include "Vector3.h"
-
 
 class Grid
 {
@@ -27,11 +28,11 @@ public:
     
     // Data getters
 
-    size_t getResolutionX() const inline { return resolutionX; }
-    size_t getResolutionY() const inline { return resolutionY; }
+    size_t getResolutionX() const { return resolutionX; }
+    size_t getResolutionY() const { return resolutionY; }
 
-    double getDeltaX() const inline { return deltaX; }
-    double getDeltaY() const inline { return deltaY; }
+    double getDeltaX() const { return deltaX; }
+    double getDeltaY() const { return deltaY; }
 
-    const Vector3& getOrigin() const inline { return origin; }
+    const Vector3& getOrigin() const { return origin; }
 };

@@ -28,7 +28,7 @@ void PicadorJrCore::insertModule(Module* module, int position)
         return modules.push_back(module);
     
     // Error checking
-    if (position < 0 || position > modules.size()) throw(std::runtime_error("Invalid module insertion position!"));
+    if (position < 0 || position > (int)(modules.size())) throw(std::runtime_error("Invalid module insertion position!"));
 
     // Insertion
     modules.insert(modules.begin() + position, module);
@@ -50,4 +50,6 @@ int PicadorJrCore::run()
 
         currentTime += timeDelta;
     }
+
+    return 0;
 }

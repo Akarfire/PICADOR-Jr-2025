@@ -31,4 +31,6 @@ int ParticleGrid::particleCellTransfer(size_t particleID, size_t ownerCell_i, si
 
     particlesInCells[owner_ID][particleID] = particlesInCells[owner_ID][numParticlesInOwner - 1];
     particlesInCells[owner_ID].pop_back();
+
+    return 0;
 }
