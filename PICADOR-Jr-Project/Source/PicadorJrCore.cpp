@@ -8,7 +8,7 @@ PicadorJrCore::PicadorJrCore(/* ... */)
 {
     // TO DO: Loading config and initial data from file
 
-    // !!!PLACE HOLDER VALUES!!!
+    // !!!PLACE-HOLDER VALUES!!!
     fieldGrid = new FieldGrid(100, 100, 10e-3, 10e-3, Vector3::Zero);
     particleGrid = new ParticleGrid(100, 100, 10e-3, 10e-3, Vector3::Zero);
 }
