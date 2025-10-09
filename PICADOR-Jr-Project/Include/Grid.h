@@ -19,6 +19,8 @@ public:
 
     }
 
+    virtual ~Grid() {}
+
 
     int getCell_ID(const Vector3& location);
 };
