@@ -6,33 +6,37 @@ struct Vector3
 	double x, y, z;
 
 	// Default constructor
-	Vector3(double inX = 0.0, double inY = 0.0, double inZ = 0.0): x(inX), y(inY), z(inZ) {}
+	Vector3(double x_, double y_, double z_): x(x_), y(y_), z(z_) {}
+	Vector3(double xyz = 0.0): x(xyz), y(xyz), z(xyz) {}
 
 	// Data getters
 
 	// Returns length of the vector
-	double size();
+	double size() const;
 
 	// Returns squared length of the vector (faster than normal .size())
-	double sizeSquared();
+	double sizeSquared() const;
 
 	// Returns normalized vector (direction)
-	Vector3 normalized();
+	Vector3 normalized(double bias = 10e-5) const;
 
 	// Vector3 maskXY() { return Vector3(x, y, 0); }
 	// void maskXY_InPlace() { z = 0; }
 
 	// Operations
-	const Vector3& operator*(double scale);
+	Vector3 operator*(double scale) const;
 
-	const Vector3& operator+(const Vector3& rhs);
-	const Vector3& operator-(const Vector3& rhs);
-	const Vector3& operator*(const Vector3& rhs);
-	const Vector3& operator/(const Vector3& rhs);
+	Vector3 operator+(const Vector3& rhs) const;
+
+	Vector3 operator-(const Vector3& rhs) const;
+	Vector3 operator*(const Vector3& rhs) const;
+	Vector3 operator/(const Vector3& rhs) const;
 
 	// Scalar multiplication
-	double dotProduct(const Vector3& rhs);
+	double dotProduct(const Vector3& rhs) const;
 
 	// Vector multiplication
-	Vector3 crossProduct(const Vector3& rhs);
+	Vector3 crossProduct(const Vector3& rhs) const;
 };
+
+Vector3 operator*(double scale, const Vector3& vector) { return vector * scale; }
