@@ -37,6 +37,16 @@ struct Vector3
 
 	// Vector multiplication
 	Vector3 crossProduct(const Vector3& rhs) const;
+
+	// Static version
+	static const Vector3 Zero;
+	static const Vector3 One;
+	static const Vector3 MaskX;
+	static const Vector3 MaskY;
+	static const Vector3 MaskZ;
+	static const Vector3 MaskXY;
+	static const Vector3 MaskXZ;
+	static const Vector3 MaskYZ;
 };
 
 Vector3 operator*(double scale, const Vector3& vector) { return vector * scale; }

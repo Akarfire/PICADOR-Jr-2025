@@ -85,3 +85,15 @@
 
         return result;
     }
+
+
+    // Static versions
+
+    const Vector3 Vector3::Zero = Vector3(0);
+	const Vector3 Vector3::One = Vector3(1);
+	const Vector3 Vector3::MaskX = Vector3(1, 0, 0);
+	const Vector3 Vector3::MaskY = Vector3(0, 1, 0);
+	const Vector3 Vector3::MaskZ = Vector3(0, 0, 1);
+	const Vector3 Vector3::MaskXY = Vector3(1, 1, 0);
+	const Vector3 Vector3::MaskXZ = Vector3(1, 0, 1);
+	const Vector3 Vector3::MaskYZ = Vector3(0, 1, 1);
