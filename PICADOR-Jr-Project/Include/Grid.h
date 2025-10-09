@@ -4,6 +4,8 @@
 
 class Grid
 {
+protected:
+
     // Resolution (number of nodes per axis)
 	size_t resolutionX, resolutionY;
 
