@@ -2,7 +2,7 @@
 //
 
 #include <iostream>
-#include "PicadorJrCore.h"
+#include "PICADOR-Jr-Project/Include/PicadorJrCore.h"
 
 int main()
 {
