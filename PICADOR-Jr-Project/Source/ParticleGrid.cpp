@@ -1,4 +1,12 @@
 #include "ParticleGrid.h"
+#include <stdexcept>
+
+// Returns a reference to the vector of particles in the specified cell
+const std::vector<Particle>& ParticleGrid::getParticlesInCell(size_t i, size_t j) const 
+{ 
+    if (i < 0 || i >= resolutionX || j < 0 || j >= resolutionY) throw(std::runtime_error("Invalid particle cell index!"));
+    return particlesInCells[recalculateCellIndex(i, j)]; 
+}
 
 // Hands a particle from one cell over to another
 // Particle ID is the index of the particle in the owner cell
@@ -17,10 +25,10 @@ int ParticleGrid::particleCellTransfer(size_t particleID, size_t ownerCell_i, si
     size_t realReceiver_j;
 
     if (receiverCell_i < 0) realReceiver_i = resolutionX + receiverCell_i;
-    if (receiverCell_i >= resolutionX) realReceiver_i = receiverCell_i % resolutionX;
+    else if (receiverCell_i >= resolutionX) realReceiver_i = receiverCell_i % resolutionX;
 
     if (receiverCell_j < 0) realReceiver_j = resolutionY + receiverCell_j;
-    if (receiverCell_j >= resolutionY) realReceiver_j = receiverCell_j % resolutionY;
+    else if (receiverCell_j >= resolutionY) realReceiver_j = receiverCell_j % resolutionY;
 
     // Calculating cell indeces
     size_t owner_ID = recalculateCellIndex(ownerCell_i, ownerCell_j);
