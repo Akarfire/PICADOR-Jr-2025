@@ -11,7 +11,7 @@ class ParticleGrid: public Grid
 	size_t recalculateCellIndex(size_t i, size_t j) const;
 
 public:
-	ParticleGrid(size_t resolutionX_, size_t resolutionY_, double deltaX_, double deltaY_, const Vector3& origin_): Grid(resolutionX_, resolutionY_, deltaX_, deltaY_, origin_) {}
+	ParticleGrid(size_t resolutionX_, size_t resolutionY_, double deltaX_, double deltaY_, const Vector3& origin_, size_t padding_);
 
 	// Returns a reference to the vector of particles in the specified cell
 	const std::vector<Particle>& getParticlesInCell(size_t i, size_t j) const;

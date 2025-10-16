@@ -1,11 +1,17 @@
 #include "ParticleGrid.h"
 #include <stdexcept>
 
+ParticleGrid::ParticleGrid(size_t resolutionX_, size_t resolutionY_, double deltaX_, double deltaY_, const Vector3& origin_, size_t padding_): 
+	Grid(resolutionX_, resolutionY_, deltaX_, deltaY_, origin_, padding_) 
+{
+    // TO DO : Fill out the grid
+}
+
 // Returns a reference to the vector of particles in the specified cell
 const std::vector<Particle>& ParticleGrid::getParticlesInCell(size_t i, size_t j) const 
 { 
     if (i < 0 || i >= resolutionX || j < 0 || j >= resolutionY) throw(std::runtime_error("Invalid particle cell index!"));
-    return particlesInCells[recalculateCellIndex(i, j)]; 
+    return particlesInCells[recalculateCellIndex(i, j)];
 }
 
 // Hands a particle from one cell over to another
@@ -40,10 +46,13 @@ int ParticleGrid::particleCellTransfer(size_t particleID, size_t ownerCell_i, si
     particlesInCells[owner_ID][particleID] = particlesInCells[owner_ID][numParticlesInOwner - 1];
     particlesInCells[owner_ID].pop_back();
 
+    // TO DO : Location shift
+
     return 0;
 }
 
-size_t ParticleGrid::recalculateCellIndex(size_t i, size_t j) const {
-    if (i >= resolutionX || j >= resolutionY) throw std::out_of_range("i >= resolutionX || j >= resolutionY"); 
-    return i * this->resolutionX + j;
+size_t ParticleGrid::recalculateCellIndex(size_t i, size_t j) const 
+{
+    //if (i >= resolutionX || j >= resolutionY) throw std::out_of_range("i >= resolutionX || j >= resolutionY"); 
+    return (i + padding) * this->resolutionX + (j + padding);
 }

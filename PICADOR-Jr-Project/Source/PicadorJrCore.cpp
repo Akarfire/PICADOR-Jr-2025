@@ -4,19 +4,16 @@
 #include <stdexcept>
 
 // Initializes modules and loads data
-PicadorJrCore::PicadorJrCore(/* ... */)
+PicadorJrCore::PicadorJrCore(FieldContainer* fieldContainer_, ParticleGrid* particleGrid_)
 {
-    // TO DO: Loading config and initial data from file
+    fieldContainer = fieldContainer_;
+    particleGrid = particleGrid_;
 
-    // !!!PLACE-HOLDER VALUES!!!
-    fieldGrid = new FieldGrid(100, 100, 10e-3, 10e-3, Vector3::Zero);
-    particleGrid = new ParticleGrid(100, 100, 10e-3, 10e-3, Vector3::Zero);
+    // TO DO: Loading config and initial data from file
 }
 
 PicadorJrCore::~PicadorJrCore()
 {
-    delete fieldGrid;
-    delete particleGrid;
 }
 
 
@@ -37,19 +34,25 @@ void PicadorJrCore::insertModule(Module* module, int position)
 // Runs calculations
 int PicadorJrCore::run()
 {
+    // Running onBeginRun on modules
+    for (auto module : modules)
+        ModuleExecutionStatus status = module->onBegin();
+
     currentTime = 0;
 
-    // Main calculation loop
+    // Main simulation loop
     while (currentTime < timeDomainBound)
     {
-        // Running modules
+        // Running updates on modules
         for (auto module : modules)
-        {
-            ModuleExecutionStatus status = module->runModule();
-        }
+            ModuleExecutionStatus status = module->onUpdate();
 
         currentTime += timeDelta;
     }
+
+    // Running onEndRun on modules
+    for (auto module : modules)
+        ModuleExecutionStatus status = module->onEnd();
 
     return 0;
 }

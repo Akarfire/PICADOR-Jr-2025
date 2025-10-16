@@ -3,20 +3,36 @@
 
 #include <iostream>
 #include "PicadorJrCore.h"
-#include "FieldIntegrator.h"
-#include "ParticleIntegrator.h"
+
+#include "Module_FieldSolver.h"
+#include "Module_ParticleSolver.h"
+#include "Module_CurrentDepositor.h"
+
+#include "FieldGrid.h"
+#include "ParticleGrid.h"
 
 int main()
 {
-    PicadorJrCore core = PicadorJrCore(/* ... */);
+    // Defining field container
+    FieldGrid fieldGrid = FieldGrid(100, 100, 1e-3, 1e-3, Vector3::Zero, 1);
+
+    // Defining particle grid
+    ParticleGrid particleGrid = ParticleGrid(100, 100, 1e-3, 1e-3, Vector3::Zero, 1);
+
+    // Initializing core
+    PicadorJrCore core = PicadorJrCore(&fieldGrid, &particleGrid);
 
     // Field integrator module
-    FieldIntegrator fieldIntegrator(&core);
+    FieldSolver fieldIntegrator(&core);
     core.insertModule(&fieldIntegrator);
 
     // Particle integrator module
-    ParticleIntegrator particleIntegrator(&core);
+    ParticleSolver particleIntegrator(&core);
     core.insertModule(&particleIntegrator);
+
+    // Current depositor
+    CurrentDepositor currentDepositor(&core);
+    core.insertModule(&currentDepositor);
 
     // ... Inserting additional modules (if needed) ...
 

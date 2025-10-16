@@ -1,13 +1,13 @@
 #pragma once
 
-#include "FieldGrid.h"
+#include "FieldContainer.h"
 #include "ParticleGrid.h"
 
 class PicadorJrCore final
 {
 	// Basic data
 
-	FieldGrid* fieldGrid;
+	FieldContainer* fieldContainer;
 	ParticleGrid* particleGrid;
 
 	// Execution list of calculation modules
@@ -21,8 +21,6 @@ class PicadorJrCore final
 	// Maximum simulation time
 	double timeDomainBound;
 
-	// ... maybe grid settings? ...
-
 	// ...
 
 
@@ -33,7 +31,7 @@ class PicadorJrCore final
 public:
 
 	// Initializes modules and loads data
-	PicadorJrCore(/* ... */);
+	PicadorJrCore(FieldContainer* fieldContainer_, ParticleGrid* particleGrid_);
 	~PicadorJrCore();
 
 	// Adds a new module ton the execution list
@@ -45,7 +43,7 @@ public:
 
 	// Module interface
 
-	FieldGrid* getFieldGrid() { return fieldGrid; }
+	FieldContainer* getFieldContainer() { return fieldContainer; }
 
 	ParticleGrid* getParticleGrid() { return particleGrid; }
 
