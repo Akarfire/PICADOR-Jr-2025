@@ -2,8 +2,12 @@
 
 #include "Vector3.h"
 
+enum class ParticleType {Photon, Proton, Electron, Positron};
+
 struct Particle
 {
+	ParticleType type;
+
 	double mass, charge;
 
 	Vector3 location;
