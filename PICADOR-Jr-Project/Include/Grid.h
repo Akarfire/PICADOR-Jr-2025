@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+#include <stdexcept>
 #include "Vector3.h"
 
 class Grid
@@ -23,7 +24,13 @@ public:
 
     // Я подумал и понял, что для линейного ID чтобы искать соседние узлы сверху (а их искать всегда нужно), пришлось бы всё равно индексы пересчитывать, поэтому пусть всё-таки возвращает i и j клетки
     // Returns coordinates of the bottom left corner of the cell, which the given point is in
-    std::pair<size_t, size_t> getCell(const Vector3& location);
+    std::pair<size_t, size_t> getCell(const Vector3& location) const
+    {
+        std::pair<size_t, size_t> cell;
+        cell.first = floor(location.x / deltaX);
+        cell.second = floor(location.y / deltaY);
+        return cell;
+    }
 
     
     // Data getters

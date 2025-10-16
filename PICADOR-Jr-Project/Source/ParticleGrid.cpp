@@ -34,3 +34,8 @@ int ParticleGrid::particleCellTransfer(size_t particleID, size_t ownerCell_i, si
 
     return 0;
 }
+
+size_t ParticleGrid::recalculateCellIndex(size_t i, size_t j) const {
+    if (i >= resolutionX || j >= resolutionY) throw std::out_of_range("i >= resolutionX || j >= resolutionY"); 
+    return i * this->resolutionX + j;
+}
