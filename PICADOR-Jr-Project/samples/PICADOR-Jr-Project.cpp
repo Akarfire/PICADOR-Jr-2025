@@ -2,9 +2,9 @@
 //
 
 #include <iostream>
-#include "PICADOR-Jr-Project/Include/PicadorJrCore.h"
-#include "PICADOR-Jr-Project/Include/FieldIntegrator.h"
-#include "PICADOR-Jr-Project/Include/ParticleIntegrator.h"
+#include "PicadorJrCore.h"
+#include "FieldIntegrator.h"
+#include "ParticleIntegrator.h"
 
 int main()
 {
