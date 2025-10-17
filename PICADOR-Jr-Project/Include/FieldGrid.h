@@ -16,7 +16,7 @@ public:
 	// Interface
 
 	// Returns an editable reference to the specified field node
-	FieldData& getNodeAt(INDEX i, INDEX j);
+	FieldData& getNodeAt(GRID_INDEX i, GRID_INDEX j);
 
 	// Returns interpolated values of fields in the given point
 	virtual const FieldData& getFieldsAt(const Vector3& location) const override;
