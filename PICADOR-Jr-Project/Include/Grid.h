@@ -4,6 +4,8 @@
 #include <stdexcept>
 #include "Vector3.h"
 
+#define GRID_INDEX int
+
 class Grid
 {
 protected:
@@ -28,9 +30,9 @@ public:
 
     // Я подумал и понял, что для линейного ID чтобы искать соседние узлы сверху (а их искать всегда нужно), пришлось бы всё равно индексы пересчитывать, поэтому пусть всё-таки возвращает i и j клетки
     // Returns coordinates of the bottom left corner of the cell, which the given point is in
-    std::pair<size_t, size_t> getCell(const Vector3& location) const
+    std::pair<GRID_INDEX, GRID_INDEX> getCell(const Vector3& location) const
     {
-        std::pair<size_t, size_t> cell;
+        std::pair<GRID_INDEX, GRID_INDEX> cell;
         cell.first = floor(location.x / deltaX);
         cell.second = floor(location.y / deltaY);
         return cell;

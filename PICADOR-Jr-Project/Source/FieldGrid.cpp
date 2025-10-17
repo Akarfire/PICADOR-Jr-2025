@@ -11,7 +11,7 @@ FieldGrid::FieldGrid(size_t resolutionX_, size_t resolutionY_, double deltaX_, d
 }
 
 // Returns an editable reference to the specified field node
-FieldData& FieldGrid::getNodeAt(size_t i, size_t j) 
+FieldData& FieldGrid::getNodeAt(GRID_INDEX i, GRID_INDEX j) 
 {
 	return this->nodeArray[(i + padding) * resolutionX + (j + padding)];
 }

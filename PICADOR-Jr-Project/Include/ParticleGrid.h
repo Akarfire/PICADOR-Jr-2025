@@ -8,16 +8,16 @@ class ParticleGrid: public Grid
 	std::vector<std::vector<Particle>> particlesInCells;
 
 	// Converts 2D cell coordinates into a 1D array index
-	size_t recalculateCellIndex(size_t i, size_t j) const;
+	size_t recalculateCellIndex(INDEX i, INDEX j) const;
 
 public:
 	ParticleGrid(size_t resolutionX_, size_t resolutionY_, double deltaX_, double deltaY_, const Vector3& origin_, size_t padding_);
 
 	// Returns a reference to the vector of particles in the specified cell
-	const std::vector<Particle>& getParticlesInCell(size_t i, size_t j) const;
+	const std::vector<Particle>& getParticlesInCell(INDEX i, INDEX j) const;
 
 	// Hands a particle from one cell over to another
 	// Particle ID is the index of the particle in the owner cell
 	// Returns 0 if successful, 1 - if failed
-	int particleCellTransfer(size_t particleID, size_t ownerCell_i, size_t ownerCell_j, size_t receiverCell_i, size_t receiverCell_j);
+	int particleCellTransfer(size_t particleID, INDEX ownerCell_i, INDEX ownerCell_j, INDEX receiverCell_i, INDEX receiverCell_j);
 };
