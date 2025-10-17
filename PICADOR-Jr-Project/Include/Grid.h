@@ -14,6 +14,7 @@ protected:
 	size_t resolutionX, resolutionY;
 
 	// Dimensions of a single grid cell
+    // может сделать Vector3 delta = {deltaX, deltaY, 1.0}
 	double deltaX, deltaY;
 
 	// Physical coordinates of the origin
@@ -32,9 +33,12 @@ public:
     // Returns coordinates of the bottom left corner of the cell, which the given point is in
     std::pair<GRID_INDEX, GRID_INDEX> getCell(const Vector3& location) const
     {
+        if (location.x < origin.x || location.x > (origin.x + (this->resolutionX-1)*this->deltaX) || location.y < origin.y || location.y > (origin.y + (this->resolutionY - 1) * this->deltaY)) 
+            throw(std::runtime_error("Invalid location!"));
+
         std::pair<GRID_INDEX, GRID_INDEX> cell;
-        cell.first = floor(location.x / deltaX);
-        cell.second = floor(location.y / deltaY);
+        cell.first = (GRID_INDEX)floor((location.x - this->origin.x) / this->deltaX);
+        cell.second = (GRID_INDEX)floor((location.y - this->origin.x) / this->deltaY);
         return cell;
     }
 
