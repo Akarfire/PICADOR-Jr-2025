@@ -17,8 +17,12 @@ protected:
 	// Physical coordinates of the origin
 	Vector3 origin;
 
+    // Additional nodes beyound the resolution of the grid
+    size_t padding;
+
 public:
-    Grid(size_t resolutionX_, size_t resolutionY_, double deltaX_, double deltaY_, Vector3 origin_): resolutionX(resolutionX_), resolutionY(resolutionY_), deltaX(deltaX_), deltaY(deltaY_), origin(origin_) {}
+    Grid(size_t resolutionX_, size_t resolutionY_, double deltaX_, double deltaY_, Vector3 origin_, size_t padding_): 
+    resolutionX(resolutionX_), resolutionY(resolutionY_), deltaX(deltaX_), deltaY(deltaY_), origin(origin_), padding(padding_) {}
 
     virtual ~Grid() {}
 

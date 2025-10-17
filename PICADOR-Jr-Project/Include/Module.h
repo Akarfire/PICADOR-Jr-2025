@@ -10,6 +10,14 @@ public:
 	Module(PicadorJrCore* core_) : core(core_) {}
 	virtual ~Module() {}
 
-	// Main function of the module
-	virtual ModuleExecutionStatus runModule() = 0;
+	// Module functionality
+
+	// Called by the core before entering the simulation loop
+	virtual ModuleExecutionStatus onBegin() = 0;
+
+	// Called on every iteration of the simulation loop
+	virtual ModuleExecutionStatus onUpdate() = 0;
+
+	// Called after the core has exited the simulation loop
+	virtual ModuleExecutionStatus onEnd() = 0;
 };
