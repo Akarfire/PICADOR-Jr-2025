@@ -20,7 +20,7 @@ const FieldData& FieldGrid::getNodeAt(GRID_INDEX i, GRID_INDEX j) const
 }
 
 // Returns interpolated values of fields in the given point
-const FieldData& FieldGrid::getFieldsAt(const Vector3& location) const
+FieldData FieldGrid::getFieldsAt(const Vector3& location) const
 {
 	size_t i = this->getCell(location).first, j = this->getCell(location).first;
 	Vector3 cellOrigin(this->origin.x + i * this->deltaX, this->origin.y + j * this->deltaY, 0.0);

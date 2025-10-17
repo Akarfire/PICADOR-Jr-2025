@@ -25,5 +25,5 @@ public:
     virtual ~FieldContainer() {}
 
     // Accesing field data at a given point in space
-    virtual const FieldData& getFieldsAt(const Vector3& location) const = 0;
+    virtual FieldData getFieldsAt(const Vector3& location) const = 0;
 };
