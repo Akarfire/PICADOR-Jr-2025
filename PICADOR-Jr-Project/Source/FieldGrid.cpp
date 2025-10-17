@@ -13,7 +13,7 @@ FieldData& FieldGrid::getNodeAt(GRID_INDEX i, GRID_INDEX j)
 	return this->nodeArray[(i + padding) * resolutionX + (j + padding)];
 }
 
-FieldData FieldGrid::getNodeAt(size_t i, size_t j) const 
+const FieldData& FieldGrid::getNodeAt(GRID_INDEX i, GRID_INDEX j) const 
 {
 	if (i < 0 || i >= resolutionX || j < 0 || j >= resolutionY) throw(std::runtime_error("Invalid field node index!"));
 	return this->nodeArray[(i + padding) * resolutionX + (j + padding)];
