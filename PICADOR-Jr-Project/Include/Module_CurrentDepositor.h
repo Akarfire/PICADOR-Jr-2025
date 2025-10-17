@@ -2,6 +2,7 @@
 
 #include "Module.h"
 #include "FieldGrid.h"
+#include "PicadorJrCore.h"
 
 class CurrentDepositor : public Module
 {
