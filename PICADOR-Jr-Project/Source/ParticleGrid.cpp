@@ -18,7 +18,7 @@ const std::vector<Particle>& ParticleGrid::getParticlesInCell(GRID_INDEX i, GRID
 // Particle ID is the index of the particle in the owner cell
 int ParticleGrid::particleCellTransfer(size_t particleID, GRID_INDEX ownerCell_i, GRID_INDEX ownerCell_j, GRID_INDEX receiverCell_i, GRID_INDEX receiverCell_j)
 {
-    if (ownerCell_i < 0 || ownerCell_j < 0 || ownerCell_i >= (GRID_INDEX)resolutionX || ownerCell_j >= (GRID_INDEX)resolutionY) return 1;
+    if (ownerCell_i < 0 - (GRID_INDEX)padding || ownerCell_j < 0 - (GRID_INDEX)padding || ownerCell_i >= (GRID_INDEX)(resolutionX + padding) || ownerCell_j >= (GRID_INDEX)(resolutionY + padding)) return 1;
 
     // NOTE: We allow receiver cell to go out of bounds, to accomadate looping / particle removal
     
@@ -26,46 +26,15 @@ int ParticleGrid::particleCellTransfer(size_t particleID, GRID_INDEX ownerCell_i
 
     if (particleID < 0 || particleID >= numParticlesInOwner) return 1;
 
-    // Identifying receiver cell (Looping)
-    GRID_INDEX realReceiver_i;
-    GRID_INDEX realReceiver_j;
-    
-
-    bool loopX = false, loopY = false;
-
-    if (receiverCell_i < 0) 
-    {
-        realReceiver_i = (GRID_INDEX)resolutionX + receiverCell_i;
-        loopX = true;
-    }
-    else if (receiverCell_i >= (GRID_INDEX)resolutionX) 
-    {
-        realReceiver_i = receiverCell_i % resolutionX;
-        loopX = true;
-    }
-
-    if (receiverCell_j < 0) 
-    {
-        realReceiver_j = (GRID_INDEX)resolutionY + receiverCell_j;
-        loopY = true;
-    }
-    else if (receiverCell_j >= (GRID_INDEX)resolutionY) 
-    { 
-        realReceiver_j = receiverCell_j % resolutionY;
-        loopY = true;
-    }
-
     // Calculating cell indeces
     size_t owner_ID = recalculateCellIndex(ownerCell_i, ownerCell_j);
-    size_t receiver_ID = recalculateCellIndex(realReceiver_i, realReceiver_j);
+    size_t receiver_ID = recalculateCellIndex(receiverCell_i, receiverCell_j);
 
     // Actual transfer
     particlesInCells[receiver_ID].push_back( particlesInCells[owner_ID][particleID] );
 
     particlesInCells[owner_ID][particleID] = particlesInCells[owner_ID][numParticlesInOwner - 1];
     particlesInCells[owner_ID].pop_back();
-
-    // TO DO : Location shift
 
     return 0;
 }
