@@ -4,7 +4,7 @@
 ParticleGrid::ParticleGrid(size_t resolutionX_, size_t resolutionY_, double deltaX_, double deltaY_, const Vector3& origin_, size_t padding_): 
 	Grid(resolutionX_, resolutionY_, deltaX_, deltaY_, origin_, padding_) 
 {
-    // TO DO : Fill out the grid
+    this->particlesInCells = std::vector<std::vector<Particle>>((this->resolutionX + 2 * this->padding) * (this->resolutionY + 2 * this->padding));
 }
 
 // Returns a reference to the vector of particles in the specified cell
@@ -53,6 +53,5 @@ int ParticleGrid::particleCellTransfer(size_t particleID, size_t ownerCell_i, si
 
 size_t ParticleGrid::recalculateCellIndex(size_t i, size_t j) const 
 {
-    //if (i >= resolutionX || j >= resolutionY) throw std::out_of_range("i >= resolutionX || j >= resolutionY"); 
     return (i + padding) * this->resolutionX + (j + padding);
 }
