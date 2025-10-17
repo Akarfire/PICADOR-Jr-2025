@@ -8,7 +8,7 @@ ParticleGrid::ParticleGrid(size_t resolutionX_, size_t resolutionY_, double delt
 }
 
 // Returns a reference to the vector of particles in the specified cell
-const std::vector<Particle>& ParticleGrid::getParticlesInCell(size_t i, size_t j) const 
+const std::vector<Particle>& ParticleGrid::getParticlesInCell(GRID_INDEX i, GRID_INDEX j) const 
 { 
     if (i < 0 || i >= resolutionX || j < 0 || j >= resolutionY) throw(std::runtime_error("Invalid particle cell index!"));
     return particlesInCells[recalculateCellIndex(i, j)];
@@ -16,7 +16,7 @@ const std::vector<Particle>& ParticleGrid::getParticlesInCell(size_t i, size_t j
 
 // Hands a particle from one cell over to another
 // Particle ID is the index of the particle in the owner cell
-int ParticleGrid::particleCellTransfer(size_t particleID, size_t ownerCell_i, size_t ownerCell_j, size_t receiverCell_i, size_t receiverCell_j)
+int ParticleGrid::particleCellTransfer(size_t particleID, GRID_INDEX ownerCell_i, GRID_INDEX ownerCell_j, GRID_INDEX receiverCell_i, GRID_INDEX receiverCell_j)
 {
     if (ownerCell_i < 0 || ownerCell_j < 0 || ownerCell_i >= resolutionX || ownerCell_j >= resolutionY) return 1;
 
@@ -27,14 +27,33 @@ int ParticleGrid::particleCellTransfer(size_t particleID, size_t ownerCell_i, si
     if (particleID < 0 || particleID >= numParticlesInOwner) return 1;
 
     // Identifying receiver cell (Looping)
-    size_t realReceiver_i;
-    size_t realReceiver_j;
+    GRID_INDEX realReceiver_i;
+    GRID_INDEX realReceiver_j;
+    
 
-    if (receiverCell_i < 0) realReceiver_i = resolutionX + receiverCell_i;
-    else if (receiverCell_i >= resolutionX) realReceiver_i = receiverCell_i % resolutionX;
+    bool loopX = false, loopY = false;
 
-    if (receiverCell_j < 0) realReceiver_j = resolutionY + receiverCell_j;
-    else if (receiverCell_j >= resolutionY) realReceiver_j = receiverCell_j % resolutionY;
+    if (receiverCell_i < 0) 
+    {
+        realReceiver_i = resolutionX + receiverCell_i;
+        loopX = true;
+    }
+    else if (receiverCell_i >= resolutionX) 
+    {
+        realReceiver_i = receiverCell_i % resolutionX;
+        loopX = true;
+    }
+
+    if (receiverCell_j < 0) 
+    {
+        realReceiver_j = resolutionY + receiverCell_j;
+        loopY = true;
+    }
+    else if (receiverCell_j >= resolutionY) 
+    { 
+        realReceiver_j = receiverCell_j % resolutionY;
+        loopY = true;
+    }
 
     // Calculating cell indeces
     size_t owner_ID = recalculateCellIndex(ownerCell_i, ownerCell_j);
@@ -51,7 +70,7 @@ int ParticleGrid::particleCellTransfer(size_t particleID, size_t ownerCell_i, si
     return 0;
 }
 
-size_t ParticleGrid::recalculateCellIndex(size_t i, size_t j) const 
+size_t ParticleGrid::recalculateCellIndex(GRID_INDEX i, GRID_INDEX j) const 
 {
     return (i + padding) * this->resolutionX + (j + padding);
 }
