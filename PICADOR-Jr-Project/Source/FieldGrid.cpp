@@ -3,7 +3,11 @@
 FieldGrid::FieldGrid(size_t resolutionX_, size_t resolutionY_, double deltaX_, double deltaY_, const Vector3& origin_, size_t padding_):
 	Grid(resolutionX_, resolutionY_, deltaX_, deltaY_, origin_, padding_)
 {
-	// TO DO: Fill out the grid!
+	// Filling the grid with initial values
+	size_t numNodes = (resolutionX + 2 * padding) * (resolutionY + 2 * padding);
+
+	for (size_t i = 0; i < numNodes; i++)
+		nodeArray.push_back(FieldData());
 }
 
 // Returns an editable reference to the specified field node

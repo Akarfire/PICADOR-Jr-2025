@@ -4,7 +4,11 @@
 ParticleGrid::ParticleGrid(size_t resolutionX_, size_t resolutionY_, double deltaX_, double deltaY_, const Vector3& origin_, size_t padding_): 
 	Grid(resolutionX_, resolutionY_, deltaX_, deltaY_, origin_, padding_) 
 {
-    // TO DO : Fill out the grid
+    // Filling the grid with initial values
+	size_t numCells = (resolutionX + 2 * padding) * (resolutionY + 2 * padding);
+
+	for (size_t i = 0; i < numCells; i++)
+		particlesInCells.push_back(std::vector<Particle>());
 }
 
 // Returns a reference to the vector of particles in the specified cell
@@ -29,12 +33,31 @@ int ParticleGrid::particleCellTransfer(size_t particleID, size_t ownerCell_i, si
     // Identifying receiver cell (Looping)
     size_t realReceiver_i;
     size_t realReceiver_j;
+    
 
-    if (receiverCell_i < 0) realReceiver_i = resolutionX + receiverCell_i;
-    else if (receiverCell_i >= resolutionX) realReceiver_i = receiverCell_i % resolutionX;
+    bool loopX = false, loopY = false;
 
-    if (receiverCell_j < 0) realReceiver_j = resolutionY + receiverCell_j;
-    else if (receiverCell_j >= resolutionY) realReceiver_j = receiverCell_j % resolutionY;
+    if (receiverCell_i < 0) 
+    {
+        realReceiver_i = resolutionX + receiverCell_i;
+        loopX = true;
+    }
+    else if (receiverCell_i >= resolutionX) 
+    {
+        realReceiver_i = receiverCell_i % resolutionX;
+        loopX = true;
+    }
+
+    if (receiverCell_j < 0) 
+    {
+        realReceiver_j = resolutionY + receiverCell_j;
+        loopY = true;
+    }
+    else if (receiverCell_j >= resolutionY) 
+    { 
+        realReceiver_j = receiverCell_j % resolutionY;
+        loopY = true;
+    }
 
     // Calculating cell indeces
     size_t owner_ID = recalculateCellIndex(ownerCell_i, ownerCell_j);
