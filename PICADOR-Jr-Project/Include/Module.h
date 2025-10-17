@@ -4,6 +4,7 @@ enum class ModuleExecutionStatus {Success, Error};
 
 class Module
 {
+protected:
 	class PicadorJrCore* core;
 
 public:
