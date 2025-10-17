@@ -10,7 +10,7 @@ ParticleGrid::ParticleGrid(size_t resolutionX_, size_t resolutionY_, double delt
 // Returns a reference to the vector of particles in the specified cell
 const std::vector<Particle>& ParticleGrid::getParticlesInCell(GRID_INDEX i, GRID_INDEX j) const 
 { 
-    if (i < 0 || i >= resolutionX || j < 0 || j >= resolutionY) throw(std::runtime_error("Invalid particle cell index!"));
+    if (i < 0 || i >= (GRID_INDEX)resolutionX || j < 0 || j >= (GRID_INDEX)resolutionY) throw(std::runtime_error("Invalid particle cell index!"));
     return particlesInCells[recalculateCellIndex(i, j)];
 }
 
@@ -18,7 +18,7 @@ const std::vector<Particle>& ParticleGrid::getParticlesInCell(GRID_INDEX i, GRID
 // Particle ID is the index of the particle in the owner cell
 int ParticleGrid::particleCellTransfer(size_t particleID, GRID_INDEX ownerCell_i, GRID_INDEX ownerCell_j, GRID_INDEX receiverCell_i, GRID_INDEX receiverCell_j)
 {
-    if (ownerCell_i < 0 || ownerCell_j < 0 || ownerCell_i >= resolutionX || ownerCell_j >= resolutionY) return 1;
+    if (ownerCell_i < 0 || ownerCell_j < 0 || ownerCell_i >= (GRID_INDEX)resolutionX || ownerCell_j >= (GRID_INDEX)resolutionY) return 1;
 
     // NOTE: We allow receiver cell to go out of bounds, to accomadate looping / particle removal
     
@@ -35,10 +35,10 @@ int ParticleGrid::particleCellTransfer(size_t particleID, GRID_INDEX ownerCell_i
 
     if (receiverCell_i < 0) 
     {
-        realReceiver_i = resolutionX + receiverCell_i;
+        realReceiver_i = (GRID_INDEX)resolutionX + receiverCell_i;
         loopX = true;
     }
-    else if (receiverCell_i >= resolutionX) 
+    else if (receiverCell_i >= (GRID_INDEX)resolutionX) 
     {
         realReceiver_i = receiverCell_i % resolutionX;
         loopX = true;
@@ -46,10 +46,10 @@ int ParticleGrid::particleCellTransfer(size_t particleID, GRID_INDEX ownerCell_i
 
     if (receiverCell_j < 0) 
     {
-        realReceiver_j = resolutionY + receiverCell_j;
+        realReceiver_j = (GRID_INDEX)resolutionY + receiverCell_j;
         loopY = true;
     }
-    else if (receiverCell_j >= resolutionY) 
+    else if (receiverCell_j >= (GRID_INDEX)resolutionY) 
     { 
         realReceiver_j = receiverCell_j % resolutionY;
         loopY = true;

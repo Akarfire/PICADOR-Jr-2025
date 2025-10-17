@@ -9,13 +9,13 @@ FieldGrid::FieldGrid(size_t resolutionX_, size_t resolutionY_, double deltaX_, d
 // Returns an editable reference to the specified field node
 FieldData& FieldGrid::getNodeAt(GRID_INDEX i, GRID_INDEX j) 
 {
-	if (i < 0 || i >= resolutionX || j < 0 || j >= resolutionY) throw(std::runtime_error("Invalid field node index!"));
+	if (i < 0 || i >= (GRID_INDEX)resolutionX || j < 0 || j >= (GRID_INDEX)resolutionY) throw(std::runtime_error("Invalid field node index!"));
 	return this->nodeArray[(i + padding) * resolutionX + (j + padding)];
 }
 
 const FieldData& FieldGrid::getNodeAt(GRID_INDEX i, GRID_INDEX j) const 
 {
-	if (i < 0 || i >= resolutionX || j < 0 || j >= resolutionY) throw(std::runtime_error("Invalid field node index!"));
+	if (i < 0 || i >= (GRID_INDEX)resolutionX || j < 0 || j >= (GRID_INDEX)resolutionY) throw(std::runtime_error("Invalid field node index!"));
 	return this->nodeArray[(i + padding) * resolutionX + (j + padding)];
 }
 
