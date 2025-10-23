@@ -48,6 +48,8 @@ public:
     size_t getResolutionX() const { return resolutionX; }
     size_t getResolutionY() const { return resolutionY; }
 
+    size_t getPadding() const { return padding; }
+
     double getDeltaX() const { return deltaX; }
     double getDeltaY() const { return deltaY; }
 
