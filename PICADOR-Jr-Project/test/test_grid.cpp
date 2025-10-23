@@ -23,7 +23,7 @@ TEST(FieldGrid, doesntThrowForCorrectLocation)
 	
 }
 
-TEST(FieldGrid, getCellReturnCorrectCellInComplexGrid)
+TEST(FieldGrid, getCellReturnsCorrectCellInComplexGrid)
 {
 	FieldGrid field(3, 3, 1.0, 1.0, Vector3::One, 1);
 
@@ -34,7 +34,7 @@ TEST(FieldGrid, getCellReturnCorrectCellInComplexGrid)
 
 }
 
-TEST(FieldGrid, getCellReturnCorrectCellForTheOrigin)
+TEST(FieldGrid, getCellReturnsCorrectCellForTheOrigin)
 {
 	FieldGrid field(3, 3, 1.0, 1.0, Vector3::One, 1);
 
@@ -45,7 +45,7 @@ TEST(FieldGrid, getCellReturnCorrectCellForTheOrigin)
 
 }
 
-TEST(FieldGrid, getCellReturnCorrectCellForTheResolution)
+TEST(FieldGrid, getCellReturnsCorrectCellForTheResolution)
 {
 	FieldGrid field(3, 3, 1.0, 1.0, Vector3::One, 1);
 
@@ -54,4 +54,58 @@ TEST(FieldGrid, getCellReturnCorrectCellForTheResolution)
 
 	EXPECT_EQ(ans, indices);
 
+}
+
+TEST(FieldGrid, getNodeAtThrowsForIncorrectIndices)
+{
+	FieldGrid field(3, 3, 1.0, 1.0, Vector3::One, 1);
+
+	ASSERT_ANY_THROW(field.getNodeAt(-1, -1));
+	ASSERT_ANY_THROW(field.getNodeAt(3, 3));
+}
+
+TEST(FieldGrid, getNodeAtDoesntThrowForCorrectIndices)
+{
+	FieldGrid field(3, 3, 1.0, 1.0, Vector3::One, 1);
+
+	ASSERT_NO_THROW(field.getNodeAt(1, 2));
+}
+
+TEST(FieldGrid, getNodeAtReturnsCorrectNode) 
+{
+	FieldGrid field(3, 3, 1.0, 1.0, Vector3::One, 1);
+
+	FieldData ans;
+	ans.B = 1;
+	ans.E = 2;
+
+	EXPECT_EQ(ans.B, field.getNodeAt(1, 2).B);
+	EXPECT_EQ(ans.E, field.getNodeAt(1, 2).E);
+	EXPECT_EQ(ans.J, field.getNodeAt(1, 2).J);
+}
+
+TEST(FieldGrid, getFieldsAtReturnsCorrectField)
+{
+	FieldGrid field(3, 3, 1.0, 1.0, Vector3::One, 1);
+
+	FieldData ans;
+	ans.B = 1.5;
+	ans.E = 0.5;
+
+	EXPECT_EQ(ans.B, field.getFieldsAt(Vector3(2.5, 1.5)).B);
+	EXPECT_EQ(ans.E, field.getFieldsAt(Vector3(2.5, 1.5)).E);
+	EXPECT_EQ(ans.J, field.getFieldsAt(Vector3(2.5, 1.5)).J);
+}
+
+TEST(FieldGrid, anotherInterpolationTest)
+{
+	FieldGrid field(3, 3, 1.0, 1.0, Vector3::One, 1);
+
+	FieldData ans;
+	ans.B = 1.1;
+	ans.E = 0.5;
+
+	EXPECT_EQ(ans.B, field.getFieldsAt(Vector3(2.1, 1.5)).B);
+	EXPECT_EQ(ans.E, field.getFieldsAt(Vector3(2.1, 1.5)).E);
+	EXPECT_EQ(ans.J, field.getFieldsAt(Vector3(2.1, 1.5)).J);
 }
