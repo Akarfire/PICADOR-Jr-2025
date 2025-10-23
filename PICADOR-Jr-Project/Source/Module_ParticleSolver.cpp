@@ -53,7 +53,34 @@ ModuleExecutionStatus ParticleSolver::onUpdate()
                 // Updating particle location and velocity
                 particles[p].location = particles[p].location + newVelocity * core->getTimeDelta();
                 particles[p].velocity = newVelocity;
+
+                // Checking if the particle has left it's cell
+                Vector3 particleLocation = particles[p].location;
+                Vector3 cellLocation = particleGrid->getOrigin() + Vector3(cell_j * particleGrid->getDeltaX(), cell_i * particleGrid->getDeltaY());
+
+                if (    particleLocation.x < cellLocation.x 
+                    ||  particleLocation.y < cellLocation.y 
+                    ||  particleLocation.x >= cellLocation.x + particleGrid->getDeltaX()
+                    ||  particleLocation.y >= cellLocation.y + particleGrid->getDeltaY())
+                {
+                    particles[p].transferFlag = true;
+                }
             }
+        }
+
+    // Particle transfer loop
+    for (size_t cell_i = 0; cell_i < particleGrid->getResolutionY(); cell_i++)
+        for (size_t cell_j = 0; cell_j < particleGrid->getResolutionX(); cell_j++)
+        {
+             std::vector<Particle>& particles = particleGrid->editParticlesInCell(cell_i, cell_j);
+
+            for (size_t p = 0; p < particles.size(); p++)
+                if (particles[p].transferFlag)
+                {
+                    std::pair<GRID_INDEX, GRID_INDEX> newCell = particleGrid->getCell(particles[p].location);
+
+                    particleGrid->particleCellTransfer(p, cell_i, cell_j, newCell.first, newCell.second);
+                }
         }
 
     return ModuleExecutionStatus::Success;

@@ -13,5 +13,7 @@ struct Particle
 	Vector3 location;
 	Vector3 velocity;
 
+	bool transferFlag;
+
 	Particle(double inMass, double inCharge, const Vector3& initialLocation, const Vector3 initialVelocity): mass(inMass), charge(inCharge), location(initialLocation), velocity(initialVelocity) {}
 };
