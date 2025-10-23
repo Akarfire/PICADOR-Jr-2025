@@ -31,6 +31,9 @@ struct Vector3
 	Vector3 operator*(const Vector3& rhs) const;
 	Vector3 operator/(const Vector3& rhs) const;
 
+	bool operator==(const Vector3& rhs) const;
+	bool operator!=(const Vector3& rhs) const;
+
 	// Scalar multiplication
 	double dotProduct(const Vector3& rhs) const;
 

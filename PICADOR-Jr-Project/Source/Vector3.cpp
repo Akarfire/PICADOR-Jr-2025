@@ -68,6 +68,14 @@
         return result;
     }
 
+    bool Vector3::operator==(const Vector3& rhs) const {
+        return (this->x == rhs.x && this->y == rhs.y && this->z == rhs.z);
+    }
+
+    bool Vector3::operator!=(const Vector3& rhs) const {
+        return !((*this) == rhs);
+    }
+
 	// Scalar multiplication
 	double Vector3::dotProduct(const Vector3& rhs) const
     {
