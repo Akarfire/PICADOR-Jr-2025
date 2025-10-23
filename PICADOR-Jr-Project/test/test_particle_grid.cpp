@@ -1,7 +1,7 @@
-#include "ParticleGrid.h"
-
 #include <gtest.h>
 #include <map>
+
+#include "ParticleGrid.h"
 
 TEST(ParticleGrid, canCreatePrimitiveGrid)
 {
