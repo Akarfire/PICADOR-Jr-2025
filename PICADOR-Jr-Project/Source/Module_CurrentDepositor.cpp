@@ -5,7 +5,8 @@ ModuleExecutionStatus CurrentDepositor::onBegin()
     // Casting core's field container to FieldGrid
     fieldGrid = dynamic_cast<FieldGrid*>(core->getFieldContainer());
 
-    return ModuleExecutionStatus::Success;
+    if (fieldGrid) return ModuleExecutionStatus::Success;
+    else return ModuleExecutionStatus::Error;
 }
 
 ModuleExecutionStatus CurrentDepositor::onUpdate()
