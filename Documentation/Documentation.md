@@ -1,9 +1,9 @@
 
 ### Архитектура PICADOR Jr
 
-![[Architecture.png]]
+![](Architecture.png)
 
 
 ### Структура сетки
 
-![[Grid.png]]
+![](Grid.png)
