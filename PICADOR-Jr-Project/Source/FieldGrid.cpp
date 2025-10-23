@@ -4,14 +4,6 @@ FieldGrid::FieldGrid(size_t resolutionX_, size_t resolutionY_, double deltaX_, d
 	Grid(resolutionX_, resolutionY_, deltaX_, deltaY_, origin_, padding_)
 {
 	this->nodeArray = std::vector<FieldData>((this->resolutionX + 2*this->padding) * (this->resolutionY+2*this->padding), FieldData());
-	for (int i = 0; i < resolutionX; i++) 
-	{
-		for (int j = 0; j < resolutionY; j++)
-		{
-			this->nodeArray[(i + padding) * resolutionX + (j + padding)].B = i;
-			this->nodeArray[(i + padding) * resolutionX + (j + padding)].E = j;
-		}
-	}
 }
 
 // Returns an editable reference to the specified field node

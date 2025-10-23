@@ -75,6 +75,14 @@ TEST(FieldGrid, getNodeAtReturnsCorrectNode)
 {
 	FieldGrid field(3, 3, 1.0, 1.0, Vector3::One, 1);
 
+	for (int i = 0; i < field.getResolutionX(); i++) {
+		for (int j = 0; j < field.getResolutionY(); j++) {
+			field.getNodeAt(i, j).B = i;
+			field.getNodeAt(i, j).E = j;
+		}
+	}
+
+
 	FieldData ans;
 	ans.B = 1;
 	ans.E = 2;
@@ -88,6 +96,13 @@ TEST(FieldGrid, getFieldsAtReturnsCorrectField)
 {
 	FieldGrid field(3, 3, 1.0, 1.0, Vector3::One, 1);
 
+	for (int i = 0; i < field.getResolutionX(); i++) {
+		for (int j = 0; j < field.getResolutionY(); j++) {
+			field.getNodeAt(i, j).B = i;
+			field.getNodeAt(i, j).E = j;
+		}
+	}
+
 	FieldData ans;
 	ans.B = 1.5;
 	ans.E = 0.5;
@@ -100,6 +115,13 @@ TEST(FieldGrid, getFieldsAtReturnsCorrectField)
 TEST(FieldGrid, anotherInterpolationTest)
 {
 	FieldGrid field(3, 3, 1.0, 1.0, Vector3::One, 1);
+
+	for (int i = 0; i < field.getResolutionX(); i++) {
+		for (int j = 0; j < field.getResolutionY(); j++) {
+			field.getNodeAt(i, j).B = i;
+			field.getNodeAt(i, j).E = j;
+		}
+	}
 
 	FieldData ans;
 	ans.B = 1.1;
