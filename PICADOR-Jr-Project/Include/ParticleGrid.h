@@ -16,6 +16,9 @@ public:
 	// Returns a reference to the vector of particles in the specified cell
 	const std::vector<Particle>& getParticlesInCell(GRID_INDEX i, GRID_INDEX j) const;
 
+	// Returns an editable reference to the vector of particles in the specified cell
+	std::vector<Particle>& editParticlesInCell(GRID_INDEX i, GRID_INDEX j);
+
 	// Hands a particle from one cell over to another
 	// Particle ID is the index of the particle in the owner cell
 	// Returns 0 if successful, 1 - if failed

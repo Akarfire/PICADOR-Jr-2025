@@ -10,7 +10,14 @@ ParticleGrid::ParticleGrid(size_t resolutionX_, size_t resolutionY_, double delt
 // Returns a reference to the vector of particles in the specified cell
 const std::vector<Particle>& ParticleGrid::getParticlesInCell(GRID_INDEX i, GRID_INDEX j) const 
 { 
-    if (i < 0 || i >= (GRID_INDEX)resolutionX || j < 0 || j >= (GRID_INDEX)resolutionY) throw(std::runtime_error("Invalid particle cell index!"));
+    if (i < (GRID_INDEX)(0 - padding) || i >= (GRID_INDEX)(resolutionX + padding) || j < (GRID_INDEX)(0 - padding) || j >= (GRID_INDEX)(resolutionY + padding)) throw(std::runtime_error("Invalid particle cell index!"));
+    return particlesInCells[recalculateCellIndex(i, j)];
+}
+
+// Returns an editable reference to the vector of particles in the specified cell
+std::vector<Particle>& ParticleGrid::editParticlesInCell(GRID_INDEX i, GRID_INDEX j)
+{
+    if (i < (GRID_INDEX)(0 - padding) || i >= (GRID_INDEX)(resolutionX + padding) || j < (GRID_INDEX)(0 - padding) || j >= (GRID_INDEX)(resolutionY + padding)) throw(std::runtime_error("Invalid particle cell index!"));
     return particlesInCells[recalculateCellIndex(i, j)];
 }
 
@@ -19,6 +26,7 @@ const std::vector<Particle>& ParticleGrid::getParticlesInCell(GRID_INDEX i, GRID
 int ParticleGrid::particleCellTransfer(size_t particleID, GRID_INDEX ownerCell_i, GRID_INDEX ownerCell_j, GRID_INDEX receiverCell_i, GRID_INDEX receiverCell_j)
 {
     if (ownerCell_i < 0 - (GRID_INDEX)padding || ownerCell_j < 0 - (GRID_INDEX)padding || ownerCell_i >= (GRID_INDEX)(resolutionX + padding) || ownerCell_j >= (GRID_INDEX)(resolutionY + padding)) return 1;
+    if (ownerCell_i == receiverCell_i && ownerCell_j == receiverCell_j) return 1;
 
     // NOTE: We allow receiver cell to go out of bounds, to accomadate looping / particle removal
     
@@ -39,7 +47,8 @@ int ParticleGrid::particleCellTransfer(size_t particleID, GRID_INDEX ownerCell_i
     return 0;
 }
 
+// Converts 2D cell coordinates into a 1D array index
 size_t ParticleGrid::recalculateCellIndex(GRID_INDEX i, GRID_INDEX j) const 
 {
-    return (i + padding) * this->resolutionX + (j + padding);
+    return (i + padding) * (this->resolutionX - 1) + (j + padding);
 }
