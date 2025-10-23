@@ -15,10 +15,7 @@ public:
     virtual ModuleExecutionStatus onBegin() override;
 
     // Called on every iteration of the simulation loop
-    virtual ModuleExecutionStatus onUpdate() override
-    {
-        return ModuleExecutionStatus::Success;
-    }
+    virtual ModuleExecutionStatus onUpdate() override;
 
     // Called after the core has exited the simulation loop
     virtual ModuleExecutionStatus onEnd() override { return ModuleExecutionStatus::Success; }
