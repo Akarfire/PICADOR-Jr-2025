@@ -5,10 +5,13 @@
 #include <stdexcept>
 
 // Initializes modules and loads data
-PicadorJrCore::PicadorJrCore(FieldContainer* fieldContainer_, ParticleGrid* particleGrid_)
+PicadorJrCore::PicadorJrCore(FieldContainer* fieldContainer_, ParticleGrid* particleGrid_, double timeStep_, double timeDomain_)
 {
     fieldContainer = fieldContainer_;
     particleGrid = particleGrid_;
+    
+    timeDelta = timeStep_;
+    timeDomainBound = timeDomain_;
 
     // TO DO: Loading config and initial data from file
 }
