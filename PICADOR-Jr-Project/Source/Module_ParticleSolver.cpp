@@ -6,9 +6,8 @@
 // Calculates new particle velocity based on the provided field value, using Boris's Method
 Vector3 ParticleSolver::CalculateNewParticleVelocity(const Particle& particle, const FieldData& field, double timeDelta)
 {
-    double speedSquared_old = particle.velocity.sizeSquared();
     Vector3 p_old = particle.velocity * particle.mass * Constants::SpeedOfLight 
-                    / (sqrt(Constants::SpeedOfLight * Constants::SpeedOfLight - speedSquared_old));
+                    / (sqrt(Constants::SpeedOfLight * Constants::SpeedOfLight - particle.velocity.sizeSquared()));
 
     Vector3 u_old = p_old / (particle.mass * Constants::SpeedOfLight);
     Vector3 EMult = field.E * (particle.charge * timeDelta / (2 * particle.mass * Constants::SpeedOfLight));
