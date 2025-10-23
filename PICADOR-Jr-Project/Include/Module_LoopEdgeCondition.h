@@ -1,9 +1,13 @@
 #pragma once
 
 #include "Module.h"
+#include "Grid.h"
 
 class LoopEdgeCondition : public Module
 {
+    // Transfers particles of this cell onto the other end of the grid
+    void processPaddingCell(GRID_INDEX i, GRID_INDEX j);
+
 public:
     LoopEdgeCondition(PicadorJrCore* core_): Module(core_) {}
 
