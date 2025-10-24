@@ -8,6 +8,9 @@ class LoopEdgeCondition : public Module
     // Transfers particles of this cell onto the other end of the grid
     void processPaddingCell(GRID_INDEX i, GRID_INDEX j);
 
+    // Given a padding cell, calculates indeces of the corresponding looping cell on the main grid
+    std::pair<GRID_INDEX, GRID_INDEX> calculateLoopingCell(GRID_INDEX i, GRID_INDEX j);
+
 public:
     LoopEdgeCondition(PicadorJrCore* core_): Module(core_) {}
 
