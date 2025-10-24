@@ -31,7 +31,7 @@ class PicadorJrCore final
 public:
 
 	// Initializes modules and loads data
-	PicadorJrCore(FieldContainer* fieldContainer_, ParticleGrid* particleGrid_);
+	PicadorJrCore(FieldContainer* fieldContainer_, ParticleGrid* particleGrid_, double timeStep_, double timeDomain_);
 	~PicadorJrCore();
 
 	// Adds a new module ton the execution list

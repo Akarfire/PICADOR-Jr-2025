@@ -1,13 +1,17 @@
 #include "PicadorJrCore.h"
 #include "Module.h"
 
+#include <string> 
 #include <stdexcept>
 
 // Initializes modules and loads data
-PicadorJrCore::PicadorJrCore(FieldContainer* fieldContainer_, ParticleGrid* particleGrid_)
+PicadorJrCore::PicadorJrCore(FieldContainer* fieldContainer_, ParticleGrid* particleGrid_, double timeStep_, double timeDomain_)
 {
     fieldContainer = fieldContainer_;
     particleGrid = particleGrid_;
+    
+    timeDelta = timeStep_;
+    timeDomainBound = timeDomain_;
 
     // TO DO: Loading config and initial data from file
 }
@@ -35,8 +39,14 @@ void PicadorJrCore::insertModule(Module* module, int position)
 int PicadorJrCore::run()
 {
     // Running onBeginRun on modules
-    for (auto module : modules)
-        ModuleExecutionStatus status = module->onBegin();
+    for (size_t i = 0; i < modules.size(); i++)
+    {
+        ModuleExecutionStatus status = modules[i]->onBegin();
+
+        // Remove module from executing, if it has returned an error
+        if (status == ModuleExecutionStatus::Error)
+            modules.erase(modules.begin() + i);
+    }
 
     currentTime = 0;
 
@@ -44,15 +54,25 @@ int PicadorJrCore::run()
     while (currentTime < timeDomainBound)
     {
         // Running updates on modules
-        for (auto module : modules)
-            ModuleExecutionStatus status = module->onUpdate();
+        for (size_t i = 0; i < modules.size(); i++)
+        {
+            ModuleExecutionStatus status = modules[i]->onUpdate();
+
+            // Remove module from executing, if it has returned an error
+            if (status == ModuleExecutionStatus::Error)
+                modules.erase(modules.begin() + i);
+        }
 
         currentTime += timeDelta;
     }
 
     // Running onEndRun on modules
-    for (auto module : modules)
-        ModuleExecutionStatus status = module->onEnd();
+    for (size_t i = 0; i < modules.size(); i++)
+    {
+        ModuleExecutionStatus status = modules[i]->onEnd();
+        
+        //if (status == ModuleExecutionStatus::Error)
+    }
 
     return 0;
 }
