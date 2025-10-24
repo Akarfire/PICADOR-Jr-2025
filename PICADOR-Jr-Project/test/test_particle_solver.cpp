@@ -19,7 +19,7 @@ TEST(ParticleSolver, RelativisticAccelerationInStaticField)
     StaticField staticField(staticFieldData);
 
     // Initializing particle grid
-    ParticleGrid particleGrid(2, 2, 200, 200, Vector3(-100, -100), 0);
+    ParticleGrid particleGrid(2, 2, 400, 400, Vector3(-200, -200), 0);
 
     // Adding single particle to the grid
     Particle testParticle(Constants::ElectronMass, Constants::ElectronCharge, Vector3(0, 0, 0), Vector3::Zero);
