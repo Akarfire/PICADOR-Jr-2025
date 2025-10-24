@@ -69,8 +69,10 @@ int main()
     
     // Writing data into file
     std::ofstream outputFile;
-    outputFile.open("./BorisConvergence.txt", std::ios::out);
+    outputFile.open("./BorisData.txt", std::ios::out);
     
+    outputFile << "#DeltaTime, Location Error, Velocity Error" << std::endl << "/InverseX" << std::endl;
+
     for (size_t i = 0; i < deltaTimes.size(); i++)
         outputFile << deltaTimes[i] << ", " << locationErrors[i] << ", " << velocityErrors[i] << std::endl;
 

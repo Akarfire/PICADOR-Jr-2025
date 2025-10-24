@@ -1,45 +1,87 @@
 import matplotlib.pyplot as pyplot
 
-print("File Name: ")
+print("File Path: ")
 file_path = input()
 print("Index of value set to display: ")
 value_set_id = int(input())
 
+# Actual Data
 keys = []
 values_matr : list[list] = []
+
+# Meta Data
+keys_label = ""
+values_labels : list[str] = []
+
+# Tags
+inverse_x = False
+inverse_y = False
 
 # Parsing file
 file = open(file_path)
 
 for line in file.readlines():
-    segments = line.split(", ")
     
-    if len(segments) > 0:
-        keys.append(float(segments[0]))
+    # Skipping empty lines
+    if line.count(' ') == len(line):
+        continue
+    
+    # Parsing tags
+    if line.startswith("/"):
+        if line == "/InverseX\n": inverse_x = True
+        elif line == "/InverseY\n": inverse_y = True
+    
+    # Parsing meta data
+    elif line.startswith("#"):
+        segments = line.split(",")
         
-        valuesSegments = segments[1::]
-        
-        for i in range(len(valuesSegments)):
+        if len(segments) > 0:
+            keys_label = segments[0].replace('#', '')
+            values_labels = [i.replace('\n', '') for i in segments[1::]]
             
-            if len(values_matr) <= i:
-                values_matr.append(list())
+    # Parsing actual data
+    else:
+        segments = line.split(",")
+        
+        if len(segments) > 0:
+            keys.append(float(segments[0].replace('\n', '')))
+            
+            valuesSegments = segments[1::]
+            
+            for i in range(len(valuesSegments)):
                 
-            values_matr[i].append((float)(valuesSegments[i].replace('\n', '')))
+                if len(values_matr) <= i:
+                    values_matr.append(list())
+                    
+                values_matr[i].append((float)(valuesSegments[i].replace('\n', '')))
             
-            
-# Create the plot
-pyplot.plot(keys, values_matr[value_set_id])
+file.close()
+
+# Creating the plot
+
+if value_set_id >= 0:
+    pyplot.plot(keys, values_matr[value_set_id], label=values_labels[value_set_id])
+    
+else:
+    for i in range(len(values_matr)):
+        pyplot.plot(keys, values_matr[i], label=values_labels[i])
 
 
-# Reversing x-axis
-axis = pyplot.gca()
+# Inversing axes with tags
 
-axis.invert_xaxis()
+if inverse_x:
+    axis = pyplot.gca()
+    axis.invert_xaxis()
+    
+if inverse_y:
+    axis = pyplot.gca()
+    axis.invert_yaxis()
+    
+# Add label
 
-# Add labels and a title
-# pyplot.xlabel('X-axis Label')
-# pyplot.ylabel('Y-axis Label')
-# pyplot.title('My First Line Graph')
+pyplot.xlabel(keys_label)
 
-# Display the plot
+# Displaying the plot
+
+pyplot.legend()
 pyplot.show()
