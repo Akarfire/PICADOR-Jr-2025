@@ -1,11 +1,17 @@
-#include <gtest.h>
+#include <iostream>
+#include <fstream>
 
 #include "PicadorJrCore.h"
-#include "Module_ParticleSolver.h"
+
 #include "StaticField.h"
+#include "Module_ParticleSolver.h"
+
+#include "FieldGrid.h"
+#include "ParticleGrid.h"
+
 #include "Constants.h"
 
-TEST(ParticleSolver, RelativisticAccelerationInStaticField)
+int main()
 {
     // Initializing static field
 
@@ -30,7 +36,7 @@ TEST(ParticleSolver, RelativisticAccelerationInStaticField)
         / (Constants::ElectronCharge * EZero * NumInterations));
 
     // Initializing core
-    PicadorJrCore core(&staticField, &particleGrid, timeStep, NumInterations);
+    PicadorJrCore core(&staticField, &particleGrid, timeStep, timeStep * 100);
 
     ParticleSolver particleSolver(&core);
     core.insertModule(&particleSolver);
@@ -40,21 +46,24 @@ TEST(ParticleSolver, RelativisticAccelerationInStaticField)
     // Checking results
     auto& particles = core.getParticleGrid()->getParticlesInCell(0, 0);
 
-    ASSERT_EQ(1, particles.size());
-
     double finalX = (sqrt(2) - 1) * Constants::ElectronMass * Constants::SpeedOfLight * Constants::SpeedOfLight / (Constants::ElectronCharge * EZero);
     
     double finalImpulseX = Constants::ElectronMass * Constants::SpeedOfLight;
-    double finalVelocityX = finalImpulseX / (Constants::ElectronMass * sqrt(1 + (finalImpulseX * finalImpulseX / ((Constants::ElectronMass * Constants::SpeedOfLight) 
+    double finalVelocityX = -1 * finalImpulseX / (Constants::ElectronMass * sqrt(1 + (finalImpulseX * finalImpulseX / ((Constants::ElectronMass * Constants::SpeedOfLight) 
                     * (Constants::ElectronMass * Constants::SpeedOfLight)))));;
 
-    EXPECT_DOUBLE_EQ(finalX, particles[0].location.x);
-    EXPECT_DOUBLE_EQ(0, particles[0].location.y);
-    EXPECT_DOUBLE_EQ(0, particles[0].location.z);
+    double xError = abs(finalX - particles[0].location.x);
+    double vError = abs(finalVelocityX - particles[0].velocity.x);
+    
+    // Writing data into file
+    std::ofstream outputFile;
+    outputFile.open("./BorisConvergence.txt", std::ios::out);
 
-    //EXPECT_NEAR()
+    outputFile << NumInterations << std::endl;
+    outputFile << xError << std::endl;
+    outputFile << vError << std::endl;
 
-    EXPECT_DOUBLE_EQ(finalVelocityX, particles[0].velocity.x);
-    EXPECT_DOUBLE_EQ(0, particles[0].velocity.y);
-    EXPECT_DOUBLE_EQ(0, particles[0].velocity.z);
+    outputFile.close();
+
+    return 0;
 }

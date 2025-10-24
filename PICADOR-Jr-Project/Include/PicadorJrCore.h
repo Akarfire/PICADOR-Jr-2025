@@ -18,20 +18,20 @@ class PicadorJrCore final
 
 	double timeDelta;
 
-	// Maximum simulation time
-	double timeDomainBound;
+	// Number of simulation iterations
+	int numInterations;
 
 	// ...
 
 
 	// Runtime values
 
-	double currentTime;
+	int currentIteration;
 
 public:
 
 	// Initializes modules and loads data
-	PicadorJrCore(FieldContainer* fieldContainer_, ParticleGrid* particleGrid_, double timeStep_, double timeDomain_);
+	PicadorJrCore(FieldContainer* fieldContainer_, ParticleGrid* particleGrid_, double timeStep_, int numIterations_);
 	~PicadorJrCore();
 
 	// Adds a new module ton the execution list

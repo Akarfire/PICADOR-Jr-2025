@@ -5,13 +5,13 @@
 #include <stdexcept>
 
 // Initializes modules and loads data
-PicadorJrCore::PicadorJrCore(FieldContainer* fieldContainer_, ParticleGrid* particleGrid_, double timeStep_, double timeDomain_)
+PicadorJrCore::PicadorJrCore(FieldContainer* fieldContainer_, ParticleGrid* particleGrid_, double timeStep_, int numIterations_)
 {
     fieldContainer = fieldContainer_;
     particleGrid = particleGrid_;
     
     timeDelta = timeStep_;
-    timeDomainBound = timeDomain_;
+    numInterations = numIterations_;
 
     // TO DO: Loading config and initial data from file
 }
@@ -48,10 +48,10 @@ int PicadorJrCore::run()
             modules.erase(modules.begin() + i);
     }
 
-    currentTime = 0;
+    currentIteration = 0;
 
     // Main simulation loop
-    while (currentTime < timeDomainBound)
+    while (currentIteration <= numInterations)
     {
         // Running updates on modules
         for (size_t i = 0; i < modules.size(); i++)
@@ -63,7 +63,7 @@ int PicadorJrCore::run()
                 modules.erase(modules.begin() + i);
         }
 
-        currentTime += timeDelta;
+        numInterations++;
     }
 
     // Running onEndRun on modules
