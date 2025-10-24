@@ -63,7 +63,7 @@ int PicadorJrCore::run()
                 modules.erase(modules.begin() + i);
         }
 
-        numInterations++;
+        currentIteration++;
     }
 
     // Running onEndRun on modules
