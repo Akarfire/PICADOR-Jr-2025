@@ -51,7 +51,7 @@ int PicadorJrCore::run()
     currentIteration = 0;
 
     // Main simulation loop
-    while (currentIteration <= numInterations)
+    while (currentIteration < numInterations)
     {
         // Running updates on modules
         for (size_t i = 0; i < modules.size(); i++)
