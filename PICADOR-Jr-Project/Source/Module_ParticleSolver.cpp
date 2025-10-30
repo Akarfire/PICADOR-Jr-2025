@@ -4,10 +4,9 @@
 #include "Constants.h"
 
 // Calculates new particle velocity based on the provided field value, using Boris's Method
-Vector3 ParticleSolver::CalculateNewParticleVelocity(const Particle& particle, const FieldData& field, double timeDelta)
+Vector3 ParticleSolver::CalculateNewParticleImpulse(const Particle& particle, const FieldData& field, double timeDelta)
 {
-    Vector3 p_old = particle.velocity * particle.mass * Constants::SpeedOfLight 
-                    / (sqrt(Constants::SpeedOfLight * Constants::SpeedOfLight - particle.velocity.sizeSquared()));
+    Vector3 p_old = particle.impulse;
 
     Vector3 u_old = p_old / (particle.mass * Constants::SpeedOfLight);
     Vector3 EMult = field.E * (particle.charge * timeDelta / (2 * particle.mass * Constants::SpeedOfLight));
@@ -15,7 +14,7 @@ Vector3 ParticleSolver::CalculateNewParticleVelocity(const Particle& particle, c
 
     double gamma_old = sqrt(1 + u_old.sizeSquared());
 
-    Vector3 t = field.B * (particle.charge / (2 * gamma_old * particle.mass * Constants::SpeedOfLight));
+    Vector3 t = field.B * (particle.charge * timeDelta / (2 * gamma_old * particle.mass * Constants::SpeedOfLight));
     Vector3 u_mark = u_minus + u_minus.crossProduct(t);
     Vector3 s = t * (2 / (1 + t.sizeSquared()));
     Vector3 u_plus = u_minus + u_mark.crossProduct(s);
@@ -23,11 +22,7 @@ Vector3 ParticleSolver::CalculateNewParticleVelocity(const Particle& particle, c
     Vector3 u_new = u_plus + EMult;
     Vector3 p_new = u_new * particle.mass * Constants::SpeedOfLight;
 
-    
-    Vector3 newVelocity = p_new / (particle.mass * sqrt(1 + (p_new.sizeSquared() / ((particle.mass * Constants::SpeedOfLight) 
-                    * (particle.mass * Constants::SpeedOfLight)))));
-
-    return newVelocity;
+    return p_new;
 }
 
 // Called on every iteration of the simulation loop
@@ -48,11 +43,14 @@ ModuleExecutionStatus ParticleSolver::onUpdate()
                 FieldData field = core->getFieldContainer()->getFieldsAt(particles[p].location);
                 
                 // Calclulating new velocity
-                Vector3 newVelocity = CalculateNewParticleVelocity(particles[p], field, core->getTimeDelta());             
+                Vector3 newImpulse = CalculateNewParticleImpulse(particles[p], field, core->getTimeDelta());
+                
+                Vector3 newVelocity = newImpulse / (particles[p].mass * sqrt(1 + (newImpulse.sizeSquared() / ((particles[p].mass * Constants::SpeedOfLight) 
+                    * (particles[p].mass * Constants::SpeedOfLight)))));
 
                 // Updating particle location and velocity
                 particles[p].location = (particles[p].location + newVelocity * core->getTimeDelta()) * Vector3::VectorMaskXY;
-                particles[p].velocity = newVelocity;
+                particles[p].impulse = newImpulse;
 
                 // Checking if the particle has left it's cell
                 Vector3 particleLocation = particles[p].location;

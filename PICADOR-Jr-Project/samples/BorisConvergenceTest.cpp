@@ -28,8 +28,8 @@ int main()
 
     size_t maxIterations = 10000;
     size_t step = 20;
-    size_t scale = 1;
-    std::string fileName = "BorisY.txt";
+    size_t scale = 2;
+    std::string fileName = "BorisO.txt";
 
     for (size_t d = 100; d < maxIterations; d += step)
     {  
@@ -101,7 +101,7 @@ void AccelerationTestX(std::vector<double>& outDeltaTimes, std::vector<double>& 
 
     outDeltaTimes.push_back(timeStep);
     outLocationErrors.push_back((Vector3(finalX, 0, 0) - particles[0].location).size());
-    outVelocityErrors.push_back((Vector3(finalVelocityX, 0, 0) - particles[0].velocity).size());
+    outVelocityErrors.push_back((Vector3(finalVelocityX, 0, 0) - particles[0].getVelocity()).size());
 }
 
 void AccelerationTestY(std::vector<double>& outDeltaTimes, std::vector<double>& outLocationErrors, std::vector<double>& outVelocityErrors, size_t iterations)
@@ -141,13 +141,13 @@ void AccelerationTestY(std::vector<double>& outDeltaTimes, std::vector<double>& 
 
     double finalX = (sqrt(2) - 1) * Constants::ElectronMass * Constants::SpeedOfLight * Constants::SpeedOfLight / (Constants::ElectronCharge * EZero);
     
-    double finalImpulseX = Constants::ElectronMass * Constants::SpeedOfLight;
-    double finalVelocityX = -1 * finalImpulseX / (Constants::ElectronMass * sqrt(1 + (finalImpulseX * finalImpulseX / ((Constants::ElectronMass * Constants::SpeedOfLight) 
+    double finalImpulseY = Constants::ElectronMass * Constants::SpeedOfLight;
+    double finalVelocityY = -1 * finalImpulseY / (Constants::ElectronMass * sqrt(1 + (finalImpulseY * finalImpulseY / ((Constants::ElectronMass * Constants::SpeedOfLight) 
                     * (Constants::ElectronMass * Constants::SpeedOfLight)))));;
 
     outDeltaTimes.push_back(timeStep);
     outLocationErrors.push_back((Vector3(0, finalX, 0) - particles[0].location).size());
-    outVelocityErrors.push_back((Vector3(0, finalVelocityX, 0) - particles[0].velocity).size());
+    outVelocityErrors.push_back((Vector3(0, finalVelocityY, 0) - particles[0].getVelocity()).size());
 }
 
 
@@ -158,7 +158,6 @@ void OscilationTest(std::vector<double>& outDeltaTimes, std::vector<double>& out
     double BZero = 100;
 
     double PZero = 1e-20;
-    double VZero = PZero / (Constants::ElectronMass * sqrt(1 + pow(PZero / (Constants::ElectronMass * Constants::SpeedOfLight), 2)));
 
     FieldData staticFieldData;
     staticFieldData.E = Vector3::Zero;
@@ -171,7 +170,7 @@ void OscilationTest(std::vector<double>& outDeltaTimes, std::vector<double>& out
     ParticleGrid particleGrid(2, 2, 400, 400, Vector3(-200, -200), 0);
 
     // Adding single particle to the grid
-    Particle testParticle(Constants::ElectronMass, Constants::ElectronCharge, Vector3::Zero, Vector3(VZero, 0, 0));
+    Particle testParticle(Constants::ElectronMass, Constants::ElectronCharge, Vector3::Zero, Vector3(PZero, 0, 0));
     particleGrid.editParticlesInCell(0, 0).push_back(testParticle);
 
     size_t numInterations = iterations;
@@ -193,9 +192,9 @@ void OscilationTest(std::vector<double>& outDeltaTimes, std::vector<double>& out
     
     double finalImpulseX = -PZero;
     double finalVelocityX = finalImpulseX / (Constants::ElectronMass * sqrt(1 + (finalImpulseX * finalImpulseX / ((Constants::ElectronMass * Constants::SpeedOfLight) 
-                    * (Constants::ElectronMass * Constants::SpeedOfLight)))));
+                    * (Constants::ElectronMass * Constants::SpeedOfLight)))));;
 
     outDeltaTimes.push_back(timeStep);
     outLocationErrors.push_back((Vector3(0, finalY, 0) - particles[0].location).size());
-    outVelocityErrors.push_back((Vector3(finalVelocityX, 0, 0) - particles[0].velocity).size());
+    outVelocityErrors.push_back((Vector3(finalVelocityX, 0, 0) - particles[0].getVelocity()).size());
 }

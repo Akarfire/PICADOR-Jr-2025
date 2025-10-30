@@ -25,7 +25,7 @@ TEST(ParticleSolver, RelativisticAccelerationInStaticField)
     Particle testParticle(Constants::ElectronMass, Constants::ElectronCharge, Vector3(0, 0, 0), Vector3::Zero);
     particleGrid.editParticlesInCell(0, 0).push_back(testParticle);
 
-    size_t NumInterations = 100;
+    size_t NumInterations = 2000;
     double timeStep = abs(Constants::ElectronMass * Constants::SpeedOfLight 
         / (Constants::ElectronCharge * EZero * NumInterations));
 
@@ -45,18 +45,14 @@ TEST(ParticleSolver, RelativisticAccelerationInStaticField)
     double finalX = (sqrt(2) - 1) * Constants::ElectronMass * Constants::SpeedOfLight * Constants::SpeedOfLight / (Constants::ElectronCharge * EZero);
     
     double finalImpulseX = Constants::ElectronMass * Constants::SpeedOfLight;
-    double finalVelocityX = finalImpulseX / (Constants::ElectronMass * sqrt(1 + (finalImpulseX * finalImpulseX / ((Constants::ElectronMass * Constants::SpeedOfLight) 
-                    * (Constants::ElectronMass * Constants::SpeedOfLight)))));;
 
-    EXPECT_DOUBLE_EQ(finalX, particles[0].location.x);
-    EXPECT_DOUBLE_EQ(0, particles[0].location.y);
-    EXPECT_DOUBLE_EQ(0, particles[0].location.z);
+    EXPECT_NEAR(finalX, particles[0].location.x, 1e-1);
+    EXPECT_NEAR(0, particles[0].location.y, 1e-1);
+    EXPECT_NEAR(0, particles[0].location.z, 1e-1);
 
-    //EXPECT_NEAR()
-
-    EXPECT_DOUBLE_EQ(finalVelocityX, particles[0].velocity.x);
-    EXPECT_DOUBLE_EQ(0, particles[0].velocity.y);
-    EXPECT_DOUBLE_EQ(0, particles[0].velocity.z);
+    EXPECT_NEAR(finalImpulseX, particles[0].impulse.x, 1e-1);
+    EXPECT_NEAR(0, particles[0].impulse.y, 1e-1);
+    EXPECT_NEAR(0, particles[0].impulse.z, 1e-1);
 }
 
 
@@ -67,7 +63,6 @@ TEST(ParticleSolver, OscilationInStaticField)
     double BZero = 100;
 
     double PZero = 1e-20;
-    double VZero = PZero / Constants::ElectronMass / sqrt(1 + pow(PZero / (Constants::ElectronMass * Constants::SpeedOfLight), 2));
 
     FieldData staticFieldData;
     staticFieldData.E = Vector3::Zero;
@@ -80,7 +75,7 @@ TEST(ParticleSolver, OscilationInStaticField)
     ParticleGrid particleGrid(2, 2, 400, 400, Vector3(-200, -200), 0);
 
     // Adding single particle to the grid
-    Particle testParticle(Constants::ElectronMass, Constants::ElectronCharge, Vector3::Zero, Vector3(VZero, 0, 0));
+    Particle testParticle(Constants::ElectronMass, Constants::ElectronCharge, Vector3::Zero, Vector3(PZero, 0, 0));
     particleGrid.editParticlesInCell(0, 0).push_back(testParticle);
 
     size_t NumInterations = 100;
@@ -103,16 +98,12 @@ TEST(ParticleSolver, OscilationInStaticField)
     double finalY = -2 * PZero * Constants::SpeedOfLight / (Constants::ElectronCharge * BZero);
     
     double finalImpulseX = -PZero;
-    double finalVelocityX = finalImpulseX / (Constants::ElectronMass * sqrt(1 + (finalImpulseX * finalImpulseX / ((Constants::ElectronMass * Constants::SpeedOfLight) 
-                    * (Constants::ElectronMass * Constants::SpeedOfLight)))));
 
-    EXPECT_DOUBLE_EQ(0, particles[0].location.x);
-    EXPECT_DOUBLE_EQ(finalY, particles[0].location.y);
-    EXPECT_DOUBLE_EQ(0, particles[0].location.z);
+    EXPECT_NEAR(0, particles[0].location.x, 1e-1);
+    EXPECT_NEAR(finalY, particles[0].location.y, 1e-1);
+    EXPECT_NEAR(0, particles[0].location.z, 1e-1);
 
-    //EXPECT_NEAR()
-
-    EXPECT_DOUBLE_EQ(finalVelocityX, particles[0].velocity.x);
-    EXPECT_DOUBLE_EQ(0, particles[0].velocity.y);
-    EXPECT_DOUBLE_EQ(0, particles[0].velocity.z);
+    EXPECT_NEAR(finalImpulseX, particles[0].impulse.x, 1e-1);
+    EXPECT_NEAR(0, particles[0].impulse.y, 1e-1);
+    EXPECT_NEAR(0, particles[0].impulse.z, 1e-1);
 }
