@@ -10,4 +10,5 @@ public:
     static const double SpeedOfLight;
     static const double ElectronMass;
     static const double ElectronCharge;
+    static const double PI;
 };
