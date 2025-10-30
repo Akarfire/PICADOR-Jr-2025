@@ -50,9 +50,9 @@ TEST(ParticleSolver, RelativisticAccelerationInStaticField)
     EXPECT_NEAR(0, particles[0].location.y, 1e-1);
     EXPECT_NEAR(0, particles[0].location.z, 1e-1);
 
-    EXPECT_NEAR(finalImpulseX, particles[0].impulse.x, 1e-1);
-    EXPECT_NEAR(0, particles[0].impulse.y, 1e-1);
-    EXPECT_NEAR(0, particles[0].impulse.z, 1e-1);
+    EXPECT_NEAR(finalImpulseX, particles[0].impulse.x, 1e-25);
+    EXPECT_NEAR(0, particles[0].impulse.y, 1e-25);
+    EXPECT_NEAR(0, particles[0].impulse.z, 1e-25);
 }
 
 
@@ -103,7 +103,7 @@ TEST(ParticleSolver, OscilationInStaticField)
     EXPECT_NEAR(finalY, particles[0].location.y, 1e-1);
     EXPECT_NEAR(0, particles[0].location.z, 1e-1);
 
-    EXPECT_NEAR(finalImpulseX, particles[0].impulse.x, 1e-1);
-    EXPECT_NEAR(0, particles[0].impulse.y, 1e-1);
-    EXPECT_NEAR(0, particles[0].impulse.z, 1e-1);
+    EXPECT_NEAR(finalImpulseX, particles[0].impulse.x, 1e-25);
+    EXPECT_NEAR(0, particles[0].impulse.y, 1e-25);
+    EXPECT_NEAR(0, particles[0].impulse.z, 1e-25);
 }
