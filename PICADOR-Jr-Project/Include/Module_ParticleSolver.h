@@ -11,7 +11,7 @@ class ParticleSolver : public Module
 protected:
 
     // Calculates new particle velocity based on the provided field value, using Boris's Method
-    Vector3 CalculateNewParticleVelocity(const Particle& particle, const FieldData& field, double timeDelta);
+    Vector3 CalculateNewParticleImpulse(const Particle& particle, const FieldData& field, double timeDelta);
 
 public:
     ParticleSolver(PicadorJrCore* core_): Module(core_) {}
