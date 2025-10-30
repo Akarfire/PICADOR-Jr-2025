@@ -11,7 +11,7 @@ void LoopEdgeCondition::processPaddingCell(GRID_INDEX i, GRID_INDEX j)
     Vector3 originalCellLocation = core->getParticleGrid()->getOrigin() + Vector3(core->getParticleGrid()->getDeltaX() * j, core->getParticleGrid()->getDeltaY() * i);
     Vector3 loopingCellLocation = core->getParticleGrid()->getOrigin() + Vector3(core->getParticleGrid()->getDeltaX() * loopingCell.second, core->getParticleGrid()->getDeltaY() * loopingCell.first);
 
-    for (size_t p = 0; p < particles.size(); p++)
+    for (int p = particles.size() - 1; p >= 0; p--)
     {
         // Shifting particle location
         particles[p].location = particles[p].location - originalCellLocation + loopingCellLocation;
@@ -24,7 +24,7 @@ void LoopEdgeCondition::processPaddingCell(GRID_INDEX i, GRID_INDEX j)
 // Given a padding cell, calculates indeces of the corresponding looping cell on the main grid
 std::pair<GRID_INDEX, GRID_INDEX> LoopEdgeCondition::calculateLoopingCell(GRID_INDEX i, GRID_INDEX j)
 {
-    std::pair<GRID_INDEX, GRID_INDEX> result = {0, 0};
+    std::pair<GRID_INDEX, GRID_INDEX> result = {i, j};
 
     GRID_INDEX resX = core->getParticleGrid()->getResolutionX();
     GRID_INDEX resY = core->getParticleGrid()->getResolutionY();
@@ -54,28 +54,25 @@ ModuleExecutionStatus LoopEdgeCondition::onBegin()
 // Called on every iteration of the simulation loop
 ModuleExecutionStatus LoopEdgeCondition::onUpdate()
 {
-    GRID_INDEX padding = core->getParticleGrid()->getPadding();
-    if (padding == 0) return ModuleExecutionStatus::Error;
-
     // Loops over padding cells and calls processPaddingCell on them
 
     GRID_INDEX resX = core->getParticleGrid()->getResolutionX();
     GRID_INDEX resY = core->getParticleGrid()->getResolutionY();
 
     // Left Pad
-    for (GRID_INDEX i = -1; i < resY; i++)
+    for (GRID_INDEX i = -1; i < resY - 1; i++)
         processPaddingCell(i, -1);
 
     // Top Pad
-    for (GRID_INDEX j = -1; j < resX; j++)
+    for (GRID_INDEX j = -1; j < resX - 1; j++)
         processPaddingCell(resY - 1, j);
 
     // Right Pad
-    for (GRID_INDEX i = resY - 1; i >= -1; i--)
+    for (GRID_INDEX i = resY - 1; i >= 0; i--)
         processPaddingCell(i, resX - 1);
 
     // Bottom Pad
-    for (GRID_INDEX j = resX - 1; j >= -1; j--)
+    for (GRID_INDEX j = resX - 1; j >= 0; j--)
         processPaddingCell(-1, j);
 
     return ModuleExecutionStatus::Success;
