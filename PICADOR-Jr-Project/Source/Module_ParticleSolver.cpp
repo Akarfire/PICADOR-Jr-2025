@@ -48,6 +48,9 @@ ModuleExecutionStatus ParticleSolver::onUpdate()
                 Vector3 newVelocity = newImpulse / (particles[p].mass * sqrt(1 + (newImpulse.sizeSquared() / ((particles[p].mass * Constants::SpeedOfLight) 
                     * (particles[p].mass * Constants::SpeedOfLight)))));
 
+                // if (newVelocity.sizeSquared() > Constants::SpeedOfLight * Constants::SpeedOfLight)
+                //     throw(std::runtime_error("Exceeded speed of light!"));
+
                 // Updating particle location and velocity
                 particles[p].location = (particles[p].location + newVelocity * core->getTimeDelta()) * Vector3::VectorMaskXY;
                 particles[p].impulse = newImpulse;
