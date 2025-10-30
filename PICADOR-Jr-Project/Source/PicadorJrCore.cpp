@@ -45,7 +45,7 @@ int PicadorJrCore::run()
 
         // Remove module from executing, if it has returned an error
         if (status == ModuleExecutionStatus::Error)
-            modules.erase(modules.begin() + i);
+            modules[i]->SetEnabled(false);
     }
 
     currentIteration = 0;
@@ -56,11 +56,14 @@ int PicadorJrCore::run()
         // Running updates on modules
         for (size_t i = 0; i < modules.size(); i++)
         {
-            ModuleExecutionStatus status = modules[i]->onUpdate();
+            if (modules[i]->IsEnabled())
+            {
+                ModuleExecutionStatus status = modules[i]->onUpdate();
 
-            // Remove module from executing, if it has returned an error
-            if (status == ModuleExecutionStatus::Error)
-                modules.erase(modules.begin() + i);
+                // Remove module from executing, if it has returned an error
+                if (status == ModuleExecutionStatus::Error)
+                    modules[i]->SetEnabled(false);
+            }
         }
 
         currentIteration++;
@@ -69,9 +72,8 @@ int PicadorJrCore::run()
     // Running onEndRun on modules
     for (size_t i = 0; i < modules.size(); i++)
     {
-        ModuleExecutionStatus status = modules[i]->onEnd();
-        
-        //if (status == ModuleExecutionStatus::Error)
+        if (modules[i]->IsEnabled())
+            ModuleExecutionStatus status = modules[i]->onEnd();
     }
 
     return 0;
