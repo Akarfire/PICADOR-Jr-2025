@@ -2,8 +2,6 @@ import matplotlib.pyplot as pyplot
 
 print("File Path: ")
 file_path = input()
-print("Index of value set to display: ")
-value_set_id = int(input())
 
 # Actual Data
 keys = []
@@ -57,31 +55,33 @@ for line in file.readlines():
             
 file.close()
 
-# Creating the plot
-
-if value_set_id >= 0:
-    pyplot.plot(keys, values_matr[value_set_id], label=values_labels[value_set_id])
+for i in range(len(values_matr)):
     
-else:
-    for i in range(len(values_matr)):
-        pyplot.plot(keys, values_matr[i], label=values_labels[i])
-
-
-# Inversing axes with tags
-
-if inverse_x:
-    axis = pyplot.gca()
-    axis.invert_xaxis()
+    pyplot.figure()
     
-if inverse_y:
-    axis = pyplot.gca()
-    axis.invert_yaxis()
+    # Creating the plot
+    pyplot.plot(keys, values_matr[i], label=values_labels[i])
+
+    # Inversing axes with tags
+
+    if inverse_x:
+        axis = pyplot.gca()
+        axis.invert_xaxis()
+        
+    if inverse_y:
+        axis = pyplot.gca()
+        axis.invert_yaxis()
+        
+    # Add label
+
+    pyplot.xlabel(keys_label)
+
+    # Displaying the plot
+
+    pyplot.legend()
+    pyplot.show(block=False)
+
+
+input("'Enter' to exit")
+
     
-# Add label
-
-pyplot.xlabel(keys_label)
-
-# Displaying the plot
-
-pyplot.legend()
-pyplot.show()
