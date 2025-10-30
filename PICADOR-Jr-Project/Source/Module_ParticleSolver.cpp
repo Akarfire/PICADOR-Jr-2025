@@ -51,7 +51,7 @@ ModuleExecutionStatus ParticleSolver::onUpdate()
                 Vector3 newVelocity = CalculateNewParticleVelocity(particles[p], field, core->getTimeDelta());             
 
                 // Updating particle location and velocity
-                particles[p].location = particles[p].location + newVelocity * core->getTimeDelta();
+                particles[p].location = (particles[p].location + newVelocity * core->getTimeDelta()) * Vector3::VectorMaskXY;
                 particles[p].velocity = newVelocity;
 
                 // Checking if the particle has left it's cell
