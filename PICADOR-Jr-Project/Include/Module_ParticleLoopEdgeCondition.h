@@ -3,7 +3,7 @@
 #include "Module.h"
 #include "Grid.h"
 
-class LoopEdgeCondition : public Module
+class ParticleLoopEdgeCondition : public Module
 {
     // Transfers particles of this cell onto the other end of the grid
     void processPaddingCell(GRID_INDEX i, GRID_INDEX j);
@@ -12,7 +12,7 @@ class LoopEdgeCondition : public Module
     std::pair<GRID_INDEX, GRID_INDEX> calculateLoopingCell(GRID_INDEX i, GRID_INDEX j);
 
 public:
-    LoopEdgeCondition(PicadorJrCore* core_): Module(core_) {}
+    ParticleLoopEdgeCondition(PicadorJrCore* core_): Module(core_) {}
 
     // Called by the core before entering the simulation loop
     virtual ModuleExecutionStatus onBegin() override;

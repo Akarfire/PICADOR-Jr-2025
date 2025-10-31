@@ -1,8 +1,8 @@
-#include "Module_LoopEdgeCondition.h"
+#include "Module_ParticleLoopEdgeCondition.h"
 #include "PicadorJrCore.h"
 
 // Transfers particles of this cell onto the other end of the grid
-void LoopEdgeCondition::processPaddingCell(GRID_INDEX i, GRID_INDEX j)
+void ParticleLoopEdgeCondition::processPaddingCell(GRID_INDEX i, GRID_INDEX j)
 {
     std::vector<Particle>& particles = core->getParticleGrid()->editParticlesInCell(i, j);
 
@@ -22,7 +22,7 @@ void LoopEdgeCondition::processPaddingCell(GRID_INDEX i, GRID_INDEX j)
 }
 
 // Given a padding cell, calculates indeces of the corresponding looping cell on the main grid
-std::pair<GRID_INDEX, GRID_INDEX> LoopEdgeCondition::calculateLoopingCell(GRID_INDEX i, GRID_INDEX j)
+std::pair<GRID_INDEX, GRID_INDEX> ParticleLoopEdgeCondition::calculateLoopingCell(GRID_INDEX i, GRID_INDEX j)
 {
     std::pair<GRID_INDEX, GRID_INDEX> result = {i, j};
 
@@ -45,14 +45,14 @@ std::pair<GRID_INDEX, GRID_INDEX> LoopEdgeCondition::calculateLoopingCell(GRID_I
 }
 
 // Called by the core before entering the simulation loop
-ModuleExecutionStatus LoopEdgeCondition::onBegin()
+ModuleExecutionStatus ParticleLoopEdgeCondition::onBegin()
 {
     if (core->getParticleGrid()->getPadding() > 0) return ModuleExecutionStatus::Success;
     else return ModuleExecutionStatus::Error;
 }
 
 // Called on every iteration of the simulation loop
-ModuleExecutionStatus LoopEdgeCondition::onUpdate()
+ModuleExecutionStatus ParticleLoopEdgeCondition::onUpdate()
 {
     // Loops over padding cells and calls processPaddingCell on them
 

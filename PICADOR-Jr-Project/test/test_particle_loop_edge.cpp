@@ -3,11 +3,11 @@
 #include "PicadorJrCore.h"
 #include "StaticField.h"
 #include "ParticleGrid.h"
-#include "Module_LoopEdgeCondition.h"
+#include "Module_ParticleLoopEdgeCondition.h"
 
 #include <gtest.h>
 
-TEST(LoopEdgeCondition, loopingWorksNominally)
+TEST(ParticleLoopEdgeCondition, loopingWorksNominally)
 {
     // Defining field
 
@@ -33,7 +33,7 @@ TEST(LoopEdgeCondition, loopingWorksNominally)
         particleGrid.editParticlesInCell(i, -1).push_back(testParticle);
 
         PicadorJrCore core(&staticField, &particleGrid, 1, 1);
-        LoopEdgeCondition loopEdgeCondition(&core);
+        ParticleLoopEdgeCondition loopEdgeCondition(&core);
         core.insertModule(&loopEdgeCondition);
         core.run();
 
@@ -51,7 +51,7 @@ TEST(LoopEdgeCondition, loopingWorksNominally)
         particleGrid.editParticlesInCell(i, 3).push_back(testParticle);
 
         PicadorJrCore core(&staticField, &particleGrid, 1, 1);
-        LoopEdgeCondition loopEdgeCondition(&core);
+        ParticleLoopEdgeCondition loopEdgeCondition(&core);
         core.insertModule(&loopEdgeCondition);
         core.run();
 
@@ -69,7 +69,7 @@ TEST(LoopEdgeCondition, loopingWorksNominally)
         particleGrid.editParticlesInCell(-1, j).push_back(testParticle);
 
         PicadorJrCore core(&staticField, &particleGrid, 1, 1);
-        LoopEdgeCondition loopEdgeCondition(&core);
+        ParticleLoopEdgeCondition loopEdgeCondition(&core);
         core.insertModule(&loopEdgeCondition);
         core.run();
 
@@ -87,7 +87,7 @@ TEST(LoopEdgeCondition, loopingWorksNominally)
         particleGrid.editParticlesInCell(3, j).push_back(testParticle);
 
         PicadorJrCore core(&staticField, &particleGrid, 1, 1);
-        LoopEdgeCondition loopEdgeCondition(&core);
+        ParticleLoopEdgeCondition loopEdgeCondition(&core);
         core.insertModule(&loopEdgeCondition);
         core.run();
 
@@ -104,7 +104,7 @@ TEST(LoopEdgeCondition, loopingWorksNominally)
         particleGrid.editParticlesInCell(-1, -1).push_back(testParticle);
 
         PicadorJrCore core(&staticField, &particleGrid, 1, 1);
-        LoopEdgeCondition loopEdgeCondition(&core);
+        ParticleLoopEdgeCondition loopEdgeCondition(&core);
         core.insertModule(&loopEdgeCondition);
         core.run();
 
@@ -121,7 +121,7 @@ TEST(LoopEdgeCondition, loopingWorksNominally)
         particleGrid.editParticlesInCell(3, -1).push_back(testParticle);
 
         PicadorJrCore core(&staticField, &particleGrid, 1, 1);
-        LoopEdgeCondition loopEdgeCondition(&core);
+        ParticleLoopEdgeCondition loopEdgeCondition(&core);
         core.insertModule(&loopEdgeCondition);
         core.run();
 
@@ -138,7 +138,7 @@ TEST(LoopEdgeCondition, loopingWorksNominally)
         particleGrid.editParticlesInCell(3, 3).push_back(testParticle);
 
         PicadorJrCore core(&staticField, &particleGrid, 1, 1);
-        LoopEdgeCondition loopEdgeCondition(&core);
+        ParticleLoopEdgeCondition loopEdgeCondition(&core);
         core.insertModule(&loopEdgeCondition);
         core.run();
 
@@ -155,7 +155,7 @@ TEST(LoopEdgeCondition, loopingWorksNominally)
         particleGrid.editParticlesInCell(-1, 3).push_back(testParticle);
 
         PicadorJrCore core(&staticField, &particleGrid, 1, 1);
-        LoopEdgeCondition loopEdgeCondition(&core);
+        ParticleLoopEdgeCondition loopEdgeCondition(&core);
         core.insertModule(&loopEdgeCondition);
         core.run();
 
