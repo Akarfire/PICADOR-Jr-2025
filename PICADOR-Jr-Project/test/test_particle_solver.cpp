@@ -78,7 +78,7 @@ TEST(ParticleSolver, OscilationInStaticField)
     Particle testParticle(Constants::ElectronMass, Constants::ElectronCharge, Vector3::Zero, Vector3(PZero, 0, 0));
     particleGrid.editParticlesInCell(0, 0).push_back(testParticle);
 
-    size_t NumInterations = 100;
+    size_t NumInterations = 700;
     double timeStep = Constants::PI * Constants::ElectronMass * Constants::SpeedOfLight / (abs(Constants::ElectronCharge) * BZero * NumInterations) 
                         * sqrt(1 + pow(PZero / (Constants::ElectronMass * Constants::SpeedOfLight), 2));
 

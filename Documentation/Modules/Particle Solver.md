@@ -15,3 +15,6 @@
 
 ![](../Images/BorisO_L.png)
 ![](../Images/BorisO_V.png)
+
+
+c * dt / dx < 1
