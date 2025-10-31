@@ -31,8 +31,8 @@ ModuleExecutionStatus ParticleSolver::onUpdate()
     ParticleGrid* particleGrid = core->getParticleGrid();
 
     // Cell loop
-    for (size_t cell_i = 0; cell_i < particleGrid->getResolutionY(); cell_i++)
-        for (size_t cell_j = 0; cell_j < particleGrid->getResolutionX(); cell_j++)
+    for (size_t cell_i = 0; cell_i < particleGrid->getResolutionY() - 1; cell_i++)
+        for (size_t cell_j = 0; cell_j < particleGrid->getResolutionX() - 1; cell_j++)
         {
             std::vector<Particle>& particles = particleGrid->editParticlesInCell(cell_i, cell_j);
 
@@ -70,8 +70,8 @@ ModuleExecutionStatus ParticleSolver::onUpdate()
         }
 
     // Particle transfer loop
-    for (size_t cell_i = 0; cell_i < particleGrid->getResolutionY(); cell_i++)
-        for (size_t cell_j = 0; cell_j < particleGrid->getResolutionX(); cell_j++)
+    for (size_t cell_i = 0; cell_i < particleGrid->getResolutionY() - 1; cell_i++)
+        for (size_t cell_j = 0; cell_j < particleGrid->getResolutionX() - 1; cell_j++)
         {
              std::vector<Particle>& particles = particleGrid->editParticlesInCell(cell_i, cell_j);
 
