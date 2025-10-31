@@ -44,7 +44,7 @@ TEST(ParticleSolver, RelativisticAccelerationInStaticField)
 
     double finalX = (sqrt(2) - 1) * Constants::ElectronMass * Constants::SpeedOfLight * Constants::SpeedOfLight / (Constants::ElectronCharge * EZero);
     
-    double finalImpulseX = Constants::ElectronMass * Constants::SpeedOfLight;
+    double finalImpulseX = -1 * Constants::ElectronMass * Constants::SpeedOfLight;
 
     EXPECT_NEAR(finalX, particles[0].location.x, 1e-1);
     EXPECT_NEAR(0, particles[0].location.y, 1e-1);
