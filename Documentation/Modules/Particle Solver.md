@@ -18,3 +18,16 @@
 
 
 c * dt / dx < 1
+
+![](../Images/TrajectoryExample.png)
+
+
+
+
+![](../Images/Trajectory_O.png)
+
+![](../Images/Trajectory_OE.png)
+
+![](../Images/Trajectory_Catapiller.png)
+
+![](../Images/Trajectory_Loop.png)
