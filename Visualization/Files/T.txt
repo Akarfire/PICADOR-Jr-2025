@@ -1,0 +1,300 @@
+Iteration: 0
+Location: 0.000195986, 6.1586e-06, 0
+
+Iteration: 1
+Location: 0.000391682, 1.84697e-05, 0
+
+Iteration: 2
+Location: 0.000586895, 3.69212e-05, 0
+
+Iteration: 3
+Location: 0.000781432, 6.14949e-05, 0
+
+Iteration: 4
+Location: 0.000975101, 9.21665e-05, 0
+
+Iteration: 5
+Location: 0.00116771, 0.000128906, 0
+
+Iteration: 6
+Location: 0.00135907, 0.000171676, 0
+
+Iteration: 7
+Location: 0.001549, 0.000220436, 0
+
+Iteration: 8
+Location: 0.00173729, 0.000275137, 0
+
+Iteration: 9
+Location: 0.00192378, 0.000335725, 0
+
+Iteration: 10
+Location: 0.00210827, 0.000402141, 0
+
+Iteration: 11
+Location: 0.00229059, 0.000474318, 0
+
+Iteration: 12
+Location: 0.00247055, 0.000552186, 0
+
+Iteration: 13
+Location: 0.00264797, 0.000635668, 0
+
+Iteration: 14
+Location: 0.00282269, 0.000724681, 0
+
+Iteration: 15
+Location: 0.00299452, 0.000819137, 0
+
+Iteration: 16
+Location: 0.0031633, 0.000918944, 0
+
+Iteration: 17
+Location: 0.00332886, 0.001024, 0
+
+Iteration: 18
+Location: 0.00349104, 0.00113421, 0
+
+Iteration: 19
+Location: 0.00364969, 0.00124946, 0
+
+Iteration: 20
+Location: 0.00380463, 0.00136963, 0
+
+Iteration: 21
+Location: 0.00395572, 0.00149461, 0
+
+Iteration: 22
+Location: 0.00410281, 0.00162427, 0
+
+Iteration: 23
+Location: 0.00424576, 0.00175849, 0
+
+Iteration: 24
+Location: 0.00438442, 0.00189713, 0
+
+Iteration: 25
+Location: 0.00451866, 0.00204006, 0
+
+Iteration: 26
+Location: 0.00464834, 0.00218714, 0
+
+Iteration: 27
+Location: 0.00477334, 0.00233821, 0
+
+Iteration: 28
+Location: 0.00489353, 0.00249314, 0
+
+Iteration: 29
+Location: 0.0050088, 0.00265176, 0
+
+Iteration: 30
+Location: 0.00511902, 0.00281393, 0
+
+Iteration: 31
+Location: 0.0052241, 0.00297948, 0
+
+Iteration: 32
+Location: 0.00532393, 0.00314825, 0
+
+Iteration: 33
+Location: 0.00541841, 0.00332007, 0
+
+Iteration: 34
+Location: 0.00550745, 0.00349477, 0
+
+Iteration: 35
+Location: 0.00559095, 0.00367219, 0
+
+Iteration: 36
+Location: 0.00566884, 0.00385213, 0
+
+Iteration: 37
+Location: 0.00574104, 0.00403444, 0
+
+Iteration: 38
+Location: 0.00580748, 0.00421892, 0
+
+Iteration: 39
+Location: 0.00586809, 0.0044054, 0
+
+Iteration: 40
+Location: 0.00592282, 0.00459369, 0
+
+Iteration: 41
+Location: 0.0059716, 0.00478361, 0
+
+Iteration: 42
+Location: 0.0060144, 0.00497497, 0
+
+Iteration: 43
+Location: 0.00605116, 0.00516757, 0
+
+Iteration: 44
+Location: 0.00608186, 0.00536124, 0
+
+Iteration: 45
+Location: 0.00610646, 0.00555577, 0
+
+Iteration: 46
+Location: 0.00612494, 0.00575098, 0
+
+Iteration: 47
+Location: 0.00613727, 0.00594668, 0
+
+Iteration: 48
+Location: 0.00614346, 0.00614266, 0
+
+Iteration: 49
+Location: 0.00614348, 0.00633874, 0
+
+Iteration: 50
+Location: 0.00613735, 0.00653473, 0
+
+Iteration: 51
+Location: 0.00612506, 0.00673043, 0
+
+Iteration: 52
+Location: 0.00610664, 0.00692564, 0
+
+Iteration: 53
+Location: 0.00608209, 0.00712018, 0
+
+Iteration: 54
+Location: 0.00605144, 0.00731386, 0
+
+Iteration: 55
+Location: 0.00601473, 0.00750647, 0
+
+Iteration: 56
+Location: 0.00597198, 0.00769784, 0
+
+Iteration: 57
+Location: 0.00592324, 0.00788777, 0
+
+Iteration: 58
+Location: 0.00586857, 0.00807607, 0
+
+Iteration: 59
+Location: 0.005808, 0.00826257, 0
+
+Iteration: 60
+Location: 0.00574161, 0.00844707, 0
+
+Iteration: 61
+Location: 0.00566946, 0.0086294, 0
+
+Iteration: 62
+Location: 0.00559161, 0.00880936, 0
+
+Iteration: 63
+Location: 0.00550816, 0.0089868, 0
+
+Iteration: 64
+Location: 0.00541916, 0.00916152, 0
+
+Iteration: 65
+Location: 0.00532473, 0.00933337, 0
+
+Iteration: 66
+Location: 0.00522495, 0.00950216, 0
+
+Iteration: 67
+Location: 0.00511991, 0.00966774, 0
+
+Iteration: 68
+Location: 0.00500972, 0.00982994, 0
+
+Iteration: 69
+Location: 0.0048945, 0.00998859, 0
+
+Iteration: 70
+Location: 0.00477434, 0.0101435, 0
+
+Iteration: 71
+Location: 0.00464938, 0.0102947, 0
+
+Iteration: 72
+Location: 0.00451974, 0.0104418, 0
+
+Iteration: 73
+Location: 0.00438554, 0.0105847, 0
+
+Iteration: 74
+Location: 0.00424692, 0.0107234, 0
+
+Iteration: 75
+Location: 0.004104, 0.0108577, 0
+
+Iteration: 76
+Location: 0.00395695, 0.0109874, 0
+
+Iteration: 77
+Location: 0.00380589, 0.0111124, 0
+
+Iteration: 78
+Location: 0.00365097, 0.0112326, 0
+
+Iteration: 79
+Location: 0.00349236, 0.0113479, 0
+
+Iteration: 80
+Location: 0.00333021, 0.0114581, 0
+
+Iteration: 81
+Location: 0.00316468, 0.0115632, 0
+
+Iteration: 82
+Location: 0.00299592, 0.0116631, 0
+
+Iteration: 83
+Location: 0.00282411, 0.0117576, 0
+
+Iteration: 84
+Location: 0.00264942, 0.0118466, 0
+
+Iteration: 85
+Location: 0.00247202, 0.0119302, 0
+
+Iteration: 86
+Location: 0.00229208, 0.0120081, 0
+
+Iteration: 87
+Location: 0.00210978, 0.0120803, 0
+
+Iteration: 88
+Location: 0.00192531, 0.0121468, 0
+
+Iteration: 89
+Location: 0.00173884, 0.0122074, 0
+
+Iteration: 90
+Location: 0.00155055, 0.0122622, 0
+
+Iteration: 91
+Location: 0.00136064, 0.012311, 0
+
+Iteration: 92
+Location: 0.00116929, 0.0123538, 0
+
+Iteration: 93
+Location: 0.000976689, 0.0123906, 0
+
+Iteration: 94
+Location: 0.000783028, 0.0124213, 0
+
+Iteration: 95
+Location: 0.000588498, 0.0124459, 0
+
+Iteration: 96
+Location: 0.00039329, 0.0124644, 0
+
+Iteration: 97
+Location: 0.000197597, 0.0124768, 0
+
+Iteration: 98
+Location: 1.61247e-06, 0.012483, 0
+
+Iteration: 99
+Location: -0.00019447, 0.012483, 0
+
