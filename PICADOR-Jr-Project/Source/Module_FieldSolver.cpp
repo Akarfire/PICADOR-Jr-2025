@@ -23,8 +23,8 @@ ModuleExecutionStatus FieldSolver::onUpdate()
 
 
 
-void FieldSolver::updateE(int i, int j) {
-
+void FieldSolver::updateE(int i, int j) 
+{
     fieldGrid->getNodeAt(i, j).E.x = fieldGrid->getNodeAt(i, j).E.x - 4 * Constants::PI * core->getTimeDelta() * fieldGrid->getNodeAt(i, j).J.x
         + Constants::SpeedOfLight * core->getTimeDelta() * (fieldGrid->getNodeAt(i, j + 1).B.z - fieldGrid->getNodeAt(i, j - 1).B.z) / (2 * fieldGrid->getDeltaY());
 
@@ -36,16 +36,17 @@ void FieldSolver::updateE(int i, int j) {
             - (fieldGrid->getNodeAt(i, j + 1).B.x - fieldGrid->getNodeAt(i, j - 1).B.x) / (2 * fieldGrid->getDeltaY()));
 }
 
-void FieldSolver::updateB(int i, int j) {
-
+void FieldSolver::updateB(int i, int j) 
+{
     fieldGrid->getNodeAt(i, j).B.x = fieldGrid->getNodeAt(i, j).B.x 
         - Constants::SpeedOfLight * core->getTimeDelta() * (fieldGrid->getNodeAt(i, j + 1).E.z - fieldGrid->getNodeAt(i, j - 1).E.z) / (2 * fieldGrid->getDeltaY());
 
-    fieldGrid->getNodeAt(i, j).B.y = fieldGrid->getNodeAt(i, j).B.y //спросить, перепутан ли в методичке знак, потому что там стоит +, а для единообразия логичнее было бы -
-        - Constants::SpeedOfLight * core->getTimeDelta() * (fieldGrid->getNodeAt(i + 1, j).E.z - fieldGrid->getNodeAt(i - 1, j).E.z) / (2 * fieldGrid->getDeltaX());
+    fieldGrid->getNodeAt(i, j).B.y = fieldGrid->getNodeAt(i, j).B.y //или тут -, надо проверить
+        + Constants::SpeedOfLight * core->getTimeDelta() * (fieldGrid->getNodeAt(i + 1, j).E.z - fieldGrid->getNodeAt(i - 1, j).E.z) / (2 * fieldGrid->getDeltaX());
 
     fieldGrid->getNodeAt(i, j).B.z = fieldGrid->getNodeAt(i, j).B.z
         - Constants::SpeedOfLight * core->getTimeDelta() * ((fieldGrid->getNodeAt(i + 1, j).E.y - fieldGrid->getNodeAt(i - 1, j).E.y) / (2 * fieldGrid->getDeltaX())
             - (fieldGrid->getNodeAt(i, j + 1).E.x - fieldGrid->getNodeAt(i, j - 1).E.x) / (2 * fieldGrid->getDeltaY()));
 }
+
 }
