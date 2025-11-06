@@ -10,7 +10,7 @@ TEST(ParticleGrid, canCreatePrimitiveGrid)
 
 TEST(ParticleGrid, throwsForInvalidLocation)
 {
-	ParticleGrid particleGrid(2, 2, 1.0, 1.0, Vector3::Zero, 1);
+	ParticleGrid particleGrid(2, 2, 1.0, 1.0, Vector3::Zero, 0);
 
 	ASSERT_ANY_THROW(particleGrid.getCell(Vector3(2.0, 2.0, 2.0)));
 	ASSERT_ANY_THROW(particleGrid.getCell(Vector3(-1.0, 0.5, 0.0)));
