@@ -137,3 +137,34 @@ TEST(ParticleGrid, canTransferParticleToAnotherCell)
                         EXPECT_EQ(1, particleGrid.getParticlesInCell(i_r, j_r).size());
                     }
 }
+
+TEST(ParticleGrid, throwsWhenTransferringFromInvalidCellNoPadding)
+{
+    ParticleGrid particleGrid(4, 4, 1.0, 1.0, Vector3::Zero, 0);
+
+    ASSERT_ANY_THROW(particleGrid.particleCellTransfer(0, -1, 0, 0, 0));
+    ASSERT_ANY_THROW(particleGrid.particleCellTransfer(0, 0, -1, 0, 0));
+    ASSERT_ANY_THROW(particleGrid.particleCellTransfer(0, 3, 0, 0, 0));
+    ASSERT_ANY_THROW(particleGrid.particleCellTransfer(0, 0, 3, 0, 0));
+}
+
+TEST(ParticleGrid, throwsWhenTransferringFromInvalidCellPadding)
+{
+    ParticleGrid particleGrid(4, 4, 1.0, 1.0, Vector3::Zero, 1);
+
+    ASSERT_ANY_THROW(particleGrid.particleCellTransfer(0, -2, 0, 0, 0));
+    ASSERT_ANY_THROW(particleGrid.particleCellTransfer(0, 0, -2, 0, 0));
+    ASSERT_ANY_THROW(particleGrid.particleCellTransfer(0, 4, 0, 0, 0));
+    ASSERT_ANY_THROW(particleGrid.particleCellTransfer(0, 0, 4, 0, 0));
+}
+
+TEST(ParticleGrid, throwsWhenTransferringInvalidParticleID)
+{
+    ParticleGrid particleGrid(4, 4, 1.0, 1.0, Vector3::Zero, 1);
+
+    // Adding particle
+    ASSERT_NO_THROW(particleGrid.editParticlesInCell(0, 0).push_back(Particle(1, 1, Vector3::Zero, Vector3::Zero)));
+
+    ASSERT_ANY_THROW(particleGrid.particleCellTransfer(1, 0, 0, 1, 1));
+    ASSERT_ANY_THROW(particleGrid.particleCellTransfer(100, 0, 0, 1, 1));
+}
