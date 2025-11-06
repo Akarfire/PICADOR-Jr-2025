@@ -18,7 +18,7 @@ class ParticleGridData:
     
 
 # Main data
-particleSamples : list[list[ParticleData]] = []
+particleSamples : dict[list[ParticleData]] = dict()
 
 # Additional data
 particleGridData = ParticleGridData()
@@ -28,7 +28,6 @@ particleGridData = ParticleGridData()
 filePath = input("File Path: ")
 lines = open(filePath, "r").readlines()
 
-currentParticleID = 0
 for line in lines:
     
     line = line.strip()
@@ -63,22 +62,30 @@ for line in lines:
     
     # Parsing main data
     
+    # Iteration line (skipped)
     elif line.startswith("Iteration:"):
-        currentParticleID = 0
+        continue
+    
+    # Parsing particle data
+    elif " | " in line:
+        parts = line.split(" | ")
         
-    elif line.startswith("Location: "):
+        particleID = int(parts[0])
+        line = parts[1]
         
-        if len(particleSamples) <= currentParticleID:
-            particleSamples.append([])
-        
-        line = line.replace("Location: ", "")
-        parts = line.split(",")
-        x = float(parts[0])
-        y = float(parts[1])
-        
-        particleSamples[currentParticleID].append(ParticleData(x, y))
-        
-        currentParticleID += 1
+        if line.startswith("Location: "):
+            
+            # Ensure dict contains data for this particle ID
+            if not particleID in particleSamples:
+                particleSamples[particleID] = []
+            
+            line = line.replace("Location: ", "")
+            parts = line.split(",")
+            x = float(parts[0])
+            y = float(parts[1])
+            
+            particleSamples[particleID].append(ParticleData(x, y))
+            
         
 # for particleID in range(len(particleSamples)):
 #     print(f"Particle {particleID}:")
@@ -93,12 +100,12 @@ if particleGridData.enabled:
     
     gridXValues = [
         particleGridData.originX + i * particleGridData.deltaX
-        for i in range(particleGridData.resolutionX + 1)
+        for i in range(particleGridData.resolutionX)
     ]
     
     gridYValues = [
         particleGridData.originY + j * particleGridData.deltaY
-        for j in range(particleGridData.resolutionY + 1)
+        for j in range(particleGridData.resolutionY)
     ]
     
     for x in gridXValues:
@@ -108,13 +115,13 @@ if particleGridData.enabled:
         pyplot.axhline(y=y, color='lightgray', linestyle='--', linewidth=0.5)
 
 # Plotting the trajectories
-for particleID in range(len(particleSamples)):
+for particleID in particleSamples:
     
     xValues = [sample.x for sample in particleSamples[particleID]]
     yValues = [sample.y for sample in particleSamples[particleID]]
     
-    pyplot.plot(xValues, yValues, label=f"Particle {particleID}")
-    pyplot.scatter(xValues, yValues)
+    pyplot.plot(xValues, yValues, label=f"Particle {particleID}", linewidth=1)
+    pyplot.scatter(xValues, yValues, s=2)
 
 
 pyplot.title("Particle Trajectories")
@@ -122,4 +129,3 @@ pyplot.xlabel("X Position")
 pyplot.ylabel("Y Position")
 pyplot.legend()
 pyplot.show()
-input("Press Enter to Continue...")
