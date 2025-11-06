@@ -40,10 +40,12 @@ int main()
 
     // Adding single particle to the grid
     Particle testParticle(Constants::ElectronMass, Constants::ElectronCharge, Vector3::Zero, Vector3(PZero, 0, 0));
+    testParticle.trackingID = 1;
     particleGrid.editParticlesInCell(0, 0).push_back(testParticle);
 
-    // Particle testParticle_2(Constants::ElectronMass, -1 * Constants::ElectronCharge, Vector3::One, Vector3(PZero, 0, 0));
-    // particleGrid.editParticlesInCell(0, 0).push_back(testParticle_2);
+    Particle testParticle_2(Constants::ElectronMass, -1 * Constants::ElectronCharge, Vector3::One * 20, Vector3(PZero, 0, 0));
+    testParticle_2.trackingID = 2;
+    particleGrid.editParticlesInCell(0, 0).push_back(testParticle_2);
 
     // Initializing core
     PicadorJrCore core(&staticField, &particleGrid, timeStep, numInterations);
@@ -60,9 +62,9 @@ int main()
     dataSampler.sampleInterval = 1;
     dataSampler.sampleParticleLocations = true;
     dataSampler.sampleParticleVelocities = false;
-    dataSampler.sampleParticleCells = true;
+    dataSampler.sampleParticleCells = false;
     dataSampler.writeParticleGridParameters = true;
-    dataSampler.outputFileName = "./Particle.txt";
+    dataSampler.outputFileName = "./2_Particles.txt";
 
     core.insertModule(&dataSampler);
 
