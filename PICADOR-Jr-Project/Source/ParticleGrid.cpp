@@ -23,16 +23,24 @@ std::vector<Particle>& ParticleGrid::editParticlesInCell(GRID_INDEX i, GRID_INDE
 
 // Hands a particle from one cell over to another
 // Particle ID is the index of the particle in the owner cell
-int ParticleGrid::particleCellTransfer(size_t particleID, GRID_INDEX ownerCell_i, GRID_INDEX ownerCell_j, GRID_INDEX receiverCell_i, GRID_INDEX receiverCell_j)
+void ParticleGrid::particleCellTransfer(size_t particleID, GRID_INDEX ownerCell_i, GRID_INDEX ownerCell_j, GRID_INDEX receiverCell_i, GRID_INDEX receiverCell_j)
 {
-    if (ownerCell_i < 0 - (GRID_INDEX)padding || ownerCell_j < 0 - (GRID_INDEX)padding || ownerCell_i >= (GRID_INDEX)(resolutionX - 1 + padding) || ownerCell_j >= (GRID_INDEX)(resolutionY - 1 + padding)) return 1;
-    if (ownerCell_i == receiverCell_i && ownerCell_j == receiverCell_j) return 1;
+    // Error checking
+    if (ownerCell_i < 0 - (GRID_INDEX)padding || ownerCell_j < 0 - (GRID_INDEX)padding || ownerCell_i >= (GRID_INDEX)(resolutionX - 1 + padding) || ownerCell_j >= (GRID_INDEX)(resolutionY - 1 + padding))
+        throw(std::runtime_error("Invalid owner cell index!"));
 
-    // NOTE: We allow receiver cell to go out of bounds, to accomadate looping / particle removal
+    if (receiverCell_i < 0 - (GRID_INDEX)padding || receiverCell_j < 0 - (GRID_INDEX)padding || receiverCell_i >= (GRID_INDEX)(resolutionX - 1 + padding) || receiverCell_j >= (GRID_INDEX)(resolutionY - 1 + padding))
+        throw(std::runtime_error("Invalid receiver cell index!"));
+
+    // Handling self-transfer
+    if (ownerCell_i == receiverCell_i && ownerCell_j == receiverCell_j) return;
     
+    // Main logic
+
     size_t numParticlesInOwner = getParticlesInCell(ownerCell_i, ownerCell_j).size();
 
-    if (particleID < 0 || particleID >= numParticlesInOwner) return 1;
+    if (particleID < 0 || particleID >= numParticlesInOwner)
+        throw(std::runtime_error("Invalid particle ID for transfer!"));
 
     // Calculating cell indeces
     size_t owner_ID = recalculateCellIndex(ownerCell_i, ownerCell_j);
@@ -43,8 +51,6 @@ int ParticleGrid::particleCellTransfer(size_t particleID, GRID_INDEX ownerCell_i
 
     particlesInCells[owner_ID][particleID] = particlesInCells[owner_ID][numParticlesInOwner - 1];
     particlesInCells[owner_ID].pop_back();
-
-    return 0;
 }
 
 // Converts 2D cell coordinates into a 1D array index
