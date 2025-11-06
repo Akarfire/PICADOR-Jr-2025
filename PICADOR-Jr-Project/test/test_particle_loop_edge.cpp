@@ -7,7 +7,7 @@
 
 #include <gtest.h>
 
-TEST(ParticleLoopEdgeCondition, loopingWorksNominally)
+TEST(ParticleLoopEdgeCondition, loopingWorksNominallyForSingleParticle)
 {
     // Defining field
 
@@ -163,4 +163,170 @@ TEST(ParticleLoopEdgeCondition, loopingWorksNominally)
         ASSERT_EQ(1, particleGrid.getParticlesInCell(2, 0).size());
         EXPECT_EQ(Vector3(0, 2), particleGrid.getParticlesInCell(2, 0)[0].location);
     }
+}
+
+TEST(ParticleLoopEdgeCondition, loopingWorksNominallyForMultipleCells)
+{
+    // Defining field
+
+    FieldData staticFieldData;
+    staticFieldData.E = Vector3::Zero;
+    staticFieldData.B = Vector3::Zero;
+    staticFieldData.J = Vector3::Zero;
+
+    StaticField staticField(staticFieldData);
+
+    // Defining test particle
+
+    Particle testParticle(Constants::ElectronMass, Constants::ElectronCharge, Vector3::Zero, Vector3::Zero);
+
+    ParticleGrid particleGrid(4, 4, 1, 1, Vector3(-0.5, -0.5), 1);
+
+    // Filling particle grid edges with particles
+    for (int i = -1; i <= 3; i++)
+    {
+        testParticle.location = Vector3(-1, i);
+        particleGrid.editParticlesInCell(i, -1).push_back(testParticle);
+
+        testParticle.location = Vector3(3, i);
+        particleGrid.editParticlesInCell(i, 3).push_back(testParticle);
+    }
+    
+    for (int j = 0; j <= 2; j++)
+    {
+        testParticle.location = Vector3(j, -1);
+        particleGrid.editParticlesInCell(-1, j).push_back(testParticle);
+
+        testParticle.location = Vector3(j, 3);
+        particleGrid.editParticlesInCell(3, j).push_back(testParticle);
+    }
+
+    // Running
+    PicadorJrCore core(&staticField, &particleGrid, 1, 1);
+    ParticleLoopEdgeCondition loopEdgeCondition(&core);
+    core.insertModule(&loopEdgeCondition);
+    core.run();
+    
+    // Checking results
+
+    // All padding cells should be empty
+    for (int i = -1; i <= 3; i++)
+    {
+        EXPECT_EQ(0, particleGrid.getParticlesInCell(i, -1).size());
+        EXPECT_EQ(0, particleGrid.getParticlesInCell(i, 3).size());
+    }
+    
+    for (int j = 0; j <= 2; j++)
+    {
+        EXPECT_EQ(0, particleGrid.getParticlesInCell(-1, j).size());
+        EXPECT_EQ(0, particleGrid.getParticlesInCell(3, j).size());
+    }
+
+    // Checking main grid cells
+    for (int i = 0; i <= 2; i++)
+        for (int j = 0; j <= 2; j++)
+        {
+            // Checking number of particles in each cell
+
+            if ( (i == j && i != 1) || (i == 0 && j == 2) || (i == 2 && j == 0) )
+                EXPECT_EQ(3, particleGrid.getParticlesInCell(i, j).size());
+            
+            else if (!(i == 1 && j == 1))
+                EXPECT_EQ(1, particleGrid.getParticlesInCell(i, j).size());
+
+            else
+                EXPECT_EQ(0, particleGrid.getParticlesInCell(i, j).size());
+
+            // Checking particle locations
+            for (const auto& particle : particleGrid.getParticlesInCell(i, j))
+            {
+                EXPECT_DOUBLE_EQ(j, particle.location.x);
+                EXPECT_DOUBLE_EQ(i, particle.location.y);
+            }
+        }
+}
+
+TEST(ParticleLoopEdgeCondition, loopingWorksNominallyForMultipleCellsWithMultipleParticles)
+{
+    // Defining field
+
+    FieldData staticFieldData;
+    staticFieldData.E = Vector3::Zero;
+    staticFieldData.B = Vector3::Zero;
+    staticFieldData.J = Vector3::Zero;
+
+    StaticField staticField(staticFieldData);
+
+    // Defining test particle
+
+    Particle testParticle(Constants::ElectronMass, Constants::ElectronCharge, Vector3::Zero, Vector3::Zero);
+
+    ParticleGrid particleGrid(4, 4, 1, 1, Vector3(-0.5, -0.5), 1);
+
+    // Filling particle grid edges with particles
+    for (int i = -1; i <= 3; i++)
+    {
+        testParticle.location = Vector3(-1, i);
+        particleGrid.editParticlesInCell(i, -1).push_back(testParticle);
+         particleGrid.editParticlesInCell(i, -1).push_back(testParticle);
+
+        testParticle.location = Vector3(3, i);
+        particleGrid.editParticlesInCell(i, 3).push_back(testParticle);
+        particleGrid.editParticlesInCell(i, 3).push_back(testParticle);
+    }
+    
+    for (int j = 0; j <= 2; j++)
+    {
+        testParticle.location = Vector3(j, -1);
+        particleGrid.editParticlesInCell(-1, j).push_back(testParticle);
+        particleGrid.editParticlesInCell(-1, j).push_back(testParticle);
+
+        testParticle.location = Vector3(j, 3);
+        particleGrid.editParticlesInCell(3, j).push_back(testParticle);
+        particleGrid.editParticlesInCell(3, j).push_back(testParticle);
+    }
+
+    // Running
+    PicadorJrCore core(&staticField, &particleGrid, 1, 1);
+    ParticleLoopEdgeCondition loopEdgeCondition(&core);
+    core.insertModule(&loopEdgeCondition);
+    core.run();
+    
+    // Checking results
+
+    // All padding cells should be empty
+    for (int i = -1; i <= 3; i++)
+    {
+        EXPECT_EQ(0, particleGrid.getParticlesInCell(i, -1).size());
+        EXPECT_EQ(0, particleGrid.getParticlesInCell(i, 3).size());
+    }
+    
+    for (int j = 0; j <= 2; j++)
+    {
+        EXPECT_EQ(0, particleGrid.getParticlesInCell(-1, j).size());
+        EXPECT_EQ(0, particleGrid.getParticlesInCell(3, j).size());
+    }
+
+    // Checking main grid cells
+    for (int i = 0; i <= 2; i++)
+        for (int j = 0; j <= 2; j++)
+        {
+            // Checking number of particles in each cell
+
+            if ( (i == j && i != 1) || (i == 0 && j == 2) || (i == 2 && j == 0) )
+                EXPECT_EQ(6, particleGrid.getParticlesInCell(i, j).size());
+            
+            else if (!(i == 1 && j == 1))
+                EXPECT_EQ(2, particleGrid.getParticlesInCell(i, j).size());
+
+            else
+                EXPECT_EQ(0, particleGrid.getParticlesInCell(i, j).size());
+
+            // Checking particle locations
+            for (const auto& particle : particleGrid.getParticlesInCell(i, j))
+            {
+                EXPECT_DOUBLE_EQ(j, particle.location.x);
+                EXPECT_DOUBLE_EQ(i, particle.location.y);
+            }
+        }
 }
