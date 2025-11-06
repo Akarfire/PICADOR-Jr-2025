@@ -21,11 +21,11 @@ ModuleExecutionStatus DataSampler::onUpdate()
             ParticleGrid* particleGrid = core->getParticleGrid();
 
             if (sampleParticleLocations)
-                sampledData.particleLocations.push_back(std::vector<Vector3>());
+                sampledData.particleLocations.push_back(std::vector<std::pair<unsigned short, Vector3>>());
             if (sampleParticleVelocities)
-                sampledData.particleVelocities.push_back(std::vector<Vector3>());
+                sampledData.particleVelocities.push_back(std::vector<std::pair<unsigned short, Vector3>>());
             if (sampleParticleCells)
-                sampledData.particleCells.push_back(std::vector<std::pair<GRID_INDEX, GRID_INDEX>>());
+                sampledData.particleCells.push_back(std::vector<std::pair<unsigned short, std::pair<GRID_INDEX, GRID_INDEX>>>());
 
 
             for (GRID_INDEX i = 0; i < particleGrid->getResolutionY() - 1; i++)
@@ -33,11 +33,11 @@ ModuleExecutionStatus DataSampler::onUpdate()
                     for (const Particle& particle : particleGrid->getParticlesInCell(i, j))
                     {
                         if (sampleParticleLocations)
-                            sampledData.particleLocations[sampledData.size].push_back(particle.location);
+                            sampledData.particleLocations[sampledData.size].push_back({particle.trackingID, particle.location});
                         if (sampleParticleVelocities)
-                            sampledData.particleVelocities[sampledData.size].push_back(particle.getVelocity());
+                            sampledData.particleVelocities[sampledData.size].push_back({particle.trackingID, particle.getVelocity()});
                         if (sampleParticleCells)
-                            sampledData.particleCells[sampledData.size].push_back({ i, j });
+                            sampledData.particleCells[sampledData.size].push_back({particle.trackingID, { i, j }});
                     }
         }
 
@@ -77,18 +77,18 @@ ModuleExecutionStatus DataSampler::onEnd()
             outFile << "Iteration: " << sampledData.iterations[i] << "\n";
             if (sampleParticleLocations)
             {
-                for (const Vector3& loc : sampledData.particleLocations[i])
-                    outFile << "Location: " << loc.x << ", " << loc.y << ", " << loc.z << "\n";
+                for (const auto& entry : sampledData.particleLocations[i])
+                    outFile << entry.first << " | Location: " << entry.second.x << ", " <<  entry.second.y << ", " <<  entry.second.z << "\n";
             }
             if (sampleParticleVelocities)
             {
-                for (const Vector3& vel : sampledData.particleVelocities[i])
-                    outFile << "Velocity: " << vel.x << ", " << vel.y << ", " << vel.z << "\n";
+                for (const auto& entry : sampledData.particleVelocities[i])
+                    outFile << entry.first << " | Velocity: " << entry.second.x << ", " << entry.second.y << ", " << entry.second.z << "\n";
             }
             if (sampleParticleCells)
             {
-                for (const auto& cell : sampledData.particleCells[i])
-                    outFile << "Cell: " << cell.first << ", " << cell.second << "\n";
+                for (const auto& entry : sampledData.particleCells[i])
+                    outFile << entry.first << " | Cell: " << entry.second.first << ", " << entry.second.second << "\n";
             }
             outFile << "\n";
         }

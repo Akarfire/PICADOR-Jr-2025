@@ -21,9 +21,9 @@ public:
         std::vector<size_t> iterations;
 
         // Particle data
-        std::vector<std::vector<Vector3>> particleLocations;
-        std::vector<std::vector<Vector3>> particleVelocities;
-        std::vector<std::vector<std::pair<GRID_INDEX, GRID_INDEX>>> particleCells;
+        std::vector<std::vector<std::pair<unsigned short, Vector3>>> particleLocations;
+        std::vector<std::vector<std::pair<unsigned short, Vector3>>> particleVelocities;
+        std::vector<std::vector<std::pair<unsigned short, std::pair<GRID_INDEX, GRID_INDEX>>>> particleCells;
     };
 
 protected:
@@ -60,7 +60,7 @@ public:
     bool sampleParticleVelocities = true;
     bool sampleParticleCells = false;
 
-    
+
     // Additional data
 
     // Grid data sampling options
