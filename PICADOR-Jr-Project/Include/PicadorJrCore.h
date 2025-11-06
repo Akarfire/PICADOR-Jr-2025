@@ -48,4 +48,6 @@ public:
 	ParticleGrid* getParticleGrid() { return particleGrid; }
 
 	double getTimeDelta() const { return timeDelta; }
+
+	int getCurrentIteration() const { return currentIteration; }
 };
