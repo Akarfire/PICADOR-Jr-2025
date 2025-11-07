@@ -9,14 +9,16 @@ FieldGrid::FieldGrid(size_t resolutionX_, size_t resolutionY_, double deltaX_, d
 // Returns an editable reference to the specified field node
 FieldData& FieldGrid::getNodeAt(GRID_INDEX i, GRID_INDEX j) 
 {
-	if (i < 0 || i >= (GRID_INDEX)resolutionX || j < 0 || j >= (GRID_INDEX)resolutionY) throw(std::runtime_error("Invalid field node index!"));
-	return this->nodeArray[(i + padding) * resolutionX + (j + padding)];
+	if (i <  -(GRID_INDEX)padding || i >= (GRID_INDEX)resolutionX + (GRID_INDEX)padding || j < -(GRID_INDEX)padding || j >= (GRID_INDEX)resolutionY + (GRID_INDEX)padding)
+		throw(std::runtime_error("Invalid field node index!"));
+	return this->nodeArray[(i + (GRID_INDEX)padding) * resolutionX + (j + (GRID_INDEX)padding)];
 }
 
 const FieldData& FieldGrid::getNodeAt(GRID_INDEX i, GRID_INDEX j) const 
 {
-	if (i < 0 || i >= (GRID_INDEX)resolutionX || j < 0 || j >= (GRID_INDEX)resolutionY) throw(std::runtime_error("Invalid field node index!"));
-	return this->nodeArray[(i + padding) * resolutionX + (j + padding)];
+	if (i < -(GRID_INDEX)padding || i >= (GRID_INDEX)resolutionX + (GRID_INDEX)padding || j < -(GRID_INDEX)padding || j >= (GRID_INDEX)resolutionY + (GRID_INDEX)padding) 
+		throw(std::runtime_error("Invalid field node index!"));
+	return this->nodeArray[(i + (GRID_INDEX)padding) * resolutionX + (j + (GRID_INDEX)padding)];
 }
 
 // Returns interpolated values of fields in the given point
@@ -40,3 +42,4 @@ FieldData FieldGrid::getFieldsAt(const Vector3& location) const
 
 	return interpolated;
 }
+
