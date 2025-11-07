@@ -15,15 +15,18 @@ ModuleExecutionStatus FieldSolver::onUpdate()
         for (int j = 0; j < fieldGrid->getResolutionY(); j++) updateE(i, j);
     }
 
+    edgeCondition.updateEEdge(this->fieldGrid);
+
     for (int i = 0; i < fieldGrid->getResolutionX(); i++) {
         for (int j = 0; j < fieldGrid->getResolutionY(); j++) updateB(i, j);
     }
+
+    edgeCondition.updateBEdge(this->fieldGrid);
+
     return ModuleExecutionStatus::Success;
 }
 
-
-
-void FieldSolver::updateE(int i, int j) 
+void FieldSolver::updateE(GRID_INDEX i, GRID_INDEX j) 
 {
     fieldGrid->getNodeAt(i, j).E.x = fieldGrid->getNodeAt(i, j).E.x - 4 * Constants::PI * core->getTimeDelta() * fieldGrid->getNodeAt(i, j).J.x
         + Constants::SpeedOfLight * core->getTimeDelta() * (fieldGrid->getNodeAt(i, j + 1).B.z - fieldGrid->getNodeAt(i, j - 1).B.z) / (2 * fieldGrid->getDeltaY());
@@ -36,7 +39,7 @@ void FieldSolver::updateE(int i, int j)
             - (fieldGrid->getNodeAt(i, j + 1).B.x - fieldGrid->getNodeAt(i, j - 1).B.x) / (2 * fieldGrid->getDeltaY()));
 }
 
-void FieldSolver::updateB(int i, int j) 
+void FieldSolver::updateB(GRID_INDEX i, GRID_INDEX j) 
 {
     fieldGrid->getNodeAt(i, j).B.x = fieldGrid->getNodeAt(i, j).B.x 
         - Constants::SpeedOfLight * core->getTimeDelta() * (fieldGrid->getNodeAt(i, j + 1).E.z - fieldGrid->getNodeAt(i, j - 1).E.z) / (2 * fieldGrid->getDeltaY());
@@ -49,4 +52,3 @@ void FieldSolver::updateB(int i, int j)
             - (fieldGrid->getNodeAt(i, j + 1).E.x - fieldGrid->getNodeAt(i, j - 1).E.x) / (2 * fieldGrid->getDeltaY()));
 }
 
-}

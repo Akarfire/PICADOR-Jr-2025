@@ -3,11 +3,14 @@
 #include "Module.h"
 #include "FieldGrid.h"
 #include "PicadorJrCore.h"
+#include "FieldLoopEdgeCondition.h"
 
 class CurrentDepositor : public Module
 {
     FieldGrid* fieldGrid;
     ParticleGrid* particleGrid;
+
+    FieldLoopEdgeCondition edgeCondition; //тут вопрос, что выгоднее — хранить класс или создавать его каждый раз при обновлении
 
 public:
     CurrentDepositor(PicadorJrCore* core_): Module(core_) {}
@@ -22,5 +25,5 @@ public:
     virtual ModuleExecutionStatus onEnd() override { return ModuleExecutionStatus::Success; }
 
     //deposition of particles in one cell
-    void deposite(int i, int j);
+    void deposite(GRID_INDEX i, GRID_INDEX j);
 };

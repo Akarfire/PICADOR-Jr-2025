@@ -19,13 +19,14 @@ ModuleExecutionStatus CurrentDepositor::onUpdate()
                 deposite(i, j);
             }
         }
+        this->edgeCondition.updateJEdge(this->fieldGrid);
         return ModuleExecutionStatus::Success;
     }
 
     return ModuleExecutionStatus::Error;
 }
 
-void CurrentDepositor::deposite(int i, int j) {
+void CurrentDepositor::deposite(GRID_INDEX i, GRID_INDEX j) {
     std::vector<Particle> ensemble = this->particleGrid->getParticlesInCell(i, j);
 
     Vector3 delta(fieldGrid->getDeltaX(), fieldGrid->getDeltaY(), 1.0);
