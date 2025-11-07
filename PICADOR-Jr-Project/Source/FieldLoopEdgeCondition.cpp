@@ -9,36 +9,94 @@ std::pair<GRID_INDEX, GRID_INDEX> FieldLoopEdgeCondition::calculateLoopIndices(F
     return loopIndices;
 }
 
-ModuleExecutionStatus FieldLoopEdgeCondition::onUpdate()
-{
-    for (GRID_INDEX i = -this->fieldGrid->getPadding(); i < 0; i++) {
-        for (GRID_INDEX j = -this->fieldGrid->getPadding(); j < this->fieldGrid->getResolutionY() + this->fieldGrid->getPadding(); j++) {
-            std::pair<GRID_INDEX, GRID_INDEX> loopIndices = recallculateCellIndex(i, j);
-            this->fieldGrid->getNodeAt(i, j) = this->fieldGrid->getNodeAt(loopIndices.first, loopIndices.second);
+void FieldLoopEdgeCondition::updateEEdge(FieldGrid* fieldGrid) {
+    for (GRID_INDEX i = fieldGrid->getPadding(); i < 0; i++) {
+        for (GRID_INDEX j = fieldGrid->getPadding(); j < fieldGrid->getResolutionY() + fieldGrid->getPadding(); j++) {
+            std::pair<GRID_INDEX, GRID_INDEX> loopIndices = calculateLoopIndices(fieldGrid, i, j);
+            fieldGrid->getNodeAt(i, j).E = fieldGrid->getNodeAt(loopIndices.first, loopIndices.second).E;
         }
     }
 
-    for (GRID_INDEX i = this->fieldGrid->getResolutionX(); i < this->fieldGrid->getResolutionX() + this->fieldGrid->getPadding(); i++) {
-        for (GRID_INDEX j = -this->fieldGrid->getPadding(); j < this->fieldGrid->getResolutionY() + this->fieldGrid->getPadding(); j++) {
-            std::pair<GRID_INDEX, GRID_INDEX> loopIndices = recallculateCellIndex(i, j);
-            this->fieldGrid->getNodeAt(i, j) = this->fieldGrid->getNodeAt(loopIndices.first, loopIndices.second);
+    for (GRID_INDEX i = fieldGrid->getResolutionX(); i < fieldGrid->getResolutionX() + fieldGrid->getPadding(); i++) {
+        for (GRID_INDEX j = -fieldGrid->getPadding(); j < fieldGrid->getResolutionY() + fieldGrid->getPadding(); j++) {
+            std::pair<GRID_INDEX, GRID_INDEX> loopIndices = calculateLoopIndices(fieldGrid, i, j);
+            fieldGrid->getNodeAt(i, j).E = fieldGrid->getNodeAt(loopIndices.first, loopIndices.second).E;
         }
     }
 
-    for (GRID_INDEX j = -this->fieldGrid->getPadding(); j < 0; j++) {
-        for (GRID_INDEX i = 0; i < this->fieldGrid->getResolutionX(); i++) {
-            std::pair<GRID_INDEX, GRID_INDEX> loopIndices = recallculateCellIndex(i, j);
-            this->fieldGrid->getNodeAt(i, j) = this->fieldGrid->getNodeAt(loopIndices.first, loopIndices.second);
+    for (GRID_INDEX j = -fieldGrid->getPadding(); j < 0; j++) {
+        for (GRID_INDEX i = 0; i < fieldGrid->getResolutionX(); i++) {
+            std::pair<GRID_INDEX, GRID_INDEX> loopIndices = calculateLoopIndices(fieldGrid, i, j);
+            fieldGrid->getNodeAt(i, j).E = fieldGrid->getNodeAt(loopIndices.first, loopIndices.second).E;
         }
     }
 
-    for (GRID_INDEX j = this->fieldGrid->getResolutionY(); j < this->fieldGrid->getResolutionY() + this->fieldGrid->getPadding(); j++) {
-        for (GRID_INDEX i = 0; i < this->fieldGrid->getResolutionX(); i++) {
-            std::pair<GRID_INDEX, GRID_INDEX> loopIndices = recallculateCellIndex(i, j);
-            this->fieldGrid->getNodeAt(i, j) = this->fieldGrid->getNodeAt(loopIndices.first, loopIndices.second);
+    for (GRID_INDEX j = fieldGrid->getResolutionY(); j < fieldGrid->getResolutionY() + fieldGrid->getPadding(); j++) {
+        for (GRID_INDEX i = 0; i < fieldGrid->getResolutionX(); i++) {
+            std::pair<GRID_INDEX, GRID_INDEX> loopIndices = calculateLoopIndices(fieldGrid, i, j);
+            fieldGrid->getNodeAt(i, j).E = fieldGrid->getNodeAt(loopIndices.first, loopIndices.second).E;
         }
     }
-
-    return ModuleExecutionStatus::Success;
 }
+
+void FieldLoopEdgeCondition::updateBEdge(FieldGrid* fieldGrid) {
+    for (GRID_INDEX i = fieldGrid->getPadding(); i < 0; i++) {
+        for (GRID_INDEX j = fieldGrid->getPadding(); j < fieldGrid->getResolutionY() + fieldGrid->getPadding(); j++) {
+            std::pair<GRID_INDEX, GRID_INDEX> loopIndices = calculateLoopIndices(fieldGrid, i, j);
+            fieldGrid->getNodeAt(i, j).B = fieldGrid->getNodeAt(loopIndices.first, loopIndices.second).B;
+        }
+    }
+
+    for (GRID_INDEX i = fieldGrid->getResolutionX(); i < fieldGrid->getResolutionX() + fieldGrid->getPadding(); i++) {
+        for (GRID_INDEX j = -fieldGrid->getPadding(); j < fieldGrid->getResolutionY() + fieldGrid->getPadding(); j++) {
+            std::pair<GRID_INDEX, GRID_INDEX> loopIndices = calculateLoopIndices(fieldGrid, i, j);
+            fieldGrid->getNodeAt(i, j).B = fieldGrid->getNodeAt(loopIndices.first, loopIndices.second).B;
+        }
+    }
+
+    for (GRID_INDEX j = -fieldGrid->getPadding(); j < 0; j++) {
+        for (GRID_INDEX i = 0; i < fieldGrid->getResolutionX(); i++) {
+            std::pair<GRID_INDEX, GRID_INDEX> loopIndices = calculateLoopIndices(fieldGrid, i, j);
+            fieldGrid->getNodeAt(i, j).B = fieldGrid->getNodeAt(loopIndices.first, loopIndices.second).B;
+        }
+    }
+
+    for (GRID_INDEX j = fieldGrid->getResolutionY(); j < fieldGrid->getResolutionY() + fieldGrid->getPadding(); j++) {
+        for (GRID_INDEX i = 0; i < fieldGrid->getResolutionX(); i++) {
+            std::pair<GRID_INDEX, GRID_INDEX> loopIndices = calculateLoopIndices(fieldGrid, i, j);
+            fieldGrid->getNodeAt(i, j).B = fieldGrid->getNodeAt(loopIndices.first, loopIndices.second).B;
+        }
+    }
+}
+
+void FieldLoopEdgeCondition::updateJEdge(FieldGrid* fieldGrid) {
+    for (GRID_INDEX i = fieldGrid->getPadding(); i < 0; i++) {
+        for (GRID_INDEX j = fieldGrid->getPadding(); j < fieldGrid->getResolutionY() + fieldGrid->getPadding(); j++) {
+            std::pair<GRID_INDEX, GRID_INDEX> loopIndices = calculateLoopIndices(fieldGrid, i, j);
+            fieldGrid->getNodeAt(i, j).J = fieldGrid->getNodeAt(loopIndices.first, loopIndices.second).J;
+        }
+    }
+
+    for (GRID_INDEX i = fieldGrid->getResolutionX(); i < fieldGrid->getResolutionX() + fieldGrid->getPadding(); i++) {
+        for (GRID_INDEX j = -fieldGrid->getPadding(); j < fieldGrid->getResolutionY() + fieldGrid->getPadding(); j++) {
+            std::pair<GRID_INDEX, GRID_INDEX> loopIndices = calculateLoopIndices(fieldGrid, i, j);
+            fieldGrid->getNodeAt(i, j).J = fieldGrid->getNodeAt(loopIndices.first, loopIndices.second).J;
+        }
+    }
+
+    for (GRID_INDEX j = -fieldGrid->getPadding(); j < 0; j++) {
+        for (GRID_INDEX i = 0; i < fieldGrid->getResolutionX(); i++) {
+            std::pair<GRID_INDEX, GRID_INDEX> loopIndices = calculateLoopIndices(fieldGrid, i, j);
+            fieldGrid->getNodeAt(i, j).J = fieldGrid->getNodeAt(loopIndices.first, loopIndices.second).J;
+        }
+    }
+
+    for (GRID_INDEX j = fieldGrid->getResolutionY(); j < fieldGrid->getResolutionY() + fieldGrid->getPadding(); j++) {
+        for (GRID_INDEX i = 0; i < fieldGrid->getResolutionX(); i++) {
+            std::pair<GRID_INDEX, GRID_INDEX> loopIndices = calculateLoopIndices(fieldGrid, i, j);
+            fieldGrid->getNodeAt(i, j).J = fieldGrid->getNodeAt(loopIndices.first, loopIndices.second).J;
+        }
+    }
+}
+
 

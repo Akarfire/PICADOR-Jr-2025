@@ -6,7 +6,14 @@
 
 class  FieldLoopEdgeCondition
 {
+private:
+    std::pair<GRID_INDEX, GRID_INDEX> calculateLoopIndices(FieldGrid* fieldGrid, GRID_INDEX i, GRID_INDEX j);
+    
 public:
+    
+    void updateEEdge(FieldGrid* fieldGrid);
 
-    std::pair<GRID_INDEX, GRID_INDEX> calculateLoopIndices(GRID_INDEX i, GRID_INDEX j);
+    void updateBEdge(FieldGrid* fieldGrid);
+
+    void updateJEdge(FieldGrid* fieldGrid);
 };
