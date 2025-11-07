@@ -3,6 +3,8 @@
 #include "PicadorJrCore.h"
 #include "Constants.h"
 
+#include <iostream>
+
 // Calculates new particle velocity based on the provided field value, using Boris's Method
 Vector3 ParticleSolver::CalculateNewParticleImpulse(const Particle& particle, const FieldData& field, double timeDelta)
 {
@@ -50,8 +52,8 @@ ModuleExecutionStatus ParticleSolver::onUpdate()
 
                 Vector3 newVelocity = particles[p].getVelocity();
 
-                // if (newVelocity.sizeSquared() > Constants::SpeedOfLight * Constants::SpeedOfLight)
-                //     throw(std::runtime_error("Exceeded speed of light!"));
+                if (newVelocity.sizeSquared() > Constants::SpeedOfLight * Constants::SpeedOfLight)
+                    throw(std::runtime_error("Exceeded speed of light!"));
 
                 // Updating particle location and velocity
                 particles[p].location = (particles[p].location + newVelocity * core->getTimeDelta()) * Vector3::VectorMaskXY;
@@ -84,6 +86,9 @@ ModuleExecutionStatus ParticleSolver::onUpdate()
                     std::pair<GRID_INDEX, GRID_INDEX> newCell = particleGrid->getCell(particles[p].location);
 
                     particleGrid->particleCellTransfer(p, cell_i, cell_j, newCell.first, newCell.second);
+
+                    if (abs((int)(cell_i - newCell.first)) > 1 || abs((int)(cell_j - newCell.second)) > 1)
+                        std::cout << "Long jump detected: (" << cell_i << ", " << cell_j << ") -> " << "(" << newCell.first << ", " << newCell.second << ")" << std::endl;
                 }
         }
 
