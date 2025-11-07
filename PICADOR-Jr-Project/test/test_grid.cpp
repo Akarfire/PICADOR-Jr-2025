@@ -58,7 +58,7 @@ TEST(FieldGrid, getCellReturnsCorrectCellForTheResolution)
 
 TEST(FieldGrid, getNodeAtThrowsForIncorrectIndices)
 {
-	FieldGrid field(3, 3, 1.0, 1.0, Vector3::One, 1);
+	FieldGrid field(3, 3, 1.0, 1.0, Vector3::One, 0);
 
 	ASSERT_ANY_THROW(field.getNodeAt(-1, -1));
 	ASSERT_ANY_THROW(field.getNodeAt(3, 3));
