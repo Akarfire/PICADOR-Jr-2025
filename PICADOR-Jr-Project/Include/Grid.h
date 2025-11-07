@@ -59,6 +59,4 @@ public:
     double getDeltaY() const { return deltaY; }
 
     const Vector3& getOrigin() const { return origin; }
-
-    size_t getPadding() const { return padding; }
 };
