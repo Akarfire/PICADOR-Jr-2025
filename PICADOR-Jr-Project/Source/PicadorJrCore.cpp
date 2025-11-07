@@ -5,13 +5,13 @@
 #include <stdexcept>
 
 // Initializes modules and loads data
-PicadorJrCore::PicadorJrCore(FieldContainer* fieldContainer_, ParticleGrid* particleGrid_, double timeStep_, double timeDomain_)
+PicadorJrCore::PicadorJrCore(FieldContainer* fieldContainer_, ParticleGrid* particleGrid_, double timeStep_, int numIterations_)
 {
     fieldContainer = fieldContainer_;
     particleGrid = particleGrid_;
     
     timeDelta = timeStep_;
-    timeDomainBound = timeDomain_;
+    numInterations = numIterations_;
 
     // TO DO: Loading config and initial data from file
 }
@@ -45,33 +45,35 @@ int PicadorJrCore::run()
 
         // Remove module from executing, if it has returned an error
         if (status == ModuleExecutionStatus::Error)
-            modules.erase(modules.begin() + i);
+            modules[i]->SetEnabled(false);
     }
 
-    currentTime = 0;
+    currentIteration = 0;
 
     // Main simulation loop
-    while (currentTime < timeDomainBound)
+    while (currentIteration < numInterations)
     {
         // Running updates on modules
         for (size_t i = 0; i < modules.size(); i++)
         {
-            ModuleExecutionStatus status = modules[i]->onUpdate();
+            if (modules[i]->IsEnabled())
+            {
+                ModuleExecutionStatus status = modules[i]->onUpdate();
 
-            // Remove module from executing, if it has returned an error
-            if (status == ModuleExecutionStatus::Error)
-                modules.erase(modules.begin() + i);
+                // Remove module from executing, if it has returned an error
+                if (status == ModuleExecutionStatus::Error)
+                    modules[i]->SetEnabled(false);
+            }
         }
 
-        currentTime += timeDelta;
+        currentIteration++;
     }
 
     // Running onEndRun on modules
     for (size_t i = 0; i < modules.size(); i++)
     {
-        ModuleExecutionStatus status = modules[i]->onEnd();
-        
-        //if (status == ModuleExecutionStatus::Error)
+        if (modules[i]->IsEnabled())
+            ModuleExecutionStatus status = modules[i]->onEnd();
     }
 
     return 0;

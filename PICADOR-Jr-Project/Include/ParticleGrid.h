@@ -22,5 +22,5 @@ public:
 	// Hands a particle from one cell over to another
 	// Particle ID is the index of the particle in the owner cell
 	// Returns 0 if successful, 1 - if failed
-	int particleCellTransfer(size_t particleID, GRID_INDEX ownerCell_i, GRID_INDEX ownerCell_j, GRID_INDEX receiverCell_i, GRID_INDEX receiverCell_j);
+	void particleCellTransfer(size_t particleID, GRID_INDEX ownerCell_i, GRID_INDEX ownerCell_j, GRID_INDEX receiverCell_i, GRID_INDEX receiverCell_j);
 };
