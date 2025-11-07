@@ -1,0 +1,4407 @@
+Particle Grid Parameters:
+Resolution X: 9
+Resolution Y: 9
+Delta X: 11.9917
+Delta Y: 11.9917
+Origin: -53.9626, -53.9626, 0
+
+Iteration: 0
+1 | Location: 0.000450859, -0.000149122, 0
+2 | Location: 11.9924, 0.000149115, 0
+
+Iteration: 1
+1 | Location: 0.000752597, -0.000447369, 0
+2 | Location: 11.9933, 0.000447332, 0
+
+Iteration: 2
+1 | Location: 0.000905211, -0.000894736, 0
+2 | Location: 11.9944, 0.000894632, 0
+
+Iteration: 3
+1 | Location: 0.000908703, -0.00149121, 0
+2 | Location: 11.9956, 0.00149099, 0
+
+Iteration: 4
+1 | Location: 0.000763079, -0.00223679, 0
+2 | Location: 11.9969, 0.00223638, 0
+
+Iteration: 5
+1 | Location: 0.000468353, -0.00313144, 0
+2 | Location: 11.9984, 0.00313077, 0
+
+Iteration: 6
+1 | Location: 2.45435e-05, -0.00417514, 0
+2 | Location: 12.0001, 0.00417411, 0
+
+Iteration: 7
+1 | Location: -0.000568327, -0.00536787, 0
+2 | Location: 12.0019, 0.00536635, 0
+
+Iteration: 8
+1 | Location: -0.00131023, -0.00670957, 0
+2 | Location: 12.0038, 0.00670746, 0
+
+Iteration: 9
+1 | Location: -0.00220112, -0.00820022, 0
+2 | Location: 12.0059, 0.00819736, 0
+
+Iteration: 10
+1 | Location: -0.00324098, -0.00983975, 0
+2 | Location: 12.0081, 0.009836, 0
+
+Iteration: 11
+1 | Location: -0.00442974, -0.0116281, 0
+2 | Location: 12.0105, 0.0116233, 0
+
+Iteration: 12
+1 | Location: -0.00576736, -0.0135653, 0
+2 | Location: 12.0131, 0.0135592, 0
+
+Iteration: 13
+1 | Location: -0.00725378, -0.0156512, 0
+2 | Location: 12.0157, 0.0156436, 0
+
+Iteration: 14
+1 | Location: -0.00888894, -0.0178857, 0
+2 | Location: 12.0186, 0.0178765, 0
+
+Iteration: 15
+1 | Location: -0.0106728, -0.0202688, 0
+2 | Location: 12.0215, 0.0202577, 0
+
+Iteration: 16
+1 | Location: -0.0126052, -0.0228004, 0
+2 | Location: 12.0247, 0.0227871, 0
+
+Iteration: 17
+1 | Location: -0.0146861, -0.0254803, 0
+2 | Location: 12.028, 0.0254647, 0
+
+Iteration: 18
+1 | Location: -0.0169155, -0.0283086, 0
+2 | Location: 12.0314, 0.0282904, 0
+
+Iteration: 19
+1 | Location: -0.0192933, -0.0312851, 0
+2 | Location: 12.0349, 0.0312639, 0
+
+Iteration: 20
+1 | Location: -0.0218192, -0.0344098, 0
+2 | Location: 12.0387, 0.0343853, 0
+
+Iteration: 21
+1 | Location: -0.0244934, -0.0376824, 0
+2 | Location: 12.0425, 0.0376544, 0
+
+Iteration: 22
+1 | Location: -0.0273155, -0.0411029, 0
+2 | Location: 12.0466, 0.041071, 0
+
+Iteration: 23
+1 | Location: -0.0302856, -0.0446712, 0
+2 | Location: 12.0507, 0.0446351, 0
+
+Iteration: 24
+1 | Location: -0.0334036, -0.0483872, 0
+2 | Location: 12.055, 0.0483465, 0
+
+Iteration: 25
+1 | Location: -0.0366692, -0.0522507, 0
+2 | Location: 12.0595, 0.052205, 0
+
+Iteration: 26
+1 | Location: -0.0400824, -0.0562615, 0
+2 | Location: 12.0641, 0.0562105, 0
+
+Iteration: 27
+1 | Location: -0.043643, -0.0604197, 0
+2 | Location: 12.0688, 0.0603629, 0
+
+Iteration: 28
+1 | Location: -0.0473509, -0.0647249, 0
+2 | Location: 12.0737, 0.064662, 0
+
+Iteration: 29
+1 | Location: -0.051206, -0.0691771, 0
+2 | Location: 12.0788, 0.0691076, 0
+
+Iteration: 30
+1 | Location: -0.0552081, -0.073776, 0
+2 | Location: 12.084, 0.0736996, 0
+
+Iteration: 31
+1 | Location: -0.059357, -0.0785217, 0
+2 | Location: 12.0893, 0.0784377, 0
+
+Iteration: 32
+1 | Location: -0.0636527, -0.0834138, 0
+2 | Location: 12.0948, 0.0833219, 0
+
+Iteration: 33
+1 | Location: -0.0680948, -0.0884522, 0
+2 | Location: 12.1004, 0.0883519, 0
+
+Iteration: 34
+1 | Location: -0.0726834, -0.0936367, 0
+2 | Location: 12.1062, 0.0935276, 0
+
+Iteration: 35
+1 | Location: -0.0774181, -0.0989672, 0
+2 | Location: 12.1121, 0.0988487, 0
+
+Iteration: 36
+1 | Location: -0.0822989, -0.104443, 0
+2 | Location: 12.1181, 0.104315, 0
+
+Iteration: 37
+1 | Location: -0.0873255, -0.110065, 0
+2 | Location: 12.1243, 0.109926, 0
+
+Iteration: 38
+1 | Location: -0.0924977, -0.115832, 0
+2 | Location: 12.1307, 0.115683, 0
+
+Iteration: 39
+1 | Location: -0.0978154, -0.121745, 0
+2 | Location: 12.1372, 0.121583, 0
+
+Iteration: 40
+1 | Location: -0.103278, -0.127802, 0
+2 | Location: 12.1438, 0.127629, 0
+
+Iteration: 41
+1 | Location: -0.108886, -0.134004, 0
+2 | Location: 12.1506, 0.133818, 0
+
+Iteration: 42
+1 | Location: -0.114639, -0.140351, 0
+2 | Location: 12.1575, 0.140152, 0
+
+Iteration: 43
+1 | Location: -0.120537, -0.146842, 0
+2 | Location: 12.1646, 0.146629, 0
+
+Iteration: 44
+1 | Location: -0.126579, -0.153477, 0
+2 | Location: 12.1718, 0.153249, 0
+
+Iteration: 45
+1 | Location: -0.132765, -0.160256, 0
+2 | Location: 12.1792, 0.160013, 0
+
+Iteration: 46
+1 | Location: -0.139095, -0.167179, 0
+2 | Location: 12.1867, 0.16692, 0
+
+Iteration: 47
+1 | Location: -0.145568, -0.174245, 0
+2 | Location: 12.1943, 0.17397, 0
+
+Iteration: 48
+1 | Location: -0.152186, -0.181454, 0
+2 | Location: 12.2021, 0.181162, 0
+
+Iteration: 49
+1 | Location: -0.158946, -0.188806, 0
+2 | Location: 12.21, 0.188497, 0
+
+Iteration: 50
+1 | Location: -0.16585, -0.196301, 0
+2 | Location: 12.2181, 0.195973, 0
+
+Iteration: 51
+1 | Location: -0.172896, -0.203938, 0
+2 | Location: 12.2263, 0.203591, 0
+
+Iteration: 52
+1 | Location: -0.180085, -0.211718, 0
+2 | Location: 12.2346, 0.211351, 0
+
+Iteration: 53
+1 | Location: -0.187416, -0.219639, 0
+2 | Location: 12.2431, 0.219252, 0
+
+Iteration: 54
+1 | Location: -0.194889, -0.227702, 0
+2 | Location: 12.2518, 0.227293, 0
+
+Iteration: 55
+1 | Location: -0.202504, -0.235906, 0
+2 | Location: 12.2605, 0.235476, 0
+
+Iteration: 56
+1 | Location: -0.21026, -0.244252, 0
+2 | Location: 12.2694, 0.243798, 0
+
+Iteration: 57
+1 | Location: -0.218158, -0.252738, 0
+2 | Location: 12.2785, 0.252261, 0
+
+Iteration: 58
+1 | Location: -0.226196, -0.261365, 0
+2 | Location: 12.2877, 0.260863, 0
+
+Iteration: 59
+1 | Location: -0.234375, -0.270132, 0
+2 | Location: 12.297, 0.269605, 0
+
+Iteration: 60
+1 | Location: -0.242695, -0.279038, 0
+2 | Location: 12.3065, 0.278486, 0
+
+Iteration: 61
+1 | Location: -0.251154, -0.288085, 0
+2 | Location: 12.3161, 0.287506, 0
+
+Iteration: 62
+1 | Location: -0.259753, -0.297271, 0
+2 | Location: 12.3258, 0.296664, 0
+
+Iteration: 63
+1 | Location: -0.268492, -0.306595, 0
+2 | Location: 12.3357, 0.305961, 0
+
+Iteration: 64
+1 | Location: -0.27737, -0.316059, 0
+2 | Location: 12.3457, 0.315396, 0
+
+Iteration: 65
+1 | Location: -0.286386, -0.325661, 0
+2 | Location: 12.3559, 0.324968, 0
+
+Iteration: 66
+1 | Location: -0.295541, -0.335401, 0
+2 | Location: 12.3662, 0.334677, 0
+
+Iteration: 67
+1 | Location: -0.304835, -0.345279, 0
+2 | Location: 12.3766, 0.344523, 0
+
+Iteration: 68
+1 | Location: -0.314266, -0.355294, 0
+2 | Location: 12.3872, 0.354506, 0
+
+Iteration: 69
+1 | Location: -0.323835, -0.365446, 0
+2 | Location: 12.3979, 0.364625, 0
+
+Iteration: 70
+1 | Location: -0.333541, -0.375736, 0
+2 | Location: 12.4087, 0.37488, 0
+
+Iteration: 71
+1 | Location: -0.343384, -0.386161, 0
+2 | Location: 12.4197, 0.385271, 0
+
+Iteration: 72
+1 | Location: -0.353364, -0.396723, 0
+2 | Location: 12.4308, 0.395796, 0
+
+Iteration: 73
+1 | Location: -0.36348, -0.407421, 0
+2 | Location: 12.442, 0.406457, 0
+
+Iteration: 74
+1 | Location: -0.373731, -0.418254, 0
+2 | Location: 12.4534, 0.417252, 0
+
+Iteration: 75
+1 | Location: -0.384119, -0.429222, 0
+2 | Location: 12.4649, 0.428182, 0
+
+Iteration: 76
+1 | Location: -0.394641, -0.440324, 0
+2 | Location: 12.4765, 0.439245, 0
+
+Iteration: 77
+1 | Location: -0.405299, -0.451562, 0
+2 | Location: 12.4883, 0.450442, 0
+
+Iteration: 78
+1 | Location: -0.416091, -0.462933, 0
+2 | Location: 12.5002, 0.461771, 0
+
+Iteration: 79
+1 | Location: -0.427017, -0.474438, 0
+2 | Location: 12.5123, 0.473234, 0
+
+Iteration: 80
+1 | Location: -0.438077, -0.486076, 0
+2 | Location: 12.5244, 0.484829, 0
+
+Iteration: 81
+1 | Location: -0.449271, -0.497847, 0
+2 | Location: 12.5367, 0.496556, 0
+
+Iteration: 82
+1 | Location: -0.460598, -0.509751, 0
+2 | Location: 12.5492, 0.508414, 0
+
+Iteration: 83
+1 | Location: -0.472057, -0.521786, 0
+2 | Location: 12.5617, 0.520404, 0
+
+Iteration: 84
+1 | Location: -0.483649, -0.533954, 0
+2 | Location: 12.5744, 0.532524, 0
+
+Iteration: 85
+1 | Location: -0.495373, -0.546253, 0
+2 | Location: 12.5873, 0.544775, 0
+
+Iteration: 86
+1 | Location: -0.507228, -0.558684, 0
+2 | Location: 12.6002, 0.557156, 0
+
+Iteration: 87
+1 | Location: -0.519215, -0.571245, 0
+2 | Location: 12.6133, 0.569667, 0
+
+Iteration: 88
+1 | Location: -0.531332, -0.583936, 0
+2 | Location: 12.6265, 0.582307, 0
+
+Iteration: 89
+1 | Location: -0.54358, -0.596757, 0
+2 | Location: 12.6398, 0.595076, 0
+
+Iteration: 90
+1 | Location: -0.555958, -0.609708, 0
+2 | Location: 12.6533, 0.607974, 0
+
+Iteration: 91
+1 | Location: -0.568466, -0.622787, 0
+2 | Location: 12.6669, 0.621, 0
+
+Iteration: 92
+1 | Location: -0.581103, -0.635996, 0
+2 | Location: 12.6806, 0.634153, 0
+
+Iteration: 93
+1 | Location: -0.593869, -0.649333, 0
+2 | Location: 12.6945, 0.647434, 0
+
+Iteration: 94
+1 | Location: -0.606764, -0.662798, 0
+2 | Location: 12.7084, 0.660842, 0
+
+Iteration: 95
+1 | Location: -0.619786, -0.67639, 0
+2 | Location: 12.7226, 0.674376, 0
+
+Iteration: 96
+1 | Location: -0.632937, -0.690109, 0
+2 | Location: 12.7368, 0.688036, 0
+
+Iteration: 97
+1 | Location: -0.646214, -0.703956, 0
+2 | Location: 12.7511, 0.701822, 0
+
+Iteration: 98
+1 | Location: -0.659619, -0.717928, 0
+2 | Location: 12.7656, 0.715733, 0
+
+Iteration: 99
+1 | Location: -0.67315, -0.732027, 0
+2 | Location: 12.7802, 0.729769, 0
+
+Iteration: 100
+1 | Location: -0.686808, -0.746251, 0
+2 | Location: 12.7949, 0.74393, 0
+
+Iteration: 101
+1 | Location: -0.700591, -0.7606, 0
+2 | Location: 12.8098, 0.758215, 0
+
+Iteration: 102
+1 | Location: -0.714499, -0.775073, 0
+2 | Location: 12.8248, 0.772623, 0
+
+Iteration: 103
+1 | Location: -0.728532, -0.789671, 0
+2 | Location: 12.8398, 0.787155, 0
+
+Iteration: 104
+1 | Location: -0.74269, -0.804393, 0
+2 | Location: 12.8551, 0.801809, 0
+
+Iteration: 105
+1 | Location: -0.756972, -0.819238, 0
+2 | Location: 12.8704, 0.816585, 0
+
+Iteration: 106
+1 | Location: -0.771377, -0.834207, 0
+2 | Location: 12.8859, 0.831484, 0
+
+Iteration: 107
+1 | Location: -0.785906, -0.849298, 0
+2 | Location: 12.9014, 0.846504, 0
+
+Iteration: 108
+1 | Location: -0.800557, -0.86451, 0
+2 | Location: 12.9171, 0.861645, 0
+
+Iteration: 109
+1 | Location: -0.815331, -0.879845, 0
+2 | Location: 12.933, 0.876907, 0
+
+Iteration: 110
+1 | Location: -0.830227, -0.895301, 0
+2 | Location: 12.9489, 0.892289, 0
+
+Iteration: 111
+1 | Location: -0.845244, -0.910878, 0
+2 | Location: 12.965, 0.907791, 0
+
+Iteration: 112
+1 | Location: -0.860382, -0.926575, 0
+2 | Location: 12.9811, 0.923412, 0
+
+Iteration: 113
+1 | Location: -0.875641, -0.942392, 0
+2 | Location: 12.9974, 0.939152, 0
+
+Iteration: 114
+1 | Location: -0.891021, -0.958329, 0
+2 | Location: 13.0138, 0.955011, 0
+
+Iteration: 115
+1 | Location: -0.90652, -0.974385, 0
+2 | Location: 13.0304, 0.970987, 0
+
+Iteration: 116
+1 | Location: -0.922138, -0.99056, 0
+2 | Location: 13.047, 0.987082, 0
+
+Iteration: 117
+1 | Location: -0.937875, -1.00685, 0
+2 | Location: 13.0638, 1.00329, 0
+
+Iteration: 118
+1 | Location: -0.953731, -1.02326, 0
+2 | Location: 13.0807, 1.01962, 0
+
+Iteration: 119
+1 | Location: -0.969705, -1.03979, 0
+2 | Location: 13.0977, 1.03607, 0
+
+Iteration: 120
+1 | Location: -0.985796, -1.05644, 0
+2 | Location: 13.1148, 1.05263, 0
+
+Iteration: 121
+1 | Location: -1.00201, -1.0732, 0
+2 | Location: 13.132, 1.0693, 0
+
+Iteration: 122
+1 | Location: -1.01833, -1.09008, 0
+2 | Location: 13.1493, 1.08609, 0
+
+Iteration: 123
+1 | Location: -1.03477, -1.10707, 0
+2 | Location: 13.1668, 1.103, 0
+
+Iteration: 124
+1 | Location: -1.05133, -1.12418, 0
+2 | Location: 13.1844, 1.12002, 0
+
+Iteration: 125
+1 | Location: -1.068, -1.1414, 0
+2 | Location: 13.202, 1.13715, 0
+
+Iteration: 126
+1 | Location: -1.08479, -1.15874, 0
+2 | Location: 13.2198, 1.1544, 0
+
+Iteration: 127
+1 | Location: -1.10169, -1.17619, 0
+2 | Location: 13.2377, 1.17175, 0
+
+Iteration: 128
+1 | Location: -1.11871, -1.19375, 0
+2 | Location: 13.2558, 1.18923, 0
+
+Iteration: 129
+1 | Location: -1.13584, -1.21143, 0
+2 | Location: 13.2739, 1.20681, 0
+
+Iteration: 130
+1 | Location: -1.15308, -1.22922, 0
+2 | Location: 13.2921, 1.2245, 0
+
+Iteration: 131
+1 | Location: -1.17044, -1.24712, 0
+2 | Location: 13.3105, 1.24231, 0
+
+Iteration: 132
+1 | Location: -1.18791, -1.26513, 0
+2 | Location: 13.3289, 1.26022, 0
+
+Iteration: 133
+1 | Location: -1.20549, -1.28326, 0
+2 | Location: 13.3475, 1.27825, 0
+
+Iteration: 134
+1 | Location: -1.22318, -1.30149, 0
+2 | Location: 13.3662, 1.29639, 0
+
+Iteration: 135
+1 | Location: -1.24098, -1.31984, 0
+2 | Location: 13.385, 1.31463, 0
+
+Iteration: 136
+1 | Location: -1.2589, -1.3383, 0
+2 | Location: 13.4038, 1.33298, 0
+
+Iteration: 137
+1 | Location: -1.27692, -1.35686, 0
+2 | Location: 13.4228, 1.35145, 0
+
+Iteration: 138
+1 | Location: -1.29505, -1.37553, 0
+2 | Location: 13.4419, 1.37002, 0
+
+Iteration: 139
+1 | Location: -1.3133, -1.39432, 0
+2 | Location: 13.4612, 1.38869, 0
+
+Iteration: 140
+1 | Location: -1.33165, -1.41321, 0
+2 | Location: 13.4805, 1.40748, 0
+
+Iteration: 141
+1 | Location: -1.35011, -1.4322, 0
+2 | Location: 13.4999, 1.42637, 0
+
+Iteration: 142
+1 | Location: -1.36867, -1.45131, 0
+2 | Location: 13.5194, 1.44536, 0
+
+Iteration: 143
+1 | Location: -1.38735, -1.47052, 0
+2 | Location: 13.5391, 1.46447, 0
+
+Iteration: 144
+1 | Location: -1.40613, -1.48984, 0
+2 | Location: 13.5588, 1.48367, 0
+
+Iteration: 145
+1 | Location: -1.42502, -1.50926, 0
+2 | Location: 13.5787, 1.50298, 0
+
+Iteration: 146
+1 | Location: -1.44401, -1.52879, 0
+2 | Location: 13.5986, 1.5224, 0
+
+Iteration: 147
+1 | Location: -1.46311, -1.54842, 0
+2 | Location: 13.6187, 1.54192, 0
+
+Iteration: 148
+1 | Location: -1.48231, -1.56816, 0
+2 | Location: 13.6388, 1.56154, 0
+
+Iteration: 149
+1 | Location: -1.50162, -1.588, 0
+2 | Location: 13.6591, 1.58127, 0
+
+Iteration: 150
+1 | Location: -1.52104, -1.60795, 0
+2 | Location: 13.6794, 1.6011, 0
+
+Iteration: 151
+1 | Location: -1.54055, -1.62799, 0
+2 | Location: 13.6999, 1.62103, 0
+
+Iteration: 152
+1 | Location: -1.56018, -1.64814, 0
+2 | Location: 13.7204, 1.64106, 0
+
+Iteration: 153
+1 | Location: -1.5799, -1.6684, 0
+2 | Location: 13.7411, 1.66119, 0
+
+Iteration: 154
+1 | Location: -1.59972, -1.68875, 0
+2 | Location: 13.7619, 1.68143, 0
+
+Iteration: 155
+1 | Location: -1.61965, -1.70921, 0
+2 | Location: 13.7827, 1.70176, 0
+
+Iteration: 156
+1 | Location: -1.63968, -1.72976, 0
+2 | Location: 13.8037, 1.72219, 0
+
+Iteration: 157
+1 | Location: -1.65981, -1.75042, 0
+2 | Location: 13.8247, 1.74273, 0
+
+Iteration: 158
+1 | Location: -1.68004, -1.77118, 0
+2 | Location: 13.8459, 1.76336, 0
+
+Iteration: 159
+1 | Location: -1.70038, -1.79203, 0
+2 | Location: 13.8671, 1.78409, 0
+
+Iteration: 160
+1 | Location: -1.72081, -1.81299, 0
+2 | Location: 13.8885, 1.80492, 0
+
+Iteration: 161
+1 | Location: -1.74134, -1.83404, 0
+2 | Location: 13.9099, 1.82584, 0
+
+Iteration: 162
+1 | Location: -1.76197, -1.85519, 0
+2 | Location: 13.9315, 1.84686, 0
+
+Iteration: 163
+1 | Location: -1.78269, -1.87644, 0
+2 | Location: 13.9531, 1.86798, 0
+
+Iteration: 164
+1 | Location: -1.80352, -1.89779, 0
+2 | Location: 13.9748, 1.8892, 0
+
+Iteration: 165
+1 | Location: -1.82444, -1.91923, 0
+2 | Location: 13.9967, 1.91051, 0
+
+Iteration: 166
+1 | Location: -1.84546, -1.94077, 0
+2 | Location: 14.0186, 1.93192, 0
+
+Iteration: 167
+1 | Location: -1.86658, -1.96241, 0
+2 | Location: 14.0406, 1.95342, 0
+
+Iteration: 168
+1 | Location: -1.8878, -1.98414, 0
+2 | Location: 14.0627, 1.97502, 0
+
+Iteration: 169
+1 | Location: -1.9091, -2.00596, 0
+2 | Location: 14.0849, 1.99671, 0
+
+Iteration: 170
+1 | Location: -1.93051, -2.02788, 0
+2 | Location: 14.1072, 2.01849, 0
+
+Iteration: 171
+1 | Location: -1.95201, -2.0499, 0
+2 | Location: 14.1296, 2.04037, 0
+
+Iteration: 172
+1 | Location: -1.9736, -2.072, 0
+2 | Location: 14.1521, 2.06234, 0
+
+Iteration: 173
+1 | Location: -1.99529, -2.09421, 0
+2 | Location: 14.1747, 2.0844, 0
+
+Iteration: 174
+1 | Location: -2.01707, -2.1165, 0
+2 | Location: 14.1973, 2.10655, 0
+
+Iteration: 175
+1 | Location: -2.03895, -2.13889, 0
+2 | Location: 14.2201, 2.1288, 0
+
+Iteration: 176
+1 | Location: -2.06091, -2.16136, 0
+2 | Location: 14.2429, 2.15113, 0
+
+Iteration: 177
+1 | Location: -2.08297, -2.18393, 0
+2 | Location: 14.2659, 2.17356, 0
+
+Iteration: 178
+1 | Location: -2.10512, -2.2066, 0
+2 | Location: 14.2889, 2.19608, 0
+
+Iteration: 179
+1 | Location: -2.12737, -2.22935, 0
+2 | Location: 14.312, 2.21868, 0
+
+Iteration: 180
+1 | Location: -2.1497, -2.25219, 0
+2 | Location: 14.3352, 2.24138, 0
+
+Iteration: 181
+1 | Location: -2.17213, -2.27512, 0
+2 | Location: 14.3585, 2.26416, 0
+
+Iteration: 182
+1 | Location: -2.19464, -2.29814, 0
+2 | Location: 14.3818, 2.28704, 0
+
+Iteration: 183
+1 | Location: -2.21725, -2.32125, 0
+2 | Location: 14.4053, 2.31, 0
+
+Iteration: 184
+1 | Location: -2.23994, -2.34445, 0
+2 | Location: 14.4289, 2.33305, 0
+
+Iteration: 185
+1 | Location: -2.26272, -2.36773, 0
+2 | Location: 14.4525, 2.35618, 0
+
+Iteration: 186
+1 | Location: -2.28559, -2.39111, 0
+2 | Location: 14.4762, 2.3794, 0
+
+Iteration: 187
+1 | Location: -2.30855, -2.41457, 0
+2 | Location: 14.5, 2.40271, 0
+
+Iteration: 188
+1 | Location: -2.3316, -2.43812, 0
+2 | Location: 14.5239, 2.42611, 0
+
+Iteration: 189
+1 | Location: -2.35473, -2.46175, 0
+2 | Location: 14.5479, 2.44959, 0
+
+Iteration: 190
+1 | Location: -2.37795, -2.48547, 0
+2 | Location: 14.572, 2.47315, 0
+
+Iteration: 191
+1 | Location: -2.40126, -2.50928, 0
+2 | Location: 14.5961, 2.4968, 0
+
+Iteration: 192
+1 | Location: -2.42465, -2.53317, 0
+2 | Location: 14.6203, 2.52054, 0
+
+Iteration: 193
+1 | Location: -2.44813, -2.55714, 0
+2 | Location: 14.6446, 2.54435, 0
+
+Iteration: 194
+1 | Location: -2.47169, -2.5812, 0
+2 | Location: 14.669, 2.56826, 0
+
+Iteration: 195
+1 | Location: -2.49534, -2.60535, 0
+2 | Location: 14.6935, 2.59224, 0
+
+Iteration: 196
+1 | Location: -2.51907, -2.62957, 0
+2 | Location: 14.7181, 2.61631, 0
+
+Iteration: 197
+1 | Location: -2.54289, -2.65388, 0
+2 | Location: 14.7427, 2.64046, 0
+
+Iteration: 198
+1 | Location: -2.56679, -2.67828, 0
+2 | Location: 14.7674, 2.66469, 0
+
+Iteration: 199
+1 | Location: -2.59077, -2.70275, 0
+2 | Location: 14.7922, 2.689, 0
+
+Iteration: 200
+1 | Location: -2.61484, -2.72731, 0
+2 | Location: 14.8171, 2.71339, 0
+
+Iteration: 201
+1 | Location: -2.63898, -2.75195, 0
+2 | Location: 14.8421, 2.73787, 0
+
+Iteration: 202
+1 | Location: -2.66321, -2.77666, 0
+2 | Location: 14.8671, 2.76242, 0
+
+Iteration: 203
+1 | Location: -2.68752, -2.80146, 0
+2 | Location: 14.8922, 2.78706, 0
+
+Iteration: 204
+1 | Location: -2.71191, -2.82634, 0
+2 | Location: 14.9174, 2.81177, 0
+
+Iteration: 205
+1 | Location: -2.73639, -2.8513, 0
+2 | Location: 14.9427, 2.83656, 0
+
+Iteration: 206
+1 | Location: -2.76094, -2.87634, 0
+2 | Location: 14.9681, 2.86143, 0
+
+Iteration: 207
+1 | Location: -2.78557, -2.90146, 0
+2 | Location: 14.9935, 2.88638, 0
+
+Iteration: 208
+1 | Location: -2.81028, -2.92666, 0
+2 | Location: 15.019, 2.91141, 0
+
+Iteration: 209
+1 | Location: -2.83507, -2.95193, 0
+2 | Location: 15.0446, 2.93651, 0
+
+Iteration: 210
+1 | Location: -2.85994, -2.97728, 0
+2 | Location: 15.0703, 2.96169, 0
+
+Iteration: 211
+1 | Location: -2.88489, -3.00271, 0
+2 | Location: 15.096, 2.98695, 0
+
+Iteration: 212
+1 | Location: -2.90991, -3.02822, 0
+2 | Location: 15.1218, 3.01229, 0
+
+Iteration: 213
+1 | Location: -2.93502, -3.0538, 0
+2 | Location: 15.1477, 3.0377, 0
+
+Iteration: 214
+1 | Location: -2.9602, -3.07946, 0
+2 | Location: 15.1737, 3.06318, 0
+
+Iteration: 215
+1 | Location: -2.98545, -3.1052, 0
+2 | Location: 15.1997, 3.08874, 0
+
+Iteration: 216
+1 | Location: -3.01078, -3.13101, 0
+2 | Location: 15.2258, 3.11438, 0
+
+Iteration: 217
+1 | Location: -3.03619, -3.1569, 0
+2 | Location: 15.252, 3.14009, 0
+
+Iteration: 218
+1 | Location: -3.06168, -3.18286, 0
+2 | Location: 15.2782, 3.16587, 0
+
+Iteration: 219
+1 | Location: -3.08724, -3.20889, 0
+2 | Location: 15.3046, 3.19173, 0
+
+Iteration: 220
+1 | Location: -3.11287, -3.235, 0
+2 | Location: 15.331, 3.21766, 0
+
+Iteration: 221
+1 | Location: -3.13858, -3.26118, 0
+2 | Location: 15.3575, 3.24366, 0
+
+Iteration: 222
+1 | Location: -3.16436, -3.28744, 0
+2 | Location: 15.384, 3.26974, 0
+
+Iteration: 223
+1 | Location: -3.19022, -3.31377, 0
+2 | Location: 15.4106, 3.29589, 0
+
+Iteration: 224
+1 | Location: -3.21614, -3.34017, 0
+2 | Location: 15.4373, 3.32211, 0
+
+Iteration: 225
+1 | Location: -3.24215, -3.36664, 0
+2 | Location: 15.4641, 3.3484, 0
+
+Iteration: 226
+1 | Location: -3.26822, -3.39319, 0
+2 | Location: 15.4909, 3.37476, 0
+
+Iteration: 227
+1 | Location: -3.29437, -3.4198, 0
+2 | Location: 15.5178, 3.40119, 0
+
+Iteration: 228
+1 | Location: -3.32059, -3.44649, 0
+2 | Location: 15.5448, 3.4277, 0
+
+Iteration: 229
+1 | Location: -3.34687, -3.47325, 0
+2 | Location: 15.5718, 3.45427, 0
+
+Iteration: 230
+1 | Location: -3.37324, -3.50008, 0
+2 | Location: 15.5989, 3.48091, 0
+
+Iteration: 231
+1 | Location: -3.39967, -3.52697, 0
+2 | Location: 15.6261, 3.50762, 0
+
+Iteration: 232
+1 | Location: -3.42617, -3.55394, 0
+2 | Location: 15.6533, 3.53441, 0
+
+Iteration: 233
+1 | Location: -3.45274, -3.58098, 0
+2 | Location: 15.6806, 3.56125, 0
+
+Iteration: 234
+1 | Location: -3.47938, -3.60808, 0
+2 | Location: 15.708, 3.58817, 0
+
+Iteration: 235
+1 | Location: -3.50609, -3.63526, 0
+2 | Location: 15.7355, 3.61516, 0
+
+Iteration: 236
+1 | Location: -3.53287, -3.6625, 0
+2 | Location: 15.763, 3.64221, 0
+
+Iteration: 237
+1 | Location: -3.55972, -3.68981, 0
+2 | Location: 15.7906, 3.66933, 0
+
+Iteration: 238
+1 | Location: -3.58663, -3.71718, 0
+2 | Location: 15.8182, 3.69652, 0
+
+Iteration: 239
+1 | Location: -3.61362, -3.74463, 0
+2 | Location: 15.8459, 3.72377, 0
+
+Iteration: 240
+1 | Location: -3.64067, -3.77214, 0
+2 | Location: 15.8737, 3.75109, 0
+
+Iteration: 241
+1 | Location: -3.66779, -3.79971, 0
+2 | Location: 15.9015, 3.77847, 0
+
+Iteration: 242
+1 | Location: -3.69497, -3.82736, 0
+2 | Location: 15.9294, 3.80592, 0
+
+Iteration: 243
+1 | Location: -3.72222, -3.85507, 0
+2 | Location: 15.9574, 3.83344, 0
+
+Iteration: 244
+1 | Location: -3.74954, -3.88284, 0
+2 | Location: 15.9854, 3.86102, 0
+
+Iteration: 245
+1 | Location: -3.77692, -3.91068, 0
+2 | Location: 16.0135, 3.88866, 0
+
+Iteration: 246
+1 | Location: -3.80437, -3.93858, 0
+2 | Location: 16.0417, 3.91637, 0
+
+Iteration: 247
+1 | Location: -3.83189, -3.96655, 0
+2 | Location: 16.0699, 3.94414, 0
+
+Iteration: 248
+1 | Location: -3.85946, -3.99458, 0
+2 | Location: 16.0982, 3.97198, 0
+
+Iteration: 249
+1 | Location: -3.88711, -4.02267, 0
+2 | Location: 16.1265, 3.99988, 0
+
+Iteration: 250
+1 | Location: -3.91481, -4.05083, 0
+2 | Location: 16.155, 4.02784, 0
+
+Iteration: 251
+1 | Location: -3.94258, -4.07905, 0
+2 | Location: 16.1834, 4.05586, 0
+
+Iteration: 252
+1 | Location: -3.97042, -4.10734, 0
+2 | Location: 16.212, 4.08395, 0
+
+Iteration: 253
+1 | Location: -3.99832, -4.13568, 0
+2 | Location: 16.2405, 4.11209, 0
+
+Iteration: 254
+1 | Location: -4.02628, -4.16409, 0
+2 | Location: 16.2692, 4.1403, 0
+
+Iteration: 255
+1 | Location: -4.0543, -4.19256, 0
+2 | Location: 16.2979, 4.16857, 0
+
+Iteration: 256
+1 | Location: -4.08238, -4.22109, 0
+2 | Location: 16.3267, 4.1969, 0
+
+Iteration: 257
+1 | Location: -4.11053, -4.24968, 0
+2 | Location: 16.3555, 4.2253, 0
+
+Iteration: 258
+1 | Location: -4.13874, -4.27834, 0
+2 | Location: 16.3844, 4.25375, 0
+
+Iteration: 259
+1 | Location: -4.167, -4.30705, 0
+2 | Location: 16.4134, 4.28226, 0
+
+Iteration: 260
+1 | Location: -4.19533, -4.33582, 0
+2 | Location: 16.4424, 4.31083, 0
+
+Iteration: 261
+1 | Location: -4.22372, -4.36465, 0
+2 | Location: 16.4715, 4.33946, 0
+
+Iteration: 262
+1 | Location: -4.25217, -4.39355, 0
+2 | Location: 16.5006, 4.36815, 0
+
+Iteration: 263
+1 | Location: -4.28068, -4.4225, 0
+2 | Location: 16.5298, 4.39689, 0
+
+Iteration: 264
+1 | Location: -4.30925, -4.45151, 0
+2 | Location: 16.559, 4.4257, 0
+
+Iteration: 265
+1 | Location: -4.33788, -4.48058, 0
+2 | Location: 16.5883, 4.45456, 0
+
+Iteration: 266
+1 | Location: -4.36657, -4.5097, 0
+2 | Location: 16.6177, 4.48349, 0
+
+Iteration: 267
+1 | Location: -4.39531, -4.53889, 0
+2 | Location: 16.6471, 4.51246, 0
+
+Iteration: 268
+1 | Location: -4.42412, -4.56813, 0
+2 | Location: 16.6765, 4.5415, 0
+
+Iteration: 269
+1 | Location: -4.45298, -4.59743, 0
+2 | Location: 16.7061, 4.57059, 0
+
+Iteration: 270
+1 | Location: -4.4819, -4.62678, 0
+2 | Location: 16.7357, 4.59974, 0
+
+Iteration: 271
+1 | Location: -4.51088, -4.6562, 0
+2 | Location: 16.7653, 4.62895, 0
+
+Iteration: 272
+1 | Location: -4.53991, -4.68566, 0
+2 | Location: 16.795, 4.65821, 0
+
+Iteration: 273
+1 | Location: -4.569, -4.71519, 0
+2 | Location: 16.8247, 4.68753, 0
+
+Iteration: 274
+1 | Location: -4.59815, -4.74477, 0
+2 | Location: 16.8545, 4.7169, 0
+
+Iteration: 275
+1 | Location: -4.62736, -4.77441, 0
+2 | Location: 16.8844, 4.74632, 0
+
+Iteration: 276
+1 | Location: -4.65662, -4.8041, 0
+2 | Location: 16.9143, 4.77581, 0
+
+Iteration: 277
+1 | Location: -4.68593, -4.83384, 0
+2 | Location: 16.9443, 4.80534, 0
+
+Iteration: 278
+1 | Location: -4.7153, -4.86364, 0
+2 | Location: 16.9743, 4.83493, 0
+
+Iteration: 279
+1 | Location: -4.74473, -4.8935, 0
+2 | Location: 17.0044, 4.86458, 0
+
+Iteration: 280
+1 | Location: -4.77421, -4.92341, 0
+2 | Location: 17.0345, 4.89428, 0
+
+Iteration: 281
+1 | Location: -4.80374, -4.95337, 0
+2 | Location: 17.0647, 4.92403, 0
+
+Iteration: 282
+1 | Location: -4.83333, -4.98339, 0
+2 | Location: 17.0949, 4.95383, 0
+
+Iteration: 283
+1 | Location: -4.86298, -5.01346, 0
+2 | Location: 17.1252, 4.98369, 0
+
+Iteration: 284
+1 | Location: -4.89267, -5.04358, 0
+2 | Location: 17.1555, 5.0136, 0
+
+Iteration: 285
+1 | Location: -4.92242, -5.07375, 0
+2 | Location: 17.1859, 5.04356, 0
+
+Iteration: 286
+1 | Location: -4.95223, -5.10398, 0
+2 | Location: 17.2163, 5.07357, 0
+
+Iteration: 287
+1 | Location: -4.98208, -5.13426, 0
+2 | Location: 17.2468, 5.10364, 0
+
+Iteration: 288
+1 | Location: -5.01199, -5.16459, 0
+2 | Location: 17.2773, 5.13376, 0
+
+Iteration: 289
+1 | Location: -5.04195, -5.19497, 0
+2 | Location: 17.3079, 5.16392, 0
+
+Iteration: 290
+1 | Location: -5.07196, -5.2254, 0
+2 | Location: 17.3386, 5.19414, 0
+
+Iteration: 291
+1 | Location: -5.10203, -5.25589, 0
+2 | Location: 17.3692, 5.22441, 0
+
+Iteration: 292
+1 | Location: -5.13214, -5.28642, 0
+2 | Location: 17.4, 5.25473, 0
+
+Iteration: 293
+1 | Location: -5.16231, -5.31701, 0
+2 | Location: 17.4308, 5.2851, 0
+
+Iteration: 294
+1 | Location: -5.19253, -5.34764, 0
+2 | Location: 17.4616, 5.31552, 0
+
+Iteration: 295
+1 | Location: -5.2228, -5.37833, 0
+2 | Location: 17.4925, 5.34599, 0
+
+Iteration: 296
+1 | Location: -5.25311, -5.40906, 0
+2 | Location: 17.5234, 5.37651, 0
+
+Iteration: 297
+1 | Location: -5.28348, -5.43985, 0
+2 | Location: 17.5544, 5.40708, 0
+
+Iteration: 298
+1 | Location: -5.3139, -5.47068, 0
+2 | Location: 17.5854, 5.43769, 0
+
+Iteration: 299
+1 | Location: -5.34437, -5.50156, 0
+2 | Location: 17.6165, 5.46836, 0
+
+Iteration: 300
+1 | Location: -5.37489, -5.53249, 0
+2 | Location: 17.6476, 5.49907, 0
+
+Iteration: 301
+1 | Location: -5.40545, -5.56347, 0
+2 | Location: 17.6788, 5.52983, 0
+
+Iteration: 302
+1 | Location: -5.43607, -5.5945, 0
+2 | Location: 17.71, 5.56064, 0
+
+Iteration: 303
+1 | Location: -5.46673, -5.62558, 0
+2 | Location: 17.7413, 5.5915, 0
+
+Iteration: 304
+1 | Location: -5.49744, -5.6567, 0
+2 | Location: 17.7726, 5.6224, 0
+
+Iteration: 305
+1 | Location: -5.5282, -5.68787, 0
+2 | Location: 17.8039, 5.65335, 0
+
+Iteration: 306
+1 | Location: -5.55901, -5.71908, 0
+2 | Location: 17.8353, 5.68435, 0
+
+Iteration: 307
+1 | Location: -5.58987, -5.75035, 0
+2 | Location: 17.8668, 5.71539, 0
+
+Iteration: 308
+1 | Location: -5.62077, -5.78166, 0
+2 | Location: 17.8983, 5.74648, 0
+
+Iteration: 309
+1 | Location: -5.65172, -5.81301, 0
+2 | Location: 17.9298, 5.77762, 0
+
+Iteration: 310
+1 | Location: -5.68271, -5.84442, 0
+2 | Location: 17.9614, 5.8088, 0
+
+Iteration: 311
+1 | Location: -5.71376, -5.87586, 0
+2 | Location: 17.993, 5.84003, 0
+
+Iteration: 312
+1 | Location: -5.74485, -5.90736, 0
+2 | Location: 18.0247, 5.8713, 0
+
+Iteration: 313
+1 | Location: -5.77598, -5.9389, 0
+2 | Location: 18.0564, 5.90262, 0
+
+Iteration: 314
+1 | Location: -5.80716, -5.97048, 0
+2 | Location: 18.0882, 5.93398, 0
+
+Iteration: 315
+1 | Location: -5.83839, -6.00211, 0
+2 | Location: 18.12, 5.96539, 0
+
+Iteration: 316
+1 | Location: -5.86966, -6.03379, 0
+2 | Location: 18.1519, 5.99684, 0
+
+Iteration: 317
+1 | Location: -5.90098, -6.0655, 0
+2 | Location: 18.1838, 6.02834, 0
+
+Iteration: 318
+1 | Location: -5.93234, -6.09727, 0
+2 | Location: 18.2157, 6.05988, 0
+
+Iteration: 319
+1 | Location: -5.96375, -6.12907, 0
+2 | Location: 18.2477, 6.09146, 0
+
+Iteration: 320
+1 | Location: -5.9952, -6.16092, 0
+2 | Location: 18.2797, 6.12309, 0
+
+Iteration: 321
+1 | Location: -6.02669, -6.19282, 0
+2 | Location: 18.3118, 6.15476, 0
+
+Iteration: 322
+1 | Location: -6.05823, -6.22475, 0
+2 | Location: 18.3439, 6.18647, 0
+
+Iteration: 323
+1 | Location: -6.08981, -6.25673, 0
+2 | Location: 18.376, 6.21823, 0
+
+Iteration: 324
+1 | Location: -6.12144, -6.28875, 0
+2 | Location: 18.4082, 6.25002, 0
+
+Iteration: 325
+1 | Location: -6.15311, -6.32082, 0
+2 | Location: 18.4404, 6.28187, 0
+
+Iteration: 326
+1 | Location: -6.18482, -6.35293, 0
+2 | Location: 18.4727, 6.31375, 0
+
+Iteration: 327
+1 | Location: -6.21657, -6.38508, 0
+2 | Location: 18.505, 6.34567, 0
+
+Iteration: 328
+1 | Location: -6.24837, -6.41727, 0
+2 | Location: 18.5374, 6.37764, 0
+
+Iteration: 329
+1 | Location: -6.28021, -6.4495, 0
+2 | Location: 18.5698, 6.40965, 0
+
+Iteration: 330
+1 | Location: -6.31209, -6.48177, 0
+2 | Location: 18.6022, 6.4417, 0
+
+Iteration: 331
+1 | Location: -6.34402, -6.51409, 0
+2 | Location: 18.6347, 6.47379, 0
+
+Iteration: 332
+1 | Location: -6.37598, -6.54645, 0
+2 | Location: 18.6672, 6.50592, 0
+
+Iteration: 333
+1 | Location: -6.40799, -6.57884, 0
+2 | Location: 18.6998, 6.53809, 0
+
+Iteration: 334
+1 | Location: -6.44004, -6.61128, 0
+2 | Location: 18.7324, 6.5703, 0
+
+Iteration: 335
+1 | Location: -6.47213, -6.64376, 0
+2 | Location: 18.765, 6.60256, 0
+
+Iteration: 336
+1 | Location: -6.50426, -6.67628, 0
+2 | Location: 18.7977, 6.63485, 0
+
+Iteration: 337
+1 | Location: -6.53643, -6.70884, 0
+2 | Location: 18.8304, 6.66718, 0
+
+Iteration: 338
+1 | Location: -6.56864, -6.74144, 0
+2 | Location: 18.8632, 6.69955, 0
+
+Iteration: 339
+1 | Location: -6.60089, -6.77407, 0
+2 | Location: 18.896, 6.73196, 0
+
+Iteration: 340
+1 | Location: -6.63319, -6.80675, 0
+2 | Location: 18.9288, 6.76442, 0
+
+Iteration: 341
+1 | Location: -6.66552, -6.83947, 0
+2 | Location: 18.9617, 6.7969, 0
+
+Iteration: 342
+1 | Location: -6.69789, -6.87222, 0
+2 | Location: 18.9946, 6.82943, 0
+
+Iteration: 343
+1 | Location: -6.7303, -6.90502, 0
+2 | Location: 19.0275, 6.862, 0
+
+Iteration: 344
+1 | Location: -6.76275, -6.93785, 0
+2 | Location: 19.0605, 6.89461, 0
+
+Iteration: 345
+1 | Location: -6.79524, -6.97072, 0
+2 | Location: 19.0935, 6.92725, 0
+
+Iteration: 346
+1 | Location: -6.82776, -7.00363, 0
+2 | Location: 19.1266, 6.95993, 0
+
+Iteration: 347
+1 | Location: -6.86033, -7.03658, 0
+2 | Location: 19.1597, 6.99265, 0
+
+Iteration: 348
+1 | Location: -6.89293, -7.06956, 0
+2 | Location: 19.1928, 7.02541, 0
+
+Iteration: 349
+1 | Location: -6.92558, -7.10258, 0
+2 | Location: 19.226, 7.0582, 0
+
+Iteration: 350
+1 | Location: -6.95826, -7.13564, 0
+2 | Location: 19.2592, 7.09103, 0
+
+Iteration: 351
+1 | Location: -6.99098, -7.16874, 0
+2 | Location: 19.2925, 7.1239, 0
+
+Iteration: 352
+1 | Location: -7.02373, -7.20187, 0
+2 | Location: 19.3257, 7.15681, 0
+
+Iteration: 353
+1 | Location: -7.05653, -7.23504, 0
+2 | Location: 19.3591, 7.18975, 0
+
+Iteration: 354
+1 | Location: -7.08936, -7.26825, 0
+2 | Location: 19.3924, 7.22273, 0
+
+Iteration: 355
+1 | Location: -7.12222, -7.30149, 0
+2 | Location: 19.4258, 7.25574, 0
+
+Iteration: 356
+1 | Location: -7.15513, -7.33477, 0
+2 | Location: 19.4592, 7.28879, 0
+
+Iteration: 357
+1 | Location: -7.18807, -7.36809, 0
+2 | Location: 19.4927, 7.32188, 0
+
+Iteration: 358
+1 | Location: -7.22105, -7.40144, 0
+2 | Location: 19.5262, 7.355, 0
+
+Iteration: 359
+1 | Location: -7.25406, -7.43483, 0
+2 | Location: 19.5597, 7.38816, 0
+
+Iteration: 360
+1 | Location: -7.28711, -7.46825, 0
+2 | Location: 19.5933, 7.42135, 0
+
+Iteration: 361
+1 | Location: -7.3202, -7.50171, 0
+2 | Location: 19.6269, 7.45458, 0
+
+Iteration: 362
+1 | Location: -7.35332, -7.5352, 0
+2 | Location: 19.6605, 7.48785, 0
+
+Iteration: 363
+1 | Location: -7.38648, -7.56873, 0
+2 | Location: 19.6942, 7.52114, 0
+
+Iteration: 364
+1 | Location: -7.41967, -7.60229, 0
+2 | Location: 19.7279, 7.55448, 0
+
+Iteration: 365
+1 | Location: -7.4529, -7.63589, 0
+2 | Location: 19.7616, 7.58784, 0
+
+Iteration: 366
+1 | Location: -7.48616, -7.66952, 0
+2 | Location: 19.7954, 7.62125, 0
+
+Iteration: 367
+1 | Location: -7.51946, -7.70319, 0
+2 | Location: 19.8292, 7.65468, 0
+
+Iteration: 368
+1 | Location: -7.55279, -7.73689, 0
+2 | Location: 19.863, 7.68815, 0
+
+Iteration: 369
+1 | Location: -7.58616, -7.77062, 0
+2 | Location: 19.8969, 7.72166, 0
+
+Iteration: 370
+1 | Location: -7.61956, -7.80439, 0
+2 | Location: 19.9308, 7.75519, 0
+
+Iteration: 371
+1 | Location: -7.65299, -7.83819, 0
+2 | Location: 19.9647, 7.78876, 0
+
+Iteration: 372
+1 | Location: -7.68646, -7.87202, 0
+2 | Location: 19.9987, 7.82237, 0
+
+Iteration: 373
+1 | Location: -7.71996, -7.90589, 0
+2 | Location: 20.0327, 7.85601, 0
+
+Iteration: 374
+1 | Location: -7.7535, -7.93979, 0
+2 | Location: 20.0667, 7.88968, 0
+
+Iteration: 375
+1 | Location: -7.78707, -7.97372, 0
+2 | Location: 20.1008, 7.92338, 0
+
+Iteration: 376
+1 | Location: -7.82067, -8.00769, 0
+2 | Location: 20.1349, 7.95711, 0
+
+Iteration: 377
+1 | Location: -7.85431, -8.04169, 0
+2 | Location: 20.169, 7.99088, 0
+
+Iteration: 378
+1 | Location: -7.88798, -8.07572, 0
+2 | Location: 20.2032, 8.02468, 0
+
+Iteration: 379
+1 | Location: -7.92168, -8.10978, 0
+2 | Location: 20.2373, 8.05851, 0
+
+Iteration: 380
+1 | Location: -7.95542, -8.14387, 0
+2 | Location: 20.2716, 8.09238, 0
+
+Iteration: 381
+1 | Location: -7.98918, -8.178, 0
+2 | Location: 20.3058, 8.12628, 0
+
+Iteration: 382
+1 | Location: -8.02298, -8.21216, 0
+2 | Location: 20.3401, 8.1602, 0
+
+Iteration: 383
+1 | Location: -8.05682, -8.24635, 0
+2 | Location: 20.3744, 8.19416, 0
+
+Iteration: 384
+1 | Location: -8.09068, -8.28057, 0
+2 | Location: 20.4088, 8.22815, 0
+
+Iteration: 385
+1 | Location: -8.12457, -8.31482, 0
+2 | Location: 20.4431, 8.26217, 0
+
+Iteration: 386
+1 | Location: -8.1585, -8.34911, 0
+2 | Location: 20.4775, 8.29623, 0
+
+Iteration: 387
+1 | Location: -8.19246, -8.38342, 0
+2 | Location: 20.512, 8.33031, 0
+
+Iteration: 388
+1 | Location: -8.22645, -8.41776, 0
+2 | Location: 20.5464, 8.36442, 0
+
+Iteration: 389
+1 | Location: -8.26047, -8.45214, 0
+2 | Location: 20.5809, 8.39857, 0
+
+Iteration: 390
+1 | Location: -8.29452, -8.48655, 0
+2 | Location: 20.6155, 8.43274, 0
+
+Iteration: 391
+1 | Location: -8.32861, -8.52098, 0
+2 | Location: 20.65, 8.46695, 0
+
+Iteration: 392
+1 | Location: -8.36272, -8.55545, 0
+2 | Location: 20.6846, 8.50119, 0
+
+Iteration: 393
+1 | Location: -8.39686, -8.58995, 0
+2 | Location: 20.7192, 8.53545, 0
+
+Iteration: 394
+1 | Location: -8.43104, -8.62447, 0
+2 | Location: 20.7539, 8.56975, 0
+
+Iteration: 395
+1 | Location: -8.46524, -8.65903, 0
+2 | Location: 20.7885, 8.60407, 0
+
+Iteration: 396
+1 | Location: -8.49948, -8.69361, 0
+2 | Location: 20.8233, 8.63843, 0
+
+Iteration: 397
+1 | Location: -8.53374, -8.72823, 0
+2 | Location: 20.858, 8.67281, 0
+
+Iteration: 398
+1 | Location: -8.56804, -8.76287, 0
+2 | Location: 20.8927, 8.70722, 0
+
+Iteration: 399
+1 | Location: -8.60236, -8.79754, 0
+2 | Location: 20.9275, 8.74166, 0
+
+Iteration: 400
+1 | Location: -8.63671, -8.83225, 0
+2 | Location: 20.9623, 8.77614, 0
+
+Iteration: 401
+1 | Location: -8.6711, -8.86698, 0
+2 | Location: 20.9972, 8.81064, 0
+
+Iteration: 402
+1 | Location: -8.70551, -8.90174, 0
+2 | Location: 21.0321, 8.84516, 0
+
+Iteration: 403
+1 | Location: -8.73995, -8.93652, 0
+2 | Location: 21.067, 8.87972, 0
+
+Iteration: 404
+1 | Location: -8.77442, -8.97134, 0
+2 | Location: 21.1019, 8.91431, 0
+
+Iteration: 405
+1 | Location: -8.80892, -9.00618, 0
+2 | Location: 21.1369, 8.94892, 0
+
+Iteration: 406
+1 | Location: -8.84345, -9.04106, 0
+2 | Location: 21.1718, 8.98356, 0
+
+Iteration: 407
+1 | Location: -8.878, -9.07596, 0
+2 | Location: 21.2068, 9.01823, 0
+
+Iteration: 408
+1 | Location: -8.91259, -9.11089, 0
+2 | Location: 21.2419, 9.05293, 0
+
+Iteration: 409
+1 | Location: -8.9472, -9.14584, 0
+2 | Location: 21.277, 9.08765, 0
+
+Iteration: 410
+1 | Location: -8.98184, -9.18083, 0
+2 | Location: 21.312, 9.12241, 0
+
+Iteration: 411
+1 | Location: -9.01651, -9.21584, 0
+2 | Location: 21.3472, 9.15719, 0
+
+Iteration: 412
+1 | Location: -9.05121, -9.25087, 0
+2 | Location: 21.3823, 9.19199, 0
+
+Iteration: 413
+1 | Location: -9.08593, -9.28594, 0
+2 | Location: 21.4175, 9.22683, 0
+
+Iteration: 414
+1 | Location: -9.12068, -9.32103, 0
+2 | Location: 21.4527, 9.26169, 0
+
+Iteration: 415
+1 | Location: -9.15546, -9.35615, 0
+2 | Location: 21.4879, 9.29658, 0
+
+Iteration: 416
+1 | Location: -9.19027, -9.3913, 0
+2 | Location: 21.5232, 9.33149, 0
+
+Iteration: 417
+1 | Location: -9.2251, -9.42647, 0
+2 | Location: 21.5584, 9.36643, 0
+
+Iteration: 418
+1 | Location: -9.25996, -9.46167, 0
+2 | Location: 21.5937, 9.4014, 0
+
+Iteration: 419
+1 | Location: -9.29485, -9.49689, 0
+2 | Location: 21.6291, 9.4364, 0
+
+Iteration: 420
+1 | Location: -9.32977, -9.53214, 0
+2 | Location: 21.6644, 9.47142, 0
+
+Iteration: 421
+1 | Location: -9.36471, -9.56742, 0
+2 | Location: 21.6998, 9.50646, 0
+
+Iteration: 422
+1 | Location: -9.39967, -9.60272, 0
+2 | Location: 21.7352, 9.54153, 0
+
+Iteration: 423
+1 | Location: -9.43467, -9.63805, 0
+2 | Location: 21.7706, 9.57663, 0
+
+Iteration: 424
+1 | Location: -9.46969, -9.67341, 0
+2 | Location: 21.8061, 9.61176, 0
+
+Iteration: 425
+1 | Location: -9.50473, -9.70879, 0
+2 | Location: 21.8416, 9.64691, 0
+
+Iteration: 426
+1 | Location: -9.53981, -9.74419, 0
+2 | Location: 21.8771, 9.68208, 0
+
+Iteration: 427
+1 | Location: -9.5749, -9.77962, 0
+2 | Location: 21.9126, 9.71728, 0
+
+Iteration: 428
+1 | Location: -9.61003, -9.81508, 0
+2 | Location: 21.9482, 9.75251, 0
+
+Iteration: 429
+1 | Location: -9.64518, -9.85056, 0
+2 | Location: 21.9838, 9.78776, 0
+
+Iteration: 430
+1 | Location: -9.68035, -9.88607, 0
+2 | Location: 22.0194, 9.82304, 0
+
+Iteration: 431
+1 | Location: -9.71555, -9.9216, 0
+2 | Location: 22.055, 9.85834, 0
+
+Iteration: 432
+1 | Location: -9.75078, -9.95715, 0
+2 | Location: 22.0906, 9.89366, 0
+
+Iteration: 433
+1 | Location: -9.78603, -9.99273, 0
+2 | Location: 22.1263, 9.92901, 0
+
+Iteration: 434
+1 | Location: -9.8213, -10.0283, 0
+2 | Location: 22.162, 9.96439, 0
+
+Iteration: 435
+1 | Location: -9.8566, -10.064, 0
+2 | Location: 22.1978, 9.99979, 0
+
+Iteration: 436
+1 | Location: -9.89193, -10.0996, 0
+2 | Location: 22.2335, 10.0352, 0
+
+Iteration: 437
+1 | Location: -9.92728, -10.1353, 0
+2 | Location: 22.2693, 10.0707, 0
+
+Iteration: 438
+1 | Location: -9.96265, -10.171, 0
+2 | Location: 22.3051, 10.1061, 0
+
+Iteration: 439
+1 | Location: -9.99805, -10.2067, 0
+2 | Location: 22.3409, 10.1416, 0
+
+Iteration: 440
+1 | Location: -10.0335, -10.2425, 0
+2 | Location: 22.3767, 10.1771, 0
+
+Iteration: 441
+1 | Location: -10.0689, -10.2782, 0
+2 | Location: 22.4126, 10.2127, 0
+
+Iteration: 442
+1 | Location: -10.1044, -10.314, 0
+2 | Location: 22.4485, 10.2483, 0
+
+Iteration: 443
+1 | Location: -10.1399, -10.3499, 0
+2 | Location: 22.4844, 10.2838, 0
+
+Iteration: 444
+1 | Location: -10.1754, -10.3857, 0
+2 | Location: 22.5203, 10.3195, 0
+
+Iteration: 445
+1 | Location: -10.2109, -10.4216, 0
+2 | Location: 22.5563, 10.3551, 0
+
+Iteration: 446
+1 | Location: -10.2465, -10.4575, 0
+2 | Location: 22.5923, 10.3908, 0
+
+Iteration: 447
+1 | Location: -10.2821, -10.4934, 0
+2 | Location: 22.6283, 10.4264, 0
+
+Iteration: 448
+1 | Location: -10.3177, -10.5293, 0
+2 | Location: 22.6643, 10.4621, 0
+
+Iteration: 449
+1 | Location: -10.3533, -10.5653, 0
+2 | Location: 22.7004, 10.4979, 0
+
+Iteration: 450
+1 | Location: -10.389, -10.6012, 0
+2 | Location: 22.7364, 10.5336, 0
+
+Iteration: 451
+1 | Location: -10.4247, -10.6372, 0
+2 | Location: 22.7725, 10.5694, 0
+
+Iteration: 452
+1 | Location: -10.4604, -10.6733, 0
+2 | Location: 22.8086, 10.6052, 0
+
+Iteration: 453
+1 | Location: -10.4961, -10.7093, 0
+2 | Location: 22.8448, 10.641, 0
+
+Iteration: 454
+1 | Location: -10.5319, -10.7454, 0
+2 | Location: 22.8809, 10.6768, 0
+
+Iteration: 455
+1 | Location: -10.5676, -10.7815, 0
+2 | Location: 22.9171, 10.7127, 0
+
+Iteration: 456
+1 | Location: -10.6034, -10.8176, 0
+2 | Location: 22.9533, 10.7486, 0
+
+Iteration: 457
+1 | Location: -10.6393, -10.8537, 0
+2 | Location: 22.9895, 10.7845, 0
+
+Iteration: 458
+1 | Location: -10.6751, -10.8899, 0
+2 | Location: 23.0258, 10.8204, 0
+
+Iteration: 459
+1 | Location: -10.711, -10.9261, 0
+2 | Location: 23.062, 10.8564, 0
+
+Iteration: 460
+1 | Location: -10.7468, -10.9623, 0
+2 | Location: 23.0983, 10.8924, 0
+
+Iteration: 461
+1 | Location: -10.7828, -10.9985, 0
+2 | Location: 23.1346, 10.9284, 0
+
+Iteration: 462
+1 | Location: -10.8187, -11.0347, 0
+2 | Location: 23.171, 10.9644, 0
+
+Iteration: 463
+1 | Location: -10.8546, -11.071, 0
+2 | Location: 23.2073, 11.0004, 0
+
+Iteration: 464
+1 | Location: -10.8906, -11.1073, 0
+2 | Location: 23.2437, 11.0365, 0
+
+Iteration: 465
+1 | Location: -10.9266, -11.1436, 0
+2 | Location: 23.2801, 11.0725, 0
+
+Iteration: 466
+1 | Location: -10.9626, -11.1799, 0
+2 | Location: 23.3165, 11.1086, 0
+
+Iteration: 467
+1 | Location: -10.9987, -11.2163, 0
+2 | Location: 23.3529, 11.1448, 0
+
+Iteration: 468
+1 | Location: -11.0347, -11.2526, 0
+2 | Location: 23.3894, 11.1809, 0
+
+Iteration: 469
+1 | Location: -11.0708, -11.289, 0
+2 | Location: 23.4258, 11.2171, 0
+
+Iteration: 470
+1 | Location: -11.1069, -11.3254, 0
+2 | Location: 23.4623, 11.2533, 0
+
+Iteration: 471
+1 | Location: -11.143, -11.3619, 0
+2 | Location: 23.4988, 11.2895, 0
+
+Iteration: 472
+1 | Location: -11.1792, -11.3983, 0
+2 | Location: 23.5354, 11.3257, 0
+
+Iteration: 473
+1 | Location: -11.2153, -11.4348, 0
+2 | Location: 23.5719, 11.3619, 0
+
+Iteration: 474
+1 | Location: -11.2515, -11.4713, 0
+2 | Location: 23.6085, 11.3982, 0
+
+Iteration: 475
+1 | Location: -11.2877, -11.5078, 0
+2 | Location: 23.6451, 11.4345, 0
+
+Iteration: 476
+1 | Location: -11.3239, -11.5443, 0
+2 | Location: 23.6817, 11.4708, 0
+
+Iteration: 477
+1 | Location: -11.3602, -11.5809, 0
+2 | Location: 23.7183, 11.5071, 0
+
+Iteration: 478
+1 | Location: -11.3964, -11.6175, 0
+2 | Location: 23.755, 11.5435, 0
+
+Iteration: 479
+1 | Location: -11.4327, -11.654, 0
+2 | Location: 23.7917, 11.5798, 0
+
+Iteration: 480
+1 | Location: -11.469, -11.6907, 0
+2 | Location: 23.8283, 11.6162, 0
+
+Iteration: 481
+1 | Location: -11.5053, -11.7273, 0
+2 | Location: 23.8651, 11.6526, 0
+
+Iteration: 482
+1 | Location: -11.5417, -11.7639, 0
+2 | Location: 23.9018, 11.689, 0
+
+Iteration: 483
+1 | Location: -11.5781, -11.8006, 0
+2 | Location: 23.9385, 11.7255, 0
+
+Iteration: 484
+1 | Location: -11.6144, -11.8373, 0
+2 | Location: 23.9753, 11.7619, 0
+
+Iteration: 485
+1 | Location: -11.6508, -11.874, 0
+2 | Location: 24.0121, 11.7984, 0
+
+Iteration: 486
+1 | Location: -11.6873, -11.9107, 0
+2 | Location: 24.0489, 11.8349, 0
+
+Iteration: 487
+1 | Location: -11.7237, -11.9475, 0
+2 | Location: 24.0857, 11.8714, 0
+
+Iteration: 488
+1 | Location: -11.7602, -11.9842, 0
+2 | Location: 24.1225, 11.908, 0
+
+Iteration: 489
+1 | Location: -11.7967, -12.021, 0
+2 | Location: 24.1594, 11.9445, 0
+
+Iteration: 490
+1 | Location: -11.8332, -12.0578, 0
+2 | Location: 24.1963, 11.9811, 0
+
+Iteration: 491
+1 | Location: -11.8697, -12.0947, 0
+2 | Location: 24.2332, 12.0177, 0
+
+Iteration: 492
+1 | Location: -11.9062, -12.1315, 0
+2 | Location: 24.2701, 12.0543, 0
+
+Iteration: 493
+1 | Location: -11.9428, -12.1684, 0
+2 | Location: 24.307, 12.091, 0
+
+Iteration: 494
+1 | Location: -11.9794, -12.2052, 0
+2 | Location: 24.344, 12.1276, 0
+
+Iteration: 495
+1 | Location: -12.016, -12.2421, 0
+2 | Location: 24.3809, 12.1643, 0
+
+Iteration: 496
+1 | Location: -12.0526, -12.279, 0
+2 | Location: 24.4179, 12.201, 0
+
+Iteration: 497
+1 | Location: -12.0892, -12.316, 0
+2 | Location: 24.4549, 12.2377, 0
+
+Iteration: 498
+1 | Location: -12.1259, -12.3529, 0
+2 | Location: 24.492, 12.2744, 0
+
+Iteration: 499
+1 | Location: -12.1625, -12.3899, 0
+2 | Location: 24.529, 12.3112, 0
+
+Iteration: 500
+1 | Location: -12.1992, -12.4269, 0
+2 | Location: 24.5661, 12.3479, 0
+
+Iteration: 501
+1 | Location: -12.2359, -12.4639, 0
+2 | Location: 24.6031, 12.3847, 0
+
+Iteration: 502
+1 | Location: -12.2726, -12.5009, 0
+2 | Location: 24.6402, 12.4215, 0
+
+Iteration: 503
+1 | Location: -12.3094, -12.5379, 0
+2 | Location: 24.6773, 12.4583, 0
+
+Iteration: 504
+1 | Location: -12.3462, -12.575, 0
+2 | Location: 24.7145, 12.4951, 0
+
+Iteration: 505
+1 | Location: -12.3829, -12.6121, 0
+2 | Location: 24.7516, 12.532, 0
+
+Iteration: 506
+1 | Location: -12.4197, -12.6492, 0
+2 | Location: 24.7888, 12.5689, 0
+
+Iteration: 507
+1 | Location: -12.4565, -12.6863, 0
+2 | Location: 24.8259, 12.6057, 0
+
+Iteration: 508
+1 | Location: -12.4934, -12.7234, 0
+2 | Location: 24.8631, 12.6427, 0
+
+Iteration: 509
+1 | Location: -12.5302, -12.7605, 0
+2 | Location: 24.9003, 12.6796, 0
+
+Iteration: 510
+1 | Location: -12.5671, -12.7977, 0
+2 | Location: 24.9376, 12.7165, 0
+
+Iteration: 511
+1 | Location: -12.604, -12.8349, 0
+2 | Location: 24.9748, 12.7535, 0
+
+Iteration: 512
+1 | Location: -12.6409, -12.8721, 0
+2 | Location: 25.0121, 12.7904, 0
+
+Iteration: 513
+1 | Location: -12.6778, -12.9093, 0
+2 | Location: 25.0494, 12.8274, 0
+
+Iteration: 514
+1 | Location: -12.7147, -12.9465, 0
+2 | Location: 25.0867, 12.8644, 0
+
+Iteration: 515
+1 | Location: -12.7517, -12.9838, 0
+2 | Location: 25.124, 12.9015, 0
+
+Iteration: 516
+1 | Location: -12.7887, -13.021, 0
+2 | Location: 25.1613, 12.9385, 0
+
+Iteration: 517
+1 | Location: -12.8257, -13.0583, 0
+2 | Location: 25.1986, 12.9755, 0
+
+Iteration: 518
+1 | Location: -12.8627, -13.0956, 0
+2 | Location: 25.236, 13.0126, 0
+
+Iteration: 519
+1 | Location: -12.8997, -13.1329, 0
+2 | Location: 25.2734, 13.0497, 0
+
+Iteration: 520
+1 | Location: -12.9367, -13.1702, 0
+2 | Location: 25.3108, 13.0868, 0
+
+Iteration: 521
+1 | Location: -12.9738, -13.2076, 0
+2 | Location: 25.3482, 13.1239, 0
+
+Iteration: 522
+1 | Location: -13.0108, -13.2449, 0
+2 | Location: 25.3856, 13.1611, 0
+
+Iteration: 523
+1 | Location: -13.0479, -13.2823, 0
+2 | Location: 25.423, 13.1982, 0
+
+Iteration: 524
+1 | Location: -13.085, -13.3197, 0
+2 | Location: 25.4605, 13.2354, 0
+
+Iteration: 525
+1 | Location: -13.1222, -13.3571, 0
+2 | Location: 25.498, 13.2726, 0
+
+Iteration: 526
+1 | Location: -13.1593, -13.3945, 0
+2 | Location: 25.5355, 13.3098, 0
+
+Iteration: 527
+1 | Location: -13.1965, -13.432, 0
+2 | Location: 25.573, 13.347, 0
+
+Iteration: 528
+1 | Location: -13.2336, -13.4694, 0
+2 | Location: 25.6105, 13.3843, 0
+
+Iteration: 529
+1 | Location: -13.2708, -13.5069, 0
+2 | Location: 25.648, 13.4215, 0
+
+Iteration: 530
+1 | Location: -13.308, -13.5444, 0
+2 | Location: 25.6856, 13.4588, 0
+
+Iteration: 531
+1 | Location: -13.3452, -13.5819, 0
+2 | Location: 25.7231, 13.4961, 0
+
+Iteration: 532
+1 | Location: -13.3825, -13.6194, 0
+2 | Location: 25.7607, 13.5333, 0
+
+Iteration: 533
+1 | Location: -13.4197, -13.6569, 0
+2 | Location: 25.7983, 13.5707, 0
+
+Iteration: 534
+1 | Location: -13.457, -13.6945, 0
+2 | Location: 25.8359, 13.608, 0
+
+Iteration: 535
+1 | Location: -13.4943, -13.7321, 0
+2 | Location: 25.8735, 13.6453, 0
+
+Iteration: 536
+1 | Location: -13.5316, -13.7696, 0
+2 | Location: 25.9112, 13.6827, 0
+
+Iteration: 537
+1 | Location: -13.5689, -13.8072, 0
+2 | Location: 25.9488, 13.7201, 0
+
+Iteration: 538
+1 | Location: -13.6062, -13.8448, 0
+2 | Location: 25.9865, 13.7575, 0
+
+Iteration: 539
+1 | Location: -13.6436, -13.8825, 0
+2 | Location: 26.0242, 13.7949, 0
+
+Iteration: 540
+1 | Location: -13.6809, -13.9201, 0
+2 | Location: 26.0619, 13.8323, 0
+
+Iteration: 541
+1 | Location: -13.7183, -13.9578, 0
+2 | Location: 26.0996, 13.8697, 0
+
+Iteration: 542
+1 | Location: -13.7557, -13.9954, 0
+2 | Location: 26.1373, 13.9072, 0
+
+Iteration: 543
+1 | Location: -13.7931, -14.0331, 0
+2 | Location: 26.1751, 13.9446, 0
+
+Iteration: 544
+1 | Location: -13.8305, -14.0708, 0
+2 | Location: 26.2128, 13.9821, 0
+
+Iteration: 545
+1 | Location: -13.8679, -14.1085, 0
+2 | Location: 26.2506, 14.0196, 0
+
+Iteration: 546
+1 | Location: -13.9054, -14.1462, 0
+2 | Location: 26.2884, 14.0571, 0
+
+Iteration: 547
+1 | Location: -13.9429, -14.184, 0
+2 | Location: 26.3262, 14.0947, 0
+
+Iteration: 548
+1 | Location: -13.9803, -14.2217, 0
+2 | Location: 26.364, 14.1322, 0
+
+Iteration: 549
+1 | Location: -14.0178, -14.2595, 0
+2 | Location: 26.4018, 14.1698, 0
+
+Iteration: 550
+1 | Location: -14.0553, -14.2973, 0
+2 | Location: 26.4397, 14.2073, 0
+
+Iteration: 551
+1 | Location: -14.0929, -14.3351, 0
+2 | Location: 26.4775, 14.2449, 0
+
+Iteration: 552
+1 | Location: -14.1304, -14.3729, 0
+2 | Location: 26.5154, 14.2825, 0
+
+Iteration: 553
+1 | Location: -14.168, -14.4108, 0
+2 | Location: 26.5533, 14.3201, 0
+
+Iteration: 554
+1 | Location: -14.2055, -14.4486, 0
+2 | Location: 26.5912, 14.3577, 0
+
+Iteration: 555
+1 | Location: -14.2431, -14.4865, 0
+2 | Location: 26.6291, 14.3954, 0
+
+Iteration: 556
+1 | Location: -14.2807, -14.5243, 0
+2 | Location: 26.667, 14.433, 0
+
+Iteration: 557
+1 | Location: -14.3183, -14.5622, 0
+2 | Location: 26.705, 14.4707, 0
+
+Iteration: 558
+1 | Location: -14.3559, -14.6001, 0
+2 | Location: 26.7429, 14.5084, 0
+
+Iteration: 559
+1 | Location: -14.3936, -14.638, 0
+2 | Location: 26.7809, 14.5461, 0
+
+Iteration: 560
+1 | Location: -14.4312, -14.6759, 0
+2 | Location: 26.8189, 14.5838, 0
+
+Iteration: 561
+1 | Location: -14.4689, -14.7139, 0
+2 | Location: 26.8569, 14.6215, 0
+
+Iteration: 562
+1 | Location: -14.5066, -14.7518, 0
+2 | Location: 26.8949, 14.6593, 0
+
+Iteration: 563
+1 | Location: -14.5443, -14.7898, 0
+2 | Location: 26.9329, 14.697, 0
+
+Iteration: 564
+1 | Location: -14.582, -14.8278, 0
+2 | Location: 26.9709, 14.7348, 0
+
+Iteration: 565
+1 | Location: -14.6197, -14.8658, 0
+2 | Location: 27.009, 14.7725, 0
+
+Iteration: 566
+1 | Location: -14.6575, -14.9038, 0
+2 | Location: 27.047, 14.8103, 0
+
+Iteration: 567
+1 | Location: -14.6952, -14.9418, 0
+2 | Location: 27.0851, 14.8481, 0
+
+Iteration: 568
+1 | Location: -14.733, -14.9798, 0
+2 | Location: 27.1232, 14.886, 0
+
+Iteration: 569
+1 | Location: -14.7708, -15.0179, 0
+2 | Location: 27.1613, 14.9238, 0
+
+Iteration: 570
+1 | Location: -14.8085, -15.0559, 0
+2 | Location: 27.1994, 14.9616, 0
+
+Iteration: 571
+1 | Location: -14.8464, -15.094, 0
+2 | Location: 27.2375, 14.9995, 0
+
+Iteration: 572
+1 | Location: -14.8842, -15.1321, 0
+2 | Location: 27.2757, 15.0374, 0
+
+Iteration: 573
+1 | Location: -14.922, -15.1702, 0
+2 | Location: 27.3138, 15.0753, 0
+
+Iteration: 574
+1 | Location: -14.9598, -15.2083, 0
+2 | Location: 27.352, 15.1132, 0
+
+Iteration: 575
+1 | Location: -14.9977, -15.2464, 0
+2 | Location: 27.3902, 15.1511, 0
+
+Iteration: 576
+1 | Location: -15.0356, -15.2846, 0
+2 | Location: 27.4283, 15.189, 0
+
+Iteration: 577
+1 | Location: -15.0735, -15.3227, 0
+2 | Location: 27.4665, 15.2269, 0
+
+Iteration: 578
+1 | Location: -15.1114, -15.3609, 0
+2 | Location: 27.5048, 15.2649, 0
+
+Iteration: 579
+1 | Location: -15.1493, -15.3991, 0
+2 | Location: 27.543, 15.3028, 0
+
+Iteration: 580
+1 | Location: -15.1872, -15.4373, 0
+2 | Location: 27.5812, 15.3408, 0
+
+Iteration: 581
+1 | Location: -15.2251, -15.4755, 0
+2 | Location: 27.6195, 15.3788, 0
+
+Iteration: 582
+1 | Location: -15.2631, -15.5137, 0
+2 | Location: 27.6577, 15.4168, 0
+
+Iteration: 583
+1 | Location: -15.301, -15.5519, 0
+2 | Location: 27.696, 15.4548, 0
+
+Iteration: 584
+1 | Location: -15.339, -15.5901, 0
+2 | Location: 27.7343, 15.4929, 0
+
+Iteration: 585
+1 | Location: -15.377, -15.6284, 0
+2 | Location: 27.7726, 15.5309, 0
+
+Iteration: 586
+1 | Location: -15.415, -15.6667, 0
+2 | Location: 27.8109, 15.5689, 0
+
+Iteration: 587
+1 | Location: -15.453, -15.7049, 0
+2 | Location: 27.8492, 15.607, 0
+
+Iteration: 588
+1 | Location: -15.4911, -15.7432, 0
+2 | Location: 27.8876, 15.6451, 0
+
+Iteration: 589
+1 | Location: -15.5291, -15.7815, 0
+2 | Location: 27.9259, 15.6832, 0
+
+Iteration: 590
+1 | Location: -15.5671, -15.8198, 0
+2 | Location: 27.9643, 15.7213, 0
+
+Iteration: 591
+1 | Location: -15.6052, -15.8581, 0
+2 | Location: 28.0027, 15.7594, 0
+
+Iteration: 592
+1 | Location: -15.6433, -15.8965, 0
+2 | Location: 28.041, 15.7975, 0
+
+Iteration: 593
+1 | Location: -15.6814, -15.9348, 0
+2 | Location: 28.0794, 15.8356, 0
+
+Iteration: 594
+1 | Location: -15.7195, -15.9732, 0
+2 | Location: 28.1178, 15.8738, 0
+
+Iteration: 595
+1 | Location: -15.7576, -16.0116, 0
+2 | Location: 28.1563, 15.912, 0
+
+Iteration: 596
+1 | Location: -15.7957, -16.0499, 0
+2 | Location: 28.1947, 15.9501, 0
+
+Iteration: 597
+1 | Location: -15.8338, -16.0883, 0
+2 | Location: 28.2331, 15.9883, 0
+
+Iteration: 598
+1 | Location: -15.872, -16.1268, 0
+2 | Location: 28.2716, 16.0265, 0
+
+Iteration: 599
+1 | Location: -15.9102, -16.1652, 0
+2 | Location: 28.3101, 16.0647, 0
+
+Iteration: 600
+1 | Location: -15.9483, -16.2036, 0
+2 | Location: 28.3485, 16.1029, 0
+
+Iteration: 601
+1 | Location: -15.9865, -16.242, 0
+2 | Location: 28.387, 16.1412, 0
+
+Iteration: 602
+1 | Location: -16.0247, -16.2805, 0
+2 | Location: 28.4255, 16.1794, 0
+
+Iteration: 603
+1 | Location: -16.0629, -16.319, 0
+2 | Location: 28.464, 16.2177, 0
+
+Iteration: 604
+1 | Location: -16.1011, -16.3574, 0
+2 | Location: 28.5025, 16.2559, 0
+
+Iteration: 605
+1 | Location: -16.1394, -16.3959, 0
+2 | Location: 28.5411, 16.2942, 0
+
+Iteration: 606
+1 | Location: -16.1776, -16.4344, 0
+2 | Location: 28.5796, 16.3325, 0
+
+Iteration: 607
+1 | Location: -16.2159, -16.4729, 0
+2 | Location: 28.6182, 16.3708, 0
+
+Iteration: 608
+1 | Location: -16.2541, -16.5115, 0
+2 | Location: 28.6567, 16.4091, 0
+
+Iteration: 609
+1 | Location: -16.2924, -16.55, 0
+2 | Location: 28.6953, 16.4474, 0
+
+Iteration: 610
+1 | Location: -16.3307, -16.5885, 0
+2 | Location: 28.7339, 16.4858, 0
+
+Iteration: 611
+1 | Location: -16.369, -16.6271, 0
+2 | Location: 28.7725, 16.5241, 0
+
+Iteration: 612
+1 | Location: -16.4073, -16.6656, 0
+2 | Location: 28.8111, 16.5625, 0
+
+Iteration: 613
+1 | Location: -16.4456, -16.7042, 0
+2 | Location: 28.8497, 16.6009, 0
+
+Iteration: 614
+1 | Location: -16.484, -16.7428, 0
+2 | Location: 28.8884, 16.6392, 0
+
+Iteration: 615
+1 | Location: -16.5223, -16.7814, 0
+2 | Location: 28.927, 16.6776, 0
+
+Iteration: 616
+1 | Location: -16.5607, -16.82, 0
+2 | Location: 28.9657, 16.716, 0
+
+Iteration: 617
+1 | Location: -16.5991, -16.8586, 0
+2 | Location: 29.0043, 16.7544, 0
+
+Iteration: 618
+1 | Location: -16.6374, -16.8973, 0
+2 | Location: 29.043, 16.7929, 0
+
+Iteration: 619
+1 | Location: -16.6758, -16.9359, 0
+2 | Location: 29.0817, 16.8313, 0
+
+Iteration: 620
+1 | Location: -16.7142, -16.9746, 0
+2 | Location: 29.1204, 16.8697, 0
+
+Iteration: 621
+1 | Location: -16.7526, -17.0132, 0
+2 | Location: 29.1591, 16.9082, 0
+
+Iteration: 622
+1 | Location: -16.7911, -17.0519, 0
+2 | Location: 29.1978, 16.9467, 0
+
+Iteration: 623
+1 | Location: -16.8295, -17.0906, 0
+2 | Location: 29.2365, 16.9852, 0
+
+Iteration: 624
+1 | Location: -16.8679, -17.1293, 0
+2 | Location: 29.2753, 17.0236, 0
+
+Iteration: 625
+1 | Location: -16.9064, -17.168, 0
+2 | Location: 29.314, 17.0621, 0
+
+Iteration: 626
+1 | Location: -16.9449, -17.2067, 0
+2 | Location: 29.3528, 17.1007, 0
+
+Iteration: 627
+1 | Location: -16.9833, -17.2454, 0
+2 | Location: 29.3915, 17.1392, 0
+
+Iteration: 628
+1 | Location: -17.0218, -17.2842, 0
+2 | Location: 29.4303, 17.1777, 0
+
+Iteration: 629
+1 | Location: -17.0603, -17.3229, 0
+2 | Location: 29.4691, 17.2162, 0
+
+Iteration: 630
+1 | Location: -17.0988, -17.3617, 0
+2 | Location: 29.5079, 17.2548, 0
+
+Iteration: 631
+1 | Location: -17.1374, -17.4004, 0
+2 | Location: 29.5467, 17.2934, 0
+
+Iteration: 632
+1 | Location: -17.1759, -17.4392, 0
+2 | Location: 29.5855, 17.3319, 0
+
+Iteration: 633
+1 | Location: -17.2144, -17.478, 0
+2 | Location: 29.6244, 17.3705, 0
+
+Iteration: 634
+1 | Location: -17.253, -17.5168, 0
+2 | Location: 29.6632, 17.4091, 0
+
+Iteration: 635
+1 | Location: -17.2916, -17.5556, 0
+2 | Location: 29.702, 17.4477, 0
+
+Iteration: 636
+1 | Location: -17.3301, -17.5944, 0
+2 | Location: 29.7409, 17.4863, 0
+
+Iteration: 637
+1 | Location: -17.3687, -17.6333, 0
+2 | Location: 29.7798, 17.525, 0
+
+Iteration: 638
+1 | Location: -17.4073, -17.6721, 0
+2 | Location: 29.8187, 17.5636, 0
+
+Iteration: 639
+1 | Location: -17.4459, -17.7109, 0
+2 | Location: 29.8575, 17.6022, 0
+
+Iteration: 640
+1 | Location: -17.4845, -17.7498, 0
+2 | Location: 29.8964, 17.6409, 0
+
+Iteration: 641
+1 | Location: -17.5231, -17.7887, 0
+2 | Location: 29.9353, 17.6796, 0
+
+Iteration: 642
+1 | Location: -17.5618, -17.8275, 0
+2 | Location: 29.9743, 17.7182, 0
+
+Iteration: 643
+1 | Location: -17.6004, -17.8664, 0
+2 | Location: 30.0132, 17.7569, 0
+
+Iteration: 644
+1 | Location: -17.6391, -17.9053, 0
+2 | Location: 30.0521, 17.7956, 0
+
+Iteration: 645
+1 | Location: -17.6777, -17.9442, 0
+2 | Location: 30.0911, 17.8343, 0
+
+Iteration: 646
+1 | Location: -17.7164, -17.9832, 0
+2 | Location: 30.13, 17.873, 0
+
+Iteration: 647
+1 | Location: -17.7551, -18.0221, 0
+2 | Location: 30.169, 17.9117, 0
+
+Iteration: 648
+1 | Location: -17.7938, -18.061, 0
+2 | Location: 30.208, 17.9505, 0
+
+Iteration: 649
+1 | Location: -17.8325, -18.1, 0
+2 | Location: 30.2469, 17.9892, 0
+
+Iteration: 650
+1 | Location: -17.8712, -18.1389, 0
+2 | Location: 30.2859, 18.028, 0
+
+Iteration: 651
+1 | Location: -17.9099, -18.1779, 0
+2 | Location: 30.3249, 18.0667, 0
+
+Iteration: 652
+1 | Location: -17.9487, -18.2169, 0
+2 | Location: 30.3639, 18.1055, 0
+
+Iteration: 653
+1 | Location: -17.9874, -18.2558, 0
+2 | Location: 30.403, 18.1443, 0
+
+Iteration: 654
+1 | Location: -18.0262, -18.2948, 0
+2 | Location: 30.442, 18.1831, 0
+
+Iteration: 655
+1 | Location: -18.0649, -18.3338, 0
+2 | Location: 30.481, 18.2219, 0
+
+Iteration: 656
+1 | Location: -18.1037, -18.3728, 0
+2 | Location: 30.5201, 18.2607, 0
+
+Iteration: 657
+1 | Location: -18.1425, -18.4119, 0
+2 | Location: 30.5591, 18.2995, 0
+
+Iteration: 658
+1 | Location: -18.1813, -18.4509, 0
+2 | Location: 30.5982, 18.3383, 0
+
+Iteration: 659
+1 | Location: -18.2201, -18.4899, 0
+2 | Location: 30.6373, 18.3772, 0
+
+Iteration: 660
+1 | Location: -18.2589, -18.529, 0
+2 | Location: 30.6764, 18.416, 0
+
+Iteration: 661
+1 | Location: -18.2977, -18.568, 0
+2 | Location: 30.7155, 18.4549, 0
+
+Iteration: 662
+1 | Location: -18.3365, -18.6071, 0
+2 | Location: 30.7546, 18.4937, 0
+
+Iteration: 663
+1 | Location: -18.3754, -18.6462, 0
+2 | Location: 30.7937, 18.5326, 0
+
+Iteration: 664
+1 | Location: -18.4142, -18.6853, 0
+2 | Location: 30.8328, 18.5715, 0
+
+Iteration: 665
+1 | Location: -18.4531, -18.7243, 0
+2 | Location: 30.8719, 18.6104, 0
+
+Iteration: 666
+1 | Location: -18.4919, -18.7634, 0
+2 | Location: 30.9111, 18.6493, 0
+
+Iteration: 667
+1 | Location: -18.5308, -18.8026, 0
+2 | Location: 30.9502, 18.6882, 0
+
+Iteration: 668
+1 | Location: -18.5697, -18.8417, 0
+2 | Location: 30.9894, 18.7271, 0
+
+Iteration: 669
+1 | Location: -18.6086, -18.8808, 0
+2 | Location: 31.0285, 18.7661, 0
+
+Iteration: 670
+1 | Location: -18.6475, -18.9199, 0
+2 | Location: 31.0677, 18.805, 0
+
+Iteration: 671
+1 | Location: -18.6864, -18.9591, 0
+2 | Location: 31.1069, 18.844, 0
+
+Iteration: 672
+1 | Location: -18.7253, -18.9982, 0
+2 | Location: 31.1461, 18.8829, 0
+
+Iteration: 673
+1 | Location: -18.7642, -19.0374, 0
+2 | Location: 31.1853, 18.9219, 0
+
+Iteration: 674
+1 | Location: -18.8032, -19.0766, 0
+2 | Location: 31.2245, 18.9608, 0
+
+Iteration: 675
+1 | Location: -18.8421, -19.1158, 0
+2 | Location: 31.2637, 18.9998, 0
+
+Iteration: 676
+1 | Location: -18.8811, -19.1549, 0
+2 | Location: 31.3029, 19.0388, 0
+
+Iteration: 677
+1 | Location: -18.9201, -19.1941, 0
+2 | Location: 31.3421, 19.0778, 0
+
+Iteration: 678
+1 | Location: -18.959, -19.2334, 0
+2 | Location: 31.3814, 19.1168, 0
+
+Iteration: 679
+1 | Location: -18.998, -19.2726, 0
+2 | Location: 31.4206, 19.1558, 0
+
+Iteration: 680
+1 | Location: -19.037, -19.3118, 0
+2 | Location: 31.4599, 19.1949, 0
+
+Iteration: 681
+1 | Location: -19.076, -19.351, 0
+2 | Location: 31.4991, 19.2339, 0
+
+Iteration: 682
+1 | Location: -19.115, -19.3903, 0
+2 | Location: 31.5384, 19.273, 0
+
+Iteration: 683
+1 | Location: -19.154, -19.4295, 0
+2 | Location: 31.5777, 19.312, 0
+
+Iteration: 684
+1 | Location: -19.1931, -19.4688, 0
+2 | Location: 31.617, 19.3511, 0
+
+Iteration: 685
+1 | Location: -19.2321, -19.508, 0
+2 | Location: 31.6563, 19.3901, 0
+
+Iteration: 686
+1 | Location: -19.2711, -19.5473, 0
+2 | Location: 31.6956, 19.4292, 0
+
+Iteration: 687
+1 | Location: -19.3102, -19.5866, 0
+2 | Location: 31.7349, 19.4683, 0
+
+Iteration: 688
+1 | Location: -19.3492, -19.6259, 0
+2 | Location: 31.7742, 19.5074, 0
+
+Iteration: 689
+1 | Location: -19.3883, -19.6652, 0
+2 | Location: 31.8136, 19.5465, 0
+
+Iteration: 690
+1 | Location: -19.4274, -19.7045, 0
+2 | Location: 31.8529, 19.5856, 0
+
+Iteration: 691
+1 | Location: -19.4665, -19.7438, 0
+2 | Location: 31.8922, 19.6247, 0
+
+Iteration: 692
+1 | Location: -19.5056, -19.7831, 0
+2 | Location: 31.9316, 19.6638, 0
+
+Iteration: 693
+1 | Location: -19.5447, -19.8224, 0
+2 | Location: 31.971, 19.703, 0
+
+Iteration: 694
+1 | Location: -19.5838, -19.8618, 0
+2 | Location: 32.0103, 19.7421, 0
+
+Iteration: 695
+1 | Location: -19.6229, -19.9011, 0
+2 | Location: 32.0497, 19.7813, 0
+
+Iteration: 696
+1 | Location: -19.662, -19.9405, 0
+2 | Location: 32.0891, 19.8204, 0
+
+Iteration: 697
+1 | Location: -19.7012, -19.9798, 0
+2 | Location: 32.1285, 19.8596, 0
+
+Iteration: 698
+1 | Location: -19.7403, -20.0192, 0
+2 | Location: 32.1679, 19.8988, 0
+
+Iteration: 699
+1 | Location: -19.7795, -20.0586, 0
+2 | Location: 32.2073, 19.938, 0
+
+Iteration: 700
+1 | Location: -19.8186, -20.098, 0
+2 | Location: 32.2467, 19.9772, 0
+
+Iteration: 701
+1 | Location: -19.8578, -20.1374, 0
+2 | Location: 32.2861, 20.0164, 0
+
+Iteration: 702
+1 | Location: -19.897, -20.1768, 0
+2 | Location: 32.3256, 20.0556, 0
+
+Iteration: 703
+1 | Location: -19.9361, -20.2162, 0
+2 | Location: 32.365, 20.0948, 0
+
+Iteration: 704
+1 | Location: -19.9753, -20.2556, 0
+2 | Location: 32.4045, 20.134, 0
+
+Iteration: 705
+1 | Location: -20.0145, -20.295, 0
+2 | Location: 32.4439, 20.1732, 0
+
+Iteration: 706
+1 | Location: -20.0537, -20.3345, 0
+2 | Location: 32.4834, 20.2125, 0
+
+Iteration: 707
+1 | Location: -20.093, -20.3739, 0
+2 | Location: 32.5228, 20.2517, 0
+
+Iteration: 708
+1 | Location: -20.1322, -20.4133, 0
+2 | Location: 32.5623, 20.291, 0
+
+Iteration: 709
+1 | Location: -20.1714, -20.4528, 0
+2 | Location: 32.6018, 20.3302, 0
+
+Iteration: 710
+1 | Location: -20.2107, -20.4923, 0
+2 | Location: 32.6413, 20.3695, 0
+
+Iteration: 711
+1 | Location: -20.2499, -20.5317, 0
+2 | Location: 32.6808, 20.4088, 0
+
+Iteration: 712
+1 | Location: -20.2892, -20.5712, 0
+2 | Location: 32.7203, 20.4481, 0
+
+Iteration: 713
+1 | Location: -20.3284, -20.6107, 0
+2 | Location: 32.7598, 20.4874, 0
+
+Iteration: 714
+1 | Location: -20.3677, -20.6502, 0
+2 | Location: 32.7993, 20.5267, 0
+
+Iteration: 715
+1 | Location: -20.407, -20.6897, 0
+2 | Location: 32.8389, 20.566, 0
+
+Iteration: 716
+1 | Location: -20.4463, -20.7292, 0
+2 | Location: 32.8784, 20.6053, 0
+
+Iteration: 717
+1 | Location: -20.4855, -20.7687, 0
+2 | Location: 32.918, 20.6446, 0
+
+Iteration: 718
+1 | Location: -20.5248, -20.8082, 0
+2 | Location: 32.9575, 20.684, 0
+
+Iteration: 719
+1 | Location: -20.5642, -20.8478, 0
+2 | Location: 32.9971, 20.7233, 0
+
+Iteration: 720
+1 | Location: -20.6035, -20.8873, 0
+2 | Location: 33.0366, 20.7626, 0
+
+Iteration: 721
+1 | Location: -20.6428, -20.9268, 0
+2 | Location: 33.0762, 20.802, 0
+
+Iteration: 722
+1 | Location: -20.6821, -20.9664, 0
+2 | Location: 33.1158, 20.8414, 0
+
+Iteration: 723
+1 | Location: -20.7215, -21.006, 0
+2 | Location: 33.1554, 20.8807, 0
+
+Iteration: 724
+1 | Location: -20.7608, -21.0455, 0
+2 | Location: 33.195, 20.9201, 0
+
+Iteration: 725
+1 | Location: -20.8002, -21.0851, 0
+2 | Location: 33.2346, 20.9595, 0
+
+Iteration: 726
+1 | Location: -20.8395, -21.1247, 0
+2 | Location: 33.2742, 20.9989, 0
+
+Iteration: 727
+1 | Location: -20.8789, -21.1643, 0
+2 | Location: 33.3138, 21.0383, 0
+
+Iteration: 728
+1 | Location: -20.9183, -21.2039, 0
+2 | Location: 33.3534, 21.0777, 0
+
+Iteration: 729
+1 | Location: -20.9577, -21.2435, 0
+2 | Location: 33.393, 21.1171, 0
+
+Iteration: 730
+1 | Location: -20.997, -21.2831, 0
+2 | Location: 33.4327, 21.1565, 0
+
+Iteration: 731
+1 | Location: -21.0364, -21.3227, 0
+2 | Location: 33.4723, 21.1959, 0
+
+Iteration: 732
+1 | Location: -21.0758, -21.3623, 0
+2 | Location: 33.512, 21.2354, 0
+
+Iteration: 733
+1 | Location: -21.1153, -21.4019, 0
+2 | Location: 33.5516, 21.2748, 0
+
+Iteration: 734
+1 | Location: -21.1547, -21.4416, 0
+2 | Location: 33.5913, 21.3143, 0
+
+Iteration: 735
+1 | Location: -21.1941, -21.4812, 0
+2 | Location: 33.631, 21.3537, 0
+
+Iteration: 736
+1 | Location: -21.2335, -21.5209, 0
+2 | Location: 33.6706, 21.3932, 0
+
+Iteration: 737
+1 | Location: -21.273, -21.5605, 0
+2 | Location: 33.7103, 21.4326, 0
+
+Iteration: 738
+1 | Location: -21.3124, -21.6002, 0
+2 | Location: 33.75, 21.4721, 0
+
+Iteration: 739
+1 | Location: -21.3519, -21.6398, 0
+2 | Location: 33.7897, 21.5116, 0
+
+Iteration: 740
+1 | Location: -21.3913, -21.6795, 0
+2 | Location: 33.8294, 21.5511, 0
+
+Iteration: 741
+1 | Location: -21.4308, -21.7192, 0
+2 | Location: 33.8691, 21.5906, 0
+
+Iteration: 742
+1 | Location: -21.4703, -21.7589, 0
+2 | Location: 33.9089, 21.6301, 0
+
+Iteration: 743
+1 | Location: -21.5098, -21.7986, 0
+2 | Location: 33.9486, 21.6696, 0
+
+Iteration: 744
+1 | Location: -21.5493, -21.8383, 0
+2 | Location: 33.9883, 21.7091, 0
+
+Iteration: 745
+1 | Location: -21.5888, -21.878, 0
+2 | Location: 34.028, 21.7486, 0
+
+Iteration: 746
+1 | Location: -21.6283, -21.9177, 0
+2 | Location: 34.0678, 21.7882, 0
+
+Iteration: 747
+1 | Location: -21.6678, -21.9575, 0
+2 | Location: 34.1075, 21.8277, 0
+
+Iteration: 748
+1 | Location: -21.7073, -21.9972, 0
+2 | Location: 34.1473, 21.8673, 0
+
+Iteration: 749
+1 | Location: -21.7468, -22.0369, 0
+2 | Location: 34.1871, 21.9068, 0
+
+Iteration: 750
+1 | Location: -21.7863, -22.0767, 0
+2 | Location: 34.2268, 21.9464, 0
+
+Iteration: 751
+1 | Location: -21.8259, -22.1164, 0
+2 | Location: 34.2666, 21.9859, 0
+
+Iteration: 752
+1 | Location: -21.8654, -22.1562, 0
+2 | Location: 34.3064, 22.0255, 0
+
+Iteration: 753
+1 | Location: -21.905, -22.1959, 0
+2 | Location: 34.3462, 22.0651, 0
+
+Iteration: 754
+1 | Location: -21.9445, -22.2357, 0
+2 | Location: 34.386, 22.1047, 0
+
+Iteration: 755
+1 | Location: -21.9841, -22.2755, 0
+2 | Location: 34.4258, 22.1443, 0
+
+Iteration: 756
+1 | Location: -22.0237, -22.3153, 0
+2 | Location: 34.4656, 22.1839, 0
+
+Iteration: 757
+1 | Location: -22.0632, -22.3551, 0
+2 | Location: 34.5054, 22.2235, 0
+
+Iteration: 758
+1 | Location: -22.1028, -22.3949, 0
+2 | Location: 34.5452, 22.2631, 0
+
+Iteration: 759
+1 | Location: -22.1424, -22.4347, 0
+2 | Location: 34.585, 22.3027, 0
+
+Iteration: 760
+1 | Location: -22.182, -22.4745, 0
+2 | Location: 34.6249, 22.3423, 0
+
+Iteration: 761
+1 | Location: -22.2216, -22.5143, 0
+2 | Location: 34.6647, 22.3819, 0
+
+Iteration: 762
+1 | Location: -22.2612, -22.5541, 0
+2 | Location: 34.7046, 22.4216, 0
+
+Iteration: 763
+1 | Location: -22.3009, -22.5939, 0
+2 | Location: 34.7444, 22.4612, 0
+
+Iteration: 764
+1 | Location: -22.3405, -22.6338, 0
+2 | Location: 34.7843, 22.5009, 0
+
+Iteration: 765
+1 | Location: -22.3801, -22.6736, 0
+2 | Location: 34.8241, 22.5405, 0
+
+Iteration: 766
+1 | Location: -22.4197, -22.7134, 0
+2 | Location: 34.864, 22.5802, 0
+
+Iteration: 767
+1 | Location: -22.4594, -22.7533, 0
+2 | Location: 34.9039, 22.6199, 0
+
+Iteration: 768
+1 | Location: -22.499, -22.7932, 0
+2 | Location: 34.9438, 22.6595, 0
+
+Iteration: 769
+1 | Location: -22.5387, -22.833, 0
+2 | Location: 34.9837, 22.6992, 0
+
+Iteration: 770
+1 | Location: -22.5784, -22.8729, 0
+2 | Location: 35.0236, 22.7389, 0
+
+Iteration: 771
+1 | Location: -22.618, -22.9128, 0
+2 | Location: 35.0635, 22.7786, 0
+
+Iteration: 772
+1 | Location: -22.6577, -22.9526, 0
+2 | Location: 35.1034, 22.8183, 0
+
+Iteration: 773
+1 | Location: -22.6974, -22.9925, 0
+2 | Location: 35.1433, 22.858, 0
+
+Iteration: 774
+1 | Location: -22.7371, -23.0324, 0
+2 | Location: 35.1832, 22.8977, 0
+
+Iteration: 775
+1 | Location: -22.7768, -23.0723, 0
+2 | Location: 35.2231, 22.9374, 0
+
+Iteration: 776
+1 | Location: -22.8165, -23.1122, 0
+2 | Location: 35.263, 22.9772, 0
+
+Iteration: 777
+1 | Location: -22.8562, -23.1521, 0
+2 | Location: 35.303, 23.0169, 0
+
+Iteration: 778
+1 | Location: -22.8959, -23.1921, 0
+2 | Location: 35.3429, 23.0566, 0
+
+Iteration: 779
+1 | Location: -22.9356, -23.232, 0
+2 | Location: 35.3829, 23.0964, 0
+
+Iteration: 780
+1 | Location: -22.9753, -23.2719, 0
+2 | Location: 35.4228, 23.1361, 0
+
+Iteration: 781
+1 | Location: -23.0151, -23.3119, 0
+2 | Location: 35.4628, 23.1759, 0
+
+Iteration: 782
+1 | Location: -23.0548, -23.3518, 0
+2 | Location: 35.5028, 23.2156, 0
+
+Iteration: 783
+1 | Location: -23.0945, -23.3917, 0
+2 | Location: 35.5427, 23.2554, 0
+
+Iteration: 784
+1 | Location: -23.1343, -23.4317, 0
+2 | Location: 35.5827, 23.2952, 0
+
+Iteration: 785
+1 | Location: -23.174, -23.4717, 0
+2 | Location: 35.6227, 23.335, 0
+
+Iteration: 786
+1 | Location: -23.2138, -23.5116, 0
+2 | Location: 35.6627, 23.3747, 0
+
+Iteration: 787
+1 | Location: -23.2536, -23.5516, 0
+2 | Location: 35.7027, 23.4145, 0
+
+Iteration: 788
+1 | Location: -23.2933, -23.5916, 0
+2 | Location: 35.7427, 23.4543, 0
+
+Iteration: 789
+1 | Location: -23.3331, -23.6316, 0
+2 | Location: 35.7827, 23.4941, 0
+
+Iteration: 790
+1 | Location: -23.3729, -23.6715, 0
+2 | Location: 35.8227, 23.5339, 0
+
+Iteration: 791
+1 | Location: -23.4127, -23.7115, 0
+2 | Location: 35.8627, 23.5738, 0
+
+Iteration: 792
+1 | Location: -23.4525, -23.7515, 0
+2 | Location: 35.9027, 23.6136, 0
+
+Iteration: 793
+1 | Location: -23.4923, -23.7915, 0
+2 | Location: 35.9427, 23.6534, 0
+
+Iteration: 794
+1 | Location: -23.5321, -23.8316, 0
+2 | Location: 35.9828, 23.6932, 0
+
+Iteration: 795
+1 | Location: -23.5719, -23.8716, 0
+2 | Location: 36.0228, 23.7331, 0
+
+Iteration: 796
+1 | Location: -23.6117, -23.9116, 0
+2 | Location: 36.0629, 23.7729, 0
+
+Iteration: 797
+1 | Location: -23.6516, -23.9516, 0
+2 | Location: 36.1029, 23.8128, 0
+
+Iteration: 798
+1 | Location: -23.6914, -23.9917, 0
+2 | Location: 36.143, 23.8526, 0
+
+Iteration: 799
+1 | Location: -23.7312, -24.0317, 0
+2 | Location: 36.183, 23.8925, 0
+
+Iteration: 800
+1 | Location: -23.7711, -24.0717, 0
+2 | Location: 36.2231, 23.9323, 0
+
+Iteration: 801
+1 | Location: -23.8109, -24.1118, 0
+2 | Location: 36.2632, 23.9722, 0
+
+Iteration: 802
+1 | Location: -23.8508, -24.1518, 0
+2 | Location: 36.3032, 24.0121, 0
+
+Iteration: 803
+1 | Location: -23.8906, -24.1919, 0
+2 | Location: 36.3433, 24.052, 0
+
+Iteration: 804
+1 | Location: -23.9305, -24.232, 0
+2 | Location: 36.3834, 24.0919, 0
+
+Iteration: 805
+1 | Location: -23.9704, -24.272, 0
+2 | Location: 36.4235, 24.1318, 0
+
+Iteration: 806
+1 | Location: -24.0102, -24.3121, 0
+2 | Location: 36.4636, 24.1717, 0
+
+Iteration: 807
+1 | Location: -24.0501, -24.3522, 0
+2 | Location: 36.5037, 24.2116, 0
+
+Iteration: 808
+1 | Location: -24.09, -24.3923, 0
+2 | Location: 36.5438, 24.2515, 0
+
+Iteration: 809
+1 | Location: -24.1299, -24.4324, 0
+2 | Location: 36.5839, 24.2914, 0
+
+Iteration: 810
+1 | Location: -24.1698, -24.4725, 0
+2 | Location: 36.6241, 24.3313, 0
+
+Iteration: 811
+1 | Location: -24.2097, -24.5126, 0
+2 | Location: 36.6642, 24.3712, 0
+
+Iteration: 812
+1 | Location: -24.2496, -24.5527, 0
+2 | Location: 36.7043, 24.4112, 0
+
+Iteration: 813
+1 | Location: -24.2895, -24.5928, 0
+2 | Location: 36.7444, 24.4511, 0
+
+Iteration: 814
+1 | Location: -24.3295, -24.6329, 0
+2 | Location: 36.7846, 24.491, 0
+
+Iteration: 815
+1 | Location: -24.3694, -24.673, 0
+2 | Location: 36.8247, 24.531, 0
+
+Iteration: 816
+1 | Location: -24.4093, -24.7132, 0
+2 | Location: 36.8649, 24.571, 0
+
+Iteration: 817
+1 | Location: -24.4493, -24.7533, 0
+2 | Location: 36.905, 24.6109, 0
+
+Iteration: 818
+1 | Location: -24.4892, -24.7935, 0
+2 | Location: 36.9452, 24.6509, 0
+
+Iteration: 819
+1 | Location: -24.5292, -24.8336, 0
+2 | Location: 36.9854, 24.6908, 0
+
+Iteration: 820
+1 | Location: -24.5691, -24.8737, 0
+2 | Location: 37.0255, 24.7308, 0
+
+Iteration: 821
+1 | Location: -24.6091, -24.9139, 0
+2 | Location: 37.0657, 24.7708, 0
+
+Iteration: 822
+1 | Location: -24.649, -24.9541, 0
+2 | Location: 37.1059, 24.8108, 0
+
+Iteration: 823
+1 | Location: -24.689, -24.9942, 0
+2 | Location: 37.1461, 24.8508, 0
+
+Iteration: 824
+1 | Location: -24.729, -25.0344, 0
+2 | Location: 37.1863, 24.8908, 0
+
+Iteration: 825
+1 | Location: -24.769, -25.0746, 0
+2 | Location: 37.2265, 24.9308, 0
+
+Iteration: 826
+1 | Location: -24.8089, -25.1148, 0
+2 | Location: 37.2667, 24.9708, 0
+
+Iteration: 827
+1 | Location: -24.8489, -25.1549, 0
+2 | Location: 37.3069, 25.0108, 0
+
+Iteration: 828
+1 | Location: -24.8889, -25.1951, 0
+2 | Location: 37.3471, 25.0508, 0
+
+Iteration: 829
+1 | Location: -24.9289, -25.2353, 0
+2 | Location: 37.3873, 25.0908, 0
+
+Iteration: 830
+1 | Location: -24.9689, -25.2755, 0
+2 | Location: 37.4275, 25.1309, 0
+
+Iteration: 831
+1 | Location: -25.009, -25.3157, 0
+2 | Location: 37.4678, 25.1709, 0
+
+Iteration: 832
+1 | Location: -25.049, -25.356, 0
+2 | Location: 37.508, 25.2109, 0
+
+Iteration: 833
+1 | Location: -25.089, -25.3962, 0
+2 | Location: 37.5482, 25.251, 0
+
+Iteration: 834
+1 | Location: -25.129, -25.4364, 0
+2 | Location: 37.5885, 25.291, 0
+
+Iteration: 835
+1 | Location: -25.1691, -25.4766, 0
+2 | Location: 37.6287, 25.3311, 0
+
+Iteration: 836
+1 | Location: -25.2091, -25.5168, 0
+2 | Location: 37.669, 25.3711, 0
+
+Iteration: 837
+1 | Location: -25.2491, -25.5571, 0
+2 | Location: 37.7092, 25.4112, 0
+
+Iteration: 838
+1 | Location: -25.2892, -25.5973, 0
+2 | Location: 37.7495, 25.4513, 0
+
+Iteration: 839
+1 | Location: -25.3292, -25.6376, 0
+2 | Location: 37.7897, 25.4913, 0
+
+Iteration: 840
+1 | Location: -25.3693, -25.6778, 0
+2 | Location: 37.83, 25.5314, 0
+
+Iteration: 841
+1 | Location: -25.4094, -25.7181, 0
+2 | Location: 37.8703, 25.5715, 0
+
+Iteration: 842
+1 | Location: -25.4494, -25.7583, 0
+2 | Location: 37.9106, 25.6116, 0
+
+Iteration: 843
+1 | Location: -25.4895, -25.7986, 0
+2 | Location: 37.9508, 25.6517, 0
+
+Iteration: 844
+1 | Location: -25.5296, -25.8389, 0
+2 | Location: 37.9911, 25.6918, 0
+
+Iteration: 845
+1 | Location: -25.5697, -25.8791, 0
+2 | Location: 38.0314, 25.7319, 0
+
+Iteration: 846
+1 | Location: -25.6097, -25.9194, 0
+2 | Location: 38.0717, 25.772, 0
+
+Iteration: 847
+1 | Location: -25.6498, -25.9597, 0
+2 | Location: 38.112, 25.8121, 0
+
+Iteration: 848
+1 | Location: -25.6899, -26, 0
+2 | Location: 38.1523, 25.8522, 0
+
+Iteration: 849
+1 | Location: -25.73, -26.0403, 0
+2 | Location: 38.1926, 25.8923, 0
+
+Iteration: 850
+1 | Location: -25.7701, -26.0806, 0
+2 | Location: 38.233, 25.9325, 0
+
+Iteration: 851
+1 | Location: -25.8103, -26.1209, 0
+2 | Location: 38.2733, 25.9726, 0
+
+Iteration: 852
+1 | Location: -25.8504, -26.1612, 0
+2 | Location: 38.3136, 26.0127, 0
+
+Iteration: 853
+1 | Location: -25.8905, -26.2015, 0
+2 | Location: 38.3539, 26.0529, 0
+
+Iteration: 854
+1 | Location: -25.9306, -26.2418, 0
+2 | Location: 38.3943, 26.093, 0
+
+Iteration: 855
+1 | Location: -25.9708, -26.2821, 0
+2 | Location: 38.4346, 26.1332, 0
+
+Iteration: 856
+1 | Location: -26.0109, -26.3225, 0
+2 | Location: 38.475, 26.1733, 0
+
+Iteration: 857
+1 | Location: -26.051, -26.3628, 0
+2 | Location: 38.5153, 26.2135, 0
+
+Iteration: 858
+1 | Location: -26.0912, -26.4031, 0
+2 | Location: 38.5557, 26.2537, 0
+
+Iteration: 859
+1 | Location: -26.1313, -26.4435, 0
+2 | Location: 38.596, 26.2938, 0
+
+Iteration: 860
+1 | Location: -26.1715, -26.4838, 0
+2 | Location: 38.6364, 26.334, 0
+
+Iteration: 861
+1 | Location: -26.2116, -26.5242, 0
+2 | Location: 38.6767, 26.3742, 0
+
+Iteration: 862
+1 | Location: -26.2518, -26.5645, 0
+2 | Location: 38.7171, 26.4144, 0
+
+Iteration: 863
+1 | Location: -26.292, -26.6049, 0
+2 | Location: 38.7575, 26.4545, 0
+
+Iteration: 864
+1 | Location: -26.3322, -26.6452, 0
+2 | Location: 38.7979, 26.4947, 0
+
+Iteration: 865
+1 | Location: -26.3723, -26.6856, 0
+2 | Location: 38.8383, 26.5349, 0
+
+Iteration: 866
+1 | Location: -26.4125, -26.726, 0
+2 | Location: 38.8786, 26.5751, 0
+
+Iteration: 867
+1 | Location: -26.4527, -26.7664, 0
+2 | Location: 38.919, 26.6153, 0
+
+Iteration: 868
+1 | Location: -26.4929, -26.8067, 0
+2 | Location: 38.9594, 26.6556, 0
+
+Iteration: 869
+1 | Location: -26.5331, -26.8471, 0
+2 | Location: 38.9998, 26.6958, 0
+
+Iteration: 870
+1 | Location: -26.5733, -26.8875, 0
+2 | Location: 39.0402, 26.736, 0
+
+Iteration: 871
+1 | Location: -26.6135, -26.9279, 0
+2 | Location: 39.0807, 26.7762, 0
+
+Iteration: 872
+1 | Location: -26.6537, -26.9683, 0
+2 | Location: 39.1211, 26.8164, 0
+
+Iteration: 873
+1 | Location: -26.6939, -27.0087, 0
+2 | Location: 39.1615, 26.8567, 0
+
+Iteration: 874
+1 | Location: -26.7341, -27.0491, 0
+2 | Location: 39.2019, 26.8969, 0
+
+Iteration: 875
+1 | Location: -26.7744, -27.0895, 0
+2 | Location: 39.2423, 26.9372, 0
+
+Iteration: 876
+1 | Location: -26.8146, -27.1299, 0
+2 | Location: 39.2828, 26.9774, 0
+
+Iteration: 877
+1 | Location: -26.8548, -27.1703, 0
+2 | Location: 39.3232, 27.0177, 0
+
+Iteration: 878
+1 | Location: -26.8951, -27.2108, 0
+2 | Location: 39.3636, 27.0579, 0
+
+Iteration: 879
+1 | Location: -26.9353, -27.2512, 0
+2 | Location: 39.4041, 27.0982, 0
+
+Iteration: 880
+1 | Location: -26.9756, -27.2916, 0
+2 | Location: 39.4445, 27.1384, 0
+
+Iteration: 881
+1 | Location: -27.0158, -27.3321, 0
+2 | Location: 39.485, 27.1787, 0
+
+Iteration: 882
+1 | Location: -27.0561, -27.3725, 0
+2 | Location: 39.5255, 27.219, 0
+
+Iteration: 883
+1 | Location: -27.0963, -27.413, 0
+2 | Location: 39.5659, 27.2593, 0
+
+Iteration: 884
+1 | Location: -27.1366, -27.4534, 0
+2 | Location: 39.6064, 27.2995, 0
+
+Iteration: 885
+1 | Location: -27.1769, -27.4939, 0
+2 | Location: 39.6468, 27.3398, 0
+
+Iteration: 886
+1 | Location: -27.2171, -27.5343, 0
+2 | Location: 39.6873, 27.3801, 0
+
+Iteration: 887
+1 | Location: -27.2574, -27.5748, 0
+2 | Location: 39.7278, 27.4204, 0
+
+Iteration: 888
+1 | Location: -27.2977, -27.6152, 0
+2 | Location: 39.7683, 27.4607, 0
+
+Iteration: 889
+1 | Location: -27.338, -27.6557, 0
+2 | Location: 39.8088, 27.501, 0
+
+Iteration: 890
+1 | Location: -27.3783, -27.6962, 0
+2 | Location: 39.8493, 27.5413, 0
+
+Iteration: 891
+1 | Location: -27.4186, -27.7367, 0
+2 | Location: 39.8898, 27.5816, 0
+
+Iteration: 892
+1 | Location: -27.4589, -27.7771, 0
+2 | Location: 39.9302, 27.622, 0
+
+Iteration: 893
+1 | Location: -27.4992, -27.8176, 0
+2 | Location: 39.9708, 27.6623, 0
+
+Iteration: 894
+1 | Location: -27.5395, -27.8581, 0
+2 | Location: 40.0113, 27.7026, 0
+
+Iteration: 895
+1 | Location: -27.5798, -27.8986, 0
+2 | Location: 40.0518, 27.7429, 0
+
+Iteration: 896
+1 | Location: -27.6201, -27.9391, 0
+2 | Location: 40.0923, 27.7833, 0
+
+Iteration: 897
+1 | Location: -27.6604, -27.9796, 0
+2 | Location: 40.1328, 27.8236, 0
+
+Iteration: 898
+1 | Location: -27.7008, -28.0201, 0
+2 | Location: 40.1733, 27.8639, 0
+
+Iteration: 899
+1 | Location: -27.7411, -28.0606, 0
+2 | Location: 40.2138, 27.9043, 0
+
+Iteration: 900
+1 | Location: -27.7814, -28.1011, 0
+2 | Location: 40.2544, 27.9446, 0
+
+Iteration: 901
+1 | Location: -27.8218, -28.1417, 0
+2 | Location: 40.2949, 27.985, 0
+
+Iteration: 902
+1 | Location: -27.8621, -28.1822, 0
+2 | Location: 40.3355, 28.0254, 0
+
+Iteration: 903
+1 | Location: -27.9024, -28.2227, 0
+2 | Location: 40.376, 28.0657, 0
+
+Iteration: 904
+1 | Location: -27.9428, -28.2632, 0
+2 | Location: 40.4165, 28.1061, 0
+
+Iteration: 905
+1 | Location: -27.9831, -28.3038, 0
+2 | Location: 40.4571, 28.1465, 0
+
+Iteration: 906
+1 | Location: -28.0235, -28.3443, 0
+2 | Location: 40.4976, 28.1868, 0
+
+Iteration: 907
+1 | Location: -28.0639, -28.3848, 0
+2 | Location: 40.5382, 28.2272, 0
+
+Iteration: 908
+1 | Location: -28.1042, -28.4254, 0
+2 | Location: 40.5788, 28.2676, 0
+
+Iteration: 909
+1 | Location: -28.1446, -28.4659, 0
+2 | Location: 40.6193, 28.308, 0
+
+Iteration: 910
+1 | Location: -28.185, -28.5065, 0
+2 | Location: 40.6599, 28.3484, 0
+
+Iteration: 911
+1 | Location: -28.2254, -28.5471, 0
+2 | Location: 40.7005, 28.3888, 0
+
+Iteration: 912
+1 | Location: -28.2657, -28.5876, 0
+2 | Location: 40.741, 28.4292, 0
+
+Iteration: 913
+1 | Location: -28.3061, -28.6282, 0
+2 | Location: 40.7816, 28.4696, 0
+
+Iteration: 914
+1 | Location: -28.3465, -28.6688, 0
+2 | Location: 40.8222, 28.51, 0
+
+Iteration: 915
+1 | Location: -28.3869, -28.7093, 0
+2 | Location: 40.8628, 28.5504, 0
+
+Iteration: 916
+1 | Location: -28.4273, -28.7499, 0
+2 | Location: 40.9034, 28.5908, 0
+
+Iteration: 917
+1 | Location: -28.4677, -28.7905, 0
+2 | Location: 40.944, 28.6312, 0
+
+Iteration: 918
+1 | Location: -28.5081, -28.8311, 0
+2 | Location: 40.9846, 28.6716, 0
+
+Iteration: 919
+1 | Location: -28.5485, -28.8717, 0
+2 | Location: 41.0252, 28.7121, 0
+
+Iteration: 920
+1 | Location: -28.5889, -28.9122, 0
+2 | Location: 41.0658, 28.7525, 0
+
+Iteration: 921
+1 | Location: -28.6294, -28.9528, 0
+2 | Location: 41.1064, 28.7929, 0
+
+Iteration: 922
+1 | Location: -28.6698, -28.9934, 0
+2 | Location: 41.147, 28.8334, 0
+
+Iteration: 923
+1 | Location: -28.7102, -29.034, 0
+2 | Location: 41.1876, 28.8738, 0
+
+Iteration: 924
+1 | Location: -28.7506, -29.0746, 0
+2 | Location: 41.2283, 28.9143, 0
+
+Iteration: 925
+1 | Location: -28.7911, -29.1153, 0
+2 | Location: 41.2689, 28.9547, 0
+
+Iteration: 926
+1 | Location: -28.8315, -29.1559, 0
+2 | Location: 41.3095, 28.9952, 0
+
+Iteration: 927
+1 | Location: -28.872, -29.1965, 0
+2 | Location: 41.3501, 29.0356, 0
+
+Iteration: 928
+1 | Location: -28.9124, -29.2371, 0
+2 | Location: 41.3908, 29.0761, 0
+
+Iteration: 929
+1 | Location: -28.9528, -29.2777, 0
+2 | Location: 41.4314, 29.1165, 0
+
+Iteration: 930
+1 | Location: -28.9933, -29.3184, 0
+2 | Location: 41.4721, 29.157, 0
+
+Iteration: 931
+1 | Location: -29.0338, -29.359, 0
+2 | Location: 41.5127, 29.1975, 0
+
+Iteration: 932
+1 | Location: -29.0742, -29.3996, 0
+2 | Location: 41.5534, 29.238, 0
+
+Iteration: 933
+1 | Location: -29.1147, -29.4403, 0
+2 | Location: 41.594, 29.2784, 0
+
+Iteration: 934
+1 | Location: -29.1552, -29.4809, 0
+2 | Location: 41.6347, 29.3189, 0
+
+Iteration: 935
+1 | Location: -29.1956, -29.5216, 0
+2 | Location: 41.6753, 29.3594, 0
+
+Iteration: 936
+1 | Location: -29.2361, -29.5622, 0
+2 | Location: 41.716, 29.3999, 0
+
+Iteration: 937
+1 | Location: -29.2766, -29.6029, 0
+2 | Location: 41.7567, 29.4404, 0
+
+Iteration: 938
+1 | Location: -29.3171, -29.6435, 0
+2 | Location: 41.7973, 29.4809, 0
+
+Iteration: 939
+1 | Location: -29.3575, -29.6842, 0
+2 | Location: 41.838, 29.5214, 0
+
+Iteration: 940
+1 | Location: -29.398, -29.7249, 0
+2 | Location: 41.8787, 29.5619, 0
+
+Iteration: 941
+1 | Location: -29.4385, -29.7655, 0
+2 | Location: 41.9194, 29.6024, 0
+
+Iteration: 942
+1 | Location: -29.479, -29.8062, 0
+2 | Location: 41.9601, 29.6429, 0
+
+Iteration: 943
+1 | Location: -29.5195, -29.8469, 0
+2 | Location: -53.9328, 29.6834, 0
+
+Iteration: 944
+1 | Location: -29.56, -29.8875, 0
+2 | Location: -53.8922, 29.724, 0
+
+Iteration: 945
+1 | Location: -29.6005, -29.9282, 0
+2 | Location: -53.8515, 29.7645, 0
+
+Iteration: 946
+1 | Location: -29.6411, -29.9689, 0
+2 | Location: -53.8108, 29.805, 0
+
+Iteration: 947
+1 | Location: -29.6816, -30.0096, 0
+2 | Location: -53.7701, 29.8455, 0
+
+Iteration: 948
+1 | Location: -29.7221, -30.0503, 0
+2 | Location: -53.7294, 29.8861, 0
+
+Iteration: 949
+1 | Location: -29.7626, -30.091, 0
+2 | Location: -53.6886, 29.9266, 0
+
+Iteration: 950
+1 | Location: -29.8032, -30.1317, 0
+2 | Location: -53.6479, 29.9672, 0
+
+Iteration: 951
+1 | Location: -29.8437, -30.1724, 0
+2 | Location: -53.6072, 30.0077, 0
+
+Iteration: 952
+1 | Location: -29.8842, -30.2131, 0
+2 | Location: -53.5665, 30.0482, 0
+
+Iteration: 953
+1 | Location: -29.9248, -30.2538, 0
+2 | Location: -53.5258, 30.0888, 0
+
+Iteration: 954
+1 | Location: -29.9653, -30.2945, 0
+2 | Location: -53.485, 30.1294, 0
+
+Iteration: 955
+1 | Location: -30.0058, -30.3352, 0
+2 | Location: -53.4443, 30.1699, 0
+
+Iteration: 956
+1 | Location: -30.0464, -30.376, 0
+2 | Location: -53.4036, 30.2105, 0
+
+Iteration: 957
+1 | Location: -30.0869, -30.4167, 0
+2 | Location: -53.3628, 30.251, 0
+
+Iteration: 958
+1 | Location: -30.1275, -30.4574, 0
+2 | Location: -53.3221, 30.2916, 0
+
+Iteration: 959
+1 | Location: -30.1681, -30.4981, 0
+2 | Location: -53.2814, 30.3322, 0
+
+Iteration: 960
+1 | Location: -30.2086, -30.5389, 0
+2 | Location: -53.2406, 30.3728, 0
+
+Iteration: 961
+1 | Location: -30.2492, -30.5796, 0
+2 | Location: -53.1999, 30.4133, 0
+
+Iteration: 962
+1 | Location: -30.2898, -30.6204, 0
+2 | Location: -53.1591, 30.4539, 0
+
+Iteration: 963
+1 | Location: -30.3303, -30.6611, 0
+2 | Location: -53.1183, 30.4945, 0
+
+Iteration: 964
+1 | Location: -30.3709, -30.7018, 0
+2 | Location: -53.0776, 30.5351, 0
+
+Iteration: 965
+1 | Location: -30.4115, -30.7426, 0
+2 | Location: -53.0368, 30.5757, 0
+
+Iteration: 966
+1 | Location: -30.4521, -30.7833, 0
+2 | Location: -52.9961, 30.6163, 0
+
+Iteration: 967
+1 | Location: -30.4927, -30.8241, 0
+2 | Location: -52.9553, 30.6569, 0
+
+Iteration: 968
+1 | Location: -30.5333, -30.8649, 0
+2 | Location: -52.9145, 30.6975, 0
+
+Iteration: 969
+1 | Location: -30.5738, -30.9056, 0
+2 | Location: -52.8737, 30.7381, 0
+
+Iteration: 970
+1 | Location: -30.6144, -30.9464, 0
+2 | Location: -52.833, 30.7787, 0
+
+Iteration: 971
+1 | Location: -30.655, -30.9872, 0
+2 | Location: -52.7922, 30.8193, 0
+
+Iteration: 972
+1 | Location: -30.6956, -31.0279, 0
+2 | Location: -52.7514, 30.86, 0
+
+Iteration: 973
+1 | Location: -30.7363, -31.0687, 0
+2 | Location: -52.7106, 30.9006, 0
+
+Iteration: 974
+1 | Location: -30.7769, -31.1095, 0
+2 | Location: -52.6698, 30.9412, 0
+
+Iteration: 975
+1 | Location: -30.8175, -31.1503, 0
+2 | Location: -52.629, 30.9818, 0
+
+Iteration: 976
+1 | Location: -30.8581, -31.1911, 0
+2 | Location: -52.5882, 31.0225, 0
+
+Iteration: 977
+1 | Location: -30.8987, -31.2319, 0
+2 | Location: -52.5474, 31.0631, 0
+
+Iteration: 978
+1 | Location: -30.9393, -31.2726, 0
+2 | Location: -52.5066, 31.1037, 0
+
+Iteration: 979
+1 | Location: -30.98, -31.3134, 0
+2 | Location: -52.4658, 31.1444, 0
+
+Iteration: 980
+1 | Location: -31.0206, -31.3542, 0
+2 | Location: -52.425, 31.185, 0
+
+Iteration: 981
+1 | Location: -31.0612, -31.395, 0
+2 | Location: -52.3842, 31.2257, 0
+
+Iteration: 982
+1 | Location: -31.1019, -31.4358, 0
+2 | Location: -52.3434, 31.2663, 0
+
+Iteration: 983
+1 | Location: -31.1425, -31.4767, 0
+2 | Location: -52.3025, 31.307, 0
+
+Iteration: 984
+1 | Location: -31.1832, -31.5175, 0
+2 | Location: -52.2617, 31.3476, 0
+
+Iteration: 985
+1 | Location: -31.2238, -31.5583, 0
+2 | Location: -52.2209, 31.3883, 0
+
+Iteration: 986
+1 | Location: -31.2645, -31.5991, 0
+2 | Location: -52.1801, 31.429, 0
+
+Iteration: 987
+1 | Location: -31.3051, -31.6399, 0
+2 | Location: -52.1392, 31.4696, 0
+
+Iteration: 988
+1 | Location: -31.3458, -31.6807, 0
+2 | Location: -52.0984, 31.5103, 0
+
+Iteration: 989
+1 | Location: -31.3864, -31.7216, 0
+2 | Location: -52.0575, 31.551, 0
+
+Iteration: 990
+1 | Location: -31.4271, -31.7624, 0
+2 | Location: -52.0167, 31.5916, 0
+
+Iteration: 991
+1 | Location: -31.4678, -31.8032, 0
+2 | Location: -51.9759, 31.6323, 0
+
+Iteration: 992
+1 | Location: -31.5084, -31.8441, 0
+2 | Location: -51.935, 31.673, 0
+
+Iteration: 993
+1 | Location: -31.5491, -31.8849, 0
+2 | Location: -51.8942, 31.7137, 0
+
+Iteration: 994
+1 | Location: -31.5898, -31.9257, 0
+2 | Location: -51.8533, 31.7544, 0
+
+Iteration: 995
+1 | Location: -31.6305, -31.9666, 0
+2 | Location: -51.8125, 31.7951, 0
+
+Iteration: 996
+1 | Location: -31.6711, -32.0074, 0
+2 | Location: -51.7716, 31.8358, 0
+
+Iteration: 997
+1 | Location: -31.7118, -32.0483, 0
+2 | Location: -51.7307, 31.8765, 0
+
+Iteration: 998
+1 | Location: -31.7525, -32.0891, 0
+2 | Location: -51.6899, 31.9172, 0
+
+Iteration: 999
+1 | Location: -31.7932, -32.13, 0
+2 | Location: -51.649, 31.9579, 0
+
+Iteration: 1000
+1 | Location: -31.8339, -32.1709, 0
+2 | Location: -51.6081, 31.9986, 0
+
+Iteration: 1001
+1 | Location: -31.8746, -32.2117, 0
+2 | Location: -51.5672, 32.0393, 0
+
+Iteration: 1002
+1 | Location: -31.9153, -32.2526, 0
+2 | Location: -51.5264, 32.08, 0
+
+Iteration: 1003
+1 | Location: -31.956, -32.2935, 0
+2 | Location: -51.4855, 32.1207, 0
+
+Iteration: 1004
+1 | Location: -31.9967, -32.3343, 0
+2 | Location: -51.4446, 32.1615, 0
+
+Iteration: 1005
+1 | Location: -32.0374, -32.3752, 0
+2 | Location: -51.4037, 32.2022, 0
+
+Iteration: 1006
+1 | Location: -32.0782, -32.4161, 0
+2 | Location: -51.3628, 32.2429, 0
+
+Iteration: 1007
+1 | Location: -32.1189, -32.457, 0
+2 | Location: -51.3219, 32.2836, 0
+
+Iteration: 1008
+1 | Location: -32.1596, -32.4978, 0
+2 | Location: -51.281, 32.3244, 0
+
+Iteration: 1009
+1 | Location: -32.2003, -32.5387, 0
+2 | Location: -51.2401, 32.3651, 0
+
+Iteration: 1010
+1 | Location: -32.241, -32.5796, 0
+2 | Location: -51.1992, 32.4058, 0
+
+Iteration: 1011
+1 | Location: -32.2818, -32.6205, 0
+2 | Location: -51.1583, 32.4466, 0
+
+Iteration: 1012
+1 | Location: -32.3225, -32.6614, 0
+2 | Location: -51.1174, 32.4873, 0
+
+Iteration: 1013
+1 | Location: -32.3632, -32.7023, 0
+2 | Location: -51.0765, 32.5281, 0
+
+Iteration: 1014
+1 | Location: -32.404, -32.7432, 0
+2 | Location: -51.0356, 32.5688, 0
+
+Iteration: 1015
+1 | Location: -32.4447, -32.7841, 0
+2 | Location: -50.9947, 32.6096, 0
+
+Iteration: 1016
+1 | Location: -32.4855, -32.825, 0
+2 | Location: -50.9538, 32.6503, 0
+
+Iteration: 1017
+1 | Location: -32.5262, -32.8659, 0
+2 | Location: -50.9129, 32.6911, 0
+
+Iteration: 1018
+1 | Location: -32.567, -32.9068, 0
+2 | Location: -50.8719, 32.7319, 0
+
+Iteration: 1019
+1 | Location: -32.6077, -32.9478, 0
+2 | Location: -50.831, 32.7726, 0
+
+Iteration: 1020
+1 | Location: -32.6485, -32.9887, 0
+2 | Location: -50.7901, 32.8134, 0
+
+Iteration: 1021
+1 | Location: -32.6892, -33.0296, 0
+2 | Location: -50.7491, 32.8542, 0
+
+Iteration: 1022
+1 | Location: -32.73, -33.0705, 0
+2 | Location: -50.7082, 32.8949, 0
+
+Iteration: 1023
+1 | Location: -32.7708, -33.1114, 0
+2 | Location: -50.6673, 32.9357, 0
+
+Iteration: 1024
+1 | Location: -32.8115, -33.1524, 0
+2 | Location: -50.6263, 32.9765, 0
+
+Iteration: 1025
+1 | Location: -32.8523, -33.1933, 0
+2 | Location: -50.5854, 33.0173, 0
+
+Iteration: 1026
+1 | Location: -32.8931, -33.2342, 0
+2 | Location: -50.5444, 33.0581, 0
+
+Iteration: 1027
+1 | Location: -32.9339, -33.2752, 0
+2 | Location: -50.5035, 33.0989, 0
+
+Iteration: 1028
+1 | Location: -32.9746, -33.3161, 0
+2 | Location: -50.4625, 33.1396, 0
+
+Iteration: 1029
+1 | Location: -33.0154, -33.3571, 0
+2 | Location: -50.4216, 33.1804, 0
+
+Iteration: 1030
+1 | Location: -33.0562, -33.398, 0
+2 | Location: -50.3806, 33.2212, 0
+
+Iteration: 1031
+1 | Location: -33.097, -33.439, 0
+2 | Location: -50.3397, 33.262, 0
+
+Iteration: 1032
+1 | Location: -33.1378, -33.4799, 0
+2 | Location: -50.2987, 33.3028, 0
+
+Iteration: 1033
+1 | Location: -33.1786, -33.5209, 0
+2 | Location: -50.2577, 33.3436, 0
+
+Iteration: 1034
+1 | Location: -33.2194, -33.5618, 0
+2 | Location: -50.2168, 33.3845, 0
+
+Iteration: 1035
+1 | Location: -33.2602, -33.6028, 0
+2 | Location: -50.1758, 33.4253, 0
+
+Iteration: 1036
+1 | Location: -33.301, -33.6437, 0
+2 | Location: -50.1348, 33.4661, 0
+
+Iteration: 1037
+1 | Location: -33.3418, -33.6847, 0
+2 | Location: -50.0939, 33.5069, 0
+
+Iteration: 1038
+1 | Location: -33.3826, -33.7257, 0
+2 | Location: -50.0529, 33.5477, 0
+
+Iteration: 1039
+1 | Location: -33.4234, -33.7666, 0
+2 | Location: -50.0119, 33.5885, 0
+
+Iteration: 1040
+1 | Location: -33.4642, -33.8076, 0
+2 | Location: -49.9709, 33.6294, 0
+
+Iteration: 1041
+1 | Location: -33.505, -33.8486, 0
+2 | Location: -49.9299, 33.6702, 0
+
+Iteration: 1042
+1 | Location: -33.5459, -33.8896, 0
+2 | Location: -49.8889, 33.711, 0
+
+Iteration: 1043
+1 | Location: -33.5867, -33.9305, 0
+2 | Location: -49.848, 33.7519, 0
+
+Iteration: 1044
+1 | Location: -33.6275, -33.9715, 0
+2 | Location: -49.807, 33.7927, 0
+
+Iteration: 1045
+1 | Location: -33.6683, -34.0125, 0
+2 | Location: -49.766, 33.8335, 0
+
+Iteration: 1046
+1 | Location: -33.7092, -34.0535, 0
+2 | Location: -49.725, 33.8744, 0
+
+Iteration: 1047
+1 | Location: -33.75, -34.0945, 0
+2 | Location: -49.684, 33.9152, 0
+
+Iteration: 1048
+1 | Location: -33.7908, -34.1355, 0
+2 | Location: -49.643, 33.9561, 0
+
+Iteration: 1049
+1 | Location: -33.8317, -34.1765, 0
+2 | Location: -49.6019, 33.9969, 0
+
+Iteration: 1050
+1 | Location: -33.8725, -34.2175, 0
+2 | Location: -49.5609, 34.0378, 0
+
+Iteration: 1051
+1 | Location: -33.9134, -34.2585, 0
+2 | Location: -49.5199, 34.0786, 0
+
+Iteration: 1052
+1 | Location: -33.9542, -34.2995, 0
+2 | Location: -49.4789, 34.1195, 0
+
+Iteration: 1053
+1 | Location: -33.9951, -34.3405, 0
+2 | Location: -49.4379, 34.1604, 0
+
+Iteration: 1054
+1 | Location: -34.0359, -34.3815, 0
+2 | Location: -49.3969, 34.2012, 0
+
+Iteration: 1055
+1 | Location: -34.0768, -34.4225, 0
+2 | Location: -49.3559, 34.2421, 0
+
+Iteration: 1056
+1 | Location: -34.1176, -34.4635, 0
+2 | Location: -49.3148, 34.283, 0
+
+Iteration: 1057
+1 | Location: -34.1585, -34.5046, 0
+2 | Location: -49.2738, 34.3238, 0
+
+Iteration: 1058
+1 | Location: -34.1994, -34.5456, 0
+2 | Location: -49.2328, 34.3647, 0
+
+Iteration: 1059
+1 | Location: -34.2402, -34.5866, 0
+2 | Location: -49.1917, 34.4056, 0
+
+Iteration: 1060
+1 | Location: -34.2811, -34.6276, 0
+2 | Location: -49.1507, 34.4465, 0
+
+Iteration: 1061
+1 | Location: -34.322, -34.6686, 0
+2 | Location: -49.1097, 34.4873, 0
+
+Iteration: 1062
+1 | Location: -34.3628, -34.7097, 0
+2 | Location: -49.0686, 34.5282, 0
+
+Iteration: 1063
+1 | Location: -34.4037, -34.7507, 0
+2 | Location: -49.0276, 34.5691, 0
+
+Iteration: 1064
+1 | Location: -34.4446, -34.7917, 0
+2 | Location: -48.9865, 34.61, 0
+
+Iteration: 1065
+1 | Location: -34.4855, -34.8328, 0
+2 | Location: -48.9455, 34.6509, 0
+
+Iteration: 1066
+1 | Location: -34.5264, -34.8738, 0
+2 | Location: -48.9044, 34.6918, 0
+
+Iteration: 1067
+1 | Location: -34.5672, -34.9149, 0
+2 | Location: -48.8634, 34.7327, 0
+
+Iteration: 1068
+1 | Location: -34.6081, -34.9559, 0
+2 | Location: -48.8223, 34.7736, 0
+
+Iteration: 1069
+1 | Location: -34.649, -34.997, 0
+2 | Location: -48.7813, 34.8145, 0
+
+Iteration: 1070
+1 | Location: -34.6899, -35.038, 0
+2 | Location: -48.7402, 34.8554, 0
+
+Iteration: 1071
+1 | Location: -34.7308, -35.0791, 0
+2 | Location: -48.6992, 34.8963, 0
+
+Iteration: 1072
+1 | Location: -34.7717, -35.1201, 0
+2 | Location: -48.6581, 34.9372, 0
+
+Iteration: 1073
+1 | Location: -34.8126, -35.1612, 0
+2 | Location: -48.617, 34.9781, 0
+
+Iteration: 1074
+1 | Location: -34.8535, -35.2022, 0
+2 | Location: -48.576, 35.019, 0
+
+Iteration: 1075
+1 | Location: -34.8944, -35.2433, 0
+2 | Location: -48.5349, 35.06, 0
+
+Iteration: 1076
+1 | Location: -34.9354, -35.2844, 0
+2 | Location: -48.4938, 35.1009, 0
+
+Iteration: 1077
+1 | Location: -34.9763, -35.3254, 0
+2 | Location: -48.4527, 35.1418, 0
+
+Iteration: 1078
+1 | Location: -35.0172, -35.3665, 0
+2 | Location: -48.4117, 35.1827, 0
+
+Iteration: 1079
+1 | Location: -35.0581, -35.4076, 0
+2 | Location: -48.3706, 35.2237, 0
+
+Iteration: 1080
+1 | Location: -35.099, -35.4486, 0
+2 | Location: -48.3295, 35.2646, 0
+
+Iteration: 1081
+1 | Location: -35.1399, -35.4897, 0
+2 | Location: -48.2884, 35.3055, 0
+
+Iteration: 1082
+1 | Location: -35.1809, -35.5308, 0
+2 | Location: -48.2473, 35.3465, 0
+
+Iteration: 1083
+1 | Location: -35.2218, -35.5719, 0
+2 | Location: -48.2062, 35.3874, 0
+
+Iteration: 1084
+1 | Location: -35.2627, -35.613, 0
+2 | Location: -48.1651, 35.4284, 0
+
+Iteration: 1085
+1 | Location: -35.3037, -35.654, 0
+2 | Location: -48.124, 35.4693, 0
+
+Iteration: 1086
+1 | Location: -35.3446, -35.6951, 0
+2 | Location: -48.0829, 35.5102, 0
+
+Iteration: 1087
+1 | Location: -35.3855, -35.7362, 0
+2 | Location: -48.0418, 35.5512, 0
+
+Iteration: 1088
+1 | Location: -35.4265, -35.7773, 0
+2 | Location: -48.0007, 35.5921, 0
+
+Iteration: 1089
+1 | Location: -35.4674, -35.8184, 0
+2 | Location: -47.9596, 35.6331, 0
+
+Iteration: 1090
+1 | Location: -35.5084, -35.8595, 0
+2 | Location: -47.9185, 35.6741, 0
+
+Iteration: 1091
+1 | Location: -35.5493, -35.9006, 0
+2 | Location: -47.8774, 35.715, 0
+
+Iteration: 1092
+1 | Location: -35.5903, -35.9417, 0
+2 | Location: -47.8363, 35.756, 0
+
+Iteration: 1093
+1 | Location: -35.6312, -35.9828, 0
+2 | Location: -47.7952, 35.7969, 0
+
+Iteration: 1094
+1 | Location: -35.6722, -36.0239, 0
+2 | Location: -47.7541, 35.8379, 0
+
+Iteration: 1095
+1 | Location: -35.7131, -36.065, 0
+2 | Location: -47.7129, 35.8789, 0
+
+Iteration: 1096
+1 | Location: -35.7541, -36.1061, 0
+2 | Location: -47.6718, 35.9198, 0
+
+Iteration: 1097
+1 | Location: -35.7951, -36.1473, 0
+2 | Location: -47.6307, 35.9608, 0
+
+Iteration: 1098
+1 | Location: -35.836, -36.1884, 0
+2 | Location: -47.5896, 36.0018, 0
+
+Iteration: 1099
+1 | Location: -35.877, -36.2295, 0
+2 | Location: -47.5485, 36.0428, 0
+
