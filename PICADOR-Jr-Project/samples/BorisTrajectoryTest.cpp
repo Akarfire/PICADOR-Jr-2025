@@ -33,10 +33,11 @@ int main()
 
     // Initializing particle grid
     // Calculating space step
-    double spaceStep = Constants::SpeedOfLight * timeStep * 2;
-    spaceStep *= 1.0;
 
-    std::cout << spaceStep << std::endl;
+    // double spaceStep = Constants::SpeedOfLight * timeStep * 2;
+    // spaceStep *= 1.0;
+
+    double spaceStep = 11.9917;
 
     // Initializing particle grid
     ParticleGrid particleGrid(9, 9, spaceStep, spaceStep, Vector3(-4.5 * spaceStep, -4.5 * spaceStep), 1);
@@ -46,7 +47,7 @@ int main()
     testParticle.trackingID = 1;
     particleGrid.editParticlesInCell(4, 4).push_back(testParticle);
 
-    Particle testParticle_2(Constants::ElectronMass, -1 * Constants::ElectronCharge, Vector3::One * 20, Vector3(PZero, 0, 0));
+    Particle testParticle_2(Constants::ElectronMass, -1 * Constants::ElectronCharge, Vector3(spaceStep, 0, 0), Vector3(PZero, 0, 0));
     testParticle_2.trackingID = 2;
     particleGrid.editParticlesInCell(4, 4).push_back(testParticle_2);
 
@@ -67,7 +68,7 @@ int main()
     dataSampler.sampleParticleVelocities = false;
     dataSampler.sampleParticleCells = false;
     dataSampler.writeParticleGridParameters = true;
-    dataSampler.outputFileName = "./2_Particles.txt";
+    dataSampler.outputFileName = "./tr.txt";
 
     core.insertModule(&dataSampler);
 
