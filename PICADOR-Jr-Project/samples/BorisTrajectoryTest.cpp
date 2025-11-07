@@ -15,48 +15,61 @@
 
 int main()
 {
+    // SIMULATION PARAMETERS
+
     size_t numInterations = 1100;
     double timeStep = 2e-12;
+
+    double spaceStep = 11.9917;
+    // spaceStep = Constants::SpeedOfLight * timeStep * 2;
+
+    Vector3 E = Vector3::VectorMaskXY.normalized() * 100;
+    Vector3 B = Vector3(0, 0, 100);
     
+    std::vector<Particle> particles = 
+    {
+        Particle(Constants::ElectronMass,   Constants::ElectronCharge,        Vector3::Zero,                Vector3(Constants::ElectronMass * 3e8, 0, 0)),
+        Particle(Constants::ElectronMass,   -1 * Constants::ElectronCharge,   Vector3(spaceStep, 0, 0),     Vector3(Constants::ElectronMass * 3e8, 0, 0))
+    };
+
+    std::string outputFileName = "./tr.txt";
+    //"D:/Projects/PICADOR-Jr-2025/Visualization/Trajectory/data/tr.txt";
+    
+
+    // SIMULATION SETUP
+
     // Initializing static field
 
-    double BZero = 0;
-
-    double PZero = Constants::ElectronMass * 3e8;
-
     FieldData staticFieldData;
-    staticFieldData.E = Vector3::VectorMaskXY.normalized() * 100;
-    staticFieldData.B = Vector3(0, 0, BZero);
+    staticFieldData.E = E;
+    staticFieldData.B = B;
     staticFieldData.J = Vector3::Zero;
 
     StaticField staticField(staticFieldData);
 
     // Initializing particle grid
-    // Calculating space step
-
-    // double spaceStep = Constants::SpeedOfLight * timeStep * 2;
-    // spaceStep *= 1.0;
-
-    double spaceStep = 11.9917;
 
     // Initializing particle grid
     ParticleGrid particleGrid(9, 9, spaceStep, spaceStep, Vector3(-4.5 * spaceStep, -4.5 * spaceStep), 1);
 
-    // Adding single particle to the grid
-    Particle testParticle(Constants::ElectronMass, Constants::ElectronCharge, Vector3::Zero, Vector3(PZero, 0, 0));
-    testParticle.trackingID = 1;
-    particleGrid.editParticlesInCell(4, 4).push_back(testParticle);
-
-    Particle testParticle_2(Constants::ElectronMass, -1 * Constants::ElectronCharge, Vector3(spaceStep, 0, 0), Vector3(PZero, 0, 0));
-    testParticle_2.trackingID = 2;
-    particleGrid.editParticlesInCell(4, 4).push_back(testParticle_2);
+    // Adding particles to the grid
+    for (size_t i = 0 ; i < particles.size(); i++)
+    {
+        particles[i].trackingID = (unsigned short int)i;
+        std::pair<GRID_INDEX, GRID_INDEX> cell = particleGrid.getCell(particles[i].location);
+        particleGrid.editParticlesInCell(cell.first, cell.second).push_back(particles[i]);
+    }
 
     // Initializing core
     PicadorJrCore core(&staticField, &particleGrid, timeStep, numInterations);
 
+    // Adding modules
+
+    // Particle Solver module
     ParticleSolver particleSolver(&core);
     core.insertModule(&particleSolver);
 
+    // Particle Loop Edge Condition module
     ParticleLoopEdgeCondition loopCondition(&core);
     core.insertModule(&loopCondition);
 
@@ -68,10 +81,11 @@ int main()
     dataSampler.sampleParticleVelocities = false;
     dataSampler.sampleParticleCells = false;
     dataSampler.writeParticleGridParameters = true;
-    dataSampler.outputFileName = "./tr.txt";
+    dataSampler.outputFileName = outputFileName;
 
     core.insertModule(&dataSampler);
 
+    // RUN SIMULATION
     try
     {
         core.run();
