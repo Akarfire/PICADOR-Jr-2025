@@ -5,8 +5,8 @@ struct Vector3
 	// Coordinates
 	double x, y, z;
 
-	// Default constructor
-	Vector3(double x_, double y_, double z_ = 0): x(x_), y(y_), z(z_) {}
+	// Constructors
+  Vector3(double x_, double y_, double z_ = 0.0): x(x_), y(y_), z(z_) {}
 	Vector3(double xyz = 0.0): x(xyz), y(xyz), z(xyz) {}
 
 	// Data getters

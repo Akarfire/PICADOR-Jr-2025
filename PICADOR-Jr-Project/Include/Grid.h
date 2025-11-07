@@ -33,12 +33,17 @@ public:
     // Returns coordinates of the bottom left corner of the cell, which the given point is in
     std::pair<GRID_INDEX, GRID_INDEX> getCell(const Vector3& location) const
     {
-        if (location.x < origin.x || location.x > (origin.x + (this->resolutionX-1)*this->deltaX) || location.y < origin.y || location.y > (origin.y + (this->resolutionY - 1) * this->deltaY)) 
+        if (location.x < origin.x - padding * this->deltaX 
+            || location.x > (origin.x + (this->resolutionX - 1 + padding)*this->deltaX) 
+            || location.y < origin.y - padding * this->deltaY
+            || location.y > (origin.y + (this->resolutionY - 1 + padding) * this->deltaY))
+        {
             throw(std::runtime_error("Invalid location!"));
+        }
 
         std::pair<GRID_INDEX, GRID_INDEX> cell;
-        cell.first = (GRID_INDEX)floor((location.x - this->origin.x) / this->deltaX);
-        cell.second = (GRID_INDEX)floor((location.y - this->origin.x) / this->deltaY);
+        cell.second = (GRID_INDEX)floor((location.x - this->origin.x) / this->deltaX);
+        cell.first = (GRID_INDEX)floor((location.y - this->origin.x) / this->deltaY);
         return cell;
     }
 
@@ -47,6 +52,8 @@ public:
 
     size_t getResolutionX() const { return resolutionX; }
     size_t getResolutionY() const { return resolutionY; }
+
+    size_t getPadding() const { return padding; }
 
     double getDeltaX() const { return deltaX; }
     double getDeltaY() const { return deltaY; }

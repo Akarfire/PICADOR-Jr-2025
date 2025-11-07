@@ -20,7 +20,7 @@ int main()
     ParticleGrid particleGrid = ParticleGrid(100, 100, 1e-3, 1e-3, Vector3::Zero, 1);
 
     // Initializing core
-    PicadorJrCore core = PicadorJrCore(&fieldGrid, &particleGrid);
+    PicadorJrCore core = PicadorJrCore(&fieldGrid, &particleGrid, 1e-3, 1);
 
     // Field integrator module
     FieldSolver fieldIntegrator(&core);

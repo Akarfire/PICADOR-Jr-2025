@@ -10,7 +10,7 @@ class CurrentDepositor : public Module
     FieldGrid* fieldGrid;
     ParticleGrid* particleGrid;
 
-    FieldLoopEdgeCondition edgeCondition; //тут вопрос, что выгоднее — хранить класс или создавать его каждый раз при обновлении
+    FieldLoopEdgeCondition edgeCondition; //пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
 
 public:
     CurrentDepositor(PicadorJrCore* core_): Module(core_) {}

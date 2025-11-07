@@ -444,3 +444,5 @@ CMakeUserPresets.json
 build/
 .vscode/
 *.code-workspace
+
+**.obsidian/
