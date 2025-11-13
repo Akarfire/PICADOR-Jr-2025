@@ -1,5 +1,5 @@
 
-# 1. Test Experiment
+# 1. First Experiment
 
 ### Experiment parameters
 
@@ -37,14 +37,14 @@ std::vector<Particle> particles =
 
 ### Results
 
-![](../Images/BorisTrajectoryTestExperiment_Full.png)
+![](../Images/Experiment_BorisTrajectory_1_Full.png)
 
 
-![](../Images/BorisTrajectoryTestExperiment_Zoomed_1.png)
-![](../Images/BorisTrajectoryTestExperiment_Zoomed_2.png)
+![](../Images/Experiment_BorisTrajectory_1_Zoom_1.png)
+![](../Images/Experiment_BorisTrajectory_1_Zoom_2.png)
 
 
-# 2. Second Test Experiment
+# 2. Second Experiment
 
 ### Experiment parameters
 
@@ -62,35 +62,34 @@ Vector3 E = Vector3::VectorMaskXY.normalized() * 500;
 // Second run
 Vector3 E = Vector3::VectorMaskXY.normalized() * 300;
 
-
 Vector3 B = Vector3(0, 0, 1e3);
 
 std::vector<Particle> particles =
 {
     Particle(
-	    Constants::ElectronMass,   
-	    Constants::ElectronCharge,        
-	    Vector3::Zero,                
-	    Vector3(0, 0, 0)
-	    ),
-
+        Constants::ElectronMass,
+        Constants::ElectronCharge,
+        Vector3::Zero,
+        Vector3(0, 0, 0)
+        ),
+        
     Particle(
-	    Constants::ElectronMass,   
-	    -1 * Constants::ElectronCharge,   
-	    Vector3(spaceStep, 0, 0),     
-	    Vector3(0, 0, 0)
-	    )
+        Constants::ElectronMass,
+        -1 * Constants::ElectronCharge,
+        Vector3(spaceStep, 0, 0),
+        Vector3(0, 0, 0)
+        )
 };
 ```
 
 
-### Results Run 1
+### Result Run 1
 
-![](../Images/BorisTrajectorySecondTestExperiment_Run1.png)
+![](../Images/Experiment_BorisTrajectory_2_1.png)
 
-### Results Run 2
+### Result Run 2
 
-![](../Images/BorisTrajectorySecondTestExperiment_Run2.png)
+![](../Images/Experiment_BorisTrajectory_2_2.png)
 
 
 
@@ -134,9 +133,63 @@ std::vector<Particle> particles =
 ```
 
 
-### Results Run 1
+### Result Run 1
 
-![](../Images/BorisTrajectoryThirdTestExperiment_Run1.png)
-### Results Run 2
+![](../Images/Experiment_BorisTrajectory_3_1.png)
+### Result Run 2
 
-![](../Images/BorisTrajectoryThirdTestExperiment_Run2.png)
+![](../Images/Experiment_BorisTrajectory_3_2.png)
+
+
+# 4. Fourth Test Experiment
+
+### Experiment parameters
+
+```c++
+
+size_t numInterations = 1100;
+double timeStep = 2e-12;
+
+size_t resolution = 9;
+double spaceStep = 11.9917;
+
+// First run
+Vector3 E = Vector3::VectorMaskXY.normalized() * 300;
+
+// Second run
+Vector3 E = Vector3::VectorMaskXY.normalized() * -300;
+
+// Third run
+Vector3 E = Vector3::VectorMaskXY.normalized() * -500;
+
+
+Vector3 B = Vector3(0, 0, 1e3);
+
+std::vector<Particle> particles =
+{
+    Particle(
+	    Constants::ElectronMass,   
+	    Constants::ElectronCharge,        
+	    Vector3::Zero,                
+	    Vector3(Constants::ElectronMass * 3e10, 0, 0)
+	    ),
+
+    Particle(
+	    Constants::ElectronMass,   
+	    -1 * Constants::ElectronCharge,   
+	    Vector3(spaceStep, 0, 0),     
+	    Vector3(Constants::ElectronMass * 3e10, 0, 0)
+	    )
+};
+```
+
+
+### Result Run 1
+
+![](../Images/Experiment_BorisTrajectory_4_1.png)
+### Result Run 2
+
+![](../Images/Experiment_BorisTrajectory_4_2.png)
+### Result Run 3
+
+![](../Images/Experiment_BorisTrajectory_4_3.png)
