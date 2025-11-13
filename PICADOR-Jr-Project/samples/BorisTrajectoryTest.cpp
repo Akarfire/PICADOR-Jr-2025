@@ -24,24 +24,24 @@ int main()
     size_t numInterations = 1100;
     double timeStep = 2e-12;
 
-    size_t resolution = 9;
+    size_t resolution = 7;
     double spaceStep = 11.9917;
     //double spaceStep = Constants::SpeedOfLight * timeStep * 2;
 
-    Vector3 E = Vector3::VectorMaskXY.normalized() * 300;
+    Vector3 E = Vector3::VectorMaskXY.normalized() * -500;
     Vector3 B = Vector3(0, 0, 1e3);
     
     std::vector<Particle> particles = 
     {
-        Particle(Constants::ElectronMass,   Constants::ElectronCharge,        Vector3::Zero,                Vector3(Constants::ElectronMass * 3e8, 0, 0)),
-        Particle(Constants::ElectronMass,   -1 * Constants::ElectronCharge,   Vector3(spaceStep, 0, 0),     Vector3(Constants::ElectronMass * 3e8, 0, 0))
+        Particle(Constants::ElectronMass,   Constants::ElectronCharge,        Vector3::Zero,                Vector3(Constants::ElectronMass * 3e10, 0, 0)),
+        Particle(Constants::ElectronMass,   -1 * Constants::ElectronCharge,   Vector3(spaceStep, 0, 0),     Vector3(Constants::ElectronMass * 3e10, 0, 0))
     };
 
+    // Output file for manual trajectory visualization
     //std::string outputFileName = "./tr.txt";
 
     // Output file for automated trajectory visualization
     std::string outputFileName = "../../Visualization/Trajectory/Automated/particle_trajectories_auto_vis.txt";
-    //"D:/Projects/PICADOR-Jr-2025/Visualization/Trajectory/data/tr.txt";
     
 
     // SIMULATION SETUP
