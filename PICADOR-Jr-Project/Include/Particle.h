@@ -23,8 +23,8 @@ struct Particle
 	Particle(const ParticleType& inType, double inMass, double inCharge, const Vector3& initialLocation = Vector3::Zero, const Vector3 initialImpulse = Vector3::Zero): type(inType), mass(inMass), charge(inCharge), location(initialLocation), impulse(initialImpulse) {}
 
 	// Calculate and return particle velocity based on its impulse and mass
-	Vector3 getVelocity() const
-	{
-		return impulse / (mass * sqrt(1 + (impulse.sizeSquared() / (mass * mass * Constants::SpeedOfLight * Constants::SpeedOfLight))));
-	}
+	Vector3 getVelocity() const;
+
+	// Converts velocity to impulse based on mass
+	static Vector3 convertVelocityToImpulse(const Vector3& velocity, double mass);
 };
