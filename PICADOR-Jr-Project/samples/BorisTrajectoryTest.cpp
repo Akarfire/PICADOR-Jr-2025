@@ -11,6 +11,10 @@
 #include "Constants.h"
 
 #include <iostream>
+#include <cstdlib>
+#include <windows.h>
+#include <shellapi.h>
+#include <string>
 
 
 int main()
@@ -20,11 +24,12 @@ int main()
     size_t numInterations = 1100;
     double timeStep = 2e-12;
 
+    size_t resolution = 9;
     double spaceStep = 11.9917;
-    // spaceStep = Constants::SpeedOfLight * timeStep * 2;
+    //double spaceStep = Constants::SpeedOfLight * timeStep * 2;
 
-    Vector3 E = Vector3::VectorMaskXY.normalized() * 100;
-    Vector3 B = Vector3(0, 0, 100);
+    Vector3 E = Vector3::VectorMaskXY.normalized() * 300;
+    Vector3 B = Vector3(0, 0, 1e3);
     
     std::vector<Particle> particles = 
     {
@@ -32,7 +37,10 @@ int main()
         Particle(Constants::ElectronMass,   -1 * Constants::ElectronCharge,   Vector3(spaceStep, 0, 0),     Vector3(Constants::ElectronMass * 3e8, 0, 0))
     };
 
-    std::string outputFileName = "./tr.txt";
+    //std::string outputFileName = "./tr.txt";
+
+    // Output file for automated trajectory visualization
+    std::string outputFileName = "../../Visualization/Trajectory/Automated/particle_trajectories_auto_vis.txt";
     //"D:/Projects/PICADOR-Jr-2025/Visualization/Trajectory/data/tr.txt";
     
 
@@ -50,7 +58,7 @@ int main()
     // Initializing particle grid
 
     // Initializing particle grid
-    ParticleGrid particleGrid(9, 9, spaceStep, spaceStep, Vector3(-4.5 * spaceStep, -4.5 * spaceStep), 1);
+    ParticleGrid particleGrid(resolution, resolution, spaceStep, spaceStep, Vector3(-1 * ((double)resolution) / 2 * spaceStep, -1 * ((double)resolution) / 2 * spaceStep), 1);
 
     // Adding particles to the grid
     for (size_t i = 0 ; i < particles.size(); i++)
@@ -95,6 +103,12 @@ int main()
     {
         std::cout << e.what() << '\n';
     }
+
+    // Running visualizer script
+    //std::system("\"..\\..\\Visualization\\Trajectory\\Automated\\AutoRunTrajectoryBuilder.bat\"");
+
+    std::wstring path = L"..\\..\\Visualization\\Trajectory\\Automated\\AutoRunTrajectoryBuilder_SC";
+    ShellExecuteW(NULL, L"open", path.c_str(), NULL, NULL, SW_SHOWNORMAL);
 
     return 0;
 }
