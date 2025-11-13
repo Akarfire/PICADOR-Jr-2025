@@ -1,10 +1,45 @@
 #include "Module_ParticleGenerator.h"
+#include <random>
 
 
 // Generates particles for a single cell and appends them to outParticles
-void ParticleGenerator::generateParticlesForCell(std::vector<Particle>& outParticles)
+void ParticleGenerator::generateParticlesForCell(std::vector<Particle>& outParticles, GRID_INDEX cell_i, GRID_INDEX cell_j)
 {
+    ParticleGrid* particleGrid = core->getParticleGrid();
 
+    Vector3 cellLocation = Vector3( cell_j * particleGrid->getDeltaX() + particleGrid->getOrigin().x,
+                                    cell_i * particleGrid->getDeltaY() + particleGrid->getOrigin().y );
+
+    // Genering particles from all profiles
+    for (auto& profile : generationProfiles)
+    {
+        // Calculating particle number for this cell
+        double particleDensity = profile.particlePerCellDensityFunction(cellLocation);
+        size_t numParticles = round(particleDensity);
+
+        // Generating individual particles
+        for (size_t i = 0; i < numParticles; i++)
+        {
+            Vector3 randomLocation = cellLocation + Vector3(    particleGrid->getDeltaX() * ((double)(rand()) / RAND_MAX),
+                                                                particleGrid->getDeltaY() * ((double)(rand()) / RAND_MAX));
+
+            Vector3 velocityMean = profile.velocityMeanFunction(randomLocation);
+            Vector3 velocityStandartDeviation = profile.veloictyStandartDeviationFunction(randomLocation);
+
+            std::normal_distribution<> velocityDistributionX(velocityMean.x, velocityStandartDeviation.x);
+            std::normal_distribution<> velocityDistributionY(velocityMean.y, velocityStandartDeviation.y);
+
+            Vector3 randomVelocity = Vector3(velocityDistributionX(randomEngine), velocityDistributionY(randomEngine), 0);
+
+            // Creating particle
+            Particle newParticle = profile.sampleParticle;
+            newParticle.location = randomLocation;
+            newParticle.impulse = Particle::convertVelocityToImpulse(randomVelocity, newParticle.mass);
+
+            // Adding particle to the grid
+            particleGrid->editParticlesInCell(cell_i, cell_j).push_back(newParticle);
+        }
+    }
 }
 
 // Generates initial velocity for a particle
@@ -24,7 +59,7 @@ ModuleExecutionStatus ParticleGenerator::onBegin()
         {
             std::vector<Particle>& cellParticles = particleGrid->editParticlesInCell(i, j);
 
-            generateParticlesForCell(cellParticles);
+            generateParticlesForCell(cellParticles, i, j);
         }
 
     return ModuleExecutionStatus::Success;

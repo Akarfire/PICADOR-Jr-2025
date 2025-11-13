@@ -3,6 +3,9 @@
 #include "Module.h"
 #include "PicadorJrCore.h"
 
+#include <functional>
+#include <random>
+
 class ParticleGenerator : public Module
 {
 public:
@@ -12,29 +15,35 @@ public:
         // Sample particle to copy properties from, electron by default
         Particle sampleParticle = Particle(ParticleType::Electron, Constants::ElectronMass, Constants::ElectronCharge);
 
-        // Number of particles generated per cell
-        double particleDensityPerCell = 10.0; 
+        // Number of particles generated per cell ( f(cell location) = density )
+        std::function<double(Vector3)> particlePerCellDensityFunction; 
 
-        // Mean velocity of generated particles
-        double velocityMean = 0.0; 
+        // Mean velocity of generated particles ( f(location) = velocity mean )
+        std::function<Vector3(Vector3)> velocityMeanFunction;
         
-        // Standard deviation of generated particle velocities
-        double velocityStandartDeviation = 0.0; 
+        // Standard deviation of generated particle velocities ( f(location) = velocity standart deviation )
+        std::function<Vector3(Vector3)> veloictyStandartDeviationFunction;
     };
 
 protected:
+
+    // Random seed
+    int seed;
+
+    // Random engine used for normal destribution
+    std::mt19937 randomEngine;
 
     // List of generation profiles
     std::vector<ParticleGenerationProfile> generationProfiles;
 
     // Generates particles for a single cell and appends them to outParticles
-    void generateParticlesForCell(std::vector<Particle>& outParticles);
+    void generateParticlesForCell(std::vector<Particle>& outParticles, GRID_INDEX cell_i, GRID_INDEX cell_j);
 
     // Generates initial velocity for a particle
     Vector3 generateParticleVelocity();
 
 public:
-    ParticleGenerator(PicadorJrCore* core_): Module(core_) {}
+    ParticleGenerator(PicadorJrCore* core_, int seed_): Module(core_), seed(seed_), randomEngine(seed) { srand(seed); }
 
     // Called by the core before entering the simulation loop
     virtual ModuleExecutionStatus onBegin() override;
