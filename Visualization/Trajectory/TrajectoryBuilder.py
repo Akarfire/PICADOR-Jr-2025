@@ -122,6 +122,10 @@ for particleID in particleSamples:
     
     pyplot.plot(xValues, yValues, label=f"Particle {particleID}", linewidth=1)
     pyplot.scatter(xValues, yValues, s=2)
+    
+    for i in range(0, len(xValues), len(xValues) // 10):
+        pyplot.annotate('', xy=(xValues[i + 1], yValues[i + 1]), xytext=(xValues[i], yValues[i]),
+            arrowprops=dict(color='grey', lw=0.5))
 
 
 pyplot.title("Particle Trajectories")
