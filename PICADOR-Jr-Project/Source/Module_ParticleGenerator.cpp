@@ -24,7 +24,7 @@ void ParticleGenerator::generateParticlesForCell(std::vector<Particle>& outParti
                                                                 particleGrid->getDeltaY() * ((double)(rand()) / RAND_MAX));
 
             Vector3 velocityMean = profile.velocityMeanFunction(randomLocation);
-            Vector3 velocityStandartDeviation = profile.veloictyStandartDeviationFunction(randomLocation);
+            Vector3 velocityStandartDeviation = profile.velocityStandartDeviationFunction(randomLocation);
 
             std::normal_distribution<> velocityDistributionX(velocityMean.x, velocityStandartDeviation.x);
             std::normal_distribution<> velocityDistributionY(velocityMean.y, velocityStandartDeviation.y);

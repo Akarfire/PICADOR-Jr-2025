@@ -22,7 +22,7 @@ public:
         std::function<Vector3(Vector3)> velocityMeanFunction;
         
         // Standard deviation of generated particle velocities ( f(location) = velocity standart deviation )
-        std::function<Vector3(Vector3)> veloictyStandartDeviationFunction;
+        std::function<Vector3(Vector3)> velocityStandartDeviationFunction;
     };
 
 protected:
