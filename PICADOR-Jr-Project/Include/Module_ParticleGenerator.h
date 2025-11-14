@@ -15,14 +15,14 @@ public:
         // Sample particle to copy properties from, electron by default
         Particle sampleParticle = Particle(ParticleType::Electron, Constants::ElectronMass, Constants::ElectronCharge);
 
-        // Number of particles generated per cell ( f(cell location) = density )
-        std::function<double(Vector3)> particlePerCellDensityFunction; 
+        // Number of particles generated per cell ( f(cell location) = number of particles in this cell )
+        std::function<size_t(Vector3)> particlePerCellDensityFunction = [](Vector3) { return 0; }; 
 
         // Mean velocity of generated particles ( f(location) = velocity mean )
-        std::function<Vector3(Vector3)> velocityMeanFunction;
+        std::function<Vector3(Vector3)> velocityMeanFunction = [](Vector3) { return Vector3::Zero; }; 
         
         // Standard deviation of generated particle velocities ( f(location) = velocity standart deviation )
-        std::function<Vector3(Vector3)> velocityStandartDeviationFunction;
+        std::function<Vector3(Vector3)> velocityStandartDeviationFunction = [](Vector3) { return Vector3::Zero; };
     };
 
 protected:

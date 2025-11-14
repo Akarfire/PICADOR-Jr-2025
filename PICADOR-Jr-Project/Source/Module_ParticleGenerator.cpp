@@ -14,8 +14,7 @@ void ParticleGenerator::generateParticlesForCell(std::vector<Particle>& outParti
     for (auto& profile : generationProfiles)
     {
         // Calculating particle number for this cell
-        double particleDensity = profile.particlePerCellDensityFunction(cellLocation);
-        size_t numParticles = round(particleDensity);
+        size_t numParticles = profile.particlePerCellDensityFunction(cellLocation);
 
         // Generating individual particles
         for (size_t i = 0; i < numParticles; i++)
