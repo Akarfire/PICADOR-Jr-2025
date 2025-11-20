@@ -1,7 +1,6 @@
 #include "Module_ParticleGenerator.h"
 #include <random>
 
-
 // Generates particles for a single cell and appends them to outParticles
 void ParticleGenerator::generateParticlesForCell(std::vector<Particle>& outParticles, GRID_INDEX cell_i, GRID_INDEX cell_j)
 {
@@ -13,30 +12,36 @@ void ParticleGenerator::generateParticlesForCell(std::vector<Particle>& outParti
     // Genering particles from all profiles
     for (auto& profile : generationProfiles)
     {
+        Vector3 cellSampleLocation = cellLocation + Vector3(particleGrid->getDeltaX(),  particleGrid->getDeltaY()) * 0.5;
+
         // Calculating particle number for this cell
-        size_t numParticles = profile.particlePerCellDensityFunction(cellLocation);
+        size_t numParticles =   profile.particleDensityFunction(cellSampleLocation)
+                                * particleGrid->getDeltaX()
+                                * particleGrid->getDeltaY() 
+                                / profile.particleFactorFunction(cellSampleLocation);
 
         // Generating individual particles
         for (size_t i = 0; i < numParticles; i++)
         {
-            Vector3 randomLocation = cellLocation + Vector3(    particleGrid->getDeltaX() * ((double)(rand()) / RAND_MAX),
+            Vector3 particleLocation = cellLocation + Vector3(    particleGrid->getDeltaX() * ((double)(rand()) / RAND_MAX),
                                                                 particleGrid->getDeltaY() * ((double)(rand()) / RAND_MAX));
+                                                             
+            double speedMean = 0.0;
+            double speedStandartDeviation = sqrt(profile.temperatureFunction(particleLocation) / profile.sampleParticle.mass);
 
-            Vector3 velocityMean = profile.velocityMeanFunction(randomLocation);
-            Vector3 velocityStandartDeviation = profile.velocityStandartDeviationFunction(randomLocation);
+            std::normal_distribution<> velocityDistributionX(speedMean, speedStandartDeviation);
+            std::normal_distribution<> velocityDistributionY(speedMean, speedStandartDeviation);
 
-            std::normal_distribution<> velocityDistributionX(velocityMean.x, velocityStandartDeviation.x);
-            std::normal_distribution<> velocityDistributionY(velocityMean.y, velocityStandartDeviation.y);
-
-            Vector3 randomVelocity = Vector3(velocityDistributionX(randomEngine), velocityDistributionY(randomEngine), 0);
+            Vector3 particleVelocity = Vector3(velocityDistributionX(randomEngine), velocityDistributionY(randomEngine), 0);
 
             // Creating particle
             Particle newParticle = profile.sampleParticle;
-            newParticle.location = randomLocation;
-            newParticle.impulse = Particle::convertVelocityToImpulse(randomVelocity, newParticle.mass);
+            newParticle.location = particleLocation;
+            newParticle.impulse = Particle::convertVelocityToImpulse(particleVelocity, newParticle.mass);
+            newParticle.weight = profile.particleFactorFunction(particleLocation);
 
             // Adding particle to the grid
-            particleGrid->editParticlesInCell(cell_i, cell_j).push_back(newParticle);
+            outParticles.push_back(newParticle);
         }
     }
 }

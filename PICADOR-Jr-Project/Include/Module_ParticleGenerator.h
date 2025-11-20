@@ -15,14 +15,14 @@ public:
         // Sample particle to copy properties from, electron by default
         Particle sampleParticle = Particle(ParticleType::Electron, Constants::ElectronMass, Constants::ElectronCharge);
 
-        // Number of particles generated per cell ( f(cell location) = number of particles in this cell )
-        std::function<size_t(Vector3)> particlePerCellDensityFunction = [](Vector3) { return 0; }; 
+        // Particle distribution density function
+        std::function<size_t(Vector3)> particleDensityFunction = [](Vector3) { return 0; };
 
-        // Mean velocity of generated particles ( f(location) = velocity mean )
-        std::function<Vector3(Vector3)> velocityMeanFunction = [](Vector3) { return Vector3::Zero; }; 
-        
-        // Standard deviation of generated particle velocities ( f(location) = velocity standart deviation )
-        std::function<Vector3(Vector3)> velocityStandartDeviationFunction = [](Vector3) { return Vector3::Zero; };
+        // Temperature function (used for calculating initial speed)
+        std::function<double(Vector3)> temperatureFunction = [](Vector3) { return 1e-40; };
+
+        // Determines weight of the generated particles
+        std::function<size_t(Vector3)> particleFactorFunction = [](Vector3) { return 1; };
     };
 
 protected:
@@ -59,5 +59,4 @@ public:
 
     // Specifies different generation profiles
     void addGenerationProfile(const ParticleGenerationProfile& profile) { generationProfiles.push_back(profile); }
-    
 };
