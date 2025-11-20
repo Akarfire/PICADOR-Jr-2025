@@ -56,5 +56,5 @@ void ParticleGrid::particleCellTransfer(size_t particleID, GRID_INDEX ownerCell_
 // Converts 2D cell coordinates into a 1D array index
 size_t ParticleGrid::recalculateCellIndex(GRID_INDEX i, GRID_INDEX j) const 
 {
-    return (i + padding) * (this->resolutionX - 1 + 2 * padding) + (j + padding);
+    return (i + padding) * (this->resolutionY - 1 + 2 * padding) + (j + padding);
 }
