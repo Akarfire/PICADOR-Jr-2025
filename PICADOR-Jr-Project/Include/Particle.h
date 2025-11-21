@@ -39,5 +39,8 @@ struct Particle
 	Vector3 getVelocity() const;
 
 	// Converts velocity to impulse based on mass
+	static Vector3 convertImpulseToVelocity(const Vector3& impulse, double mass);
+
+	// Converts velocity to impulse based on mass
 	static Vector3 convertVelocityToImpulse(const Vector3& velocity, double mass);
 };
