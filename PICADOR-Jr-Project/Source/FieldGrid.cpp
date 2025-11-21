@@ -11,14 +11,14 @@ FieldData& FieldGrid::getNodeAt(GRID_INDEX i, GRID_INDEX j)
 {
 	if (i <  -(GRID_INDEX)padding || i >= (GRID_INDEX)resolutionX + (GRID_INDEX)padding || j < -(GRID_INDEX)padding || j >= (GRID_INDEX)resolutionY + (GRID_INDEX)padding)
 		throw(std::runtime_error("Invalid field node index!"));
-	return this->nodeArray[(i + (GRID_INDEX)padding) * resolutionX + (j + (GRID_INDEX)padding)];
+	return this->nodeArray[(i + (GRID_INDEX)padding) * (resolutionY + 2 * (GRID_INDEX)padding) + (j + (GRID_INDEX)padding)];
 }
 
 const FieldData& FieldGrid::getNodeAt(GRID_INDEX i, GRID_INDEX j) const 
 {
 	if (i < -(GRID_INDEX)padding || i >= (GRID_INDEX)resolutionX + (GRID_INDEX)padding || j < -(GRID_INDEX)padding || j >= (GRID_INDEX)resolutionY + (GRID_INDEX)padding) 
 		throw(std::runtime_error("Invalid field node index!"));
-	return this->nodeArray[(i + (GRID_INDEX)padding) * resolutionX + (j + (GRID_INDEX)padding)];
+	return this->nodeArray[(i + (GRID_INDEX)padding) * (resolutionY + 2 * (GRID_INDEX)padding) + (j + (GRID_INDEX)padding)];
 }
 
 // Returns interpolated values of fields in the given point

@@ -3,8 +3,8 @@
 std::pair<GRID_INDEX, GRID_INDEX> FieldLoopEdgeCondition::calculateLoopIndices(FieldGrid *fieldGrid, GRID_INDEX i, GRID_INDEX j) {
     std::pair<GRID_INDEX, GRID_INDEX> loopIndices;
 
-    loopIndices.first = (i + fieldGrid->getResolutionX()) % fieldGrid->getResolutionX();
-    loopIndices.second = (j + fieldGrid->getResolutionY()) % fieldGrid->getResolutionY();
+    loopIndices.first = (i + (GRID_INDEX)fieldGrid->getResolutionX()) % (GRID_INDEX)fieldGrid->getResolutionX();
+    loopIndices.second = (j + (GRID_INDEX)fieldGrid->getResolutionY()) % (GRID_INDEX)fieldGrid->getResolutionY();
 
     return loopIndices;
 }
