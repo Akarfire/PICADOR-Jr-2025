@@ -56,12 +56,16 @@ public:
     size_t sampleInterval = 1;
 
     // Particle data sampling options
+    bool autoParticleTrackingIDs = true;
+
     bool sampleParticleLocations = true;
     bool sampleParticleVelocities = true;
     bool sampleParticleCells = false;
 
 
     // Additional data
+
+    std::vector<std::string> additionalDataFlags;
 
     // Grid data sampling options
     bool writeParticleGridParameters = false;

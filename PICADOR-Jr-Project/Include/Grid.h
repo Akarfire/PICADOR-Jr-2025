@@ -4,6 +4,8 @@
 #include <stdexcept>
 #include "Vector3.h"
 
+#include <string>
+
 #define GRID_INDEX int
 
 class Grid
@@ -38,7 +40,7 @@ public:
             || location.y < origin.y - padding * this->deltaY
             || location.y > (origin.y + (this->resolutionY - 1 + padding) * this->deltaY))
         {
-            throw(std::runtime_error("Invalid location!"));
+            throw(std::runtime_error("Invalid location : " + std::to_string(location.x) + ", " + std::to_string(location.y)));
         }
 
         std::pair<GRID_INDEX, GRID_INDEX> cell;

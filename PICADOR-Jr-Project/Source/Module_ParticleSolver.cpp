@@ -3,6 +3,8 @@
 #include "PicadorJrCore.h"
 #include "Constants.h"
 
+#include <iostream>
+
 // Calculates new particle velocity based on the provided field value, using Boris's Method
 Vector3 ParticleSolver::CalculateNewParticleImpulse(const Particle& particle, const FieldData& field, double timeDelta)
 {
@@ -39,7 +41,6 @@ ModuleExecutionStatus ParticleSolver::onUpdate()
             // Particle loop
             for (size_t p = 0; p < particles.size(); p++)
             {
-
                 // Fetching field data
                 FieldData field = core->getFieldContainer()->getFieldsAt(particles[p].location);
                 
@@ -47,11 +48,10 @@ ModuleExecutionStatus ParticleSolver::onUpdate()
                 Vector3 newImpulse = CalculateNewParticleImpulse(particles[p], field, core->getTimeDelta());
                 
                 particles[p].impulse = newImpulse;
-
                 Vector3 newVelocity = particles[p].getVelocity();
 
-                // if (newVelocity.sizeSquared() > Constants::SpeedOfLight * Constants::SpeedOfLight)
-                //     throw(std::runtime_error("Exceeded speed of light!"));
+                if (newVelocity.sizeSquared() > Constants::SpeedOfLight * Constants::SpeedOfLight)
+                    throw(std::runtime_error("Particle " + std::to_string(p) + " exceeded speed of light: " + std::to_string(newVelocity.size())));
 
                 // Updating particle location and velocity
                 particles[p].location = (particles[p].location + newVelocity * core->getTimeDelta()) * Vector3::VectorMaskXY;
@@ -84,6 +84,9 @@ ModuleExecutionStatus ParticleSolver::onUpdate()
                     std::pair<GRID_INDEX, GRID_INDEX> newCell = particleGrid->getCell(particles[p].location);
 
                     particleGrid->particleCellTransfer(p, cell_i, cell_j, newCell.first, newCell.second);
+
+                    if (abs((int)(cell_i - newCell.first)) > 1 || abs((int)(cell_j - newCell.second)) > 1)
+                        throw(std::runtime_error("Long Jump Detected: " + std::to_string(cell_i) + ", " + std::to_string(cell_j) + " -> " + std::to_string(newCell.first) + ", " + std::to_string(newCell.second)));
                 }
         }
 

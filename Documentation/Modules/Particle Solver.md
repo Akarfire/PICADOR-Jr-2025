@@ -17,6 +17,12 @@
 ![](../Images/BorisO_V.png)
 
 
+
+![](../Images/BorisTrajectoryExplanation.png)
+
+
+
+
 c * dt / dx < 1
 
 ![](../Images/TrajectoryExample.png)

@@ -28,7 +28,8 @@ particleGridData = ParticleGridData()
 
 # Data parsing
 
-filePath = input("File Path: ")
+#filePath = input("File Path: ")
+filePath = "./particle_trajectories_auto_vis.txt"
 lines = open(filePath, "r").readlines()
 
 for line in lines:
