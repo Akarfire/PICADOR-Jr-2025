@@ -11,14 +11,14 @@ ModuleExecutionStatus FieldSolver::onBegin()
 
 ModuleExecutionStatus FieldSolver::onUpdate()
 {
-    for (int i = 0; i < fieldGrid->getResolutionX(); i++) {
-        for (int j = 0; j < fieldGrid->getResolutionY(); j++) updateE(i, j);
+    for (int i = 0; i < (GRID_INDEX)fieldGrid->getResolutionX(); i++) {
+        for (int j = 0; j < (GRID_INDEX)fieldGrid->getResolutionY(); j++) updateE(i, j);
     }
 
     edgeCondition.updateEEdge(this->fieldGrid);
 
-    for (int i = 0; i < fieldGrid->getResolutionX(); i++) {
-        for (int j = 0; j < fieldGrid->getResolutionY(); j++) updateB(i, j);
+    for (int i = 0; i < (GRID_INDEX)fieldGrid->getResolutionX(); i++) {
+        for (int j = 0; j < (GRID_INDEX)fieldGrid->getResolutionY(); j++) updateB(i, j);
     }
 
     edgeCondition.updateBEdge(this->fieldGrid);
