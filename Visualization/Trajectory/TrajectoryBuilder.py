@@ -20,6 +20,9 @@ class ParticleGridData:
 # Main data
 particleSamples : dict[list[ParticleData]] = dict()
 
+# Flags
+onlyInitialDistributionFlag = False
+
 # Additional data
 particleGridData = ParticleGridData()
 
@@ -31,6 +34,9 @@ lines = open(filePath, "r").readlines()
 for line in lines:
     
     line = line.strip()
+    
+    # Flags
+    if line.startswith("#OnlyInitialDistribution"): onlyInitialDistributionFlag = True
     
     # Parsing particle grid parameters
     
@@ -115,17 +121,25 @@ if particleGridData.enabled:
         pyplot.axhline(y=y, color='lightgray', linestyle='--', linewidth=0.5)
 
 # Plotting the trajectories
-for particleID in particleSamples:
-    
-    xValues = [sample.x for sample in particleSamples[particleID]]
-    yValues = [sample.y for sample in particleSamples[particleID]]
-    
-    pyplot.plot(xValues, yValues, label=f"Particle {particleID}", linewidth=1)
+
+if not onlyInitialDistributionFlag:
+    for particleID in particleSamples:
+        
+        xValues = [sample.x for sample in particleSamples[particleID]]
+        yValues = [sample.y for sample in particleSamples[particleID]]
+        
+        pyplot.plot(xValues, yValues, label=f"Particle {particleID}", linewidth=1)
+        pyplot.scatter(xValues, yValues, s=2)
+        
+        if (len(xValues) > 1):
+            for i in range(0, len(xValues), len(xValues) // 10):
+                pyplot.annotate('', xy=(xValues[i + 1], yValues[i + 1]), xytext=(xValues[i], yValues[i]),
+                    arrowprops=dict(color='grey', lw=0.5))
+                
+else:
+    xValues = [particleSamples[particleData][0].x for particleData in particleSamples]
+    yValues = [particleSamples[particleData][0].y for particleData in particleSamples]
     pyplot.scatter(xValues, yValues, s=2)
-    
-    for i in range(0, len(xValues), len(xValues) // 10):
-        pyplot.annotate('', xy=(xValues[i + 1], yValues[i + 1]), xytext=(xValues[i], yValues[i]),
-            arrowprops=dict(color='grey', lw=0.5))
 
 
 pyplot.title("Particle Trajectories")
