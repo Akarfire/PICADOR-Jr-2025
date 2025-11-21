@@ -63,7 +63,7 @@ int main()
     // Adding particles to the grid
     for (size_t i = 0 ; i < particles.size(); i++)
     {
-        particles[i].trackingID = (unsigned short int)i;
+        particles[i].trackingID = (unsigned short int)(i + 1);
         std::pair<GRID_INDEX, GRID_INDEX> cell = particleGrid.getCell(particles[i].location);
         particleGrid.editParticlesInCell(cell.first, cell.second).push_back(particles[i]);
     }
