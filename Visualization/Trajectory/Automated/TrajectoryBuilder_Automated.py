@@ -5,6 +5,8 @@ from dataclasses import dataclass
 class ParticleData:
     x: float
     y: float
+    vx : float
+    vy : float
     
 @dataclass
 class ParticleGridData:
@@ -31,6 +33,8 @@ particleGridData = ParticleGridData()
 #filePath = input("File Path: ")
 filePath = "./particle_trajectories_auto_vis.txt"
 lines = open(filePath, "r").readlines()
+
+current_iteration = 0
 
 for line in lines:
     
@@ -71,7 +75,7 @@ for line in lines:
     
     # Iteration line (skipped)
     elif line.startswith("Iteration:"):
-        continue
+        current_iteration = int(line.split("Iteration:")[1])
     
     # Parsing particle data
     elif " | " in line:
@@ -91,7 +95,28 @@ for line in lines:
             x = float(parts[0])
             y = float(parts[1])
             
-            particleSamples[particleID].append(ParticleData(x, y))
+            if current_iteration >= len(particleSamples[particleID]):
+                particleSamples[particleID].append(ParticleData(x, y, 0, 0))
+            else:
+                particleSamples[particleID][current_iteration].x = x
+                particleSamples[particleID][current_iteration].y = y
+                
+        elif line.startswith("Velocity: "):
+            
+            # Ensure dict contains data for this particle ID
+            if not particleID in particleSamples:
+                particleSamples[particleID] = []
+            
+            line = line.replace("Velocity: ", "")
+            parts = line.split(",")
+            vx = float(parts[0])
+            vy = float(parts[1])
+            
+            if current_iteration >= len(particleSamples[particleID]):
+                particleSamples[particleID].append(ParticleData(0, 0, vx, vy))
+            else:
+                particleSamples[particleID][current_iteration].vx = vx
+                particleSamples[particleID][current_iteration].vy = vy
             
         
 # for particleID in range(len(particleSamples)):
@@ -140,8 +165,16 @@ if not onlyInitialDistributionFlag:
 else:
     xValues = [particleSamples[particleData][0].x for particleData in particleSamples]
     yValues = [particleSamples[particleData][0].y for particleData in particleSamples]
+    
+    vxValues = [particleSamples[particleData][0].vx for particleData in particleSamples]
+    vyValues = [particleSamples[particleData][0].vy for particleData in particleSamples]
+    
     pyplot.scatter(xValues, yValues, s=2)
-
+    
+    if (len(vxValues) > 1):
+        for i in range(len(vxValues)):
+            pyplot.annotate('', xy=(vxValues[i], vyValues[i]), xytext=(xValues[i], yValues[i]),
+                arrowprops=dict(color='blue', lw=0.5))
 
 pyplot.title("Particle Trajectories")
 pyplot.xlabel("X Position")
