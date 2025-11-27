@@ -34,7 +34,7 @@ void CurrentDepositor::deposite(GRID_INDEX i, GRID_INDEX j) {
 
     for (int cellNumber = 0; cellNumber < ensemble.size(); cellNumber++) {
         Vector3 newLocation = (ensemble[cellNumber].location - cellOrigin) / delta;
-        Vector3 temporaryJ =  ensemble[cellNumber].getVelocity() * ensemble[cellNumber].charge /delta.x /delta.y;
+        Vector3 temporaryJ =  ensemble[cellNumber].getVelocity() * ensemble[cellNumber].charge * ensemble[cellNumber].weight /delta.x /delta.y;
 
         this->fieldGrid->getNodeAt(i, j).J = this->fieldGrid->getNodeAt(i, j).J + temporaryJ*(1.0 - newLocation.x) * (1.0 - newLocation.y);
         this->fieldGrid->getNodeAt(i, j+1).J = this->fieldGrid->getNodeAt(i, j+1).J + temporaryJ*(1.0 - newLocation.x) * (newLocation.y);
