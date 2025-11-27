@@ -7,6 +7,7 @@
 #include "Module_ParticleLoopEdgeCondition.h"
 #include "Module_ParticleGenerator.h"
 #include "Module_DataSampler.h"
+#include "Module_CurrentDepositor.h"
 
 #include "FieldGrid.h"
 #include "ParticleGrid.h"
@@ -59,24 +60,26 @@ int main()
     double fieldGridSpaceStepY = SpaceStep;
     size_t fieldGridPadding = 1;
 
-    Vector3 particleGridOrigin = Vector3::Zero;
-    size_t particleGridResolutionX = MatrixSize;
-    size_t particleGridResolutionY = 8;
+    Vector3 particleGridOrigin = fieldGridOrigin;
     double particleGridSpaceStepX = SpaceStep;
     double particleGridSpaceStepY = SpaceStep;
+    size_t particleGridResolutionX = MatrixSize;//fieldGridResolutionX * fieldGridSpaceStepX / particleGridSpaceStepX + 1;
+    size_t particleGridResolutionY = 8;//fieldGridResolutionY * fieldGridSpaceStepY / particleGridSpaceStepY + 1;
     size_t particleGridPadding = 1;
+
+    std::cout << particleGridResolutionX << " : " << particleGridResolutionY << "\n";
+    std::cout << particleGridSpaceStepX << " : " << particleGridSpaceStepY << "\n";
 
     // Field generation
     std::function<Vector3(Vector3)> E_Function = [](Vector3 location) { return Vector3(-Amp * cos(2.0 * Constants::PI * location.x / L), 0.0, 0.0); };
 
     // Particle generation
-
     ParticleGenerator::ParticleGenerationProfile profile;
 
-    profile.sampleParticle = Particle(ParticleType::Electron, Constants::ElectronMass, Constants::ElectronCharge, ParticleFactor);
-
+    profile.sampleParticle = Particle(ParticleType::Electron, Constants::ElectronMass, Constants::ElectronCharge);
     profile.particleDensityFunction = [](Vector3 location ) { return Density * (1.0 + A * sin(2.0 * Constants::PI * location.x / L)); };
     profile.temperatureFunction = [](Vector3) { return Temp; };
+    profile.particleFactorFunction = [](Vector3) { return ParticleFactor; };
 
     // Initializing field grid
     FieldGrid fieldGrid(fieldGridResolutionX, fieldGridResolutionY, fieldGridSpaceStepX, fieldGridResolutionY, fieldGridOrigin, fieldGridPadding);
@@ -85,7 +88,7 @@ int main()
     ParticleGrid particleGrid(particleGridResolutionX, particleGridResolutionY, particleGridSpaceStepX, particleGridSpaceStepY, particleGridOrigin, particleGridPadding);
     
     // Output file for automated trajectory visualization
-    std::string outputFileName = "../../Visualization/Trajectory/Automated/particle_trajectories_auto_vis.txt";
+    std::string outputFileName = "";//"../../Visualization/Trajectory/Automated/particle_trajectories_auto_vis.txt";
     
 
     // SIMULATION SETUP
@@ -116,12 +119,16 @@ int main()
     ParticleLoopEdgeCondition loopCondition(&core);
     core.insertModule(&loopCondition);
 
+    // // Current Depositor
+    // CurrentDepositor currentDepositor(&core);
+    // core.insertModule(&currentDepositor);
+
     // Data Sampling module
     DataSampler dataSampler(&core);
 
-    dataSampler.additionalDataFlags.push_back("OnlyInitialDistribution");
-    dataSampler.sampleInterval = 1;
-    dataSampler.sampleParticleLocations = true;
+    //dataSampler.additionalDataFlags.push_back("OnlyInitialDistribution");
+    dataSampler.sampleInterval = IterationsBetweenDumps;
+    dataSampler.sampleParticleLocations = false;
     dataSampler.sampleParticleVelocities = false;
     dataSampler.sampleParticleCells = false;
     dataSampler.writeParticleGridParameters = true;
@@ -130,19 +137,20 @@ int main()
     core.insertModule(&dataSampler);
 
     // RUN SIMULATION
-    // try
-    // {
+    try
+    {
         core.run();
-    // }
+    }
 
-    // catch (const std::exception& e)
-    // {
-    //     std::cout << e.what() << '\n';
-    // }
+    catch (const std::exception& e)
+    {
+        std::cout << e.what() << '\n';
+    }
 
+    std::cout << "Finished!" << std::endl;
 
-    std::wstring path = L"..\\..\\Visualization\\Trajectory\\Automated\\AutoRunTrajectoryBuilder_SC";
-    ShellExecuteW(NULL, L"open", path.c_str(), NULL, NULL, SW_SHOWNORMAL);
+    // std::wstring path = L"..\\..\\Visualization\\Trajectory\\Automated\\AutoRunTrajectoryBuilder_SC";
+    // ShellExecuteW(NULL, L"open", path.c_str(), NULL, NULL, SW_SHOWNORMAL);
 
     return 0;
 }
