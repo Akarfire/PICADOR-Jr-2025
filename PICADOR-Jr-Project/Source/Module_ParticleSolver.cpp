@@ -51,19 +51,18 @@ ModuleExecutionStatus ParticleSolver::onUpdate()
                 Vector3 newVelocity = particles[p].getVelocity();
 
                 if (newVelocity.sizeSquared() > Constants::SpeedOfLight * Constants::SpeedOfLight)
-                    throw(std::runtime_error("Particle " + std::to_string(p) + " exceeded speed of light: " + std::to_string(newVelocity.size())));
+                    throw(std::runtime_error("Particle " + std::to_string(p) + " at " + std::to_string(cell_i) + ", " + std::to_string(cell_j) + " exceeded speed of light: " + std::to_string(newVelocity.size())));
+
+                if (abs(newVelocity.x * core->getTimeDelta()) > particleGrid->getDeltaX() || abs(newVelocity.y * core->getTimeDelta()) > particleGrid->getDeltaY())
+                    throw(std::runtime_error("Long Jump Detected!"));
 
                 // Updating particle location and velocity
+                Vector3 oldLocation = particles[p].location;
                 particles[p].location = (particles[p].location + newVelocity * core->getTimeDelta()) * Vector3::VectorMaskXY;
 
-                // Checking if the particle has left it's cell
-                Vector3 particleLocation = particles[p].location;
-                Vector3 cellLocation = particleGrid->getOrigin() + Vector3(cell_j * particleGrid->getDeltaX(), cell_i * particleGrid->getDeltaY());
-
-                if (    particleLocation.x < cellLocation.x 
-                    ||  particleLocation.y < cellLocation.y 
-                    ||  particleLocation.x >= cellLocation.x + particleGrid->getDeltaX()
-                    ||  particleLocation.y >= cellLocation.y + particleGrid->getDeltaY())
+                // Checking if the particle has left it's cell       
+                std::pair<GRID_INDEX, GRID_INDEX> newCell = particleGrid->getCell(particles[p].location);
+                if (newCell.first != cell_i || newCell.second != cell_j)
                 {
                     particles[p].transferFlag = true;
                 }
@@ -76,7 +75,7 @@ ModuleExecutionStatus ParticleSolver::onUpdate()
         {
             std::vector<Particle>& particles = particleGrid->editParticlesInCell(cell_i, cell_j);
 
-            for (size_t p = 0; p < particles.size(); p++)
+            for (int p = particles.size() - 1; p >= 0; p--)
                 if (particles[p].transferFlag)
                 {
                     particles[p].transferFlag = false;
