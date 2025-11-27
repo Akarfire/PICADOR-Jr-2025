@@ -7,6 +7,16 @@ ModuleExecutionStatus DataSampler::onBegin()
 {
     iterationCounter = sampleInterval; // So that first update samples data
 
+    // Auto particle tracking id assignment
+    ParticleGrid* particleGrid = core->getParticleGrid();
+
+    unsigned short currentID = 1;
+    for (GRID_INDEX i = 0; i < particleGrid->getResolutionY() - 1; i++)
+        for (GRID_INDEX j = 0; j < particleGrid->getResolutionX() - 1; j++)
+            for (Particle& particle : particleGrid->editParticlesInCell(i, j))
+                if (particle.trackingID == 0 && autoParticleTrackingIDs)
+                    particle.trackingID = currentID++;
+
     return ModuleExecutionStatus::Success;
 }
 
@@ -59,6 +69,9 @@ ModuleExecutionStatus DataSampler::onEnd()
             return ModuleExecutionStatus::Error;
 
         // Additional data
+        if (!additionalDataFlags.empty())
+            for (auto& flag : additionalDataFlags)
+                outFile << "#" << flag << "\n";
 
         if (writeParticleGridParameters)
         {

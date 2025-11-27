@@ -446,3 +446,5 @@ build/
 *.code-workspace
 
 **.obsidian/
+
+**.lnk

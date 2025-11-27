@@ -27,3 +27,7 @@
 	* [Particle Solver](Modules/Particle%20Solver.md)
 	* [Current Depositor](Modules/Current%20Depositor.md)
 	* [Loop Edge Condition](Modules/Loop%20Edge%20Condition.md)
+
+* Эксперименты:
+	* [Boris Trajectory Experiment](Experiments/Boris%20Trajectory%20Experiment.md)
+	* [Particle Generator Experiment](Experiments/Particle%20Generator%20Experiment.md)

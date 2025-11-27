@@ -10,49 +10,74 @@
 
 #include "Constants.h"
 
+#include <iostream>
+#include <cstdlib>
+#include <windows.h>
+#include <shellapi.h>
+#include <string>
+
 
 int main()
 {
-    size_t numInterations = 1500;
-    double timeStep = 2e-10;
+    // SIMULATION PARAMETERS
 
+    size_t numInterations = 1100;
+    double timeStep = 2e-12;
+
+    size_t resolution = 7;
+    double spaceStep = 11.9917;
+    //double spaceStep = Constants::SpeedOfLight * timeStep * 2;
+
+    Vector3 E = Vector3::VectorMaskXY.normalized() * -500;
+    Vector3 B = Vector3(0, 0, 1e3);
+    
+    std::vector<Particle> particles = 
+    {
+        Particle(Constants::ElectronMass,   Constants::ElectronCharge,        Vector3::Zero,                Vector3(Constants::ElectronMass * 3e10, 0, 0)),
+        Particle(Constants::ElectronMass,   -1 * Constants::ElectronCharge,   Vector3(spaceStep, 0, 0),     Vector3(Constants::ElectronMass * 3e10, 0, 0))
+    };
+
+    // Output file for manual trajectory visualization
+    //std::string outputFileName = "./tr.txt";
+
+    // Output file for automated trajectory visualization
+    std::string outputFileName = "../../Visualization/Trajectory/Automated/particle_trajectories_auto_vis.txt";
+    
+
+    // SIMULATION SETUP
 
     // Initializing static field
 
-    double BZero = 10;
-
-    double PZero = 10e-19;
-
     FieldData staticFieldData;
-    staticFieldData.E = Vector3::One * 1e-1;
-    staticFieldData.B = Vector3(0, 0, BZero);
+    staticFieldData.E = E;
+    staticFieldData.B = B;
     staticFieldData.J = Vector3::Zero;
 
     StaticField staticField(staticFieldData);
 
     // Initializing particle grid
-    // Calculating space step
-    double spaceStep = Constants::SpeedOfLight * timeStep * 2.0;
-    spaceStep *= 1.0;
 
     // Initializing particle grid
-    ParticleGrid particleGrid(9, 9, spaceStep, spaceStep, Vector3(-4.5 * spaceStep, -4.5 * spaceStep), 1);
+    ParticleGrid particleGrid(resolution, resolution, spaceStep, spaceStep, Vector3(-1 * ((double)resolution) / 2 * spaceStep, -1 * ((double)resolution) / 2 * spaceStep), 1);
 
-    // Adding single particle to the grid
-    Particle testParticle(Constants::ElectronMass, Constants::ElectronCharge, Vector3::Zero, Vector3(PZero, 0, 0));
-    testParticle.trackingID = 1;
-    particleGrid.editParticlesInCell(0, 0).push_back(testParticle);
-
-    Particle testParticle_2(Constants::ElectronMass, -1 * Constants::ElectronCharge, Vector3::One * 20, Vector3(PZero, 0, 0));
-    testParticle_2.trackingID = 2;
-    particleGrid.editParticlesInCell(0, 0).push_back(testParticle_2);
+    // Adding particles to the grid
+    for (size_t i = 0 ; i < particles.size(); i++)
+    {
+        particles[i].trackingID = (unsigned short int)(i + 1);
+        std::pair<GRID_INDEX, GRID_INDEX> cell = particleGrid.getCell(particles[i].location);
+        particleGrid.editParticlesInCell(cell.first, cell.second).push_back(particles[i]);
+    }
 
     // Initializing core
     PicadorJrCore core(&staticField, &particleGrid, timeStep, numInterations);
 
+    // Adding modules
+
+    // Particle Solver module
     ParticleSolver particleSolver(&core);
     core.insertModule(&particleSolver);
 
+    // Particle Loop Edge Condition module
     ParticleLoopEdgeCondition loopCondition(&core);
     core.insertModule(&loopCondition);
 
@@ -64,11 +89,26 @@ int main()
     dataSampler.sampleParticleVelocities = false;
     dataSampler.sampleParticleCells = false;
     dataSampler.writeParticleGridParameters = true;
-    dataSampler.outputFileName = "./2_Particles.txt";
+    dataSampler.outputFileName = outputFileName;
 
     core.insertModule(&dataSampler);
 
-    core.run();
+    // RUN SIMULATION
+    try
+    {
+        core.run();
+    }
+
+    catch (const std::exception& e)
+    {
+        std::cout << e.what() << '\n';
+    }
+
+    // Running visualizer script
+    //std::system("\"..\\..\\Visualization\\Trajectory\\Automated\\AutoRunTrajectoryBuilder.bat\"");
+
+    std::wstring path = L"..\\..\\Visualization\\Trajectory\\Automated\\AutoRunTrajectoryBuilder_SC";
+    ShellExecuteW(NULL, L"open", path.c_str(), NULL, NULL, SW_SHOWNORMAL);
 
     return 0;
 }
