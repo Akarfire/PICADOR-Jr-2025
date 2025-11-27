@@ -6,8 +6,8 @@ void ParticleGenerator::generateParticlesForCell(std::vector<Particle>& outParti
 {
     ParticleGrid* particleGrid = core->getParticleGrid();
 
-    Vector3 cellLocation = Vector3( cell_j * particleGrid->getDeltaX() + particleGrid->getOrigin().x,
-                                    cell_i * particleGrid->getDeltaY() + particleGrid->getOrigin().y );
+    Vector3 cellLocation = Vector3( cell_i * particleGrid->getDeltaX() + particleGrid->getOrigin().x,
+                                    cell_j * particleGrid->getDeltaY() + particleGrid->getOrigin().y );
 
     // Genering particles from all profiles
     for (auto& profile : generationProfiles)
@@ -58,8 +58,8 @@ ModuleExecutionStatus ParticleGenerator::onBegin()
     ParticleGrid* particleGrid = core->getParticleGrid();
 
     // Generating particles for each cell
-    for (GRID_INDEX i = 0; i < (GRID_INDEX)particleGrid->getResolutionY() - 1; i++)
-        for (GRID_INDEX j = 0; j < (GRID_INDEX)particleGrid->getResolutionX() - 1; j++)
+    for (GRID_INDEX i = 0; i < (GRID_INDEX)particleGrid->getResolutionX() - 1; i++)
+        for (GRID_INDEX j = 0; j < (GRID_INDEX)particleGrid->getResolutionY() - 1; j++)
         {
             std::vector<Particle>& cellParticles = particleGrid->editParticlesInCell(i, j);
 

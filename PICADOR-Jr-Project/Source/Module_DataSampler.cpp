@@ -11,8 +11,8 @@ ModuleExecutionStatus DataSampler::onBegin()
     ParticleGrid* particleGrid = core->getParticleGrid();
 
     unsigned short currentID = 1;
-    for (GRID_INDEX i = 0; i < particleGrid->getResolutionY() - 1; i++)
-        for (GRID_INDEX j = 0; j < particleGrid->getResolutionX() - 1; j++)
+    for (GRID_INDEX i = 0; i < particleGrid->getResolutionX() - 1; i++)
+        for (GRID_INDEX j = 0; j < particleGrid->getResolutionY() - 1; j++)
             for (Particle& particle : particleGrid->editParticlesInCell(i, j))
                 if (particle.trackingID == 0 && autoParticleTrackingIDs)
                     particle.trackingID = currentID++;
@@ -38,8 +38,8 @@ ModuleExecutionStatus DataSampler::onUpdate()
                 sampledData.particleCells.push_back(std::vector<std::pair<unsigned short, std::pair<GRID_INDEX, GRID_INDEX>>>());
 
 
-            for (GRID_INDEX i = 0; i < particleGrid->getResolutionY() - 1; i++)
-                for (GRID_INDEX j = 0; j < particleGrid->getResolutionX() - 1; j++)
+            for (GRID_INDEX i = 0; i < particleGrid->getResolutionX() - 1; i++)
+                for (GRID_INDEX j = 0; j < particleGrid->getResolutionY() - 1; j++)
                     for (const Particle& particle : particleGrid->getParticlesInCell(i, j))
                     {
                         if (sampleParticleLocations)
