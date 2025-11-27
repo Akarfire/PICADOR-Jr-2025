@@ -1,5 +1,6 @@
 #include "Module_ParticleGenerator.h"
 #include <random>
+#include <iostream>
 
 // Generates particles for a single cell and appends them to outParticles
 void ParticleGenerator::generateParticlesForCell(std::vector<Particle>& outParticles, GRID_INDEX cell_i, GRID_INDEX cell_j)
@@ -23,8 +24,11 @@ void ParticleGenerator::generateParticlesForCell(std::vector<Particle>& outParti
         // Generating individual particles
         for (size_t i = 0; i < numParticles; i++)
         {
-            Vector3 particleLocation = cellLocation + Vector3(  particleGrid->getDeltaX() * ((double)(rand()) / RAND_MAX),
-                                                                particleGrid->getDeltaY() * ((double)(rand()) / RAND_MAX));
+            const double margin = 1e-5;
+            double randomFactorX = std::max(margin, std::min(1 - margin, (double)(rand()) / RAND_MAX));
+            double randomFactorY = std::max(margin, std::min(1 - margin, (double)(rand()) / RAND_MAX));
+            Vector3 particleLocation = cellLocation + Vector3(  particleGrid->getDeltaX() * randomFactorX,
+                                                                particleGrid->getDeltaY() * randomFactorY);
                                                              
             Vector3 velocityMean = Particle::convertImpulseToVelocity(profile.initialImpulseFunction(particleLocation), profile.sampleParticle.mass);
             double speedStandartDeviation = sqrt(profile.temperatureFunction(particleLocation) / profile.sampleParticle.mass);
