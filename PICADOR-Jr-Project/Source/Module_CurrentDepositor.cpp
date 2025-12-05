@@ -26,11 +26,12 @@ ModuleExecutionStatus CurrentDepositor::onUpdate()
     return ModuleExecutionStatus::Error;
 }
 
-void CurrentDepositor::deposite(GRID_INDEX i, GRID_INDEX j) {
+void CurrentDepositor::deposite(GRID_INDEX i, GRID_INDEX j) 
+{
     std::vector<Particle> ensemble = this->particleGrid->getParticlesInCell(i, j);
 
     Vector3 delta(fieldGrid->getDeltaX(), fieldGrid->getDeltaY(), 1.0);
-    Vector3 cellOrigin(fieldGrid->getOrigin().x + i * delta.x, delta.y + j * fieldGrid->getDeltaY(), 0.0);
+    Vector3 cellOrigin(fieldGrid->getOrigin().x + i * delta.x, fieldGrid->getOrigin().y + j * delta.y, 0.0);
 
     for (int cellNumber = 0; cellNumber < ensemble.size(); cellNumber++) {
         Vector3 newLocation = (ensemble[cellNumber].location - cellOrigin) / delta;
