@@ -13,7 +13,7 @@ ModuleExecutionStatus FieldGenerator::onBegin()
     for (GRID_INDEX i = 0; i < fieldGrid->getResolutionX(); i++)
         for(GRID_INDEX j = 0; j < fieldGrid->getResolutionY(); j++)
         {
-            Vector3 location = fieldGrid->getOrigin() + Vector3(j * fieldGrid->getDeltaX(), i * fieldGrid->getDeltaY());
+            Vector3 location = fieldGrid->getOrigin() + Vector3(i * fieldGrid->getDeltaX(), j * fieldGrid->getDeltaY());
 
             FieldData generatedFieldData = FieldData();
             generatedFieldData.E = E_Function(location);
