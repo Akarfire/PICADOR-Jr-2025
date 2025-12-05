@@ -50,7 +50,7 @@ int main()
 {
     // SIMULATION PARAMETERS
 
-    size_t numInterations = NumPeriods * NumPerPlasmaPeriod;
+    size_t numInterations = 96;//NumPeriods * NumPerPlasmaPeriod;
     double timeStep = 2.0 * (Constants::PI / w_p) / NumPerPlasmaPeriod;
 
     Vector3 fieldGridOrigin = Vector3::Zero;
@@ -88,7 +88,7 @@ int main()
     ParticleGrid particleGrid(particleGridResolutionX, particleGridResolutionY, particleGridSpaceStepX, particleGridSpaceStepY, particleGridOrigin, particleGridPadding);
     
     // Output file for automated trajectory visualization
-    std::string outputFileName = "";//"../../Visualization/Trajectory/Automated/particle_trajectories_auto_vis.txt";
+    std::string outputFileName = "ColdPlasmaTest.txt";//"../../Visualization/Trajectory/Automated/particle_trajectories_auto_vis.txt";
     
 
     // SIMULATION SETUP
@@ -119,9 +119,9 @@ int main()
     ParticleLoopEdgeCondition loopCondition(&core);
     core.insertModule(&loopCondition);
 
-    // // Current Depositor
-    // CurrentDepositor currentDepositor(&core);
-    // core.insertModule(&currentDepositor);
+    // Current Depositor
+    CurrentDepositor currentDepositor(&core);
+    core.insertModule(&currentDepositor);
 
     // Data Sampling module
     DataSampler dataSampler(&core);
@@ -131,7 +131,24 @@ int main()
     dataSampler.sampleParticleLocations = false;
     dataSampler.sampleParticleVelocities = false;
     dataSampler.sampleParticleCells = false;
-    dataSampler.writeParticleGridParameters = true;
+    dataSampler.writeParticleGridParameters = false;
+
+    // Sampling particle density
+    dataSampler.samplePartcileDensity = false;
+    dataSampler.particleDensitySamplingParameters.samplingOrigin = Vector3::Zero;
+    dataSampler.particleDensitySamplingParameters.samplingResolutionX = 100;
+    dataSampler.particleDensitySamplingParameters.samplingStepX = 1.0 / dataSampler.particleDensitySamplingParameters.samplingResolutionX;
+    dataSampler.particleDensitySamplingParameters.samplingResolutionY = 1;
+    dataSampler.particleDensitySamplingParameters.samplingStepY = 0.0;
+
+    // Sampling field data
+    dataSampler.sampleFieldData = true;
+    dataSampler.fieldSamplingParameters.samplingOrigin = Vector3::Zero;
+    dataSampler.fieldSamplingParameters.samplingResolutionX = 100;
+    dataSampler.fieldSamplingParameters.samplingStepX = 1.0 / dataSampler.fieldSamplingParameters.samplingResolutionX;
+    dataSampler.fieldSamplingParameters.samplingResolutionY = 1;
+    dataSampler.fieldSamplingParameters.samplingStepY = 0.0;
+
     dataSampler.outputFileName = outputFileName;
 
     core.insertModule(&dataSampler);
