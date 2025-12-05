@@ -11,8 +11,8 @@ ModuleExecutionStatus DataSampler::onBegin()
     ParticleGrid* particleGrid = core->getParticleGrid();
 
     unsigned short currentID = 1;
-    for (GRID_INDEX i = 0; i < particleGrid->getResolutionY() - 1; i++)
-        for (GRID_INDEX j = 0; j < particleGrid->getResolutionX() - 1; j++)
+    for (GRID_INDEX i = 0; i < particleGrid->getResolutionX() - 1; i++)
+        for (GRID_INDEX j = 0; j < particleGrid->getResolutionY() - 1; j++)
             for (Particle& particle : particleGrid->editParticlesInCell(i, j))
                 if (particle.trackingID == 0 && autoParticleTrackingIDs)
                     particle.trackingID = currentID++;
@@ -24,8 +24,10 @@ ModuleExecutionStatus DataSampler::onUpdate()
 {
     if (iterationCounter % sampleInterval == 0)
     {
+        std::cout << "Iteration: " << core->getCurrentIteration() << std::endl;
         sampledData.iterations.push_back(core->getCurrentIteration());
 
+        // Sampling particle data
         if (sampleParticleLocations || sampleParticleVelocities || sampleParticleCells)
         {
             ParticleGrid* particleGrid = core->getParticleGrid();
@@ -37,9 +39,8 @@ ModuleExecutionStatus DataSampler::onUpdate()
             if (sampleParticleCells)
                 sampledData.particleCells.push_back(std::vector<std::pair<unsigned short, std::pair<GRID_INDEX, GRID_INDEX>>>());
 
-
-            for (GRID_INDEX i = 0; i < particleGrid->getResolutionY() - 1; i++)
-                for (GRID_INDEX j = 0; j < particleGrid->getResolutionX() - 1; j++)
+            for (GRID_INDEX i = 0; i < particleGrid->getResolutionX() - 1; i++)
+                for (GRID_INDEX j = 0; j < particleGrid->getResolutionY() - 1; j++)
                     for (const Particle& particle : particleGrid->getParticlesInCell(i, j))
                     {
                         if (sampleParticleLocations)
@@ -49,6 +50,44 @@ ModuleExecutionStatus DataSampler::onUpdate()
                         if (sampleParticleCells)
                             sampledData.particleCells[sampledData.size].push_back({particle.trackingID, { i, j }});
                     }
+        }
+
+        if (samplePartcileDensity)
+        {
+            ParticleGrid* particleGrid = core->getParticleGrid();
+            
+            sampledData.particleDensity.push_back({});
+            
+            for (size_t i = 0; i < fieldSamplingParameters.samplingResolutionX; i++)
+                for (size_t j = 0; j < fieldSamplingParameters.samplingResolutionY; j++)
+                {
+                    Vector3 sampleLocation = fieldSamplingParameters.samplingOrigin + Vector3(  i * fieldSamplingParameters.samplingStepX,
+                                                                                                j * fieldSamplingParameters.samplingStepY);
+                    std::pair<GRID_INDEX, GRID_INDEX> cell = particleGrid->getCell(sampleLocation);
+                    
+                    double numParticles = 0;
+                    for (const Particle& particle : particleGrid->getParticlesInCell(cell.first, cell.second))
+                        numParticles += particle.weight;
+
+                    sampledData.particleDensity[sampledData.size].push_back( {sampleLocation, numParticles} );
+                }
+        }
+
+        // Sampling field data
+        if (sampleFieldData)
+        {
+            FieldContainer* fieldContainer = core->getFieldContainer();
+
+            sampledData.fieldData.push_back({});
+
+            for (size_t i = 0; i < fieldSamplingParameters.samplingResolutionX; i++)
+                for (size_t j = 0; j < fieldSamplingParameters.samplingResolutionY; j++)
+                {
+                    Vector3 sampleLocation = fieldSamplingParameters.samplingOrigin + Vector3(  i * fieldSamplingParameters.samplingStepX,
+                                                                                                j * fieldSamplingParameters.samplingStepY);
+
+                    sampledData.fieldData[sampledData.size].push_back( {sampleLocation, fieldContainer->getFieldsAt(sampleLocation)} );
+                }
         }
 
         sampledData.size++;
@@ -103,6 +142,23 @@ ModuleExecutionStatus DataSampler::onEnd()
                 for (const auto& entry : sampledData.particleCells[i])
                     outFile << entry.first << " | Cell: " << entry.second.first << ", " << entry.second.second << "\n";
             }
+            if (samplePartcileDensity)
+            {
+                outFile << "   Particle Density: " << std::endl;
+                for (const auto& entry : sampledData.particleDensity[i])
+                    outFile << entry.first.x << ", " << entry.first.y << " : " << entry.second << std::endl;
+            }
+            if (sampleFieldData)
+            {
+                outFile << "   Field Data: " << std::endl;
+                for (const auto& entry : sampledData.fieldData[i])
+                {
+                    outFile << "E: " << entry.first.x << ", " << entry.first.y << " : " << entry.second.E.x << ", " << entry.second.E.y << ", " << entry.second.E.z << std::endl;
+                    outFile << "B: " << entry.first.x << ", " << entry.first.y << " : " << entry.second.B.x << ", " << entry.second.B.y << ", " << entry.second.B.z << std::endl;
+                    outFile << "J: " << entry.first.x << ", " << entry.first.y << " : " << entry.second.J.x << ", " << entry.second.J.y << ", " << entry.second.J.z << std::endl;
+                }
+            }
+
             outFile << "\n";
         }
 

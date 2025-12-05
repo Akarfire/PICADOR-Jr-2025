@@ -27,7 +27,7 @@ TEST(FieldGrid, getCellReturnsCorrectCellInComplexGrid)
 {
 	FieldGrid field(3, 3, 1.0, 1.0, Vector3::One, 1);
 
-	std::pair<GRID_INDEX, GRID_INDEX> ans = std::pair<GRID_INDEX, GRID_INDEX>(1, 0);
+	std::pair<GRID_INDEX, GRID_INDEX> ans = std::pair<GRID_INDEX, GRID_INDEX>(0, 1);
 	std::pair<GRID_INDEX, GRID_INDEX> indices = field.getCell(Vector3(1.5, 2.5, 0.0));
 
 	EXPECT_EQ(ans, indices);

@@ -168,3 +168,32 @@ TEST(ParticleGenerator, lowTemperatureVelocityIsNearZero)
             for (auto& particle : particleGrid.getParticlesInCell(i, j))
                 EXPECT_NEAR(0.0, particle.getVelocity().size(), 0.001);
 }
+
+// Критерий Колмогора-Смирнова
+// TEST(ParticleGenerator, lowTemperatureVelocityIsNearZero)
+// {
+//     // Initializing core
+//     ParticleGrid particleGrid(4, 4, 1, 1, Vector3::Zero, 0);
+//     StaticField staticField = StaticField(FieldData());
+//     PicadorJrCore core(&staticField, &particleGrid, 1, 1);
+
+//     // Particle generator
+
+//     ParticleGenerator particleGenerator(&core, 1);
+
+//     ParticleGenerator::ParticleGenerationProfile profile;
+//     profile.sampleParticle = Particle(ParticleType::Electron, Constants::ElectronMass, Constants::ElectronCharge);
+//     profile.particleDensityFunction = [](Vector3) { return 10; };
+//     profile.temperatureFunction = [](Vector3) { return 1e-20; };
+
+//     particleGenerator.addGenerationProfile(profile);
+//     core.insertModule(&particleGenerator);
+
+//     core.run();
+
+//     // Checking results
+//     for (GRID_INDEX i = 0; i < 3; i++)
+//         for (GRID_INDEX j = 0; j < 3; j++)
+//             for (auto& particle : particleGrid.getParticlesInCell(i, j))
+//                 EXPECT_NEAR(0.0, particle.getVelocity().size(), 0.001);
+// }

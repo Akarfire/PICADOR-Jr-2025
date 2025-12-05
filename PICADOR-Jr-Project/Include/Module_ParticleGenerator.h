@@ -21,6 +21,9 @@ public:
         // Temperature function (used for calculating initial speed)
         std::function<double(Vector3)> temperatureFunction = [](Vector3) { return 1e-40; };
 
+        // Particle initial impulse mean value function
+        std::function<Vector3(Vector3)> initialImpulseFunction = [](Vector3) { return Vector3::Zero; };
+
         // Determines weight of the generated particles
         std::function<size_t(Vector3)> particleFactorFunction = [](Vector3) { return 1; };
     };
