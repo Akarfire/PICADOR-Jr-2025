@@ -1,6 +1,8 @@
 #include "FieldGrid.h"
 #include "Module_FieldSolver.h"
 
+#include <fstream>
+
 #include <cmath>
 
 #include <gtest.h>
@@ -91,56 +93,58 @@ TEST(FieldSolver, monochrElMagWaveTestForY)
     }
 }
 
-//TEST(FieldSolver, pupupu) {
-//
-//    int n = 128, m = 21;
-//    double deltaX = Constants::SpeedOfLight * 2, deltaY = 1;
-//
-//    FieldGrid fieldGrid = FieldGrid(n, m, deltaX, deltaY, Vector3::Zero, 1);
-//
-//    for (int i = 0; i < n; i++) {
-//        for (int j = 0; j < m; j++) {
-//            fieldGrid.getNodeAt(i, j).E.y = sin(2 * Constants::PI * (i)*deltaX / ((n - 1) * deltaX));
-//            fieldGrid.getNodeAt(i, j).B.z = sin(2 * Constants::PI * (i)*deltaX / ((n - 1) * deltaX));
-//        }
-//    }
-//
-//    FieldLoopEdgeCondition edgeCondition;
-//    edgeCondition.updateBEdge(&fieldGrid);
-//    edgeCondition.updateEEdge(&fieldGrid);
-//
-//    double deltaT = 1e-3;
-//    int iterations = 10;
-//    int step = 2;
-//
-//    for (int k = 1; k <= 50; k++) {
-//        deltaT /= step;
-//        iterations *= step;
-//
-//        // Defining particle grid
-//        ParticleGrid particleGrid = ParticleGrid(n, m, deltaX, deltaY, Vector3::Zero, 1);
-//
-//        // Initializing core
-//        PicadorJrCore core = PicadorJrCore(&fieldGrid, &particleGrid, deltaT, iterations);
-//
-//        // Field integrator module
-//        FieldSolver fieldIntegrator(&core);
-//
-//        fieldIntegrator.onBegin();
-//
-//        for (int t = 0; t < iterations; t++) {
-//            fieldIntegrator.onUpdate();
-//        }
-//
-//        double absError = 0;
-//        for (int i = 0; i < n; i++) absError += abs(fieldGrid.getNodeAt(i, 0).B.z - sin(2 * Constants::PI * (i * deltaX - Constants::SpeedOfLight * iterations * core.getTimeDelta()) / ((n - 1) * deltaX)));
-//            //std::cout << iterations << " " << core.getTimeDelta() << " " << abs(fieldGrid.getNodeAt(i, 0).B.z - sin(2 * Constants::PI * (i * deltaX - Constants::SpeedOfLight * iterations * core.getTimeDelta()) / ((n - 1) * deltaX))) << "\n";
-//        absError /= n;
-//        std::cout << deltaT << ", " << absError << "\n";
-//
-//    }
-//
-//}
+TEST(FieldSolver, changeOfTheAbsError) {
+
+    int n = 16, m = 21;
+    double deltaX = Constants::SpeedOfLight, deltaY = Constants::SpeedOfLight;
+
+    double deltaT = 1/1024.0;
+    int iterations = 10;
+    int step = 2;
+    double prev = 1;
+    for (int k = 1; k <= 4; k++) {
+
+        deltaX /= 2;
+        n *= 2;
+        deltaY /= 2;
+
+        FieldGrid fieldGrid = FieldGrid(n, m, deltaX, deltaY, Vector3::Zero, 1);
+
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < m; j++) {
+                fieldGrid.getNodeAt(i, j).E.y = sin(2 * Constants::PI * (i)*deltaX / (n * deltaX));
+                fieldGrid.getNodeAt(i, j).B.z = sin(2 * Constants::PI * (i)*deltaX / (n * deltaX));
+            }
+        }
+
+        FieldLoopEdgeCondition edgeCondition;
+        edgeCondition.updateBEdge(&fieldGrid);
+        edgeCondition.updateEEdge(&fieldGrid);
+
+        deltaT /= step;
+        iterations *= step;
+
+        // Defining particle grid
+        ParticleGrid particleGrid = ParticleGrid(n, m, deltaX, deltaY, Vector3::Zero, 1);
+
+        // Initializing core
+        PicadorJrCore core = PicadorJrCore(&fieldGrid, &particleGrid, deltaT, iterations);
+
+        // Field integrator module
+        FieldSolver fieldIntegrator(&core);
+
+        fieldIntegrator.onBegin();
+
+        for (int t = 0; t < iterations; t++) {
+            fieldIntegrator.onUpdate();
+        }
+        
+        double absError = abs(fieldGrid.getNodeAt(0, 0).B.z - sin(2 * Constants::PI * (0 * deltaX - Constants::SpeedOfLight * iterations * core.getTimeDelta()) / (n * deltaX)));
+        if (k > 1) EXPECT_NEAR(4.0, prev / absError, 2e-1);
+        prev = absError;
+    }
+
+}
 
 
 TEST(FieldSolver, edgeConditions)
