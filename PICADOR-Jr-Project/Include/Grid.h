@@ -44,8 +44,8 @@ public:
         }
 
         std::pair<GRID_INDEX, GRID_INDEX> cell;
-        cell.second = (GRID_INDEX)floor((location.x - this->origin.x) / this->deltaX);
-        cell.first = (GRID_INDEX)floor((location.y - this->origin.x) / this->deltaY);
+        cell.first = (GRID_INDEX)floor((location.x - this->origin.x) / this->deltaX);
+        cell.second = (GRID_INDEX)floor((location.y - this->origin.y) / this->deltaY);
         return cell;
     }
 

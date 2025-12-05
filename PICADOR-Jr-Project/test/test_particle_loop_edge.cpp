@@ -24,11 +24,11 @@ TEST(ParticleLoopEdgeCondition, loopingWorksNominallyForSingleParticle)
 
     // Various cases
 
-    // Left edge (no corners)
+    // Bottom edge (no corners)
     for (int i = 0 ; i <= 2; i++)
     {
         ParticleGrid particleGrid(4, 4, 1, 1, Vector3(-0.5, -0.5), 1);
-        testParticle.location = Vector3(-1, i);
+        testParticle.location = Vector3(i, -1);
     
         particleGrid.editParticlesInCell(i, -1).push_back(testParticle);
 
@@ -39,14 +39,14 @@ TEST(ParticleLoopEdgeCondition, loopingWorksNominallyForSingleParticle)
 
         EXPECT_EQ(0, particleGrid.getParticlesInCell(i, -1).size());
         ASSERT_EQ(1, particleGrid.getParticlesInCell(i, 2).size());
-        EXPECT_EQ(Vector3(2, i), particleGrid.getParticlesInCell(i, 2)[0].location);
+        EXPECT_EQ(Vector3(i, 2), particleGrid.getParticlesInCell(i, 2)[0].location);
     }
 
-    // Right edge (no corners)
+    // Top edge (no corners)
     for (int i = 0 ; i <= 2; i++)
     {
         ParticleGrid particleGrid(4, 4, 1, 1, Vector3(-0.5, -0.5), 1);
-        testParticle.location = Vector3(3, i);
+        testParticle.location = Vector3(i, 3);
     
         particleGrid.editParticlesInCell(i, 3).push_back(testParticle);
 
@@ -57,14 +57,14 @@ TEST(ParticleLoopEdgeCondition, loopingWorksNominallyForSingleParticle)
 
         EXPECT_EQ(0, particleGrid.getParticlesInCell(i, 3).size());
         ASSERT_EQ(1, particleGrid.getParticlesInCell(i, 0).size());
-        EXPECT_EQ(Vector3(0, i), particleGrid.getParticlesInCell(i, 0)[0].location);
+        EXPECT_EQ(Vector3(i, 0), particleGrid.getParticlesInCell(i, 0)[0].location);
     }
 
-    // Bottom edge (no corners)
+    // Left edge (no corners)
     for (int j = 0 ; j <= 2; j++)
     {
         ParticleGrid particleGrid(4, 4, 1, 1, Vector3(-0.5, -0.5), 1);
-        testParticle.location = Vector3(j, -1);
+        testParticle.location = Vector3(-1, j);
     
         particleGrid.editParticlesInCell(-1, j).push_back(testParticle);
 
@@ -75,14 +75,14 @@ TEST(ParticleLoopEdgeCondition, loopingWorksNominallyForSingleParticle)
 
         EXPECT_EQ(0, particleGrid.getParticlesInCell(-1, j).size());
         ASSERT_EQ(1, particleGrid.getParticlesInCell(2, j).size());
-        EXPECT_EQ(Vector3(j, 2), particleGrid.getParticlesInCell(2, j)[0].location);
+        EXPECT_EQ(Vector3(2, j), particleGrid.getParticlesInCell(2, j)[0].location);
     }
 
-    // Top edge (no corners)
+    // Right edge (no corners)
     for (int j = 0 ; j <= 2; j++)
     {
         ParticleGrid particleGrid(4, 4, 1, 1, Vector3(-0.5, -0.5), 1);
-        testParticle.location = Vector3(j, 3);
+        testParticle.location = Vector3(3, j);
     
         particleGrid.editParticlesInCell(3, j).push_back(testParticle);
 
@@ -93,7 +93,7 @@ TEST(ParticleLoopEdgeCondition, loopingWorksNominallyForSingleParticle)
 
         EXPECT_EQ(0, particleGrid.getParticlesInCell(3, j).size());
         ASSERT_EQ(1, particleGrid.getParticlesInCell(0, j).size());
-        EXPECT_EQ(Vector3(j, 0), particleGrid.getParticlesInCell(0, j)[0].location);
+        EXPECT_EQ(Vector3(0, j), particleGrid.getParticlesInCell(0, j)[0].location);
     }
 
     // Bottom Left corner
@@ -113,10 +113,10 @@ TEST(ParticleLoopEdgeCondition, loopingWorksNominallyForSingleParticle)
         EXPECT_EQ(Vector3(2, 2), particleGrid.getParticlesInCell(2, 2)[0].location);
     }
 
-    // Top Left corner
+    // Bottom Right corner
     {    
         ParticleGrid particleGrid(4, 4, 1, 1, Vector3(-0.5, -0.5), 1);
-        testParticle.location = Vector3(-1, 3);
+        testParticle.location = Vector3(3, -1);
 
         particleGrid.editParticlesInCell(3, -1).push_back(testParticle);
 
@@ -127,7 +127,7 @@ TEST(ParticleLoopEdgeCondition, loopingWorksNominallyForSingleParticle)
 
         EXPECT_EQ(0, particleGrid.getParticlesInCell(3, -1).size());
         ASSERT_EQ(1, particleGrid.getParticlesInCell(0, 2).size());
-        EXPECT_EQ(Vector3(2, 0), particleGrid.getParticlesInCell(0, 2)[0].location);
+        EXPECT_EQ(Vector3(0, 2), particleGrid.getParticlesInCell(0, 2)[0].location);
     }
 
     // Top Right corner
@@ -147,10 +147,10 @@ TEST(ParticleLoopEdgeCondition, loopingWorksNominallyForSingleParticle)
         EXPECT_EQ(Vector3(0, 0), particleGrid.getParticlesInCell(0, 0)[0].location);
     }
 
-    // Bottom Right corner
+    // Top Left corner
     {    
         ParticleGrid particleGrid(4, 4, 1, 1, Vector3(-0.5, -0.5), 1);
-        testParticle.location = Vector3(3, -1);
+        testParticle.location = Vector3(-1, 3);
 
         particleGrid.editParticlesInCell(-1, 3).push_back(testParticle);
 
@@ -161,7 +161,7 @@ TEST(ParticleLoopEdgeCondition, loopingWorksNominallyForSingleParticle)
 
         EXPECT_EQ(0, particleGrid.getParticlesInCell(-1, 3).size());
         ASSERT_EQ(1, particleGrid.getParticlesInCell(2, 0).size());
-        EXPECT_EQ(Vector3(0, 2), particleGrid.getParticlesInCell(2, 0)[0].location);
+        EXPECT_EQ(Vector3(2, 0), particleGrid.getParticlesInCell(2, 0)[0].location);
     }
 }
 
@@ -185,19 +185,19 @@ TEST(ParticleLoopEdgeCondition, loopingWorksNominallyForMultipleCells)
     // Filling particle grid edges with particles
     for (int i = -1; i <= 3; i++)
     {
-        testParticle.location = Vector3(-1, i);
+        testParticle.location = Vector3(i, -1);
         particleGrid.editParticlesInCell(i, -1).push_back(testParticle);
 
-        testParticle.location = Vector3(3, i);
+        testParticle.location = Vector3(i, 3);
         particleGrid.editParticlesInCell(i, 3).push_back(testParticle);
     }
     
     for (int j = 0; j <= 2; j++)
     {
-        testParticle.location = Vector3(j, -1);
+        testParticle.location = Vector3(-1, j);
         particleGrid.editParticlesInCell(-1, j).push_back(testParticle);
 
-        testParticle.location = Vector3(j, 3);
+        testParticle.location = Vector3(3, j);
         particleGrid.editParticlesInCell(3, j).push_back(testParticle);
     }
 
@@ -240,8 +240,8 @@ TEST(ParticleLoopEdgeCondition, loopingWorksNominallyForMultipleCells)
             // Checking particle locations
             for (const auto& particle : particleGrid.getParticlesInCell(i, j))
             {
-                EXPECT_DOUBLE_EQ(j, particle.location.x);
-                EXPECT_DOUBLE_EQ(i, particle.location.y);
+                EXPECT_DOUBLE_EQ(j, particle.location.y);
+                EXPECT_DOUBLE_EQ(i, particle.location.x);
             }
         }
 }
@@ -266,22 +266,22 @@ TEST(ParticleLoopEdgeCondition, loopingWorksNominallyForMultipleCellsWithMultipl
     // Filling particle grid edges with particles
     for (int i = -1; i <= 3; i++)
     {
-        testParticle.location = Vector3(-1, i);
+        testParticle.location = Vector3(i, -1);
         particleGrid.editParticlesInCell(i, -1).push_back(testParticle);
          particleGrid.editParticlesInCell(i, -1).push_back(testParticle);
 
-        testParticle.location = Vector3(3, i);
+        testParticle.location = Vector3(i, 3);
         particleGrid.editParticlesInCell(i, 3).push_back(testParticle);
         particleGrid.editParticlesInCell(i, 3).push_back(testParticle);
     }
     
     for (int j = 0; j <= 2; j++)
     {
-        testParticle.location = Vector3(j, -1);
+        testParticle.location = Vector3(-1, j);
         particleGrid.editParticlesInCell(-1, j).push_back(testParticle);
         particleGrid.editParticlesInCell(-1, j).push_back(testParticle);
 
-        testParticle.location = Vector3(j, 3);
+        testParticle.location = Vector3(3, j);
         particleGrid.editParticlesInCell(3, j).push_back(testParticle);
         particleGrid.editParticlesInCell(3, j).push_back(testParticle);
     }
@@ -325,8 +325,8 @@ TEST(ParticleLoopEdgeCondition, loopingWorksNominallyForMultipleCellsWithMultipl
             // Checking particle locations
             for (const auto& particle : particleGrid.getParticlesInCell(i, j))
             {
-                EXPECT_DOUBLE_EQ(j, particle.location.x);
-                EXPECT_DOUBLE_EQ(i, particle.location.y);
+                EXPECT_DOUBLE_EQ(j, particle.location.y);
+                EXPECT_DOUBLE_EQ(i, particle.location.x);
             }
         }
 }

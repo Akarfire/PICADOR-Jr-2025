@@ -1,13 +1,14 @@
 #include "Module_ParticleGenerator.h"
 #include <random>
+#include <iostream>
 
 // Generates particles for a single cell and appends them to outParticles
 void ParticleGenerator::generateParticlesForCell(std::vector<Particle>& outParticles, GRID_INDEX cell_i, GRID_INDEX cell_j)
 {
     ParticleGrid* particleGrid = core->getParticleGrid();
 
-    Vector3 cellLocation = Vector3( cell_j * particleGrid->getDeltaX() + particleGrid->getOrigin().x,
-                                    cell_i * particleGrid->getDeltaY() + particleGrid->getOrigin().y );
+    Vector3 cellLocation = Vector3( cell_i * particleGrid->getDeltaX() + particleGrid->getOrigin().x,
+                                    cell_j * particleGrid->getDeltaY() + particleGrid->getOrigin().y );
 
     // Genering particles from all profiles
     for (auto& profile : generationProfiles)
@@ -23,14 +24,17 @@ void ParticleGenerator::generateParticlesForCell(std::vector<Particle>& outParti
         // Generating individual particles
         for (size_t i = 0; i < numParticles; i++)
         {
-            Vector3 particleLocation = cellLocation + Vector3(    particleGrid->getDeltaX() * ((double)(rand()) / RAND_MAX),
-                                                                particleGrid->getDeltaY() * ((double)(rand()) / RAND_MAX));
+            const double margin = 1e-5;
+            double randomFactorX = std::max(margin, std::min(1 - margin, (double)(rand()) / RAND_MAX));
+            double randomFactorY = std::max(margin, std::min(1 - margin, (double)(rand()) / RAND_MAX));
+            Vector3 particleLocation = cellLocation + Vector3(  particleGrid->getDeltaX() * randomFactorX,
+                                                                particleGrid->getDeltaY() * randomFactorY);
                                                              
-            double speedMean = 0.0;
+            Vector3 velocityMean = Particle::convertImpulseToVelocity(profile.initialImpulseFunction(particleLocation), profile.sampleParticle.mass);
             double speedStandartDeviation = sqrt(profile.temperatureFunction(particleLocation) / profile.sampleParticle.mass);
 
-            std::normal_distribution<> velocityDistributionX(speedMean, speedStandartDeviation);
-            std::normal_distribution<> velocityDistributionY(speedMean, speedStandartDeviation);
+            std::normal_distribution<> velocityDistributionX(velocityMean.x, speedStandartDeviation);
+            std::normal_distribution<> velocityDistributionY(velocityMean.y, speedStandartDeviation);
 
             Vector3 particleVelocity = Vector3(velocityDistributionX(randomEngine), velocityDistributionY(randomEngine), 0);
 
@@ -58,8 +62,8 @@ ModuleExecutionStatus ParticleGenerator::onBegin()
     ParticleGrid* particleGrid = core->getParticleGrid();
 
     // Generating particles for each cell
-    for (GRID_INDEX i = 0; i < (GRID_INDEX)particleGrid->getResolutionY() - 1; i++)
-        for (GRID_INDEX j = 0; j < (GRID_INDEX)particleGrid->getResolutionX() - 1; j++)
+    for (GRID_INDEX i = 0; i < (GRID_INDEX)particleGrid->getResolutionX() - 1; i++)
+        for (GRID_INDEX j = 0; j < (GRID_INDEX)particleGrid->getResolutionY() - 1; j++)
         {
             std::vector<Particle>& cellParticles = particleGrid->editParticlesInCell(i, j);
 

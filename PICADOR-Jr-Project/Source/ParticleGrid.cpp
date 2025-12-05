@@ -10,14 +10,16 @@ ParticleGrid::ParticleGrid(size_t resolutionX_, size_t resolutionY_, double delt
 // Returns a reference to the vector of particles in the specified cell
 const std::vector<Particle>& ParticleGrid::getParticlesInCell(GRID_INDEX i, GRID_INDEX j) const 
 { 
-    if (i < (0 - (GRID_INDEX)padding) || i >= ((GRID_INDEX)resolutionY - 1 + (GRID_INDEX)padding) || j < (0 - (GRID_INDEX)padding) || j >= ((GRID_INDEX)resolutionX - 1 + (GRID_INDEX)padding)) throw(std::runtime_error("Invalid particle cell index!"));
+    if (i < (0 - (GRID_INDEX)padding) || i >= ((GRID_INDEX)resolutionX - 1 + (GRID_INDEX)padding) || j < (0 - (GRID_INDEX)padding) || j >= ((GRID_INDEX)resolutionY - 1 + (GRID_INDEX)padding)) 
+        throw(std::runtime_error("Invalid particle cell index: " +  std::to_string(i) + ", " +  std::to_string(j)));
     return particlesInCells[recalculateCellIndex(i, j)];
 }
 
 // Returns an editable reference to the vector of particles in the specified cell
 std::vector<Particle>& ParticleGrid::editParticlesInCell(GRID_INDEX i, GRID_INDEX j)
 {
-    if (i < (0 - (GRID_INDEX)padding) || i >= ((GRID_INDEX)resolutionY - 1 + (GRID_INDEX)padding) || j < (0 - (GRID_INDEX)padding) || j >= ((GRID_INDEX)resolutionX - 1 + (GRID_INDEX)padding)) throw(std::runtime_error("Invalid particle cell index!"));
+    if (i < (0 - (GRID_INDEX)padding) || i >= ((GRID_INDEX)resolutionX - 1 + (GRID_INDEX)padding) || j < (0 - (GRID_INDEX)padding) || j >= ((GRID_INDEX)resolutionY - 1 + (GRID_INDEX)padding)) 
+        throw(std::runtime_error("Invalid particle cell index: " +  std::to_string(i) + ", " +  std::to_string(j)));
     return particlesInCells[recalculateCellIndex(i, j)];
 }
 
