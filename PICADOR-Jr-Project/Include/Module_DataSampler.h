@@ -24,6 +24,21 @@ public:
         std::vector<std::vector<std::pair<unsigned short, Vector3>>> particleLocations;
         std::vector<std::vector<std::pair<unsigned short, Vector3>>> particleVelocities;
         std::vector<std::vector<std::pair<unsigned short, std::pair<GRID_INDEX, GRID_INDEX>>>> particleCells;
+        std::vector< std::vector<std::pair<Vector3, double>> > particleDensity;
+
+        // Field data
+        std::vector< std::vector<std::pair<Vector3, FieldData>> > fieldData;
+    };
+
+    struct GridSamplingParameters
+    {
+        Vector3 samplingOrigin = Vector3::Zero;
+
+        size_t samplingResolutionX = 1;
+        size_t samplingResolutionY = 1;
+
+        double samplingStepX = 0.1;
+        double samplingStepY = 0.1;
     };
 
 protected:
@@ -61,6 +76,13 @@ public:
     bool sampleParticleLocations = true;
     bool sampleParticleVelocities = true;
     bool sampleParticleCells = false;
+
+    bool samplePartcileDensity = false;
+    GridSamplingParameters particleDensitySamplingParameters = GridSamplingParameters();
+
+    // Field data sampling options
+    bool sampleFieldData = false;
+    GridSamplingParameters fieldSamplingParameters = GridSamplingParameters();
 
 
     // Additional data
