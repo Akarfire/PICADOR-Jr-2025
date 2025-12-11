@@ -50,7 +50,7 @@ int main()
 {
     // SIMULATION PARAMETERS
 
-    size_t numInterations = 96;//NumPeriods * NumPerPlasmaPeriod;
+    size_t numInterations = NumPeriods * NumPerPlasmaPeriod;
     double timeStep = 2.0 * (Constants::PI / w_p) / NumPerPlasmaPeriod;
 
     Vector3 fieldGridOrigin = Vector3::Zero;
@@ -89,7 +89,7 @@ int main()
     
     // Output file for automated trajectory visualization
     //std::string outputFileName = "ColdPlasmaTest.txt";//"../../Visualization/Trajectory/Automated/particle_trajectories_auto_vis.txt";
-    std::string outputFileName = "../../Visualization/Graphs/Automated/automated_graph_data.txt";
+    std::string outputFileName = "../../Visualization/Graphs/Automated/Files/iteration_data";
     
 
     // SIMULATION SETUP
@@ -128,8 +128,8 @@ int main()
     DataSampler dataSampler(&core);
 
     //dataSampler.additionalDataFlags.push_back("OnlyInitialDistribution");
-    //dataSampler.sampleInterval = IterationsBetweenDumps;
-    dataSampler.sampleOnlySpecificIterations = true;
+    dataSampler.sampleInterval = IterationsBetweenDumps;
+    dataSampler.sampleOnlySpecificIterations = false;
     dataSampler.specificIterations = {1};
     dataSampler.sampleParticleLocations = false;
     dataSampler.sampleParticleVelocities = false;
@@ -153,6 +153,7 @@ int main()
     dataSampler.fieldSamplingParameters.samplingStepY = 0.0;
 
     dataSampler.outputFileName = outputFileName;
+    dataSampler.fileForEveryIteration = true;
 
     core.insertModule(&dataSampler);
 
