@@ -68,6 +68,9 @@ protected:
     // Internal storage for sampled data
     SampleData sampledData;
 
+    // Writes sampled data into a file
+    void writeDataToFile(std::string fileName);    
+
 public:
     DataSampler(PicadorJrCore* core_): Module(core_) {}
 
@@ -115,5 +118,7 @@ public:
     bool writeParticleGridParameters = false;
 
     // Output file name for sampled data (no file output if empty)
+    bool fileForEveryIteration = false;
     std::string outputFileName = "";
+    std::string perIterationOutputFileFormat = ".txt";
 };

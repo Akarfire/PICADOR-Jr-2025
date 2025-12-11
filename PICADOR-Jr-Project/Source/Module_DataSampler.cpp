@@ -8,22 +8,25 @@ ModuleExecutionStatus DataSampler::onBegin()
     iterationCounter = sampleInterval; // So that first update samples data
 
     // Auto particle tracking id assignment
-    ParticleGrid* particleGrid = core->getParticleGrid();
+    if (autoParticleTrackingIDs)
+    {
+        ParticleGrid* particleGrid = core->getParticleGrid();
 
-    unsigned short currentID = 1;
-    for (GRID_INDEX i = 0; i < particleGrid->getResolutionX() - 1; i++)
-        for (GRID_INDEX j = 0; j < particleGrid->getResolutionY() - 1; j++)
-            for (Particle& particle : particleGrid->editParticlesInCell(i, j))
-                if (particle.trackingID == 0 && autoParticleTrackingIDs)
-                    particle.trackingID = currentID++;
+        unsigned short currentID = 1;
+        for (GRID_INDEX i = 0; i < particleGrid->getResolutionX() - 1; i++)
+            for (GRID_INDEX j = 0; j < particleGrid->getResolutionY() - 1; j++)
+                for (Particle& particle : particleGrid->editParticlesInCell(i, j))
+                    if (particle.trackingID == 0)
+                        particle.trackingID = currentID++;
+    }
 
     return ModuleExecutionStatus::Success;
 }
 
 ModuleExecutionStatus DataSampler::onUpdate()
 {
-    if (    (sampleOnlySpecificIterations && (iterationCounter % sampleInterval == 0))
-        ||  (specificIterations.count(core->getCurrentIteration()) != 0))
+    if (    (!sampleOnlySpecificIterations && (iterationCounter % sampleInterval == 0))
+        ||  (sampleOnlySpecificIterations && specificIterations.count(core->getCurrentIteration()) != 0))
     {
         std::cout << "Iteration: " << core->getCurrentIteration() << std::endl;
         sampledData.iterations.push_back(core->getCurrentIteration());
@@ -92,6 +95,14 @@ ModuleExecutionStatus DataSampler::onUpdate()
         }
 
         sampledData.size++;
+
+        if (fileForEveryIteration)
+        {
+            writeDataToFile(outputFileName + "_" + std::to_string(core->getCurrentIteration()) + perIterationOutputFileFormat);
+
+            // Clearing sampled data
+            sampledData = DataSampler::SampleData();
+        }
     }
 
     iterationCounter++;
@@ -101,70 +112,76 @@ ModuleExecutionStatus DataSampler::onUpdate()
 ModuleExecutionStatus DataSampler::onEnd()
 {
     // If output file name is specified, write sampled data to file
-    if (!outputFileName.empty())
+    if (!outputFileName.empty() && !fileForEveryIteration)
     {
-        std::ofstream outFile(outputFileName, std::ios::out);
-
-        if (!outFile.is_open())
-            return ModuleExecutionStatus::Error;
-
-        // Additional data
-        if (!additionalDataFlags.empty())
-            for (auto& flag : additionalDataFlags)
-                outFile << "#" << flag << "\n";
-
-        if (writeParticleGridParameters)
-        {
-            ParticleGrid* particleGrid = core->getParticleGrid();
-            outFile << "Particle Grid Parameters:\n";
-            outFile << "Resolution X: " << particleGrid->getResolutionX() << "\n";
-            outFile << "Resolution Y: " << particleGrid->getResolutionY() << "\n";
-            outFile << "Delta X: " << particleGrid->getDeltaX() << "\n";
-            outFile << "Delta Y: " << particleGrid->getDeltaY() << "\n";
-            outFile << "Origin: " << particleGrid->getOrigin().x << ", " << particleGrid->getOrigin().y << ", " << particleGrid->getOrigin().z << "\n\n";
-        }
-
-        // Main sampling data
-        for (size_t i = 0; i < sampledData.size; i++)
-        {
-            outFile << "Iteration: " << sampledData.iterations[i] << "\n";
-            if (sampleParticleLocations)
-            {
-                for (const auto& entry : sampledData.particleLocations[i])
-                    outFile << entry.first << " | Location: " << entry.second.x << ", " <<  entry.second.y << ", " <<  entry.second.z << "\n";
-            }
-            if (sampleParticleVelocities)
-            {
-                for (const auto& entry : sampledData.particleVelocities[i])
-                    outFile << entry.first << " | Velocity: " << entry.second.x << ", " << entry.second.y << ", " << entry.second.z << "\n";
-            }
-            if (sampleParticleCells)
-            {
-                for (const auto& entry : sampledData.particleCells[i])
-                    outFile << entry.first << " | Cell: " << entry.second.first << ", " << entry.second.second << "\n";
-            }
-            if (samplePartcileDensity)
-            {
-                outFile << "   Particle Density: " << std::endl;
-                for (const auto& entry : sampledData.particleDensity[i])
-                    outFile << entry.first.x << ", " << entry.first.y << " : " << entry.second << std::endl;
-            }
-            if (sampleFieldData)
-            {
-                outFile << "   Field Data: " << std::endl;
-                for (const auto& entry : sampledData.fieldData[i])
-                {
-                    outFile << "E: " << entry.first.x << ", " << entry.first.y << " : " << entry.second.E.x << ", " << entry.second.E.y << ", " << entry.second.E.z << std::endl;
-                    outFile << "B: " << entry.first.x << ", " << entry.first.y << " : " << entry.second.B.x << ", " << entry.second.B.y << ", " << entry.second.B.z << std::endl;
-                    outFile << "J: " << entry.first.x << ", " << entry.first.y << " : " << entry.second.J.x << ", " << entry.second.J.y << ", " << entry.second.J.z << std::endl;
-                }
-            }
-
-            outFile << "\n";
-        }
-
-        outFile.close();
+        writeDataToFile(outputFileName);
     }
 
     return ModuleExecutionStatus::Success;
+}
+
+
+// Writes sampled data into a file
+void DataSampler::writeDataToFile(std::string fileName)
+{
+    std::ofstream outFile(fileName, std::ios::out);
+
+    if (!outFile.is_open()) return;
+
+    // Additional data
+    if (!additionalDataFlags.empty())
+        for (auto& flag : additionalDataFlags)
+            outFile << "#" << flag << "\n";
+
+    if (writeParticleGridParameters)
+    {
+        ParticleGrid* particleGrid = core->getParticleGrid();
+        outFile << "Particle Grid Parameters:\n";
+        outFile << "Resolution X: " << particleGrid->getResolutionX() << "\n";
+        outFile << "Resolution Y: " << particleGrid->getResolutionY() << "\n";
+        outFile << "Delta X: " << particleGrid->getDeltaX() << "\n";
+        outFile << "Delta Y: " << particleGrid->getDeltaY() << "\n";
+        outFile << "Origin: " << particleGrid->getOrigin().x << ", " << particleGrid->getOrigin().y << ", " << particleGrid->getOrigin().z << "\n\n";
+    }
+
+    // Main sampling data
+    for (size_t i = 0; i < sampledData.size; i++)
+    {
+        outFile << "Iteration: " << sampledData.iterations[i] << "\n";
+        if (sampleParticleLocations)
+        {
+            for (const auto& entry : sampledData.particleLocations[i])
+                outFile << entry.first << " | Location: " << entry.second.x << ", " <<  entry.second.y << ", " <<  entry.second.z << "\n";
+        }
+        if (sampleParticleVelocities)
+        {
+            for (const auto& entry : sampledData.particleVelocities[i])
+                outFile << entry.first << " | Velocity: " << entry.second.x << ", " << entry.second.y << ", " << entry.second.z << "\n";
+        }
+        if (sampleParticleCells)
+        {
+            for (const auto& entry : sampledData.particleCells[i])
+                outFile << entry.first << " | Cell: " << entry.second.first << ", " << entry.second.second << "\n";
+        }
+        if (samplePartcileDensity)
+        {
+            outFile << "   Particle Density: " << std::endl;
+            for (const auto& entry : sampledData.particleDensity[i])
+                outFile << entry.first.x << ", " << entry.first.y << " : " << entry.second << std::endl;
+        }
+        if (sampleFieldData)
+        {
+            outFile << "   Field Data: " << std::endl;
+            for (const auto& entry : sampledData.fieldData[i])
+            {
+                outFile << "E: " << entry.first.x << ", " << entry.first.y << " : " << entry.second.E.x << ", " << entry.second.E.y << ", " << entry.second.E.z << std::endl;
+                outFile << "B: " << entry.first.x << ", " << entry.first.y << " : " << entry.second.B.x << ", " << entry.second.B.y << ", " << entry.second.B.z << std::endl;
+                outFile << "J: " << entry.first.x << ", " << entry.first.y << " : " << entry.second.J.x << ", " << entry.second.J.y << ", " << entry.second.J.z << std::endl;
+            }
+        }
+
+        outFile << "\n";
+    }
+
+    outFile.close();
 }
