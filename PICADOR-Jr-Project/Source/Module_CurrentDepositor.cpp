@@ -16,6 +16,14 @@ ModuleExecutionStatus CurrentDepositor::onUpdate()
     {
         for (int i = 0; i < this->fieldGrid->getResolutionX(); i++) {
             for (int j = 0; j < this->fieldGrid->getResolutionY(); j++) {
+                this->fieldGrid->getNodeAt(i, j).J = Vector3::Zero;
+            }
+        }
+
+        this->edgeCondition.updateJEdge(this->fieldGrid);
+
+        for (int i = 0; i < this->fieldGrid->getResolutionX(); i++) {
+            for (int j = 0; j < this->fieldGrid->getResolutionY(); j++) {
                 deposite(i, j);
             }
         }
@@ -40,7 +48,7 @@ void CurrentDepositor::deposite(GRID_INDEX i, GRID_INDEX j)
         this->fieldGrid->getNodeAt(i, j).J = this->fieldGrid->getNodeAt(i, j).J + temporaryJ*(1.0 - newLocation.x) * (1.0 - newLocation.y);
         this->fieldGrid->getNodeAt(i, j+1).J = this->fieldGrid->getNodeAt(i, j+1).J + temporaryJ*(1.0 - newLocation.x) * (newLocation.y);
         this->fieldGrid->getNodeAt(i+1, j).J = this->fieldGrid->getNodeAt(i+1, j).J + temporaryJ*(newLocation.x) * (1.0 - newLocation.y);
-        this->fieldGrid->getNodeAt(i+1, j+1).J = this->fieldGrid->getNodeAt(i, j).J + temporaryJ*(newLocation.x) * (newLocation.y);
+        this->fieldGrid->getNodeAt(i+1, j+1).J = this->fieldGrid->getNodeAt(i+1, j+1).J + temporaryJ*(newLocation.x) * (newLocation.y);
     }
     
 }
