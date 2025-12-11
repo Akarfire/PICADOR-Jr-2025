@@ -88,7 +88,8 @@ int main()
     ParticleGrid particleGrid(particleGridResolutionX, particleGridResolutionY, particleGridSpaceStepX, particleGridSpaceStepY, particleGridOrigin, particleGridPadding);
     
     // Output file for automated trajectory visualization
-    std::string outputFileName = "ColdPlasmaTest.txt";//"../../Visualization/Trajectory/Automated/particle_trajectories_auto_vis.txt";
+    //std::string outputFileName = "ColdPlasmaTest.txt";//"../../Visualization/Trajectory/Automated/particle_trajectories_auto_vis.txt";
+    std::string outputFileName = "../../Visualization/Graphs/Automated/automated_graph_data.txt";
     
 
     // SIMULATION SETUP
@@ -127,7 +128,9 @@ int main()
     DataSampler dataSampler(&core);
 
     //dataSampler.additionalDataFlags.push_back("OnlyInitialDistribution");
-    dataSampler.sampleInterval = IterationsBetweenDumps;
+    //dataSampler.sampleInterval = IterationsBetweenDumps;
+    dataSampler.sampleOnlySpecificIterations = true;
+    dataSampler.specificIterations = {1};
     dataSampler.sampleParticleLocations = false;
     dataSampler.sampleParticleVelocities = false;
     dataSampler.sampleParticleCells = false;
@@ -166,8 +169,8 @@ int main()
 
     std::cout << "Finished!" << std::endl;
 
-    // std::wstring path = L"..\\..\\Visualization\\Trajectory\\Automated\\AutoRunTrajectoryBuilder_SC";
-    // ShellExecuteW(NULL, L"open", path.c_str(), NULL, NULL, SW_SHOWNORMAL);
+    std::wstring path = L"..\\..\\Visualization\\Graphs\\Automated\\AutomatedRunGraphBuilder_SC";
+    ShellExecuteW(NULL, L"open", path.c_str(), NULL, NULL, SW_SHOWNORMAL);
 
     return 0;
 }

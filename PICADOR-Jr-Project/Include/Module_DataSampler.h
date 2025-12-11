@@ -7,6 +7,7 @@
 #include "Grid.h"
 
 #include <vector>
+#include <set>
 #include <string>
 
 class DataSampler : public Module
@@ -41,6 +42,24 @@ public:
         double samplingStepY = 0.1;
     };
 
+    struct FieldSamplingParameters
+    {
+        bool sampleE = true;
+        bool sampleE_x = true;
+        bool sampleE_y = true;
+        bool sampleE_z = true;
+
+        bool sampleB = true;
+        bool sampleB_x = true;
+        bool sampleB_y = true;
+        bool sampleB_z = true;
+
+        bool sampleJ = true;
+        bool sampleJ_x = true;
+        bool sampleJ_y = true;
+        bool sampleJ_z = true;
+    };
+
 protected:
 
     // Internal iteration counter
@@ -69,6 +88,9 @@ public:
     
     // How often to sample data (in iterations)
     size_t sampleInterval = 1;
+    
+    bool sampleOnlySpecificIterations = false;
+    std::set<size_t> specificIterations;
 
     // Particle data sampling options
     bool autoParticleTrackingIDs = true;
@@ -83,7 +105,7 @@ public:
     // Field data sampling options
     bool sampleFieldData = false;
     GridSamplingParameters fieldSamplingParameters = GridSamplingParameters();
-
+    //FieldSamplingParameters
 
     // Additional data
 

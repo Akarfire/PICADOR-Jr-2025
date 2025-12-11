@@ -22,7 +22,8 @@ ModuleExecutionStatus DataSampler::onBegin()
 
 ModuleExecutionStatus DataSampler::onUpdate()
 {
-    if (iterationCounter % sampleInterval == 0)
+    if (    (sampleOnlySpecificIterations && (iterationCounter % sampleInterval == 0))
+        ||  (specificIterations.count(core->getCurrentIteration()) != 0))
     {
         std::cout << "Iteration: " << core->getCurrentIteration() << std::endl;
         sampledData.iterations.push_back(core->getCurrentIteration());
