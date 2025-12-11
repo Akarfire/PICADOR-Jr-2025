@@ -29,6 +29,7 @@ public:
 
         // Field data
         std::vector< std::vector<std::pair<Vector3, FieldData>> > fieldData;
+        std::vector < float > fieldEnergy;
     };
 
     struct GridSamplingParameters
@@ -107,6 +108,12 @@ public:
 
     // Field data sampling options
     bool sampleFieldData = false;
+    bool sampleFieldE = true;
+    bool sampleFieldB = true;
+    bool sampleFieldJ = true;
+
+    bool sampleFieldEnergy = false;
+
     GridSamplingParameters fieldSamplingParameters = GridSamplingParameters();
     //FieldSamplingParameters
 

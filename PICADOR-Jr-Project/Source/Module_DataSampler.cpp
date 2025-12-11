@@ -62,11 +62,11 @@ ModuleExecutionStatus DataSampler::onUpdate()
             
             sampledData.particleDensity.push_back({});
             
-            for (size_t i = 0; i < fieldSamplingParameters.samplingResolutionX; i++)
-                for (size_t j = 0; j < fieldSamplingParameters.samplingResolutionY; j++)
+            for (size_t i = 0; i < particleDensitySamplingParameters.samplingResolutionX; i++)
+                for (size_t j = 0; j < particleDensitySamplingParameters.samplingResolutionY; j++)
                 {
-                    Vector3 sampleLocation = fieldSamplingParameters.samplingOrigin + Vector3(  i * fieldSamplingParameters.samplingStepX,
-                                                                                                j * fieldSamplingParameters.samplingStepY);
+                    Vector3 sampleLocation = particleDensitySamplingParameters.samplingOrigin + Vector3(    i * particleDensitySamplingParameters.samplingStepX,
+                                                                                                            j * particleDensitySamplingParameters.samplingStepY);
                     std::pair<GRID_INDEX, GRID_INDEX> cell = particleGrid->getCell(sampleLocation);
                     
                     double numParticles = 0;
@@ -84,14 +84,21 @@ ModuleExecutionStatus DataSampler::onUpdate()
 
             sampledData.fieldData.push_back({});
 
+            double energy = 0.0;
+
             for (size_t i = 0; i < fieldSamplingParameters.samplingResolutionX; i++)
                 for (size_t j = 0; j < fieldSamplingParameters.samplingResolutionY; j++)
                 {
                     Vector3 sampleLocation = fieldSamplingParameters.samplingOrigin + Vector3(  i * fieldSamplingParameters.samplingStepX,
                                                                                                 j * fieldSamplingParameters.samplingStepY);
-
-                    sampledData.fieldData[sampledData.size].push_back( {sampleLocation, fieldContainer->getFieldsAt(sampleLocation)} );
+                    
+                    FieldData fieldData = fieldContainer->getFieldsAt(sampleLocation);
+                    sampledData.fieldData[sampledData.size].push_back( {sampleLocation, fieldData} );
+                    energy += fieldData.E.sizeSquared() + fieldData.B.sizeSquared();
                 }
+
+            energy /= (8 * Constants::PI);
+            sampledData.fieldEnergy.push_back(energy);
         }
 
         sampledData.size++;
@@ -165,22 +172,30 @@ void DataSampler::writeDataToFile(std::string fileName)
         }
         if (samplePartcileDensity)
         {
-            outFile << "   Particle Density: " << std::endl;
+            outFile << "Particle Density: " << std::endl;
             for (const auto& entry : sampledData.particleDensity[i])
                 outFile << entry.first.x << ", " << entry.first.y << " : " << entry.second << std::endl;
         }
         if (sampleFieldData)
         {
-            outFile << "   Field Data: " << std::endl;
+            outFile << "Field Data: " << std::endl;
             for (const auto& entry : sampledData.fieldData[i])
             {
-                outFile << "E: " << entry.first.x << ", " << entry.first.y << " : " << entry.second.E.x << ", " << entry.second.E.y << ", " << entry.second.E.z << std::endl;
-                outFile << "B: " << entry.first.x << ", " << entry.first.y << " : " << entry.second.B.x << ", " << entry.second.B.y << ", " << entry.second.B.z << std::endl;
-                outFile << "J: " << entry.first.x << ", " << entry.first.y << " : " << entry.second.J.x << ", " << entry.second.J.y << ", " << entry.second.J.z << std::endl;
+                if (sampleFieldE)
+                    outFile << "E: " << entry.first.x << ", " << entry.first.y << " : " << entry.second.E.x << ", " << entry.second.E.y << ", " << entry.second.E.z << std::endl;
+                if (sampleFieldB)
+                    outFile << "B: " << entry.first.x << ", " << entry.first.y << " : " << entry.second.B.x << ", " << entry.second.B.y << ", " << entry.second.B.z << std::endl;
+                if (sampleFieldJ)
+                    outFile << "J: " << entry.first.x << ", " << entry.first.y << " : " << entry.second.J.x << ", " << entry.second.J.y << ", " << entry.second.J.z << std::endl;
+            }
+
+            if (sampleFieldEnergy)
+            {
+                outFile << "Field Energy: " << sampledData.fieldEnergy[i] << std::endl;
             }
         }
 
-        outFile << "\n";
+        outFile << "\n" << "\n";
     }
 
     outFile.close();
