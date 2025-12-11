@@ -89,7 +89,7 @@ int main()
     
     // Output file for automated trajectory visualization
     //std::string outputFileName = "ColdPlasmaTest.txt";//"../../Visualization/Trajectory/Automated/particle_trajectories_auto_vis.txt";
-    std::string outputFileName = "../../Visualization/Graphs/Automated/Files/iteration_data";
+    std::string outputFileName = "../../Visualization/IntegratedVisualization/Files/iteration_data";
     
 
     // SIMULATION SETUP
@@ -127,7 +127,8 @@ int main()
     // Data Sampling module
     DataSampler dataSampler(&core);
 
-    //dataSampler.additionalDataFlags.push_back("OnlyInitialDistribution");
+    //dataSampler.additionalDataFlags.push_back("OnlyX");
+
     dataSampler.sampleInterval = IterationsBetweenDumps;
     dataSampler.sampleOnlySpecificIterations = false;
     dataSampler.specificIterations = {1};
@@ -137,20 +138,26 @@ int main()
     dataSampler.writeParticleGridParameters = false;
 
     // Sampling particle density
-    dataSampler.samplePartcileDensity = false;
+    dataSampler.samplePartcileDensity = true;
     dataSampler.particleDensitySamplingParameters.samplingOrigin = Vector3::Zero;
-    dataSampler.particleDensitySamplingParameters.samplingResolutionX = 100;
-    dataSampler.particleDensitySamplingParameters.samplingStepX = 1.0 / dataSampler.particleDensitySamplingParameters.samplingResolutionX;
+    dataSampler.particleDensitySamplingParameters.samplingResolutionX = 90;
+    dataSampler.particleDensitySamplingParameters.samplingStepX = 0.01;
     dataSampler.particleDensitySamplingParameters.samplingResolutionY = 1;
     dataSampler.particleDensitySamplingParameters.samplingStepY = 0.0;
 
     // Sampling field data
     dataSampler.sampleFieldData = true;
+    dataSampler.sampleFieldE = true;
+    dataSampler.sampleFieldB = false;
+    dataSampler.sampleFieldJ = false;
+
     dataSampler.fieldSamplingParameters.samplingOrigin = Vector3::Zero;
     dataSampler.fieldSamplingParameters.samplingResolutionX = 100;
     dataSampler.fieldSamplingParameters.samplingStepX = 1.0 / dataSampler.fieldSamplingParameters.samplingResolutionX;
     dataSampler.fieldSamplingParameters.samplingResolutionY = 1;
     dataSampler.fieldSamplingParameters.samplingStepY = 0.0;
+
+    dataSampler.sampleFieldEnergy = true;
 
     dataSampler.outputFileName = outputFileName;
     dataSampler.fileForEveryIteration = true;
@@ -170,7 +177,7 @@ int main()
 
     std::cout << "Finished!" << std::endl;
 
-    std::wstring path = L"..\\..\\Visualization\\Graphs\\Automated\\AutomatedRunGraphBuilder_SC";
+    std::wstring path = L"..\\..\\Visualization\\IntegratedVisualization\\IntegratedVisualization_SC";
     ShellExecuteW(NULL, L"open", path.c_str(), NULL, NULL, SW_SHOWNORMAL);
 
     return 0;
