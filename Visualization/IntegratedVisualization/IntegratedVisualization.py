@@ -182,7 +182,7 @@ def build_per_file_plots(file_data : FileData):
         build_plot(x_values, v_x_values, image_path, f"Field_E_x_{file_data.iteration}")
         generated_plot_image_lists["Field_E_x"].append([file_data.iteration, image_path])
         
-        image_path = f"./Output/FieldE/Field_E_z/FieldE_y_{file_data.iteration}.png"
+        image_path = f"./Output/FieldE/Field_E_y/FieldE_y_{file_data.iteration}.png"
         build_plot(x_values, v_y_values, image_path, f"Field_E_y_{file_data.iteration}")
         generated_plot_image_lists["Field_E_y"].append([file_data.iteration, image_path])
         
