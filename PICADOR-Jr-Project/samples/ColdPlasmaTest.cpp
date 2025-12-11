@@ -95,79 +95,79 @@ int main()
     // SIMULATION SETUP
 
     // Initializing core
-    PicadorJrCore core(&fieldGrid, &particleGrid, timeStep, numInterations);
+    PicadorJrCore* core = new PicadorJrCore(&fieldGrid, &particleGrid, timeStep, numInterations);
 
     // Adding modules
 
     // Field generator
-    FieldGenerator fieldGenerator(&core, E_Function);
-    core.insertModule(&fieldGenerator);
+    FieldGenerator* fieldGenerator = new FieldGenerator(core, E_Function);
+    core->insertModule(fieldGenerator);
 
     // Particle generator
-    ParticleGenerator particleGenerator(&core, 1);
-    particleGenerator.addGenerationProfile(profile);
-    core.insertModule(&particleGenerator);
+    ParticleGenerator* particleGenerator = new ParticleGenerator(core, 1);
+    particleGenerator->addGenerationProfile(profile);
+    core->insertModule(particleGenerator);
 
     // Field Solver
-    FieldSolver fieldSolver(&core);
-    core.insertModule(&fieldSolver);
+    FieldSolver* fieldSolver = new FieldSolver(core);
+    core->insertModule(fieldSolver);
 
     // Particle Solver
-    ParticleSolver particleSolver(&core);
-    core.insertModule(&particleSolver);
+    ParticleSolver* particleSolver = new ParticleSolver(core);
+    core->insertModule(particleSolver);
 
     // Particle Loop Edge Condition
-    ParticleLoopEdgeCondition loopCondition(&core);
-    core.insertModule(&loopCondition);
+    ParticleLoopEdgeCondition* loopCondition = new ParticleLoopEdgeCondition(core);
+    core->insertModule(loopCondition);
 
     // Current Depositor
-    CurrentDepositor currentDepositor(&core);
-    core.insertModule(&currentDepositor);
+    CurrentDepositor* currentDepositor = new CurrentDepositor(core);
+    core->insertModule(currentDepositor);
 
     // Data Sampling module
-    DataSampler dataSampler(&core);
+    DataSampler* dataSampler = new DataSampler(core);
 
-    //dataSampler.additionalDataFlags.push_back("OnlyX");
+    //dataSampler->additionalDataFlags.push_back("OnlyX");
 
-    dataSampler.sampleInterval = IterationsBetweenDumps;
-    dataSampler.sampleOnlySpecificIterations = false;
-    dataSampler.specificIterations = {1};
-    dataSampler.sampleParticleLocations = false;
-    dataSampler.sampleParticleVelocities = false;
-    dataSampler.sampleParticleCells = false;
-    dataSampler.writeParticleGridParameters = false;
+    dataSampler->sampleInterval = IterationsBetweenDumps;
+    dataSampler->sampleOnlySpecificIterations = false;
+    dataSampler->specificIterations = {1};
+    dataSampler->sampleParticleLocations = false;
+    dataSampler->sampleParticleVelocities = false;
+    dataSampler->sampleParticleCells = false;
+    dataSampler->writeParticleGridParameters = false;
 
     // Sampling particle density
-    dataSampler.samplePartcileDensity = true;
-    dataSampler.particleDensitySamplingParameters.samplingOrigin = Vector3::Zero;
-    dataSampler.particleDensitySamplingParameters.samplingResolutionX = 90;
-    dataSampler.particleDensitySamplingParameters.samplingStepX = 0.01;
-    dataSampler.particleDensitySamplingParameters.samplingResolutionY = 1;
-    dataSampler.particleDensitySamplingParameters.samplingStepY = 0.0;
+    dataSampler->samplePartcileDensity = true;
+    dataSampler->particleDensitySamplingParameters.samplingOrigin = Vector3::Zero;
+    dataSampler->particleDensitySamplingParameters.samplingResolutionX = 90;
+    dataSampler->particleDensitySamplingParameters.samplingStepX = 0.01;
+    dataSampler->particleDensitySamplingParameters.samplingResolutionY = 1;
+    dataSampler->particleDensitySamplingParameters.samplingStepY = 0.0;
 
     // Sampling field data
-    dataSampler.sampleFieldData = true;
-    dataSampler.sampleFieldE = true;
-    dataSampler.sampleFieldB = false;
-    dataSampler.sampleFieldJ = false;
+    dataSampler->sampleFieldData = true;
+    dataSampler->sampleFieldE = true;
+    dataSampler->sampleFieldB = true;
+    dataSampler->sampleFieldJ = true;
 
-    dataSampler.fieldSamplingParameters.samplingOrigin = Vector3::Zero;
-    dataSampler.fieldSamplingParameters.samplingResolutionX = 100;
-    dataSampler.fieldSamplingParameters.samplingStepX = 1.0 / dataSampler.fieldSamplingParameters.samplingResolutionX;
-    dataSampler.fieldSamplingParameters.samplingResolutionY = 1;
-    dataSampler.fieldSamplingParameters.samplingStepY = 0.0;
+    dataSampler->fieldSamplingParameters.samplingOrigin = Vector3::Zero;
+    dataSampler->fieldSamplingParameters.samplingResolutionX = 500;
+    dataSampler->fieldSamplingParameters.samplingStepX = 1.0 / dataSampler->fieldSamplingParameters.samplingResolutionX;
+    dataSampler->fieldSamplingParameters.samplingResolutionY = 1;
+    dataSampler->fieldSamplingParameters.samplingStepY = 0.0;
 
-    dataSampler.sampleFieldEnergy = true;
+    dataSampler->sampleFieldEnergy = true;
 
-    dataSampler.outputFileName = outputFileName;
-    dataSampler.fileForEveryIteration = true;
+    dataSampler->outputFileName = outputFileName;
+    dataSampler->fileForEveryIteration = true;
 
-    core.insertModule(&dataSampler);
+    core->insertModule(dataSampler);
 
     // RUN SIMULATION
     try
     {
-        core.run();
+        core->run();
     }
 
     catch (const std::exception& e)
@@ -176,6 +176,16 @@ int main()
     }
 
     std::cout << "Finished!" << std::endl;
+
+    delete core;
+
+    delete fieldGenerator;
+    delete particleGenerator;
+    delete fieldSolver;
+    delete particleSolver;
+    delete loopCondition;
+    delete currentDepositor;
+    delete dataSampler;
 
     std::wstring path = L"..\\..\\Visualization\\IntegratedVisualization\\IntegratedVisualization_SC";
     ShellExecuteW(NULL, L"open", path.c_str(), NULL, NULL, SW_SHOWNORMAL);
