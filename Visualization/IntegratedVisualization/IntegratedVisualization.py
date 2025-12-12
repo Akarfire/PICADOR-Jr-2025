@@ -38,7 +38,7 @@ class ParticleGridData:
 @dataclass
 class GlobalData:
     field_energy : list[list[int, float]] = field(default_factory=list)
-    particle_samples : dict[list[ParticleData]] = dict()
+    particle_samples : dict[list[ParticleData]] = field(default_factory=dict)
     particle_grid_Data : ParticleGridData = field(default_factory=ParticleGridData)
 
 @dataclass
@@ -308,7 +308,7 @@ def build_trajectory_plot(global_data : GlobalData, save_location : str):
         pyplot.scatter(xValues, yValues, s=2)
         
         if (len(xValues) > 1):
-            for i in range(0, len(xValues), len(xValues) // 10):
+            for i in range(0, len(xValues) - 1, len(xValues) // 10):
                 pyplot.annotate('', xy=(xValues[i + 1], yValues[i + 1]), xytext=(xValues[i], yValues[i]),
                     arrowprops=dict(color='grey', lw=0.5))
                 
@@ -343,19 +343,19 @@ def build_per_file_plots(file_data : FileData):
         # build_plot(y_values, v_values, image_path, f"ParticleDensity_y_{file_data.iteration}")
         # generated_plot_image_lists["ParticleDensity_y"].append([file_data.iteration, image_path])
         
-        # For heat map
-        try:
-            data = np.array(file_data.particle_density)
-            heat_x = data[:, 0]
-            heat_y = data[:, 1]
-            heat_v = data[:, 2]
+        # # For heat map
+        # try:
+        #     data = np.array(file_data.particle_density)
+        #     heat_x = data[:, 0]
+        #     heat_y = data[:, 1]
+        #     heat_v = data[:, 2]
         
-            image_path = f"./Output/ParticleDensity_heat/ParticleDensity_heat_{file_data.iteration}.png"
-            build_heat_map(heat_x, heat_y, heat_v, image_path, f"ParticleDensity_{file_data.iteration}")
-            generated_plot_image_lists["ParticleDensity_heat"].append([file_data.iteration, image_path])
+        #     image_path = f"./Output/ParticleDensity_heat/ParticleDensity_heat_{file_data.iteration}.png"
+        #     build_heat_map(heat_x, heat_y, heat_v, image_path, f"ParticleDensity_{file_data.iteration}")
+        #     generated_plot_image_lists["ParticleDensity_heat"].append([file_data.iteration, image_path])
             
-        except Exception as e:
-            print(f"Failed to build heat map: {str(e)}")
+        # except Exception as e:
+        #     print(f"Failed to build heat map: {str(e)}")
         
         
     if file_data.has_field_E:   
