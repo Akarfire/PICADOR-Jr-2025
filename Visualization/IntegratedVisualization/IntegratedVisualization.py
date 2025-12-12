@@ -3,6 +3,7 @@ from pathlib import Path
 from dataclasses import dataclass, field
 from enum import Enum
 from PIL import Image
+import numpy as np
 
 
 
@@ -16,10 +17,29 @@ class Vector3:
     x : float = 0
     y : float = 0
     z : float = 0
+    
+@dataclass
+class ParticleData:
+    x: float
+    y: float
+    vx : float
+    vy : float
+    
+@dataclass
+class ParticleGridData:
+    enabled : bool = False
+    resolutionX: int = 0
+    resolutionY: int = 0
+    deltaX: float = 0
+    deltaY: float = 0
+    originX: float = 0
+    originY: float = 0
 
 @dataclass
 class GlobalData:
     field_energy : list[list[int, float]] = field(default_factory=list)
+    particle_samples : dict[list[ParticleData]] = dict()
+    particle_grid_Data : ParticleGridData = field(default_factory=ParticleGridData)
 
 @dataclass
 class FileData:
@@ -50,7 +70,9 @@ class FileData:
 # Global variables
 
 generated_plot_image_lists : dict[str : list[list[int, str]]] = {
-    "ParticleDensity" : list(),
+    "ParticleDensity_x" : list(),
+    "ParticleDensity_y" : list(),
+    "ParticleDensity_heat" : list(),
     "Field_E_x" : list(),
     "Field_E_y" : list(),
     "Field_E_z" : list(),
@@ -94,6 +116,76 @@ def parse_file(file_path : str, out_global_data : GlobalData) -> FileData:
                     
                 elif line.startswith("Field Energy: "):
                     out_global_data.field_energy.append([file_data.iteration, float(line.replace("Field Energy: ", ""))])
+                    
+                # Parsing particle grid parameters
+    
+                elif line.startswith("Particle Grid Parameters:"):
+                    out_global_data.particle_grid_Data.enabled = True
+                
+                elif line.startswith("Resolution X:"):
+                    line = line.replace("Resolution X: ", "")
+                    out_global_data.particle_grid_Data.resolutionX = int(line)
+                
+                elif line.startswith("Resolution Y:"):
+                    line = line.replace("Resolution Y: ", "")
+                    out_global_data.particle_grid_Data.resolutionY = int(line)
+                    
+                elif line.startswith("Delta X:"):
+                    line = line.replace("Delta X: ", "")
+                    out_global_data.particle_grid_Data.deltaX = float(line)
+                    
+                elif line.startswith("Delta Y:"):
+                    line = line.replace("Delta Y: ", "")
+                    out_global_data.particle_grid_Data.deltaY = float(line)
+                    
+                elif line.startswith("Origin: "):
+                    line = line.replace("Origin: ", "")
+                    parts = line.split(",")
+                    out_global_data.particle_grid_Data.originX = float(parts[0])
+                    out_global_data.particle_grid_Data.originY = float(parts[1])
+                    
+                    
+                # Parsing particle data
+                elif " | " in line:
+                    parts = line.split(" | ")
+                    
+                    particleID = int(parts[0])
+                    line = parts[1]
+                    
+                    if line.startswith("Location: "):
+                        
+                        # Ensure dict contains data for this particle ID
+                        if not particleID in out_global_data.particle_samples:
+                            out_global_data.particle_samples[particleID] = []
+                        
+                        line = line.replace("Location: ", "")
+                        parts = line.split(",")
+                        x = float(parts[0])
+                        y = float(parts[1])
+                        
+                        if file_data.iteration >= len(out_global_data.particle_samples[particleID]):
+                            out_global_data.particle_samples[particleID].append(ParticleData(x, y, 0, 0))
+                        else:
+                            out_global_data.particle_samples[particleID][file_data.iteration].x = x
+                            out_global_data.particle_samples[particleID][file_data.iteration].y = y
+                            
+                    elif line.startswith("Velocity: "):
+                        
+                        # Ensure dict contains data for this particle ID
+                        if not particleID in out_global_data.particle_samples:
+                            out_global_data.particle_samples[particleID] = []
+                        
+                        line = line.replace("Velocity: ", "")
+                        parts = line.split(",")
+                        vx = float(parts[0])
+                        vy = float(parts[1])
+                        
+                        if file_data.iteration >= len(out_global_data.particle_samples[particleID]):
+                            out_global_data.particle_samples[particleID].append(ParticleData(0, 0, vx, vy))
+                        else:
+                            out_global_data.particle_samples[particleID][file_data.iteration].vx = vx
+                            out_global_data.particle_samples[particleID][file_data.iteration].vy = vy
+                    
                 
                 elif line == "Particle Density:":
                     parsing_state = ParsingState.PARTICLE_DENSITY
@@ -150,6 +242,7 @@ def build_plot(x_values : list[float], y_values : list[float], save_location : s
         
     # Creating the plot
     pyplot.plot(x_values, y_values, label=plot_label)
+    pyplot.title(plot_label)
     pyplot.legend(loc='lower left')
     
     # Ensure the save directory exists
@@ -162,15 +255,108 @@ def build_plot(x_values : list[float], y_values : list[float], save_location : s
     pyplot.close()
     
     
+def build_heat_map(x : list, y : list, v : list, save_location : str, plot_label = "Plot"):
+    
+    pyplot.figure()
+    
+    # Creating the heat map
+    pyplot.tricontourf(x, y, v, levels=200, cmap='viridis')
+    pyplot.colorbar(label=plot_label)
+    pyplot.title(plot_label)
+    pyplot.xlabel("X")
+    pyplot.ylabel("Y")
+    
+    # Ensure the save directory exists
+    path = Path(save_location)
+    directory = path.parent
+    directory.mkdir(parents=True, exist_ok=True)
+    
+    # Save the plot
+    pyplot.savefig(save_location)
+    pyplot.close()
+    
+    
+def build_trajectory_plot(global_data : GlobalData, save_location : str):
+    
+    # Plotting particle grid
+    if global_data.particle_grid_Data.enabled:
+        
+        gridXValues = [
+            global_data.particle_grid_Data.originX + i * global_data.particle_grid_Data.deltaX
+            for i in range(global_data.particle_grid_Data.resolutionX)
+        ]
+        
+        gridYValues = [
+            global_data.particle_grid_Data.originY + j * global_data.particle_grid_Data.deltaY
+            for j in range(global_data.particle_grid_Data.resolutionY)
+        ]
+        
+        for x in gridXValues:
+            pyplot.axvline(x=x, color='lightgray', linestyle='--', linewidth=0.5)
+        
+        for y in gridYValues:
+            pyplot.axhline(y=y, color='lightgray', linestyle='--', linewidth=0.5)
+
+    # Plotting the trajectories
+
+    for particleID in global_data.particle_samples:
+        
+        xValues = [sample.x for sample in global_data.particle_samples[particleID]]
+        yValues = [sample.y for sample in global_data.particle_samples[particleID]]
+        
+        pyplot.plot(xValues, yValues, label=f"Particle {particleID}", linewidth=1)
+        pyplot.scatter(xValues, yValues, s=2)
+        
+        if (len(xValues) > 1):
+            for i in range(0, len(xValues), len(xValues) // 10):
+                pyplot.annotate('', xy=(xValues[i + 1], yValues[i + 1]), xytext=(xValues[i], yValues[i]),
+                    arrowprops=dict(color='grey', lw=0.5))
+                
+    pyplot.title("Particle Trajectories")
+    pyplot.xlabel("X Position")
+    pyplot.ylabel("Y Position")
+    pyplot.legend()
+    
+    # Ensure the save directory exists
+    path = Path(save_location)
+    directory = path.parent
+    directory.mkdir(parents=True, exist_ok=True)
+    
+    # Save the plot
+    pyplot.savefig(save_location)
+    pyplot.close()
+
+    
+    
 def build_per_file_plots(file_data : FileData):
     
     if file_data.has_particle_density:  
         x_values = [entry[0] for entry in file_data.particle_density]
+        # y_values = [entry[1] for entry in file_data.particle_density]
         v_values = [entry[2] for entry in file_data.particle_density]
+
+        image_path = f"./Output/ParticleDensity_x/ParticleDensity_x_{file_data.iteration}.png"
+        build_plot(x_values, v_values, image_path, f"ParticleDensity_x_{file_data.iteration}")
+        generated_plot_image_lists["ParticleDensity_x"].append([file_data.iteration, image_path])
         
-        image_path = f"./Output/ParticleDensity/ParticleDensity_{file_data.iteration}.png"
-        build_plot(x_values, v_values, image_path, f"ParticleDensity_{file_data.iteration}")
-        generated_plot_image_lists["ParticleDensity"].append([file_data.iteration, image_path])
+        # image_path = f"./Output/ParticleDensity_y/ParticleDensity_y_{file_data.iteration}.png"
+        # build_plot(y_values, v_values, image_path, f"ParticleDensity_y_{file_data.iteration}")
+        # generated_plot_image_lists["ParticleDensity_y"].append([file_data.iteration, image_path])
+        
+        # For heat map
+        try:
+            data = np.array(file_data.particle_density)
+            heat_x = data[:, 0]
+            heat_y = data[:, 1]
+            heat_v = data[:, 2]
+        
+            image_path = f"./Output/ParticleDensity_heat/ParticleDensity_heat_{file_data.iteration}.png"
+            build_heat_map(heat_x, heat_y, heat_v, image_path, f"ParticleDensity_{file_data.iteration}")
+            generated_plot_image_lists["ParticleDensity_heat"].append([file_data.iteration, image_path])
+            
+        except Exception as e:
+            print(f"Failed to build heat map: {str(e)}")
+        
         
     if file_data.has_field_E:   
         x_values = [entry[0] for entry in file_data.field_E]
@@ -239,6 +425,13 @@ def build_global_plots(global_data : GlobalData):
     y_values = [entry[1] for entry in global_data.field_energy]
     
     build_plot(x_values, y_values, "./Output/FieldEnergy.png", "FieldEnergy")
+    
+    if (len(global_data.particle_samples) > 0):
+        build_trajectory_plot(global_data, "./Output/ParticleTrace.png")
+        
+        # x_values = [entry[0] for entry in global_data.particle_samples[0]]
+        # y_values = [entry[0] for entry in global_data.field_energy]
+        # y_values = [entry[1] for entry in global_data.field_energy]
 
 
 def generate_gif(images : list, output_path : str):
