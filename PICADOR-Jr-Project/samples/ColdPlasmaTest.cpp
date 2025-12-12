@@ -55,7 +55,7 @@ int main()
 
     Vector3 fieldGridOrigin = Vector3::Zero;
     size_t fieldGridResolutionX = MatrixSize;
-    size_t fieldGridResolutionY = 8;
+    size_t fieldGridResolutionY = MatrixSize / 8;
     double fieldGridSpaceStepX = SpaceStep;
     double fieldGridSpaceStepY = SpaceStep;
     size_t fieldGridPadding = 1;
@@ -64,11 +64,13 @@ int main()
     double particleGridSpaceStepX = SpaceStep;
     double particleGridSpaceStepY = SpaceStep;
     size_t particleGridResolutionX = MatrixSize;//fieldGridResolutionX * fieldGridSpaceStepX / particleGridSpaceStepX + 1;
-    size_t particleGridResolutionY = 8;//fieldGridResolutionY * fieldGridSpaceStepY / particleGridSpaceStepY + 1;
+    size_t particleGridResolutionY = MatrixSize / 8;//fieldGridResolutionY * fieldGridSpaceStepY / particleGridSpaceStepY + 1;
     size_t particleGridPadding = 1;
 
     std::cout << particleGridResolutionX << " : " << particleGridResolutionY << "\n";
     std::cout << particleGridSpaceStepX << " : " << particleGridSpaceStepY << "\n";
+
+    std::cout << "Particle Factor" << " : " << ParticleFactor << "\n";
 
     // Field generation
     std::function<Vector3(Vector3)> E_Function = [](Vector3 location) { return Vector3(-Amp * cos(2.0 * Constants::PI * location.x / L), 0.0, 0.0); };
@@ -136,6 +138,9 @@ int main()
     dataSampler->sampleParticleVelocities = false;
     dataSampler->sampleParticleCells = false;
     dataSampler->writeParticleGridParameters = false;
+    dataSampler->autoParticleTrackingIDs = false;
+
+    dataSampler->traceExampleParticle = true;
 
     // Sampling particle density
     dataSampler->samplePartcileDensity = true;
