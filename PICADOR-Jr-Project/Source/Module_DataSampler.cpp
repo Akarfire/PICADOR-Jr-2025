@@ -2,6 +2,7 @@
 
 #include <fstream>
 #include <iostream>
+#include <random>
 
 ModuleExecutionStatus DataSampler::onBegin()
 {
@@ -20,6 +21,26 @@ ModuleExecutionStatus DataSampler::onBegin()
                         particle.trackingID = currentID++;
     }
 
+    if (traceExampleParticle)
+    {
+        srand(exampleParticlePickingSeed);
+
+        ParticleGrid* particleGrid = core->getParticleGrid();
+
+        GRID_INDEX i = 0;
+        GRID_INDEX j = 0;
+
+        do
+        {
+            i = rand() % particleGrid->getResolutionX();
+            j = rand() % particleGrid->getResolutionY();
+        } while (particleGrid->getParticlesInCell(i, j).size() == 0);
+
+        size_t p = rand() % particleGrid->getParticlesInCell(i, j).size();
+
+        particleGrid->editParticlesInCell(i, j)[p].trackingID = exampleTraceParticleTrackingID;
+    }
+
     return ModuleExecutionStatus::Success;
 }
 
@@ -32,13 +53,13 @@ ModuleExecutionStatus DataSampler::onUpdate()
         sampledData.iterations.push_back(core->getCurrentIteration());
 
         // Sampling particle data
-        if (sampleParticleLocations || sampleParticleVelocities || sampleParticleCells)
+        if (sampleParticleLocations || sampleParticleVelocities || sampleParticleCells || traceExampleParticle)
         {
             ParticleGrid* particleGrid = core->getParticleGrid();
 
-            if (sampleParticleLocations)
+            if (sampleParticleLocations || traceExampleParticle)
                 sampledData.particleLocations.push_back(std::vector<std::pair<unsigned short, Vector3>>());
-            if (sampleParticleVelocities)
+            if (sampleParticleVelocities || traceExampleParticle)
                 sampledData.particleVelocities.push_back(std::vector<std::pair<unsigned short, Vector3>>());
             if (sampleParticleCells)
                 sampledData.particleCells.push_back(std::vector<std::pair<unsigned short, std::pair<GRID_INDEX, GRID_INDEX>>>());
@@ -47,9 +68,9 @@ ModuleExecutionStatus DataSampler::onUpdate()
                 for (GRID_INDEX j = 0; j < particleGrid->getResolutionY() - 1; j++)
                     for (const Particle& particle : particleGrid->getParticlesInCell(i, j))
                     {
-                        if (sampleParticleLocations)
+                        if (sampleParticleLocations || (traceExampleParticle && particle.trackingID == exampleTraceParticleTrackingID))
                             sampledData.particleLocations[sampledData.size].push_back({particle.trackingID, particle.location});
-                        if (sampleParticleVelocities)
+                        if (sampleParticleVelocities || (traceExampleParticle && particle.trackingID == exampleTraceParticleTrackingID))
                             sampledData.particleVelocities[sampledData.size].push_back({particle.trackingID, particle.getVelocity()});
                         if (sampleParticleCells)
                             sampledData.particleCells[sampledData.size].push_back({particle.trackingID, { i, j }});
@@ -155,12 +176,12 @@ void DataSampler::writeDataToFile(std::string fileName)
     for (size_t i = 0; i < sampledData.size; i++)
     {
         outFile << "Iteration: " << sampledData.iterations[i] << "\n";
-        if (sampleParticleLocations)
+        if (sampleParticleLocations || traceExampleParticle)
         {
             for (const auto& entry : sampledData.particleLocations[i])
                 outFile << entry.first << " | Location: " << entry.second.x << ", " <<  entry.second.y << ", " <<  entry.second.z << "\n";
         }
-        if (sampleParticleVelocities)
+        if (sampleParticleVelocities || traceExampleParticle)
         {
             for (const auto& entry : sampledData.particleVelocities[i])
                 outFile << entry.first << " | Velocity: " << entry.second.x << ", " << entry.second.y << ", " << entry.second.z << "\n";

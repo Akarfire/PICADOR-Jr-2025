@@ -106,6 +106,11 @@ public:
     bool samplePartcileDensity = false;
     GridSamplingParameters particleDensitySamplingParameters = GridSamplingParameters();
 
+    // Example particle trace
+    bool traceExampleParticle = false;
+    int exampleParticlePickingSeed = 0;
+    unsigned short int exampleTraceParticleTrackingID = 1;
+
     // Field data sampling options
     bool sampleFieldData = false;
     bool sampleFieldE = true;
