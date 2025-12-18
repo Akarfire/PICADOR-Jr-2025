@@ -30,15 +30,21 @@ ModuleExecutionStatus DataSampler::onBegin()
         GRID_INDEX i = 0;
         GRID_INDEX j = 0;
 
+        size_t tries = 0;
         do
         {
             i = rand() % particleGrid->getResolutionX();
             j = rand() % particleGrid->getResolutionY();
-        } while (particleGrid->getParticlesInCell(i, j).size() == 0);
+            tries++;
 
-        size_t p = rand() % particleGrid->getParticlesInCell(i, j).size();
+        } while (particleGrid->getParticlesInCell(i, j).size() == 0 && tries < 10000);
 
-        particleGrid->editParticlesInCell(i, j)[p].trackingID = exampleTraceParticleTrackingID;
+        if (particleGrid->getParticlesInCell(i, j).size() > 0)
+        {
+            size_t p = rand() % particleGrid->getParticlesInCell(i, j).size();
+
+            particleGrid->editParticlesInCell(i, j)[p].trackingID = exampleTraceParticleTrackingID;
+        }
     }
 
     return ModuleExecutionStatus::Success;

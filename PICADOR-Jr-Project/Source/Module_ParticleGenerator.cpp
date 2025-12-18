@@ -18,8 +18,13 @@ void ParticleGenerator::generateParticlesForCell(std::vector<Particle>& outParti
         // Calculating particle number for this cell
         size_t numParticles =   profile.particleDensityFunction(cellSampleLocation)
                                 * particleGrid->getDeltaX()
-                                * particleGrid->getDeltaY() 
+                                * particleGrid->getDeltaY() * particleGrid->getDeltaY()
                                 / profile.particleFactorFunction(cellSampleLocation);
+
+        std::cout << profile.particleDensityFunction(cellSampleLocation)
+                                * particleGrid->getDeltaX()
+                                * particleGrid->getDeltaY() * particleGrid->getDeltaY()
+                                / profile.particleFactorFunction(cellSampleLocation) << "\n";
 
         // Generating individual particles
         for (size_t i = 0; i < numParticles; i++)

@@ -63,8 +63,8 @@ int main()
     Vector3 particleGridOrigin = fieldGridOrigin;
     double particleGridSpaceStepX = SpaceStep;
     double particleGridSpaceStepY = SpaceStep;
-    size_t particleGridResolutionX = MatrixSize;//fieldGridResolutionX * fieldGridSpaceStepX / particleGridSpaceStepX + 1;
-    size_t particleGridResolutionY = MatrixSize / 8;//fieldGridResolutionY * fieldGridSpaceStepY / particleGridSpaceStepY + 1;
+    size_t particleGridResolutionX = MatrixSize; //fieldGridResolutionX * fieldGridSpaceStepX / particleGridSpaceStepX + 1;
+    size_t particleGridResolutionY = MatrixSize / 8; //fieldGridResolutionY * fieldGridSpaceStepY / particleGridSpaceStepY + 1;
     size_t particleGridPadding = 1;
 
     std::cout << particleGridResolutionX << " : " << particleGridResolutionY << "\n";
