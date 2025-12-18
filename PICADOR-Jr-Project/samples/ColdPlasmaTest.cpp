@@ -21,36 +21,37 @@
 #include <string>
 
 
-// Parameters from experiment description (GLOBAL)
-// {
-
-size_t MatrixSize = 64;
-
-double L = 1.0;
-double NumPerL_Debay = 0.5;
-size_t NumPerPlasmaPeriod = 256;
-size_t NumPerCell = 30;
-size_t NumPeriods = MatrixSize / (2 * sqrt(2.0) * Constants::PI * NumPerL_Debay);
-
-double SpaceStep = L / MatrixSize;
-double L_Debay = SpaceStep * NumPerL_Debay;
-
-double Temp = 1e-2 * Constants::ElectronMass * Constants::SpeedOfLight * Constants::SpeedOfLight;
-double Density = Temp / (8 * Constants::PI * Constants::ElectronCharge * L_Debay * Constants::ElectronCharge * L_Debay);
-double w_p = sqrt(4.0 * Constants::PI * Constants::ElectronCharge * Constants::ElectronCharge * Density / Constants::ElectronMass);
-
-size_t IterationsBetweenDumps = NumPerPlasmaPeriod / 16;
-size_t ParticleFactor = Density * SpaceStep * SpaceStep * SpaceStep / NumPerCell;
-
-double A = 0.05;
-double Amp = 2.0 * L * Density * Constants::ElectronCharge * A;
-// }
-
 int main()
 {
+    // Parameters from experiment description
+    // {
+
+    size_t MatrixSize = 64;
+
+    double L = 1.0;
+    double NumPerL_Debay = 0.5;
+    size_t NumPerPlasmaPeriod = 256;
+    size_t NumPerCell = 30;
+    size_t NumPeriods = MatrixSize / (2 * sqrt(2.0) * Constants::PI * NumPerL_Debay);
+
+    double SpaceStep = L / MatrixSize;
+    double L_Debay = SpaceStep * NumPerL_Debay;
+
+    double Temp = 1e-2 * Constants::ElectronMass * Constants::SpeedOfLight * Constants::SpeedOfLight;
+    double Density = Temp / (8 * Constants::PI * Constants::ElectronCharge * L_Debay * Constants::ElectronCharge * L_Debay);
+    double w_p = sqrt(4.0 * Constants::PI * Constants::ElectronCharge * Constants::ElectronCharge * Density / Constants::ElectronMass);
+
+    size_t IterationsBetweenDumps = 1;//NumPerPlasmaPeriod / 16;
+    size_t ParticleFactor = Density * SpaceStep * SpaceStep * SpaceStep / NumPerCell;
+
+    double A = 0.05;
+    double Amp = 2.0 * L * Density * Constants::ElectronCharge * A;
+    // }
+
+
     // SIMULATION PARAMETERS
 
-    size_t numInterations = NumPeriods * NumPerPlasmaPeriod;
+    size_t numInterations = 10;//NumPeriods * NumPerPlasmaPeriod;
     double timeStep = 2.0 * (Constants::PI / w_p) / NumPerPlasmaPeriod;
 
     Vector3 fieldGridOrigin = Vector3::Zero;
@@ -73,25 +74,25 @@ int main()
     std::cout << "Particle Factor" << " : " << ParticleFactor << "\n";
 
     // Field generation
-    std::function<Vector3(Vector3)> E_Function = [](Vector3 location) { return Vector3(-Amp * cos(2.0 * Constants::PI * location.x / L), 0.0, 0.0); };
+    std::function<Vector3(Vector3)> E_Function = [Amp, L](Vector3 location) { return Vector3(-Amp * cos(2.0 * Constants::PI * location.x / L), 0.0, 0.0); };
 
     // Particle generation
     ParticleGenerator::ParticleGenerationProfile profile;
 
     profile.sampleParticle = Particle(ParticleType::Electron, Constants::ElectronMass, Constants::ElectronCharge);
-    profile.particleDensityFunction = [](Vector3 location ) { return Density * (1.0 + A * sin(2.0 * Constants::PI * location.x / L)); };
-    profile.temperatureFunction = [](Vector3) { return Temp; };
-    profile.particleFactorFunction = [](Vector3) { return ParticleFactor; };
+    profile.particleDensityFunction = [Density, A, L](Vector3 location ) { return Density * (1.0 + A * sin(2.0 * Constants::PI * location.x / L)); };
+    profile.temperatureFunction = [Temp](Vector3) { return Temp; };
+    profile.particleFactorFunction = [ParticleFactor](Vector3) { return ParticleFactor; };
 
     // Initializing field grid
-    FieldGrid fieldGrid(fieldGridResolutionX, fieldGridResolutionY, fieldGridSpaceStepX, fieldGridResolutionY, fieldGridOrigin, fieldGridPadding);
+    FieldGrid fieldGrid(fieldGridResolutionX, fieldGridResolutionY, fieldGridSpaceStepX, fieldGridSpaceStepY, fieldGridOrigin, fieldGridPadding);
 
     // Initializing particle grid
     ParticleGrid particleGrid(particleGridResolutionX, particleGridResolutionY, particleGridSpaceStepX, particleGridSpaceStepY, particleGridOrigin, particleGridPadding);
 
-    particleGrid.editParticlesInCell(particleGrid.getResolutionX() / 2, particleGrid.getResolutionY() / 2).push_back(
-        Particle(Constants::ElectronMass, Constants::ElectronCharge, Vector3(0.5, particleGrid.getResolutionY() / 2 * particleGrid.getDeltaY()), Vector3::VectorMaskXY * 1e-5 * Constants::ElectronMass, 1)
-    );
+    // particleGrid.editParticlesInCell(particleGrid.getResolutionX() / 2, particleGrid.getResolutionY() / 2).push_back(
+    //     Particle(Constants::ElectronMass, Constants::ElectronCharge, Vector3(0.5, particleGrid.getResolutionY() / 2 * particleGrid.getDeltaY()), Vector3::VectorMaskXY * 1e-5 * Constants::ElectronMass, 1)
+    // );
     
     // Output file for automated trajectory visualization
     //std::string outputFileName = "ColdPlasmaTest.txt";//"../../Visualization/Trajectory/Automated/particle_trajectories_auto_vis.txt";
@@ -110,9 +111,9 @@ int main()
     core->insertModule(fieldGenerator);
 
     // Particle generator
-    // ParticleGenerator* particleGenerator = new ParticleGenerator(core, 1);
-    // particleGenerator->addGenerationProfile(profile);
-    // core->insertModule(particleGenerator);
+    ParticleGenerator* particleGenerator = new ParticleGenerator(core, 1);
+    particleGenerator->addGenerationProfile(profile);
+    core->insertModule(particleGenerator);
 
     // Field Solver
     FieldSolver* fieldSolver = new FieldSolver(core);
@@ -144,6 +145,8 @@ int main()
     dataSampler->writeParticleGridParameters = false;
     dataSampler->autoParticleTrackingIDs = false;
 
+    dataSampler->sampleTotalEnergy = true;
+
     dataSampler->traceExampleParticle = true;
 
     // Sampling particle density
@@ -153,6 +156,8 @@ int main()
     dataSampler->particleDensitySamplingParameters.samplingStepX = 0.01;
     dataSampler->particleDensitySamplingParameters.samplingResolutionY = 1;
     dataSampler->particleDensitySamplingParameters.samplingStepY = 0.0;
+
+    dataSampler->sampleParticleEnergy = true;
 
     // Sampling field data
     dataSampler->sampleFieldData = true;
@@ -189,7 +194,7 @@ int main()
     delete core;
 
     delete fieldGenerator;
-    //delete particleGenerator;
+    delete particleGenerator;
     delete fieldSolver;
     delete particleSolver;
     delete loopCondition;
