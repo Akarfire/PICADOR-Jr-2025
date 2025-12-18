@@ -38,6 +38,9 @@ class ParticleGridData:
 @dataclass
 class GlobalData:
     field_energy : list[list[int, float]] = field(default_factory=list)
+    particle_energy : list[list[int, float]] = field(default_factory=list)
+    total_energy : list[list[int, float]] = field(default_factory=list)
+    
     particle_samples : dict[list[ParticleData]] = field(default_factory=dict)
     particle_grid_Data : ParticleGridData = field(default_factory=ParticleGridData)
 
@@ -116,6 +119,12 @@ def parse_file(file_path : str, out_global_data : GlobalData) -> FileData:
                     
                 elif line.startswith("Field Energy: "):
                     out_global_data.field_energy.append([file_data.iteration, float(line.replace("Field Energy: ", ""))])
+                    
+                elif line.startswith("Particle Energy: "):
+                    out_global_data.particle_energy.append([file_data.iteration, float(line.replace("Particle Energy: ", ""))])
+                    
+                elif line.startswith("Total Energy: "):
+                    out_global_data.total_energy.append([file_data.iteration, float(line.replace("Total Energy: ", ""))])
                     
                 # Parsing particle grid parameters
     
@@ -419,12 +428,26 @@ def build_per_file_plots(file_data : FileData):
 def build_global_plots(global_data : GlobalData):
     
     global_data.field_energy.sort(key=lambda x: x[0])
+    global_data.particle_energy.sort(key=lambda x: x[0])
+    global_data.total_energy.sort(key=lambda x: x[0])
     
     # Building field energy plot
     x_values = [entry[0] for entry in global_data.field_energy]
     y_values = [entry[1] for entry in global_data.field_energy]
     
     build_plot(x_values, y_values, "./Output/FieldEnergy.png", "FieldEnergy")
+    
+    # Building particle energy plot
+    x_values = [entry[0] for entry in global_data.particle_energy]
+    y_values = [entry[1] for entry in global_data.particle_energy]
+    
+    build_plot(x_values, y_values, "./Output/ParticleEnergy.png", "ParticleEnergy")
+    
+    # Building total energy plot
+    x_values = [entry[0] for entry in global_data.total_energy]
+    y_values = [entry[1] for entry in global_data.total_energy]
+    
+    build_plot(x_values, y_values, "./Output/TotalEnergy.png", "TotalEnergy")
     
     if (len(global_data.particle_samples) > 0):
         build_trajectory_plot(global_data, "./Output/ParticleTrace.png")
