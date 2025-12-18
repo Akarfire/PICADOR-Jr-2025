@@ -88,6 +88,10 @@ int main()
 
     // Initializing particle grid
     ParticleGrid particleGrid(particleGridResolutionX, particleGridResolutionY, particleGridSpaceStepX, particleGridSpaceStepY, particleGridOrigin, particleGridPadding);
+
+    particleGrid.editParticlesInCell(particleGrid.getResolutionX() / 2, particleGrid.getResolutionY() / 2).push_back(
+        Particle(Constants::ElectronMass, Constants::ElectronCharge, Vector3(0.5, particleGrid.getResolutionY() / 2 * particleGrid.getDeltaY()), Vector3::VectorMaskXY * 1e-5 * Constants::ElectronMass, 1)
+    );
     
     // Output file for automated trajectory visualization
     //std::string outputFileName = "ColdPlasmaTest.txt";//"../../Visualization/Trajectory/Automated/particle_trajectories_auto_vis.txt";
@@ -106,9 +110,9 @@ int main()
     core->insertModule(fieldGenerator);
 
     // Particle generator
-    ParticleGenerator* particleGenerator = new ParticleGenerator(core, 1);
-    particleGenerator->addGenerationProfile(profile);
-    core->insertModule(particleGenerator);
+    // ParticleGenerator* particleGenerator = new ParticleGenerator(core, 1);
+    // particleGenerator->addGenerationProfile(profile);
+    // core->insertModule(particleGenerator);
 
     // Field Solver
     FieldSolver* fieldSolver = new FieldSolver(core);
@@ -185,7 +189,7 @@ int main()
     delete core;
 
     delete fieldGenerator;
-    delete particleGenerator;
+    //delete particleGenerator;
     delete fieldSolver;
     delete particleSolver;
     delete loopCondition;

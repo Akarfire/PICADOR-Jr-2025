@@ -26,7 +26,7 @@ FieldData FieldGrid::getFieldsAt(const Vector3& location) const
 {
 	size_t i = this->getCell(location).first, j = this->getCell(location).second;
 	Vector3 cellOrigin(this->origin.x + i * this->deltaX, this->origin.y + j * this->deltaY, 0.0);
-	Vector3 delta(this->deltaX, this->deltaY, 1.0);
+	Vector3 delta(this->deltaX, this->deltaY, this->deltaY);
 
 	Vector3 newLocation = (location - cellOrigin) / delta;
 
