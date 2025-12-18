@@ -29,7 +29,8 @@ public:
 
         // Field data
         std::vector< std::vector<std::pair<Vector3, FieldData>> > fieldData;
-        std::vector < float > fieldEnergy;
+        std::vector <float> fieldEnergy;
+        std::vector <float> particleEnergy;
     };
 
     struct GridSamplingParameters
@@ -96,6 +97,8 @@ public:
     bool sampleOnlySpecificIterations = false;
     std::set<size_t> specificIterations;
 
+    bool sampleTotalEnergy = false;
+
     // Particle data sampling options
     bool autoParticleTrackingIDs = true;
 
@@ -105,6 +108,8 @@ public:
 
     bool samplePartcileDensity = false;
     GridSamplingParameters particleDensitySamplingParameters = GridSamplingParameters();
+
+    bool sampleParticleEnergy = false;
 
     // Example particle trace
     bool traceExampleParticle = false;

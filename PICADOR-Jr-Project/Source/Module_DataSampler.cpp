@@ -59,7 +59,7 @@ ModuleExecutionStatus DataSampler::onUpdate()
         sampledData.iterations.push_back(core->getCurrentIteration());
 
         // Sampling particle data
-        if (sampleParticleLocations || sampleParticleVelocities || sampleParticleCells || traceExampleParticle)
+        if (sampleParticleLocations || sampleParticleVelocities || sampleParticleCells || traceExampleParticle || sampleTotalEnergy || sampleParticleEnergy)
         {
             ParticleGrid* particleGrid = core->getParticleGrid();
 
@@ -69,6 +69,8 @@ ModuleExecutionStatus DataSampler::onUpdate()
                 sampledData.particleVelocities.push_back(std::vector<std::pair<unsigned short, Vector3>>());
             if (sampleParticleCells)
                 sampledData.particleCells.push_back(std::vector<std::pair<unsigned short, std::pair<GRID_INDEX, GRID_INDEX>>>());
+
+            sampledData.particleEnergy.push_back(0.0);
 
             for (GRID_INDEX i = 0; i < particleGrid->getResolutionX() - 1; i++)
                 for (GRID_INDEX j = 0; j < particleGrid->getResolutionY() - 1; j++)
@@ -80,6 +82,8 @@ ModuleExecutionStatus DataSampler::onUpdate()
                             sampledData.particleVelocities[sampledData.size].push_back({particle.trackingID, particle.getVelocity()});
                         if (sampleParticleCells)
                             sampledData.particleCells[sampledData.size].push_back({particle.trackingID, { i, j }});
+                        
+                        sampledData.particleEnergy[sampledData.size] += particle.mass * particle.getVelocity().sizeSquared() / 2 * particle.weight;
                     }
         }
 
@@ -220,6 +224,14 @@ void DataSampler::writeDataToFile(std::string fileName)
             {
                 outFile << "Field Energy: " << sampledData.fieldEnergy[i] << std::endl;
             }
+        }
+        if (sampleParticleEnergy)
+        {
+            outFile << "Particle Energy: " << sampledData.particleEnergy[i] + sampledData.particleEnergy[i] << std::endl;
+        }
+        if (sampleTotalEnergy)
+        {
+            outFile << "Total Energy: " << sampledData.fieldEnergy[i] + sampledData.particleEnergy[i] << std::endl;
         }
 
         outFile << "\n" << "\n";
