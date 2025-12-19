@@ -41,7 +41,7 @@ int main()
     double Density = Temp / (8 * Constants::PI * Constants::ElectronCharge * L_Debay * Constants::ElectronCharge * L_Debay);
     double w_p = sqrt(4.0 * Constants::PI * Constants::ElectronCharge * Constants::ElectronCharge * Density / Constants::ElectronMass);
 
-    size_t IterationsBetweenDumps = 1;//NumPerPlasmaPeriod / 16;
+    size_t IterationsBetweenDumps = NumPerPlasmaPeriod / 16;
     size_t ParticleFactor = Density * SpaceStep * SpaceStep * SpaceStep / NumPerCell;
 
     double A = 0.05;
@@ -51,7 +51,7 @@ int main()
 
     // SIMULATION PARAMETERS
 
-    size_t numInterations = NumPeriods * NumPerPlasmaPeriod;
+    size_t numInterations = 513;//NumPeriods * NumPerPlasmaPeriod;
     double timeStep = 2.0 * (Constants::PI / w_p) / NumPerPlasmaPeriod;
 
     Vector3 fieldGridOrigin = Vector3::Zero;
@@ -91,7 +91,7 @@ int main()
     ParticleGrid particleGrid(particleGridResolutionX, particleGridResolutionY, particleGridSpaceStepX, particleGridSpaceStepY, particleGridOrigin, particleGridPadding);
 
     // particleGrid.editParticlesInCell(particleGrid.getResolutionX() / 2, particleGrid.getResolutionY() / 2).push_back(
-    //     Particle(Constants::ElectronMass, Constants::ElectronCharge, Vector3(0.5, particleGrid.getResolutionY() / 2 * particleGrid.getDeltaY()), Vector3::VectorMaskXY * 1e-5 * Constants::ElectronMass, 1)
+    //     Particle(Constants::ElectronMass, Constants::ElectronCharge, Vector3(0.5, particleGrid.getResolutionY() / 2 * particleGrid.getDeltaY()), Vector3::VectorMaskX * 1e-5 * Constants::ElectronMass, 1)
     // );
     
     // Output file for automated trajectory visualization
