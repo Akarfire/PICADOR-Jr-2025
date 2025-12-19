@@ -51,7 +51,7 @@ int main()
 
     // SIMULATION PARAMETERS
 
-    size_t numInterations = 10;//NumPeriods * NumPerPlasmaPeriod;
+    size_t numInterations = NumPeriods * NumPerPlasmaPeriod;
     double timeStep = 2.0 * (Constants::PI / w_p) / NumPerPlasmaPeriod;
 
     Vector3 fieldGridOrigin = Vector3::Zero;
