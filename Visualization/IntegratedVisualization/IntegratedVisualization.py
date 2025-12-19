@@ -3,7 +3,7 @@ from pathlib import Path
 from dataclasses import dataclass, field
 from enum import Enum
 from PIL import Image
-import numpy as np
+import os
 
 
 
@@ -497,6 +497,10 @@ def main():
         
         output_path = Path("./Output")
         print("Results saved into: ", output_path.absolute())
+        
+        # Clearing data files, so further experiments with less iterations are processed correctly
+        for file in files:
+            os.remove(file)
 
 
 # Script entry point
