@@ -1,4 +1,5 @@
 #include "Module_FieldSolver.h"
+#include <iostream>
 
 ModuleExecutionStatus FieldSolver::onBegin() 
 {
@@ -31,8 +32,11 @@ void FieldSolver::updateE(GRID_INDEX i, GRID_INDEX j)
     fieldGrid->getNodeAt(i, j).E.x = fieldGrid->getNodeAt(i, j).E.x - 4 * Constants::PI * core->getTimeDelta() * fieldGrid->getNodeAt(i, j).J.x
         + Constants::SpeedOfLight * core->getTimeDelta() * (fieldGrid->getNodeAt(i, j + 1).B.z - fieldGrid->getNodeAt(i, j - 1).B.z) / (2 * fieldGrid->getDeltaY());
 
+    //if (fieldGrid->getNodeAt(i, j).J.x != 0.0)
+    //    std::cout << core->currentIteration() << " " << i << " " << j << " " << fieldGrid->getNodeAt(i, j).J.x << std::endl;
+
     fieldGrid->getNodeAt(i, j).E.y = fieldGrid->getNodeAt(i, j).E.y - 4 * Constants::PI * core->getTimeDelta() * fieldGrid->getNodeAt(i, j).J.y
-        + Constants::SpeedOfLight * core->getTimeDelta() * (fieldGrid->getNodeAt(i + 1, j).B.z - fieldGrid->getNodeAt(i - 1, j).B.z) / (2 * fieldGrid->getDeltaX());
+        - Constants::SpeedOfLight * core->getTimeDelta() * (fieldGrid->getNodeAt(i + 1, j).B.z - fieldGrid->getNodeAt(i - 1, j).B.z) / (2 * fieldGrid->getDeltaX());
 
     fieldGrid->getNodeAt(i, j).E.z = fieldGrid->getNodeAt(i, j).E.z - 4 * Constants::PI * core->getTimeDelta() * fieldGrid->getNodeAt(i, j).J.z
         + Constants::SpeedOfLight * core->getTimeDelta() * ((fieldGrid->getNodeAt(i + 1, j).B.y - fieldGrid->getNodeAt(i-1, j).B.y) / (2 * fieldGrid->getDeltaX())
@@ -44,7 +48,7 @@ void FieldSolver::updateB(GRID_INDEX i, GRID_INDEX j)
     fieldGrid->getNodeAt(i, j).B.x = fieldGrid->getNodeAt(i, j).B.x 
         - Constants::SpeedOfLight * core->getTimeDelta() * (fieldGrid->getNodeAt(i, j + 1).E.z - fieldGrid->getNodeAt(i, j - 1).E.z) / (2 * fieldGrid->getDeltaY());
 
-    fieldGrid->getNodeAt(i, j).B.y = fieldGrid->getNodeAt(i, j).B.y //или тут -, надо проверить
+    fieldGrid->getNodeAt(i, j).B.y = fieldGrid->getNodeAt(i, j).B.y //пїЅпїЅпїЅ пїЅпїЅпїЅ -, пїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
         + Constants::SpeedOfLight * core->getTimeDelta() * (fieldGrid->getNodeAt(i + 1, j).E.z - fieldGrid->getNodeAt(i - 1, j).E.z) / (2 * fieldGrid->getDeltaX());
 
     fieldGrid->getNodeAt(i, j).B.z = fieldGrid->getNodeAt(i, j).B.z
