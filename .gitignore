@@ -448,3 +448,6 @@ build/
 **.obsidian/
 
 **.lnk
+/Visualization/Graphs/Automated/Files
+/Visualization/IntegratedVisualization/Files
+/Visualization/IntegratedVisualization/Output

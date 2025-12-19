@@ -16,7 +16,7 @@ public:
         Particle sampleParticle = Particle(ParticleType::Electron, Constants::ElectronMass, Constants::ElectronCharge);
 
         // Particle distribution density function
-        std::function<size_t(Vector3)> particleDensityFunction = [](Vector3) { return 0; };
+        std::function<double(Vector3)> particleDensityFunction = [](Vector3) { return 0; };
 
         // Temperature function (used for calculating initial speed)
         std::function<double(Vector3)> temperatureFunction = [](Vector3) { return 1e-40; };

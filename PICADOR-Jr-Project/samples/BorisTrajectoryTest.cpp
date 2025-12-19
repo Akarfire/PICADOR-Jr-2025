@@ -48,7 +48,7 @@ int main()
     //Vector3 E = Vector3::VectorMaskXY.normalized() * 300;
 
     // Second run
-    Vector3 E = Vector3::VectorMaskXY.normalized() * -300;
+    Vector3 E = Vector3::VectorMaskXY.normalized() * 1000;
 
     // Third run
     //Vector3 E = Vector3::VectorMaskXY.normalized() * -500;
