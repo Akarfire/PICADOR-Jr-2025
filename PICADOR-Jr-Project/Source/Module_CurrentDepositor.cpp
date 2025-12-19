@@ -1,4 +1,5 @@
 #include "Module_CurrentDepositor.h"
+#include <iostream>
 
 ModuleExecutionStatus CurrentDepositor::onBegin() 
 {
@@ -21,6 +22,8 @@ ModuleExecutionStatus CurrentDepositor::onUpdate()
         }
 
         this->edgeCondition.updateJEdge(this->fieldGrid);
+        
+        //std::cout << core->getCurrentIteration() << " : " << fieldGrid->getNodeAt(32, 4).J.x << std::endl;
 
         for (int i = 0; i < this->fieldGrid->getResolutionX(); i++) {
             for (int j = 0; j < this->fieldGrid->getResolutionY(); j++) {
@@ -28,6 +31,9 @@ ModuleExecutionStatus CurrentDepositor::onUpdate()
             }
         }
         this->edgeCondition.updateJEdge(this->fieldGrid);
+
+        //std::cout << "U : " << core->getCurrentIteration() << " : " << fieldGrid->getNodeAt(32, 4).J.x << std::endl;
+
         return ModuleExecutionStatus::Success;
     }
 
@@ -36,7 +42,7 @@ ModuleExecutionStatus CurrentDepositor::onUpdate()
 
 void CurrentDepositor::deposite(GRID_INDEX i, GRID_INDEX j) 
 {
-    std::vector<Particle> ensemble = this->particleGrid->getParticlesInCell(i, j);
+    const std::vector<Particle>& ensemble = this->particleGrid->getParticlesInCell(i, j);
 
     Vector3 delta(fieldGrid->getDeltaX(), fieldGrid->getDeltaY(), fieldGrid->getDeltaY());
     Vector3 cellOrigin(fieldGrid->getOrigin().x + i * delta.x, fieldGrid->getOrigin().y + j * delta.y, 0.0);
