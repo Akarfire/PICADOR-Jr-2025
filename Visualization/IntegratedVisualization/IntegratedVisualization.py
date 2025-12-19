@@ -41,7 +41,7 @@ class GlobalData:
     particle_energy : list[list[int, float]] = field(default_factory=list)
     total_energy : list[list[int, float]] = field(default_factory=list)
     
-    particle_samples : dict[list[ParticleData]] = field(default_factory=dict)
+    particle_samples : dict[dict[ParticleData]] = field(default_factory=dict)
     particle_grid_Data : ParticleGridData = field(default_factory=ParticleGridData)
 
 @dataclass
@@ -156,6 +156,7 @@ def parse_file(file_path : str, out_global_data : GlobalData) -> FileData:
                     
                 # Parsing particle data
                 elif " | " in line:
+                    
                     parts = line.split(" | ")
                     
                     particleID = int(parts[0])
@@ -165,35 +166,35 @@ def parse_file(file_path : str, out_global_data : GlobalData) -> FileData:
                         
                         # Ensure dict contains data for this particle ID
                         if not particleID in out_global_data.particle_samples:
-                            out_global_data.particle_samples[particleID] = []
+                            out_global_data.particle_samples[particleID] = {}
                         
                         line = line.replace("Location: ", "")
                         parts = line.split(",")
                         x = float(parts[0])
                         y = float(parts[1])
                         
-                        if file_data.iteration >= len(out_global_data.particle_samples[particleID]):
-                            out_global_data.particle_samples[particleID].append(ParticleData(x, y, 0, 0))
-                        else:
-                            out_global_data.particle_samples[particleID][file_data.iteration].x = x
-                            out_global_data.particle_samples[particleID][file_data.iteration].y = y
+                        if file_data.iteration not in out_global_data.particle_samples[particleID]:
+                            out_global_data.particle_samples[particleID][file_data.iteration] = ParticleData(0, 0, 0, 0)
+                        
+                        out_global_data.particle_samples[particleID][file_data.iteration].x = x
+                        out_global_data.particle_samples[particleID][file_data.iteration].y = y
                             
                     elif line.startswith("Velocity: "):
                         
                         # Ensure dict contains data for this particle ID
                         if not particleID in out_global_data.particle_samples:
-                            out_global_data.particle_samples[particleID] = []
+                            out_global_data.particle_samples[particleID] = {}
                         
                         line = line.replace("Velocity: ", "")
                         parts = line.split(",")
                         vx = float(parts[0])
                         vy = float(parts[1])
                         
-                        if file_data.iteration >= len(out_global_data.particle_samples[particleID]):
-                            out_global_data.particle_samples[particleID].append(ParticleData(0, 0, vx, vy))
-                        else:
-                            out_global_data.particle_samples[particleID][file_data.iteration].vx = vx
-                            out_global_data.particle_samples[particleID][file_data.iteration].vy = vy
+                        if file_data.iteration not in out_global_data.particle_samples[particleID]:
+                            out_global_data.particle_samples[particleID][file_data.iteration] = ParticleData(0, 0, 0, 0)
+                        
+                        out_global_data.particle_samples[particleID][file_data.iteration].vx = vx
+                        out_global_data.particle_samples[particleID][file_data.iteration].vy = vy
                     
                 
                 elif line == "Particle Density:":
@@ -310,8 +311,14 @@ def build_trajectory_plot(global_data : GlobalData, save_location : str):
 
     for particleID in global_data.particle_samples:
         
-        xValues = [sample.x for sample in global_data.particle_samples[particleID]]
-        yValues = [sample.y for sample in global_data.particle_samples[particleID]]
+        iterations = list(global_data.particle_samples[particleID].keys())
+        iterations.sort()
+        
+        x_values = [i for i in iterations]
+        samples = global_data.particle_samples[particleID]
+        
+        xValues = [samples[i].x for i in iterations]
+        yValues = [samples[i].y for i in iterations]
         
         pyplot.plot(xValues, yValues, label=f"Particle {particleID}", linewidth=1)
         pyplot.scatter(xValues, yValues, s=2)
@@ -452,10 +459,17 @@ def build_global_plots(global_data : GlobalData):
     if (len(global_data.particle_samples) > 0):
         build_trajectory_plot(global_data, "./Output/ParticleTrace.png")
         
-        # x_values = [entry[0] for entry in global_data.particle_samples[0]]
-        # y_values = [entry[0] for entry in global_data.field_energy]
-        # y_values = [entry[1] for entry in global_data.field_energy]
-
+        for particle_id in global_data.particle_samples:
+            
+            iterations = list(global_data.particle_samples[particle_id].keys())
+            iterations.sort()
+            
+            x_values = [i for i in iterations]
+            #y_values = [(((data.vx * data.vx) + (data.vy * data.vy)) ** 0.5) for data in global_data.particle_samples[particle_id]]
+            samples = global_data.particle_samples[particle_id]
+            y_values = [(((samples[i].vx * samples[i].vx) + (samples[i].vy * samples[i].vy)) ** 0.5) for i in iterations]
+            build_plot(x_values, y_values, f"./Output/ParticleSpeed_{particle_id}.png", f"ParticleSpeed_{particle_id}")
+        
 
 def generate_gif(images : list, output_path : str):
 
@@ -489,6 +503,7 @@ def main():
 
         # Looping over files and passing them to the CodeScanner
         for file in files:
+            print(f"Processing file: '{file}'")
             file_data = parse_file(file, global_data)       
             build_per_file_plots(file_data)
             
