@@ -9,7 +9,7 @@
 
 ### Архитектура PICADOR Jr
 
-![](Images/Architecture.png)
+![](Images/Architecture_Dark.png)
 
 * Базовые элементы:
 	* [PICADOR Jr Core](Basic/PICADOR%20Jr%20Core.md)
