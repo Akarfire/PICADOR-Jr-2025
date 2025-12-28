@@ -3,6 +3,8 @@
 
 #NeedsWriting
 
+[PIC Method](Report/PIC%20Method.md)
+
 ### Как использовать PICADOR JR?
 
 [User Guide](User%20Guide.md)
@@ -33,5 +35,6 @@
 	* [Data Sampler](Modules/Data%20Sampler.md)
 
 * Эксперименты:
+	* Визуализация: [Auto Visualization System](Experiments/Auto%20Visualization%20System.md)
 	* [Boris Trajectory Experiment](Experiments/Boris%20Trajectory%20Experiment.md)
 	* [Particle Generator Experiment](Experiments/Particle%20Generator%20Experiment.md)
