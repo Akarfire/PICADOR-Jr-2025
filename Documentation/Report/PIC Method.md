@@ -61,7 +61,24 @@ $$ \vec{r}_{new} = \vec{r}_{old} + \vec{v}_{new} \ \Delta t, $$
 $$ v = \dfrac{p}{m} \left( 1 + \left( \dfrac{p}{mc} \right)^2 \right)^{-\dfrac{1}{2}}, $$
 где $c$ - скорость света в вакууме.
 
-Для решения используют **схему Бориса**:
+Импульс частицы изменяется под воздействием силы Лоренца в соответствии со вторым законом Ньютона в релятивистской форме:
+
+$$ \begin{cases} \dfrac{\partial \vec{p}}{\partial t} = q \left( \vec{E} + \dfrac{1}{c} \vec{v} \times \vec{B} \right), \\ \dfrac{\partial \vec{r}}{\partial t} = \vec{v} = \vec{p} \cdot \dfrac{1}{m} \left( \sqrt{ 1 + \left( \dfrac{p}{mc} \right)^2} \right) ^{-1}; \end{cases} $$
+Пусть:
+$$\vec{u} = \vec{p} \cdot \dfrac{1}{mc},$$ $$\gamma = \sqrt{1 + | \ \vec{u} \ |^2 } = \sqrt{1 + u^2},$$ тогда:
+$$ \begin{cases} \dfrac{\partial u}{\partial t} = \dfrac{q}{mc} \left( \vec{E} + \dfrac{1}{\gamma} \vec{u} \times \vec{B} \right), \\ \dfrac{\partial r}{\partial t} = \dfrac{c}{\gamma} \vec{u}; \end{cases} $$
+К первому уравнению системы применим разностное соотношение:
+$$ \vec{u} = \dfrac{\vec{u}_{new} + \vec{u}_{old}}{2}, $$
+получим:
+$$ \dfrac{\vec{u}_{new} - \vec{u}_{old}}{\Delta t} = \dfrac{q}{mc} \left( \vec{E} + \dfrac{\vec{u}_{new} + \vec{u}_{old}}{2 \gamma_{old}} \times \vec{B} \right); $$
+Перейдя к новым переменным
+$$\vec{u}^{(-)} = u_{old} + \dfrac{q\Delta t}{2mc} \vec{E}, \ \ \ \vec{u}^{(+)} = u_{new} - \dfrac{q\Delta t}{2mc} \vec{E}, $$
+получим:
+$$ \dfrac{\vec{u}^{(+)} - \vec{u}^{(-)}}{\Delta t} = \dfrac{q}{2 \gamma_{old} mc} \left( (\vec{u}^{(+)} + \vec{u}^{(-)}) \times \vec{B} \right), $$
+где $\vec{u}^{(-)}$ вычисляется по текущим значениям, а $\vec{u}^{(+)}$ является искомой величиной. 
+Полученное соотношение представляет собой систему из 3-х линейных уравнений с тремя неизвестными (уравнение и неизвестная для каждой из осей $x,y,z$) и невырожденной матрице. Такая система имеет единственное решение. 
+
+Но на практике решение такой системы является слишком вычислительно сложным методом, поэтому в реальных ситуациях используют **схему Бориса**:
 
 $$ \vec{p}_{new} = mc \ \cdot \ \vec{u}_{new}; $$
 $$ \vec{u}_{new} = \vec{u}^{(+)} + \dfrac{q\Delta t}{2mc}; $$

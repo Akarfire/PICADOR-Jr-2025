@@ -346,10 +346,10 @@ def build_trajectory_plot(global_data : GlobalData, save_location : str):
     
 def build_per_file_plots(file_data : FileData):
     
-    if file_data.has_particle_density:  
-        x_values = [entry[0] for entry in file_data.particle_density]
-        # y_values = [entry[1] for entry in file_data.particle_density]
-        v_values = [entry[2] for entry in file_data.particle_density]
+    if file_data.has_particle_density:
+        x_values = list(set(entry[0] for entry in file_data.particle_density))
+        x_values.sort()
+        v_values = [sum( [entry[2] for entry in file_data.particle_density if entry[0] == x] ) for x in x_values]
 
         image_path = f"./Output/ParticleDensity_x/ParticleDensity_x_{file_data.iteration}.png"
         build_plot(x_values, v_values, image_path, f"ParticleDensity_x_{file_data.iteration}")
@@ -374,11 +374,12 @@ def build_per_file_plots(file_data : FileData):
         #     print(f"Failed to build heat map: {str(e)}")
         
         
-    if file_data.has_field_E:   
-        x_values = [entry[0] for entry in file_data.field_E]
-        v_x_values = [entry[2].x for entry in file_data.field_E]
-        v_y_values = [entry[2].y for entry in file_data.field_E]
-        v_z_values = [entry[2].z for entry in file_data.field_E]
+    if file_data.has_field_E:       
+        x_values = list(set(entry[0] for entry in file_data.field_E))
+        x_values.sort()
+        v_x_values = [sum( [entry[2].x for entry in file_data.field_E if entry[0] == x] ) for x in x_values]
+        v_y_values = [sum( [entry[2].y for entry in file_data.field_E if entry[0] == x] ) for x in x_values]
+        v_z_values = [sum( [entry[2].z for entry in file_data.field_E if entry[0] == x] ) for x in x_values]
         
         image_path = f"./Output/FieldE/Field_E_x/FieldE_x_{file_data.iteration}.png"
         build_plot(x_values, v_x_values, image_path, f"Field_E_x_{file_data.iteration}")
@@ -394,10 +395,11 @@ def build_per_file_plots(file_data : FileData):
         
         
     if file_data.has_field_B:   
-        x_values = [entry[0] for entry in file_data.field_B]
-        v_x_values = [entry[2].x for entry in file_data.field_B]
-        v_y_values = [entry[2].y for entry in file_data.field_B]
-        v_z_values = [entry[2].z for entry in file_data.field_B]
+        x_values = list(set(entry[0] for entry in file_data.field_B))
+        x_values.sort()
+        v_x_values = [sum( [entry[2].x for entry in file_data.field_B if entry[0] == x] ) for x in x_values]
+        v_y_values = [sum( [entry[2].y for entry in file_data.field_B if entry[0] == x] ) for x in x_values]
+        v_z_values = [sum( [entry[2].z for entry in file_data.field_B if entry[0] == x] ) for x in x_values]
         
         image_path = f"./Output/FieldB/Field_B_x/FieldB_x_{file_data.iteration}.png"
         build_plot(x_values, v_x_values, image_path, f"Field_B_x_{file_data.iteration}")
@@ -412,11 +414,12 @@ def build_per_file_plots(file_data : FileData):
         generated_plot_image_lists["Field_B_z"].append([file_data.iteration, image_path])
         
         
-    if file_data.has_field_B:   
-        x_values = [entry[0] for entry in file_data.field_J]
-        v_x_values = [entry[2].x for entry in file_data.field_J]
-        v_y_values = [entry[2].y for entry in file_data.field_J]
-        v_z_values = [entry[2].z for entry in file_data.field_J]
+    if file_data.has_field_J:   
+        x_values = list(set(entry[0] for entry in file_data.field_J))
+        x_values.sort()
+        v_x_values = [sum( [entry[2].x for entry in file_data.field_J if entry[0] == x] ) for x in x_values]
+        v_y_values = [sum( [entry[2].y for entry in file_data.field_J if entry[0] == x] ) for x in x_values]
+        v_z_values = [sum( [entry[2].z for entry in file_data.field_J if entry[0] == x] ) for x in x_values]
         
         image_path = f"./Output/FieldJ/Field_J_x/FieldJ_x_{file_data.iteration}.png"
         build_plot(x_values, v_x_values, image_path, f"Field_J_x_{file_data.iteration}")
@@ -502,8 +505,8 @@ def main():
         files = [f for f in path.rglob("*") if f.is_file()]
 
         # Looping over files and passing them to the CodeScanner
-        for file in files:
-            print(f"Processing file: '{file}'")
+        for i, file in enumerate(files):
+            print(f"{(float(i + 1) / len(files) * 100):.1f}% : Processing file: '{file}'")
             file_data = parse_file(file, global_data)       
             build_per_file_plots(file_data)
             

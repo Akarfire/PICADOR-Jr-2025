@@ -51,7 +51,7 @@ int main()
 
     // SIMULATION PARAMETERS
 
-    size_t numInterations = 513;//NumPeriods * NumPerPlasmaPeriod;
+    size_t numInterations = NumPeriods * NumPerPlasmaPeriod;
     double timeStep = 2.0 * (Constants::PI / w_p) / NumPerPlasmaPeriod;
 
     Vector3 fieldGridOrigin = Vector3::Zero;
@@ -137,25 +137,14 @@ int main()
     //dataSampler->additionalDataFlags.push_back("OnlyX");
 
     dataSampler->sampleInterval = IterationsBetweenDumps;
-    dataSampler->sampleOnlySpecificIterations = false;
-    dataSampler->specificIterations = {1};
-    dataSampler->sampleParticleLocations = false;
-    dataSampler->sampleParticleVelocities = false;
-    dataSampler->sampleParticleCells = false;
-    dataSampler->writeParticleGridParameters = false;
-    dataSampler->autoParticleTrackingIDs = false;
+    dataSampler->writeParticleGridParameters = true;
 
     dataSampler->sampleTotalEnergy = true;
 
     dataSampler->traceExampleParticle = true;
 
     // Sampling particle density
-    dataSampler->samplePartcileDensity = true;
-    dataSampler->particleDensitySamplingParameters.samplingOrigin = Vector3::Zero;
-    dataSampler->particleDensitySamplingParameters.samplingResolutionX = 90;
-    dataSampler->particleDensitySamplingParameters.samplingStepX = 0.01;
-    dataSampler->particleDensitySamplingParameters.samplingResolutionY = 1;
-    dataSampler->particleDensitySamplingParameters.samplingStepY = 0.0;
+    dataSampler->sampleParticleDensity = true;
 
     dataSampler->sampleParticleEnergy = true;
 
@@ -164,12 +153,6 @@ int main()
     dataSampler->sampleFieldE = true;
     dataSampler->sampleFieldB = true;
     dataSampler->sampleFieldJ = true;
-
-    dataSampler->fieldSamplingParameters.samplingOrigin = Vector3::Zero;
-    dataSampler->fieldSamplingParameters.samplingResolutionX = 500;
-    dataSampler->fieldSamplingParameters.samplingStepX = 1.0 / dataSampler->fieldSamplingParameters.samplingResolutionX;
-    dataSampler->fieldSamplingParameters.samplingResolutionY = 1;
-    dataSampler->fieldSamplingParameters.samplingStepY = 0.0;
 
     dataSampler->sampleFieldEnergy = true;
 

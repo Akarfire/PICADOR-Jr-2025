@@ -1,4 +1,5 @@
 #include "Module_DataSampler.h"
+#include "FieldGrid.h"
 
 #include <fstream>
 #include <iostream>
@@ -83,26 +84,28 @@ ModuleExecutionStatus DataSampler::onUpdate()
                         if (sampleParticleCells)
                             sampledData.particleCells[sampledData.size].push_back({particle.trackingID, { i, j }});
                         
-                        sampledData.particleEnergy[sampledData.size] += particle.mass * particle.getVelocity().sizeSquared() / 2 * particle.weight;
+                        //double energy = particle.mass * particle.getVelocity().sizeSquared() / 2;
+                        double gamma = 1 / sqrt(1 - particle.getVelocity().sizeSquared() / (Constants::SpeedOfLight * Constants::SpeedOfLight));
+                        double energy = (gamma - 1) * particle.mass * Constants::SpeedOfLight * Constants::SpeedOfLight;
+
+                        sampledData.particleEnergy[sampledData.size] += energy * particle.weight;
                     }
         }
 
-        if (samplePartcileDensity)
+        if (sampleParticleDensity)
         {
             ParticleGrid* particleGrid = core->getParticleGrid();
             
             sampledData.particleDensity.push_back({});
             
-            for (size_t i = 0; i < particleDensitySamplingParameters.samplingResolutionX; i++)
-                for (size_t j = 0; j < particleDensitySamplingParameters.samplingResolutionY; j++)
+            for (size_t i = 0; i < particleGrid->getResolutionX() - 1; i++)
+                for (size_t j = 0; j < particleGrid->getResolutionY() - 1; j++)
                 {
-                    Vector3 sampleLocation = particleDensitySamplingParameters.samplingOrigin + Vector3(    i * particleDensitySamplingParameters.samplingStepX,
-                                                                                                            j * particleDensitySamplingParameters.samplingStepY);
-                    std::pair<GRID_INDEX, GRID_INDEX> cell = particleGrid->getCell(sampleLocation);
-                    
+                    Vector3 sampleLocation = particleGrid->getOrigin() + Vector3(   i * particleGrid->getDeltaX(),
+                                                                                    j * particleGrid->getDeltaY());       
                     double numParticles = 0;
-                    for (const Particle& particle : particleGrid->getParticlesInCell(cell.first, cell.second))
-                        numParticles += particle.weight;
+                    for (const Particle& particle : particleGrid->getParticlesInCell(i, j))
+                        numParticles += 1;
 
                     sampledData.particleDensity[sampledData.size].push_back( {sampleLocation, numParticles} );
                 }
@@ -111,26 +114,46 @@ ModuleExecutionStatus DataSampler::onUpdate()
         // Sampling field data
         if (sampleFieldData)
         {
-            FieldContainer* fieldContainer = core->getFieldContainer();
+            FieldGrid* fieldGrid = dynamic_cast<FieldGrid*>(core->getFieldContainer());
+            if (fieldGrid)
+            {
+                sampledData.fieldData.push_back({});
+                double energy = 0.0;
 
-            sampledData.fieldData.push_back({});
+                for (size_t i = 0; i < fieldGrid->getResolutionX(); i++)
+                    for (size_t j = 0; j < fieldGrid->getResolutionY(); j++)
+                    {                
+                        Vector3 sampleLocation = fieldGrid->getOrigin() + Vector3(  i * fieldGrid->getDeltaX(),
+                                                                                    j * fieldGrid->getDeltaY());
+                        FieldData fieldData = fieldGrid->getNodeAt(i, j);
+                        sampledData.fieldData[sampledData.size].push_back( {sampleLocation, fieldData} );
+                        energy += fieldData.E.sizeSquared() + fieldData.B.sizeSquared();
+                    }
 
-            double energy = 0.0;
-
-            for (size_t i = 0; i < fieldSamplingParameters.samplingResolutionX; i++)
-                for (size_t j = 0; j < fieldSamplingParameters.samplingResolutionY; j++)
-                {
-                    Vector3 sampleLocation = fieldSamplingParameters.samplingOrigin + Vector3(  i * fieldSamplingParameters.samplingStepX,
-                                                                                                j * fieldSamplingParameters.samplingStepY);
-                    
-                    FieldData fieldData = fieldContainer->getFieldsAt(sampleLocation);
-                    sampledData.fieldData[sampledData.size].push_back( {sampleLocation, fieldData} );
-                    energy += fieldData.E.sizeSquared() + fieldData.B.sizeSquared();
-                }
-
-            energy /= (8 * Constants::PI);
-            sampledData.fieldEnergy.push_back(energy);
+                energy *= fieldGrid->getDeltaX() * fieldGrid->getDeltaY() * fieldGrid->getDeltaY() / (8 * Constants::PI);
+                sampledData.fieldEnergy.push_back(energy);
+            }
         }
+    
+
+        // if (sampleFieldEnergy)
+        // {
+        //     ParticleGrid* particleGrid = core->getParticleGrid();
+        //     FieldContainer* fieldContainer = core->getFieldContainer();
+            
+        //     double energy = 0.0;
+
+        //     for (size_t i = 0; i < particleGrid->getResolutionX() - 1; i++)
+        //         for (size_t j = 0; j < particleGrid->getResolutionY() - 1; j++)   
+        //             for (const Particle& particle : particleGrid->getParticlesInCell(i, j))
+        //             {
+        //                 FieldData fieldData = fieldContainer->getFieldsAt(particle.location);
+        //                 energy += (fieldData.E.sizeSquared() + fieldData.B.sizeSquared()) /;
+        //             }
+
+        //     energy /= (8 * Constants::PI);
+        //     sampledData.fieldEnergy.push_back(energy);
+        // }
 
         sampledData.size++;
 
@@ -201,7 +224,7 @@ void DataSampler::writeDataToFile(std::string fileName)
             for (const auto& entry : sampledData.particleCells[i])
                 outFile << entry.first << " | Cell: " << entry.second.first << ", " << entry.second.second << "\n";
         }
-        if (samplePartcileDensity)
+        if (sampleParticleDensity)
         {
             outFile << "Particle Density: " << std::endl;
             for (const auto& entry : sampledData.particleDensity[i])
@@ -219,15 +242,14 @@ void DataSampler::writeDataToFile(std::string fileName)
                 if (sampleFieldJ)
                     outFile << "J: " << entry.first.x << ", " << entry.first.y << " : " << entry.second.J.x << ", " << entry.second.J.y << ", " << entry.second.J.z << std::endl;
             }
-
-            if (sampleFieldEnergy)
-            {
-                outFile << "Field Energy: " << sampledData.fieldEnergy[i] << std::endl;
-            }
+        }
+        if (sampleFieldEnergy)
+        {
+            outFile << "Field Energy: " << sampledData.fieldEnergy[i] << std::endl;
         }
         if (sampleParticleEnergy)
         {
-            outFile << "Particle Energy: " << sampledData.particleEnergy[i] + sampledData.particleEnergy[i] << std::endl;
+            outFile << "Particle Energy: " << sampledData.particleEnergy[i] << std::endl;
         }
         if (sampleTotalEnergy)
         {
